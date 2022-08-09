@@ -1,0 +1,5 @@
+<template>
+  <div>
+    <h2>L'association</h2>
+  </div>
+</template>

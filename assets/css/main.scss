@@ -1,0 +1,35 @@
+$clr-primary: #84aa4b;
+$clr-secondary: #e17f62;
+$clr-bg: #eeece4;
+$clr-green1: #d7e188;
+$clr-green2: #90a73f;
+$clr-font: #403429;
+
+@font-face {
+  font-family: 'Fruit Punch';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('~assets/fonts/FRUIT-PUNCH.ttf') format('truetype');
+}
+
+:root {
+  --clr-primary: #{$clr-primary};
+  --clr-secondary: #{$clr-secondary};
+  --clr-bg: #{$clr-bg};
+  --clr-green1: #{$clr-green1};
+  --clr-green2: #{$clr-green2};
+  --clr-font: #{$clr-font};
+}
+
+body {
+  background-color: var(--clr-bg);
+  color: var(--clr-font);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+a:focus-visible {
+  outline: 3px dotted var(--clr-primary);
+  outline-offset: 3px;
+}
