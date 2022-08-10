@@ -21,7 +21,7 @@
 
   &:checked {
     & ~ .menu {
-      height: 250px;
+      height: 300px;
     }
 
     & ~ .menu-icon .navicon {
@@ -96,7 +96,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem 2rem;
-  padding: 0 2rem;
+  padding: 1rem 2rem 0;
   margin: 0 auto;
   font-size: 1.5rem;
   max-width: 850px;

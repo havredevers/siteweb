@@ -35,21 +35,32 @@ export default {
 h1 {
   color: var(--clr-primary);
   font-family: 'FRUIT PUNCH';
-  font-size: 4rem;
-  margin: 0 0 2rem;
+  font-size: 2rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  column-gap: 2rem;
+  column-gap: 0.5rem;
   padding-right: 75px;
+  padding-left: 35px;
 
-  @media (min-width: 950px) {
+  @media (min-width: 550px) {
+    font-size: 3rem;
+  }
+
+  @media (min-width: 850px) {
+    justify-content: center;
     padding-right: 0;
+    margin: 0 0 2rem;
+    font-size: 4rem;
+    column-gap: 1.5rem;
   }
 
   img {
-    max-width: 75px;
+    max-width: 45px;
+
+    @media (min-width: 850px) {
+      max-width: 75px;
+    }
   }
 }
 </style>

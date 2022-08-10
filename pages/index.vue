@@ -26,9 +26,7 @@
         </li>
       </ul>
     </section>
-    <section class="accueil-3">
-      <h2>Les actus</h2>
-    </section>
+    <LastActus />
   </div>
 </template>
 
@@ -50,8 +48,8 @@
     padding: 2rem 0;
     max-width: 770px;
 
-    * {
-      padding: 0 2rem;
+    & > * {
+      padding: 1rem 2rem;
       background-color: rgba(238, 236, 228, 0.8);
     }
 
@@ -60,8 +58,14 @@
       font-style: italic;
       font-weight: 300;
       font-size: 2rem;
+      margin: 1rem 0 5rem;
 
       @media (min-width: 550px) {
+        font-size: 3rem;
+      }
+
+      @media (min-width: 850px) {
+        margin-top: 5rem;
         font-size: 5rem;
       }
     }
@@ -71,6 +75,10 @@
       font-size: 1.2rem;
 
       @media (min-width: 550px) {
+        font-size: 1.5rem;
+      }
+
+      @media (min-width: 850px) {
         font-size: 2rem;
       }
     }
@@ -95,7 +103,8 @@
   }
 
   ul {
-    padding-left: 0;
+    padding: 0 2rem;
+    margin-top: 1rem;
 
     @media (min-width: 850px) {
       display: flex;
@@ -107,7 +116,8 @@
       text-align: center;
       font-weight: bold;
       font-size: 2rem;
-      flex: 0 0 33%;
+      flex: 0 0 25%;
+      padding-bottom: 2rem;
 
       img {
         width: 100%;
@@ -115,17 +125,11 @@
       }
 
       h3 {
-        margin-top: 0.5rem;
+        margin-top: 1rem;
         padding: 0 1rem;
+        font-size: 2rem;
       }
     }
-  }
-}
-
-.accueil-3 {
-  h2 {
-    --hauteur-titre: 190px;
-    background-image: url('~assets/img/accueil/bg-title2.png');
   }
 }
 </style>

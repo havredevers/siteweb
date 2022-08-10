@@ -20,10 +20,18 @@ $clr-font: #403429;
   --clr-green1: #{$clr-green1};
   --clr-green2: #{$clr-green2};
   --clr-font: #{$clr-font};
+  font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
   background-color: var(--clr-bg);
   color: var(--clr-font);
   font-family: 'Work Sans', Verdana, sans-serif;
