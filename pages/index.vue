@@ -1,11 +1,144 @@
 <template>
   <div>
-    <h2>Bienvenue !</h2>
+    <section class="accueil-1">
+      <div class="accroche">
+        <h2>Ici, on voit la vie en VERS&nbsp;!</h2>
+        <p>
+          Association pour l'accompagnement d'une revalorisation des bio-déchets
+          au HAVRE
+        </p>
+      </div>
+    </section>
+    <section class="accueil-2">
+      <h2>Nos valeurs</h2>
+      <ul>
+        <li>
+          <img src="@/assets/img/accueil/ver.png" alt="" />
+          <h3>Prendre soin des êtres vivants</h3>
+        </li>
+        <li>
+          <img src="@/assets/img/accueil/plante.png" alt="" />
+          <h3>Prendre soin du sol</h3>
+        </li>
+        <li>
+          <img src="@/assets/img/accueil/solidarite.png" alt="" />
+          <h3>Partager son temps et ses ressources</h3>
+        </li>
+      </ul>
+    </section>
+    <section class="accueil-3">
+      <h2>Les actus</h2>
+    </section>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'IndexPage',
+<style lang="scss">
+.accueil-1 {
+  position: relative;
+  background-image: url('~assets/img/accueil/ver-main.png');
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+
+  @media (min-width: 850px) {
+    background-size: initial;
+    min-height: 1050px;
+  }
+  .accroche {
+    position: relative;
+    color: var(--clr-primary);
+    padding: 2rem 0;
+    max-width: 770px;
+
+    * {
+      padding: 0 2rem;
+      background-color: rgba(238, 236, 228, 0.8);
+    }
+
+    h2 {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 2rem;
+
+      @media (min-width: 550px) {
+        font-size: 5rem;
+      }
+    }
+
+    p {
+      font-weight: bold;
+      font-size: 1.2rem;
+
+      @media (min-width: 550px) {
+        font-size: 2rem;
+      }
+    }
+  }
 }
-</script>
+
+.accueil-2 {
+  color: var(--clr-secondary);
+
+  @media (min-width: 850px) {
+    margin-top: -7rem;
+  }
+
+  h2 {
+    --hauteur-titre: 250px;
+    background-image: url('~assets/img/accueil/bg-title1.png');
+
+    @media (min-width: 850px) {
+      margin-top: 0;
+    }
+  }
+
+  ul {
+    padding-left: 0;
+
+    @media (min-width: 850px) {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    li {
+      list-style-type: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: 2rem;
+      flex: 0 0 33%;
+
+      img {
+        width: 100%;
+        max-width: 200px;
+      }
+
+      h3 {
+        margin-top: 0.5rem;
+        padding: 0 1rem;
+      }
+    }
+  }
+}
+
+.accueil-3 {
+  h2 {
+    --hauteur-titre: 190px;
+    color: #fff;
+    background-image: url('~assets/img/accueil/bg-title2.png');
+  }
+}
+
+.accueil-2 h2,
+.accueil-3 h2 {
+  font-size: 3rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin: 1.5rem auto 0;
+  height: var(--hauteur-titre);
+  line-height: var(--hauteur-titre);
+  text-align: center;
+  max-width: 600px;
+}
+</style>

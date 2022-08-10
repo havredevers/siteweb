@@ -23,13 +23,13 @@ $clr-font: #403429;
 }
 
 body {
+  margin: 0;
   background-color: var(--clr-bg);
   color: var(--clr-font);
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Work Sans', Verdana, sans-serif;
 }
 
 a:focus-visible {
-  outline: 3px dotted var(--clr-primary);
+  outline: 3px dotted var(--clr-secondary);
   outline-offset: 3px;
 }

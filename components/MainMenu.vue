@@ -16,13 +16,29 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem 2rem;
-  padding: 0;
-  margin: 0 auto 2rem;
+  padding: 0 2rem;
+  margin: 0 auto;
   font-size: 1.5rem;
   max-width: 850px;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+
+  @media (min-width: 850px) {
+    height: initial;
+    overflow: initial;
+  }
+
+  &.open {
+    height: 250px;
+  }
 
   li {
     list-style-type: none;
+    width: 100%;
+    @media (min-width: 850px) {
+      width: initial;
+    }
 
     a {
       color: var(--clr-font);
