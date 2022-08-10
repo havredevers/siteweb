@@ -2,7 +2,7 @@
   <div>
     <section class="accueil-1">
       <div class="accroche">
-        <h2>Ici, on voit la vie en VERS&nbsp;!</h2>
+        <div class="title">Ici, on voit la vie en VERS&nbsp;!</div>
         <p>
           Association pour l'accompagnement d'une revalorisation des bio-déchets
           au HAVRE
@@ -55,7 +55,7 @@
       background-color: rgba(238, 236, 228, 0.8);
     }
 
-    h2 {
+    .title {
       font-family: Georgia, 'Times New Roman', Times, serif;
       font-style: italic;
       font-weight: 300;
@@ -87,6 +87,7 @@
   h2 {
     --hauteur-titre: 250px;
     background-image: url('~assets/img/accueil/bg-title1.png');
+    color: inherit;
 
     @media (min-width: 850px) {
       margin-top: 0;
@@ -124,21 +125,7 @@
 .accueil-3 {
   h2 {
     --hauteur-titre: 190px;
-    color: #fff;
     background-image: url('~assets/img/accueil/bg-title2.png');
   }
-}
-
-.accueil-2 h2,
-.accueil-3 h2 {
-  font-size: 3rem;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  margin: 1.5rem auto 0;
-  height: var(--hauteur-titre);
-  line-height: var(--hauteur-titre);
-  text-align: center;
-  max-width: 600px;
 }
 </style>
