@@ -49,13 +49,14 @@ footer {
   font-weight: bold;
   padding: 2rem 1rem 0;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 15%;
 
   & > * {
     padding-bottom: 1rem;
   }
 
-  @media (min-width: 550px) {
+  @media (min-width: 700px) {
     display: flex;
   }
 
@@ -64,8 +65,6 @@ footer {
   }
 
   .logo {
-    flex: 0 0 25%;
-
     img {
       display: block;
       margin: auto;
@@ -75,15 +74,18 @@ footer {
   }
 
   .coord {
-    flex: 0 0 33%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
 
     address {
       font-style: normal;
     }
 
     img {
-      max-width: 60px;
+      max-width: 75px;
     }
   }
 

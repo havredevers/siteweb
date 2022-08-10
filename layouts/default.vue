@@ -9,6 +9,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  watch: {
+    $route(to, from) {
+      document.getElementById('menu-btn').checked = false
+    },
+  },
+}
+</script>
+
 <style lang="scss">
 .container {
   max-width: 1920px;
@@ -32,6 +42,11 @@ h1 {
   justify-content: center;
   align-items: center;
   column-gap: 2rem;
+  padding-right: 75px;
+
+  @media (min-width: 950px) {
+    padding-right: 0;
+  }
 
   img {
     max-width: 75px;
