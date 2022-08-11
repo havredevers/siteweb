@@ -115,7 +115,7 @@ footer {
       &:focus-visible svg,
       &:hover svg {
         background-color: var(--clr-secondary);
-        fill: white;
+        fill: var(--clr-bg);
       }
     }
   }

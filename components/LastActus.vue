@@ -12,6 +12,7 @@
               alt=""
             />
           </div>
+          <span class="btn">Lire l'article</span>
         </a>
       </li>
       <li>
@@ -24,6 +25,7 @@
               alt=""
             />
           </div>
+          <span class="btn">Lire l'article</span>
         </a>
       </li>
     </ul>
@@ -55,11 +57,17 @@
 
     a {
       display: block;
-      padding-bottom: 10%;
+      padding-bottom: 20%;
       text-decoration: none;
       max-width: 455px;
       position: relative;
       margin: auto;
+      height: 100%;
+
+      &:hover .btn {
+        color: var(--clr-secondary);
+        background: var(--clr-bg);
+      }
     }
 
     div {
@@ -72,10 +80,10 @@
     }
 
     &:first-child {
-      @media (min-width: 700px) {
+      @media (min-width: 850px) {
         a:hover div,
         a:focus-visible div {
-          transform: translate(8.5%, -19.7%) scale(1.2);
+          transform: translate(8.6%, -24%) scale(1.2);
         }
       }
 
@@ -86,10 +94,10 @@
     }
 
     &:last-child {
-      @media (min-width: 700px) {
+      @media (min-width: 850px) {
         a:hover div,
         a:focus-visible div {
-          transform: translate(-8%, -18%) scale(1.2);
+          transform: translate(-9%, -20%) scale(1.2);
         }
       }
 
@@ -109,6 +117,18 @@
     display: flex;
     justify-content: space-evenly;
     gap: 2rem;
+  }
+
+  .btn {
+    display: block;
+    bottom: 0;
+    position: absolute;
+    color: var(--clr-bg);
+    background: var(--clr-secondary);
+    border: 1px solid var(--clr-secondary);
+    border-radius: 0.375rem;
+    padding: 0.75rem 0.375rem;
+    transition: all 0.3s ease-in-out;
   }
 }
 </style>
