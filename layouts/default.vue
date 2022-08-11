@@ -50,7 +50,7 @@ h1 {
   @media (min-width: 850px) {
     justify-content: center;
     padding-right: 0;
-    margin: 0 0 2rem;
+    margin: 0 0 1rem;
     font-size: 4rem;
     column-gap: 1.5rem;
   }

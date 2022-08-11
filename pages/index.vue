@@ -54,7 +54,7 @@
     }
 
     .title {
-      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-family: var(--font-serif);
       font-style: italic;
       font-weight: 300;
       font-size: 2rem;
