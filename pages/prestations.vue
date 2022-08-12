@@ -25,9 +25,16 @@
   }
 
   ul {
-    display: flex;
     list-style-type: none;
-    justify-content: space-evenly;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-direction: column;
+    padding: 0 7%;
+
+    @media (min-width: 850px) {
+      flex-direction: row;
+    }
   }
 
   h3 {
@@ -37,6 +44,12 @@
     color: var(--clr-secondary);
     text-align: center;
     margin-bottom: 1rem;
+  }
+
+  img {
+    max-width: 100%;
+    margin: auto;
+    display: block;
   }
 }
 </style>

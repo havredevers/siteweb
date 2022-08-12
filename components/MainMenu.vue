@@ -45,7 +45,7 @@
 
 .menu-icon {
   --clr-hamburger: var(--clr-primary);
-  cursor: pointer;
+  cursor: url('~assets/img/cursor-hover.png'), auto;
   user-select: none;
   display: flex;
   width: 45px;

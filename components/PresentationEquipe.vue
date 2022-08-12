@@ -70,6 +70,10 @@ export default {
   max-width: var(--largeur-photo);
   color: var(--clr-secondary);
 
+  .photo {
+    aspect-ratio: 1/1;
+  }
+
   img {
     max-width: 100%;
   }

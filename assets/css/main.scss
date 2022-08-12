@@ -36,6 +36,7 @@ body {
   color: var(--clr-font);
   font-family: 'Work Sans', Verdana, sans-serif;
   --font-serif: Georgia, 'Times New Roman', Times, serif;
+  cursor: url('~assets/img/cursor.png'), auto;
 }
 
 h2 {
@@ -60,6 +61,10 @@ h2 {
   @media (min-width: 850px) {
     font-size: 2.5rem;
   }
+}
+
+a:hover {
+  cursor: url('~assets/img/cursor-hover.png'), auto;
 }
 
 a:focus-visible {
