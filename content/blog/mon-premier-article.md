@@ -1,7 +1,7 @@
 ---
 title: Mon 1er article de blog
-description: 'Ceci est un article de blog'
-img: 'https://i.picsum.photos/id/50/200/300.jpg?hmac=wlHRGoenBSt-gzxGvJp3cBEIUD71NKbWEXmiJC2mQYE'
+description: Ceci est la descripion d'un article de blog
+img: /blog/test.jpg
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis sodales lectus, non ullamcorper neque. Integer ut diam vitae metus viverra maximus. Vestibulum posuere nisl sed nulla sagittis, sit amet consequat tortor venenatis. Suspendisse nec justo vel lorem pellentesque dignissim. Aenean faucibus, purus ac euismod sollicitudin, est lorem pellentesque enim, vitae tempor felis odio porta odio. Nullam efficitur leo at hendrerit varius.
