@@ -26,9 +26,23 @@
         </li>
       </ul>
     </section>
-    <LastActus />
+    <LastActus :articles="articles" />
   </div>
 </template>
+
+<script>
+export default {
+  async asyncData({ $content, params }) {
+    const articles = await $content('blog')
+      .without(['body'])
+      .sortBy('updatedAt', 'desc')
+      .limit(2)
+      .fetch()
+
+    return { articles }
+  },
+}
+</script>
 
 <style lang="scss">
 .accueil-1 {

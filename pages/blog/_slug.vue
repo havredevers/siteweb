@@ -6,7 +6,7 @@
     <h2>
       {{ article.title }}
     </h2>
-    <div>Mis à jour le {{ formatDate(article.updatedAt) }}</div>
+    <div>Mis à jour le {{ $formatDate(article.updatedAt) }}</div>
     <nav>
       <div>Table des matières</div>
       <ul>
@@ -26,12 +26,6 @@ export default {
     const article = await $content('blog', params.slug).fetch()
 
     return { article }
-  },
-  methods: {
-    formatDate(date) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(date).toLocaleDateString('fr', options)
-    },
   },
 }
 </script>
