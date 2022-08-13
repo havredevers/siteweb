@@ -54,11 +54,9 @@ export default {
 
   a {
     display: block;
-    padding-bottom: 20%;
     text-decoration: none;
     max-width: 455px;
     margin: auto;
-    position: relative;
 
     &:hover .btn {
       color: var(--clr-secondary);
@@ -93,15 +91,18 @@ export default {
   }
 
   .btn {
-    display: block;
-    bottom: 0;
-    position: absolute;
+    display: inline-block;
+    margin-top: 30px;
     color: var(--clr-bg);
     background: var(--clr-secondary);
     border: 1px solid var(--clr-secondary);
     border-radius: 0.375rem;
     padding: 0.75rem 0.375rem;
     transition: all 0.3s ease-in-out;
+  }
+
+  li {
+    margin-top: 2rem;
   }
 
   @media (min-width: 850px) {

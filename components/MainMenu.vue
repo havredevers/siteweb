@@ -126,7 +126,7 @@
         content: '';
         position: absolute;
         left: 0;
-        bottom: -3px;
+        bottom: -5px;
         width: 0;
         background-color: var(--clr-primary);
         transition: all 0.3s ease-in-out;
@@ -134,9 +134,8 @@
 
       &:hover::after,
       &.active::after {
-        // border-bottom: 1px solid var(--clr-primary);
         width: 100%;
-        height: 2px;
+        height: 5px;
       }
     }
   }
