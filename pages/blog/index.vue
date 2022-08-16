@@ -1,12 +1,9 @@
 <template>
-  <div>
+  <div class="blog">
     <h2>Le Blog</h2>
-    <ul>
+    <ul class="list-actus">
       <li v-for="article in articles" :key="article.title">
-        <NuxtLink :to="article.path">
-          <div>{{ article.title }}</div>
-          <div>{{ 'Mis à jour le ' + $formatDate(article.updatedAt) }}</div>
-        </NuxtLink>
+        <BlogArticle :article="article" />
       </li>
     </ul>
   </div>
@@ -24,3 +21,16 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.blog {
+  h2 {
+    --hauteur-titre: 190px;
+    background-image: url('@/assets/img/accueil/bg-title2.png');
+  }
+
+  .list-actus {
+    flex-direction: column;
+  }
+}
+</style>
