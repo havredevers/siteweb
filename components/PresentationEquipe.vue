@@ -22,7 +22,7 @@
 export default {
   data() {
     return {
-      equipe: ['test'],
+      equipe: [],
     }
   },
   async fetch() {

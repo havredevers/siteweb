@@ -21,6 +21,12 @@ $clr-font: #403429;
   --clr-green2: #{$clr-green2};
   --clr-font: #{$clr-font};
   font-size: 16px;
+  scrollbar-color: var(--clr-secondary) var(--clr-primary);
+}
+
+::selection {
+  color: white;
+  background: var(--clr-secondary);
 }
 
 *,
