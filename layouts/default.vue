@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <header class="main-menu">
-      <h1>HAVRE <img src="~/assets/img/logo-vert.png" alt="" /> DE VERS</h1>
+      <NuxtLink to="/">
+        <h1>HAVRE <img src="~/assets/img/logo-vert.png" alt="" /> DE VERS</h1>
+      </NuxtLink>
       <MainMenu />
     </header>
     <Nuxt />
@@ -29,19 +31,27 @@ export default {
   top: 0;
   z-index: 100;
   background: var(--clr-bg);
-  padding: 2rem 0 1rem;
+  padding: 1rem 0 0.5rem;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 h1 {
   color: var(--clr-primary);
   font-family: 'FRUIT PUNCH';
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   column-gap: 0.5rem;
   padding-right: 75px;
   padding-left: 35px;
+
+  @media (min-width: 370px) {
+    font-size: 2rem;
+  }
 
   @media (min-width: 550px) {
     font-size: 3rem;
@@ -50,7 +60,6 @@ h1 {
   @media (min-width: 850px) {
     justify-content: center;
     padding-right: 0;
-    margin: 0 0 1rem;
     font-size: 4rem;
     column-gap: 1.5rem;
   }
