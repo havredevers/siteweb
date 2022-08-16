@@ -43,7 +43,7 @@
         </li>
         <li>
           <a
-            href="https://discord.com/channels/753677161088548924/753677161088548927"
+            href="https://discord.gg/tkh9HU6GrB"
             target="_blank"
             title="Discord"
           >

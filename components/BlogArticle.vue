@@ -31,7 +31,6 @@ export default {
 <style lang="scss">
 .article {
   display: block;
-  text-decoration: none;
   max-width: 455px;
   margin: auto;
 

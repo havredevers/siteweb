@@ -69,8 +69,12 @@ h2 {
   }
 }
 
-a:hover {
-  cursor: url('~assets/img/cursor-hover.png'), auto;
+a {
+  text-decoration: none;
+
+  &:hover {
+    cursor: url('~assets/img/cursor-hover.png'), auto;
+  }
 }
 
 a:focus-visible {

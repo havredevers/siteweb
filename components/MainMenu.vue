@@ -140,7 +140,6 @@
 
     a {
       color: var(--clr-font);
-      text-decoration: none;
       position: relative;
 
       &::after {

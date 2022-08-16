@@ -32,10 +32,6 @@ export default {
   z-index: 100;
   background: var(--clr-bg);
   padding: 1rem 0 0.5rem;
-
-  a {
-    text-decoration: none;
-  }
 }
 
 h1 {
