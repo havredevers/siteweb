@@ -6,26 +6,46 @@
         <BlogArticle :article="article" />
       </li>
     </ul>
-    <section v-if="hasNextPage" class="prev-next">
-      <div></div>
-      <nuxt-link to="/blog/page/2" title="Page suivante">&#62;&#62;</nuxt-link>
+    <section v-if="hasPrevPage || hasNextPage" class="prev-next">
+      <nuxt-link
+        v-if="hasPrevPage"
+        :to="'/blog/?page=' + (page - 1)"
+        title="Page précédente"
+        >&#60;&#60;</nuxt-link
+      >
+      <div v-if="!hasPrevPage || !hasNextPage"></div>
+      <nuxt-link
+        v-if="hasNextPage"
+        :to="'/blog/?page=' + (page + 1)"
+        title="Page suivante"
+        >&#62;&#62;</nuxt-link
+      >
     </section>
   </div>
 </template>
 
 <script>
 export default {
-  async asyncData({ $content, $variables }) {
+  async asyncData({ $content, $variables, route }) {
+    const page = parseInt(route.query.page) || 1
     const posts = await $content('blog')
       .without(['body'])
       .sortBy('updatedAt', 'desc')
+      .skip((page - 1) * $variables.blogPagination)
       .limit($variables.blogPagination + 1)
       .fetch()
 
     const hasNextPage = posts.length === $variables.blogPagination + 1
+    const hasPrevPage = page > 1
     const articles = hasNextPage ? posts.slice(0, -1) : posts
 
-    return { hasNextPage, articles }
+    return { page, hasNextPage, hasPrevPage, articles }
+  },
+  watch: {
+    $route() {
+      this.$nuxt.refresh()
+      window.scrollTo(0, 0)
+    },
   },
 }
 </script>
