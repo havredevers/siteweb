@@ -44,8 +44,14 @@ export default {
   watch: {
     $route() {
       this.$nuxt.refresh()
-      window.scrollTo(0, 0)
     },
+  },
+  updated() {
+    this.$nextTick(() => {
+      setTimeout(function () {
+        window.scrollTo(0, 0)
+      }, 5)
+    })
   },
 }
 </script>
