@@ -76,7 +76,7 @@ export default {
     a {
       color: var(--clr-primary);
       border: 1px solid var(--clr-primary);
-      border-radius: 50%;
+      border-radius: 100%;
       padding: 15px;
 
       &:focus-visible,

@@ -8,6 +8,7 @@
     </header>
     <Nuxt />
     <MainFooter />
+    <div class="scroll-to-top" @click="scrollToTop()">&#8593;</div>
   </div>
 </template>
 
@@ -16,6 +17,20 @@ export default {
   watch: {
     $route(to, from) {
       document.getElementById('menu-btn').checked = false
+    },
+  },
+  beforeMount() {
+    window.addEventListener('scroll', () => {
+      const btnClassList = document.querySelector('.scroll-to-top').classList
+      const isVisible = btnClassList.contains('show')
+      !isVisible && window.scrollY > 250
+        ? btnClassList.add('show')
+        : isVisible && window.scrollY <= 250 && btnClassList.remove('show')
+    })
+  },
+  methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0)
     },
   },
 }
@@ -66,6 +81,28 @@ h1 {
     @media (min-width: 850px) {
       max-width: 75px;
     }
+  }
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: -100px;
+  right: 20px;
+  text-align: center;
+  line-height: 50px;
+  height: 50px;
+  width: 50px;
+  background-color: var(--clr-primary);
+  color: white;
+  box-shadow: 0 0 14px -5px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+
+  &.show {
+    bottom: 20px;
+  }
+
+  &:hover {
+    cursor: url('~assets/img/cursor-hover.png'), auto;
   }
 }
 </style>
