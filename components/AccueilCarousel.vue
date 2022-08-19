@@ -87,11 +87,20 @@ export default {
     return {
       slideIndex: 1,
       interval: null,
-      isPlaying: true,
+      isPlaying: false,
+      delay: 4000,
     }
   },
+  watch: {
+    $route() {
+      clearInterval(this.interval)
+    },
+  },
   mounted() {
-    this.launch()
+    this.showSlides(this.slideIndex)
+  },
+  destroyed() {
+    clearInterval(this.interval)
   },
   methods: {
     launch(e) {
@@ -103,7 +112,7 @@ export default {
         function () {
           this.next()
         }.bind(this),
-        5000
+        this.delay
       )
     },
     pause(e) {

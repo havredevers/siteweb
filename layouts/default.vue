@@ -6,7 +6,11 @@
       </NuxtLink>
       <MainMenu />
     </header>
-    <Nuxt />
+    <div v-if="isLoading" class="loader">
+      <img src="@/assets/img/loader.gif" alt="Chargement" />
+      <div class="visually-hidden">Chargement...</div>
+    </div>
+    <Nuxt v-if="!isLoading" />
     <MainFooter />
     <div class="scroll-to-top" @click="scrollToTop()">&#8593;</div>
   </div>
@@ -14,8 +18,13 @@
 
 <script>
 export default {
+  data() {
+    return {
+      isLoading: true,
+    }
+  },
   watch: {
-    $route(to, from) {
+    $route() {
       document.getElementById('menu-btn').checked = false
     },
   },
@@ -28,15 +37,25 @@ export default {
         : isVisible && window.scrollY <= 250 && btnClassList.remove('show')
     })
   },
+  mounted() {
+    document.onreadystatechange = this.stateChange
+  },
   methods: {
     scrollToTop() {
       window.scrollTo(0, 0)
+    },
+    stateChange() {
+      this.isLoading = document.readyState !== 'complete'
     },
   },
 }
 </script>
 
 <style lang="scss">
+.loader {
+  text-align: center;
+}
+
 .container {
   max-width: 1920px;
 }
