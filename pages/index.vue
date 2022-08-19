@@ -1,5 +1,6 @@
 <template>
   <div>
+    <AccueilCarousel />
     <section class="accueil-1">
       <div class="accroche">
         <div class="title">Ici, on voit la vie en VERS&nbsp;!</div>
@@ -31,6 +32,7 @@
 </template>
 
 <script>
+import AccueilCarousel from '~/components/AccueilCarousel.vue'
 export default {
   async asyncData({ $content, params }) {
     const articles = await $content('blog')
@@ -38,9 +40,9 @@ export default {
       .sortBy('updatedAt', 'desc')
       .limit(2)
       .fetch()
-
     return { articles }
   },
+  components: { AccueilCarousel },
 }
 </script>
 
