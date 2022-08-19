@@ -1,7 +1,7 @@
 <template>
   <div class="carousel">
     <div class="carousel-inner">
-      <img class="logo" src="@/assets/img/logo-rose.png" alt="Logo" />
+      <img class="logo" src="@/assets/img/logo-blanc.png" alt="Logo" />
       <ul>
         <li class="mySlides">
           <div class="carousel-title">
@@ -115,6 +115,10 @@ export default {
     overflow: hidden;
   }
 
+  .mySlides {
+    display: none;
+  }
+
   .dots,
   .prev,
   .next,
@@ -143,8 +147,8 @@ export default {
     font-size: clamp(16px, 2.25vw, 40px);
     font-weight: bold;
     position: relative;
-    top: 35%;
-    height: 60%;
+    top: 40%;
+    height: 55%;
   }
 
   &-img {
