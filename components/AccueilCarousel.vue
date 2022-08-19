@@ -34,13 +34,43 @@
           </div>
         </li>
       </ul>
+      <div class="controls">
+        <a v-if="!isPlaying" href="#" @click="launch($event)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+            <title>Lecture</title>
+            <path
+              d="M361 215C375.3 223.8 384 239.3 384 256C384 272.7 375.3 288.2 361 296.1L73.03 472.1C58.21 482 39.66 482.4 24.52 473.9C9.377 465.4 0 449.4 0 432V80C0 62.64 9.377 46.63 24.52 38.13C39.66 29.64 58.21 29.99 73.03 39.04L361 215z"
+            />
+          </svg>
+        </a>
+        <a v-else href="#" @click="pause($event)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+            <title>Pause</title>
+            <path
+              d="M272 63.1l-32 0c-26.51 0-48 21.49-48 47.1v288c0 26.51 21.49 48 48 48L272 448c26.51 0 48-21.49 48-48v-288C320 85.49 298.5 63.1 272 63.1zM80 63.1l-32 0c-26.51 0-48 21.49-48 48v288C0 426.5 21.49 448 48 448l32 0c26.51 0 48-21.49 48-48v-288C128 85.49 106.5 63.1 80 63.1z"
+            />
+          </svg>
+        </a>
+      </div>
     </div>
     <div class="pagination">
       <div class="prev">
-        <a title="Précédent" href="#" @click="plusSlides(-1)">&#10094;</a>
+        <a title="Précédent" href="#" @click="plusSlides(-1)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+            <path
+              d="M224 480c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z"
+            />
+          </svg>
+        </a>
       </div>
       <div class="next">
-        <a title="Suivant" href="#" @click="plusSlides(1)">&#10095;</a>
+        <a title="Suivant" href="#" @click="plusSlides(1)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+            <path
+              d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"
+            />
+          </svg>
+        </a>
       </div>
     </div>
     <div class="dots">
@@ -56,12 +86,34 @@ export default {
   data() {
     return {
       slideIndex: 1,
+      interval: null,
+      isPlaying: true,
     }
   },
   mounted() {
     this.showSlides(this.slideIndex)
+    this.slideIndex++
+    this.launch()
   },
   methods: {
+    launch(e) {
+      if (e) e.preventDefault()
+
+      this.isPlaying = true
+      this.interval = setInterval(
+        function () {
+          this.showSlides(this.slideIndex)
+          this.slideIndex++
+        }.bind(this),
+        5000
+      )
+    },
+    pause(e) {
+      e.preventDefault()
+
+      clearInterval(this.interval)
+      this.isPlaying = false
+    },
     plusSlides(n) {
       this.showSlides((this.slideIndex += n))
     },
@@ -79,12 +131,12 @@ export default {
         this.slideIndex = slides.length
       }
       for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = 'none'
+        slides[i].className = slides[i].className.replace(' active', '')
       }
       for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(' active', '')
       }
-      slides[this.slideIndex - 1].style.display = 'block'
+      slides[this.slideIndex - 1].className += ' active'
       dots[this.slideIndex - 1].className += ' active'
     },
   },
@@ -96,9 +148,10 @@ export default {
   --dot-size: 1rem;
   --btn-nav-color: var(--clr-font);
   --btn-pagination-color: white;
-  --btn-nav-size: 50px;
+  --btn-nav-size: 75px;
+  --bg-carousel: #6b7a6e;
 
-  background: #6b7a6e;
+  background: var(--bg-carousel);
   aspect-ratio: 16/6;
   position: relative;
   margin: 0 auto;
@@ -116,7 +169,14 @@ export default {
   }
 
   .mySlides {
-    display: none;
+    opacity: 0;
+    height: 0;
+    transition: all 0.5s ease-in-out;
+
+    &.active {
+      opacity: 1;
+      height: 100%;
+    }
   }
 
   .dots,
@@ -124,8 +184,9 @@ export default {
   .next,
   &-img,
   ul,
-  .mySlides,
-  .cta {
+  li,
+  .cta,
+  .controls {
     position: absolute;
   }
 
@@ -133,6 +194,12 @@ export default {
   &-title {
     width: 30%;
     margin: 2.5%;
+  }
+
+  .logo {
+    background: var(--bg-carousel);
+    z-index: 5;
+    position: relative;
   }
 
   &-inner {
@@ -161,15 +228,35 @@ export default {
     }
   }
 
+  .controls {
+    --control-size: 30px;
+    z-index: 5;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 100%;
+    border: 1px solid black;
+    width: var(--control-size);
+    height: var(--control-size);
+
+    a {
+      display: flex;
+      height: 100%;
+
+      svg {
+        margin: auto;
+        width: 50%;
+      }
+    }
+  }
+
   .cta {
     display: block;
     border-radius: 1rem;
     background-color: #d7e188;
     color: var(--clr-font);
     padding: 0.75rem 1.5rem;
-    font-size: 1rem;
     font-size: clamp(12px, 1vw, 16px);
-    position: absolute;
     bottom: 10%;
   }
 
@@ -211,18 +298,29 @@ export default {
     background-color: var(--clr-bg);
 
     a {
-      display: block;
+      display: flex;
       border-radius: 100%;
-      border: 1px solid var(--btn-nav-color);
+      border: 3px solid var(--btn-nav-color);
       color: var(--btn-nav-color);
       width: var(--btn-nav-size);
       height: var(--btn-nav-size);
       line-height: var(--btn-nav-size);
       text-align: center;
       transition: all 0.1s ease-in-out;
+      font-weight: bold;
+
+      svg {
+        height: 65%;
+        margin: auto;
+        transition: inherit;
+      }
 
       &:hover {
         --btn-nav-color: var(--clr-secondary);
+
+        svg {
+          fill: var(--clr-secondary);
+        }
       }
     }
   }

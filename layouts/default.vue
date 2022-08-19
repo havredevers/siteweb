@@ -103,6 +103,7 @@ h1 {
 
   &:hover {
     cursor: url('~assets/img/cursor-hover.png'), auto;
+    transform: translateY(-10px);
   }
 }
 </style>
