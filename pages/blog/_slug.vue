@@ -24,6 +24,9 @@ export default {
 
     return { article }
   },
+  mounted() {
+    this.$handleImagesLoad()
+  },
 }
 </script>
 

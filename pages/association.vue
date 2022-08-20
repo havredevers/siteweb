@@ -41,6 +41,14 @@
   </div>
 </template>
 
+<script>
+export default {
+  mounted() {
+    this.$handleImagesLoad()
+  },
+}
+</script>
+
 <style lang="scss">
 .asso-1 {
   margin-bottom: 2rem;

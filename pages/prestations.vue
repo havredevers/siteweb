@@ -19,7 +19,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  mounted() {
+    this.$handleImagesLoad()
+  },
+}
 </script>
 
 <style lang="scss">

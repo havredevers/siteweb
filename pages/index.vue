@@ -41,6 +41,9 @@ export default {
       .fetch()
     return { articles }
   },
+  mounted() {
+    this.$handleImagesLoad()
+  },
 }
 </script>
 

@@ -28,7 +28,6 @@ export default {
       const loader = document.querySelector('.loader')
       console.log('change route')
       loader.classList.add('show')
-      this.$handleImagesLoad()
     },
   },
   beforeMount() {

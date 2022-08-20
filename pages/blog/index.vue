@@ -46,6 +46,9 @@ export default {
       this.$nuxt.refresh()
     },
   },
+  mounted() {
+    this.$handleImagesLoad()
+  },
   updated() {
     this.$nextTick(() => {
       setTimeout(function () {
