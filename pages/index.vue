@@ -14,15 +14,27 @@
       <h2>Nos valeurs</h2>
       <ul>
         <li>
-          <img src="@/assets/img/accueil/ver.png" alt="" />
+          <img
+            src="@/assets/img/accueil/ver.png"
+            alt=""
+            @load="$handleImagesLoad($event)"
+          />
           <h3>Prendre soin des êtres vivants</h3>
         </li>
         <li>
-          <img src="@/assets/img/accueil/plante.png" alt="" />
+          <img
+            src="@/assets/img/accueil/plante.png"
+            alt=""
+            @load="$handleImagesLoad($event)"
+          />
           <h3>Prendre soin du sol</h3>
         </li>
         <li>
-          <img src="@/assets/img/accueil/solidarite.png" alt="" />
+          <img
+            src="@/assets/img/accueil/solidarite.png"
+            alt=""
+            @load="$handleImagesLoad($event)"
+          />
           <h3>Partager son temps et ses ressources</h3>
         </li>
       </ul>
@@ -32,7 +44,6 @@
 </template>
 
 <script>
-import AccueilCarousel from '~/components/AccueilCarousel.vue'
 export default {
   async asyncData({ $content, params }) {
     const articles = await $content('blog')
@@ -42,7 +53,6 @@ export default {
       .fetch()
     return { articles }
   },
-  components: { AccueilCarousel },
 }
 </script>
 

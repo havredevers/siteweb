@@ -1,13 +1,21 @@
 <template>
   <footer>
     <div class="logo">
-      <img src="@/assets/img/logo-rose.png" alt="" />
+      <img
+        src="@/assets/img/logo-rose.png"
+        alt=""
+        @load="$handleImagesLoad($event)"
+      />
     </div>
     <div class="coord">
       <address>
         Havre de Vers<br />13, rue de Tourville<br />76600 LE HAVRE
       </address>
-      <img src="@/assets/img/accueil/ver.png" alt="" />
+      <img
+        src="@/assets/img/accueil/ver.png"
+        alt=""
+        @load="$handleImagesLoad($event)"
+      />
       <div class="horaires">
         LUNDI, MERCREDI<br />ET VENDREDI<br />DE 10H A 19H
       </div>
@@ -58,6 +66,10 @@
     </div>
   </footer>
 </template>
+
+<script>
+export default {}
+</script>
 
 <style lang="scss">
 footer {

@@ -15,7 +15,7 @@
         </li>
       </ul>
     </nav>
-    <img :src="article.img" alt="" />
+    <img :src="article.img" alt="" @load="$handleImagesLoad($event)" />
     <nuxt-content :document="article" />
   </article>
 </template>

@@ -7,6 +7,7 @@
           <img
             :src="require(`~/assets/img/association/staff/${membre.photo}`)"
             alt=""
+            @load="$handleImagesLoad($event)"
           />
         </div>
         <h3>{{ membre.nom }}</h3>

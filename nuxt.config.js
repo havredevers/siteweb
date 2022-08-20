@@ -17,9 +17,24 @@ export default {
       { name: 'theme-color', content: '#ffffff' },
     ],
     link: [
-      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
-      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-      { rel: 'apple-touch-icon', sizes: '120x120', href: '/apple-touch-icon.png' },
+      { rel: 'preload', href: '/loader/loader.gif', as: 'image' },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png',
+      },
+      {
+        rel: 'apple-touch-icon',
+        sizes: '120x120',
+        href: '/apple-touch-icon.png',
+      },
       { rel: 'manifest', href: '/site.webmanifest' },
       { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#84aa4b' },
     ],
@@ -29,7 +44,7 @@ export default {
   css: ['~/assets/css/main'],
 
   router: {
-    linkActiveClass: 'active'
+    linkActiveClass: 'active',
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

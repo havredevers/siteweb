@@ -1,7 +1,12 @@
 <template>
   <div class="carousel">
     <div class="carousel-inner">
-      <img class="logo" src="@/assets/img/logo-blanc.png" alt="Logo" />
+      <img
+        class="logo"
+        src="@/assets/img/logo-blanc.png"
+        alt="Logo"
+        @load="$handleImagesLoad($event)"
+      />
       <ul>
         <li class="mySlides">
           <div class="carousel-title">
@@ -12,7 +17,11 @@
             </NuxtLink>
           </div>
           <div class="carousel-img">
-            <img src="/blog/test.jpg" alt="" />
+            <img
+              src="/blog/test.jpg"
+              alt=""
+              @load="$handleImagesLoad($event)"
+            />
           </div>
         </li>
         <li class="mySlides">
@@ -21,7 +30,11 @@
             <a href="#" class="cta">Un lien</a>
           </div>
           <div class="carousel-img">
-            <img src="/blog/test2.jpg" alt="" />
+            <img
+              src="/blog/test2.jpg"
+              alt=""
+              @load="$handleImagesLoad($event)"
+            />
           </div>
         </li>
         <li class="mySlides">
@@ -30,7 +43,11 @@
             <a href="#" class="cta">Un autre lien</a>
           </div>
           <div class="carousel-img">
-            <img src="https://picsum.photos/800/650" alt="" />
+            <img
+              src="https://picsum.photos/800/650"
+              alt=""
+              @load="$handleImagesLoad($event)"
+            />
           </div>
         </li>
       </ul>

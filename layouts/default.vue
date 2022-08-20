@@ -1,16 +1,28 @@
 <template>
   <div class="container">
+    <div class="loader show">
+      <img
+        src="/loader/loader.gif"
+        alt="Chargement"
+        @load="$handleImagesLoad($event)"
+      />
+      <div class="visually-hidden">Chargement...</div>
+    </div>
     <header class="main-menu">
       <NuxtLink to="/">
-        <h1>HAVRE <img src="~/assets/img/logo-vert.png" alt="" /> DE VERS</h1>
+        <h1>
+          HAVRE
+          <img
+            src="~/assets/img/logo-vert.png"
+            alt=""
+            @load="$handleImagesLoad($event)"
+          />
+          DE VERS
+        </h1>
       </NuxtLink>
       <MainMenu />
     </header>
-    <div v-if="isLoading" class="loader">
-      <img src="@/assets/img/loader.gif" alt="Chargement" />
-      <div class="visually-hidden">Chargement...</div>
-    </div>
-    <Nuxt v-if="!isLoading" />
+    <Nuxt @change="$handleImagesLoad()" />
     <MainFooter />
     <div class="scroll-to-top" @click="scrollToTop()">&#8593;</div>
   </div>
@@ -25,7 +37,11 @@ export default {
   },
   watch: {
     $route() {
+      const loader = document.querySelector('.loader')
       document.getElementById('menu-btn').checked = false
+      loader.style.display = 'flex'
+      loader.classList.add('show')
+      this.$handleImagesLoad()
     },
   },
   beforeMount() {
@@ -37,15 +53,9 @@ export default {
         : isVisible && window.scrollY <= 250 && btnClassList.remove('show')
     })
   },
-  mounted() {
-    document.onreadystatechange = this.stateChange
-  },
   methods: {
     scrollToTop() {
       window.scrollTo(0, 0)
-    },
-    stateChange() {
-      this.isLoading = document.readyState !== 'complete'
     },
   },
 }
@@ -53,11 +63,28 @@ export default {
 
 <style lang="scss">
 .loader {
-  text-align: center;
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--clr-bg);
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+
+  &.show {
+    opacity: 1;
+    top: 0;
+  }
 }
 
 .container {
   max-width: 1920px;
+  position: relative;
 }
 
 .main-menu {

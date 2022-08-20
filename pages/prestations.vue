@@ -5,13 +5,21 @@
       <li>
         <div>
           <h3>Atelier jardin/potager</h3>
-          <img src="@/assets/img/prestations/jardin.png" alt="" />
+          <img
+            src="@/assets/img/prestations/jardin.png"
+            alt=""
+            @load="$handleImagesLoad($event)"
+          />
         </div>
       </li>
       <li>
         <div>
           <h3>Compostage</h3>
-          <img src="@/assets/img/prestations/compostage.png" alt="" />
+          <img
+            src="@/assets/img/prestations/compostage.png"
+            alt=""
+            @load="$handleImagesLoad($event)"
+          />
         </div>
       </li>
     </ul>
