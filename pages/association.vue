@@ -50,7 +50,7 @@
     --hauteur-titre: 240px;
     margin-top: -3rem;
     color: var(--clr-bg);
-    background-image: url('~assets/img/association/bg-title3.png');
+    background-image: url('/ui/association/bg-title3.png');
 
     @media (min-width: 550px) {
       --hauteur-titre: 300px;

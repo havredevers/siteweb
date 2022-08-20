@@ -60,7 +60,7 @@ export default {
 .blog {
   h2 {
     --hauteur-titre: 190px;
-    background-image: url('@/assets/img/accueil/bg-title2.png');
+    background-image: url('/ui/accueil/bg-title2.png');
   }
 
   .list-actus {

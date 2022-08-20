@@ -5,26 +5,22 @@
       <li>
         <div>
           <h3>Atelier jardin/potager</h3>
-          <img
-            src="@/assets/img/prestations/jardin.png"
-            alt=""
-            @load="$handleImagesLoad($event)"
-          />
+          <CustomImage src="/prestations/jardin.png" alt="" />
         </div>
       </li>
       <li>
         <div>
           <h3>Compostage</h3>
-          <img
-            src="@/assets/img/prestations/compostage.png"
-            alt=""
-            @load="$handleImagesLoad($event)"
-          />
+          <CustomImage src="/prestations/compostage.png" alt="" />
         </div>
       </li>
     </ul>
   </div>
 </template>
+
+<script>
+export default {}
+</script>
 
 <style lang="scss">
 .prestations {

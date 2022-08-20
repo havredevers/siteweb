@@ -14,27 +14,15 @@
       <h2>Nos valeurs</h2>
       <ul>
         <li>
-          <img
-            src="@/assets/img/accueil/ver.png"
-            alt=""
-            @load="$handleImagesLoad($event)"
-          />
+          <CustomImage src="/ui/accueil/ver.png" alt="" />
           <h3>Prendre soin des êtres vivants</h3>
         </li>
         <li>
-          <img
-            src="@/assets/img/accueil/plante.png"
-            alt=""
-            @load="$handleImagesLoad($event)"
-          />
+          <CustomImage src="/ui/accueil/plante.png" alt="" />
           <h3>Prendre soin du sol</h3>
         </li>
         <li>
-          <img
-            src="@/assets/img/accueil/solidarite.png"
-            alt=""
-            @load="$handleImagesLoad($event)"
-          />
+          <CustomImage src="/ui/accueil/solidarite.png" alt="" />
           <h3>Partager son temps et ses ressources</h3>
         </li>
       </ul>
@@ -59,7 +47,7 @@ export default {
 <style lang="scss">
 .accueil-1 {
   position: relative;
-  background-image: url('~assets/img/accueil/ver-main.png');
+  background-image: url('/ui/accueil/ver-main.png');
   background-repeat: no-repeat;
   background-position: right;
   background-size: cover;
@@ -120,7 +108,7 @@ export default {
 
   h2 {
     --hauteur-titre: 250px;
-    background-image: url('~assets/img/accueil/bg-title1.png');
+    background-image: url('/ui/accueil/bg-title1.png');
     color: inherit;
 
     @media (min-width: 850px) {

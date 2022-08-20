@@ -1,28 +1,20 @@
 <template>
   <div class="container">
     <div class="loader show">
-      <img
-        src="/loader/loader.gif"
-        alt="Chargement"
-        @load="$handleImagesLoad($event)"
-      />
+      <CustomImage src="/loader/loader.gif" alt="Chargement" />
       <div class="visually-hidden">Chargement...</div>
     </div>
     <header class="main-menu">
       <NuxtLink to="/">
         <h1>
           HAVRE
-          <img
-            src="~/assets/img/logo-vert.png"
-            alt=""
-            @load="$handleImagesLoad($event)"
-          />
+          <CustomImage src="/ui/logo-vert.png" alt="" />
           DE VERS
         </h1>
       </NuxtLink>
       <MainMenu />
     </header>
-    <Nuxt @change="$handleImagesLoad()" />
+    <Nuxt />
     <MainFooter />
     <div class="scroll-to-top" @click="scrollToTop()">&#8593;</div>
   </div>
@@ -30,15 +22,10 @@
 
 <script>
 export default {
-  data() {
-    return {
-      isLoading: true,
-    }
-  },
   watch: {
     $route() {
-      const loader = document.querySelector('.loader')
       document.getElementById('menu-btn').checked = false
+      const loader = document.querySelector('.loader')
       loader.style.display = 'flex'
       loader.classList.add('show')
       this.$handleImagesLoad()

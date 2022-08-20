@@ -1,8 +1,5 @@
 <template>
   <article class="blog-article">
-    <!-- <h2>{{ article.title }}</h2>
-    <img :src="article.img" alt="" />
-    <p>{{ article.description }}</p> -->
     <h2>
       {{ article.title }}
     </h2>
@@ -15,7 +12,7 @@
         </li>
       </ul>
     </nav>
-    <img :src="article.img" alt="" @load="$handleImagesLoad($event)" />
+    <CustomImage :src="article.img" alt="" />
     <nuxt-content :document="article" />
   </article>
 </template>

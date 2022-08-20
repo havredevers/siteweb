@@ -3,13 +3,9 @@
     <h3>{{ article.title }}</h3>
     <small>{{ 'Mis à jour le ' + $formatDate(article.updatedAt) }}</small>
     <div class="article-logo">
-      <img
-        src="@/assets/img/accueil/shape1.png"
-        alt=""
-        @load="$handleImagesLoad($event)"
-      />
+      <CustomImage src="/ui/accueil/shape1.png" alt="" />
       <div class="mask">
-        <img :src="article.img" alt="" @load="$handleImagesLoad($event)" />
+        <CustomImage :src="article.img" alt="" />
       </div>
     </div>
     <div>

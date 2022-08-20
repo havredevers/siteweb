@@ -1,12 +1,7 @@
 <template>
   <div class="carousel">
     <div class="carousel-inner">
-      <img
-        class="logo"
-        src="@/assets/img/logo-blanc.png"
-        alt="Logo"
-        @load="$handleImagesLoad($event)"
-      />
+      <CustomImage class="logo" src="/ui/logo-blanc.png" alt="Logo" />
       <ul>
         <li class="mySlides">
           <div class="carousel-title">
@@ -17,11 +12,7 @@
             </NuxtLink>
           </div>
           <div class="carousel-img">
-            <img
-              src="/blog/test.jpg"
-              alt=""
-              @load="$handleImagesLoad($event)"
-            />
+            <CustomImage src="/blog/test.jpg" alt="" />
           </div>
         </li>
         <li class="mySlides">
@@ -30,11 +21,7 @@
             <a href="#" class="cta">Un lien</a>
           </div>
           <div class="carousel-img">
-            <img
-              src="/blog/test2.jpg"
-              alt=""
-              @load="$handleImagesLoad($event)"
-            />
+            <CustomImage src="/blog/test2.jpg" alt="" />
           </div>
         </li>
         <li class="mySlides">
@@ -43,11 +30,7 @@
             <a href="#" class="cta">Un autre lien</a>
           </div>
           <div class="carousel-img">
-            <img
-              src="https://picsum.photos/800/650"
-              alt=""
-              @load="$handleImagesLoad($event)"
-            />
+            <CustomImage src="https://picsum.photos/800/650" alt="" />
           </div>
         </li>
       </ul>
@@ -124,7 +107,6 @@ export default {
       if (e) e.preventDefault()
       this.isPlaying = true
       this.showSlides(this.slideIndex)
-
       this.interval = setInterval(
         function () {
           this.next()
@@ -143,7 +125,6 @@ export default {
     },
     next(e) {
       if (e) e.preventDefault()
-
       this.showSlides((this.slideIndex = this.slideIndex + 1))
     },
     currentSlide(n) {

@@ -27,7 +27,7 @@ export default {
 .accueil-3 {
   h2 {
     --hauteur-titre: 190px;
-    background-image: url('~assets/img/accueil/bg-title2.png');
+    background-image: url('/ui/accueil/bg-title2.png');
   }
 }
 

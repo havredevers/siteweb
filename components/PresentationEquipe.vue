@@ -4,11 +4,7 @@
     <ul class="membres">
       <li v-for="membre in equipe" :key="membre.order" class="membre">
         <div class="photo">
-          <img
-            :src="require(`~/assets/img/association/staff/${membre.photo}`)"
-            alt=""
-            @load="$handleImagesLoad($event)"
-          />
+          <CustomImage :src="'/staff/' + membre.photo" alt="" />
         </div>
         <h3>{{ membre.nom }}</h3>
         <ul>
@@ -37,7 +33,7 @@ export default {
   margin-bottom: 2rem;
   h2 {
     --hauteur-titre: 285px;
-    background-image: url('~assets/img/accueil/bg-title2.png');
+    background-image: url('/ui/accueil/bg-title2.png');
     line-height: initial;
   }
 
