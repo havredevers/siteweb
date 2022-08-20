@@ -26,7 +26,7 @@ export default {
     $route() {
       document.getElementById('menu-btn').checked = false
       const loader = document.querySelector('.loader')
-      loader.style.display = 'flex'
+      console.log('change route')
       loader.classList.add('show')
       this.$handleImagesLoad()
     },
