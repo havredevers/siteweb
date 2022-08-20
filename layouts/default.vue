@@ -32,11 +32,18 @@ export default {
   },
   beforeMount() {
     window.addEventListener('scroll', () => {
+      // Scroll To Top
       const btnClassList = document.querySelector('.scroll-to-top').classList
       const isVisible = btnClassList.contains('show')
       !isVisible && window.scrollY > 250
         ? btnClassList.add('show')
         : isVisible && window.scrollY <= 250 && btnClassList.remove('show')
+
+      // Menu
+      const menu = document.querySelector('.main-menu')
+      window.scrollY > 250
+        ? menu.classList.add('reduced')
+        : menu.classList.remove('reduced')
     })
   },
   methods: {
@@ -79,6 +86,34 @@ export default {
   z-index: 100;
   background: var(--clr-bg);
   padding: 1rem 0 0.5rem;
+
+  &.reduced {
+    @media (min-width: 850px) {
+      h1 {
+        max-height: 0;
+      }
+    }
+
+    @media (min-width: 1050px) {
+      display: flex;
+      justify-content: space-between;
+
+      & > a {
+        display: flex;
+        align-items: flex-end;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        column-gap: 0.5rem;
+        max-height: initial;
+
+        img {
+          max-width: 40px;
+        }
+      }
+    }
+  }
 }
 
 h1 {
@@ -91,6 +126,9 @@ h1 {
   column-gap: 0.5rem;
   padding-right: 75px;
   padding-left: 35px;
+  max-height: 67px;
+  overflow: hidden;
+  transition: all 0.1s ease-in-out;
 
   @media (min-width: 370px) {
     font-size: 2rem;
