@@ -88,6 +88,8 @@ export default {
   padding: 1rem 0 0.5rem;
 
   &.reduced {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
     @media (min-width: 850px) {
       h1 {
         max-height: 0;
