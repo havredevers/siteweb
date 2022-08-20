@@ -10,15 +10,12 @@ Vue.prototype.$handleImagesLoad = (e) => {
 
   if (e) {
     e.target.setAttribute('loaded', true)
-    console.log(e.target.src)
-
-    console.log(images.length + '/' + document.querySelectorAll('img').length)
   }
 
   if (images.length <= 1) {
-    console.log('Toutes les images sont chargées')
     const loader = document.querySelector('.loader')
     loader.classList.remove('show')
+    window.scrollTo(0, 1)
   }
 }
 

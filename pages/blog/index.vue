@@ -49,13 +49,6 @@ export default {
   mounted() {
     this.$handleImagesLoad()
   },
-  updated() {
-    this.$nextTick(() => {
-      setTimeout(function () {
-        window.scrollTo(0, 0)
-      }, 5)
-    })
-  },
 }
 </script>
 
