@@ -90,6 +90,11 @@ export default {
   &.reduced {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15),
       inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+
+    .menu {
+      padding-top: 0;
+    }
+
     @media (min-width: 850px) {
       h1 {
         max-height: 0;
@@ -102,7 +107,7 @@ export default {
 
       & > a {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
       }
 
       h1 {

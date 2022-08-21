@@ -114,7 +114,7 @@ export default {
     launch(e) {
       if (e) e.preventDefault()
       this.isPlaying = true
-      this.showSlides(this.slideIndex)
+      this.showSlides(this.slideIndex + 1)
       this.interval = setInterval(
         function () {
           this.next()

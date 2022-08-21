@@ -119,7 +119,7 @@
   @media (min-width: 850px) {
     height: initial;
     overflow: initial;
-    padding: 1rem 2rem 0;
+    padding: 1rem 2rem 1rem;
   }
 
   svg {
