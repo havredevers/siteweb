@@ -3,34 +3,19 @@
     <div class="carousel-inner">
       <CustomImage class="logo" src="/ui/logo-blanc.png" alt="Logo" />
       <ul>
-        <li class="mySlides">
+        <li
+          v-for="carouselItem in carouselItems"
+          :key="carouselItem.img"
+          class="mySlides"
+        >
           <div class="carousel-title">
-            L'association havraise qui accompagne la valorisation des
-            bio-déchets
-            <NuxtLink to="/adherer" class="cta">
-              Adhérer à l'association
+            {{ carouselItem.text }}
+            <NuxtLink :to="carouselItem.link" class="cta">
+              {{ carouselItem.linkText }}
             </NuxtLink>
           </div>
           <div class="carousel-img">
-            <CustomImage src="/blog/test.jpg" alt="" />
-          </div>
-        </li>
-        <li class="mySlides">
-          <div class="carousel-title">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            <a href="#" class="cta">Un lien</a>
-          </div>
-          <div class="carousel-img">
-            <CustomImage src="/blog/test2.jpg" alt="" />
-          </div>
-        </li>
-        <li class="mySlides">
-          <div class="carousel-title">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            <a href="#" class="cta">Un autre lien</a>
-          </div>
-          <div class="carousel-img">
-            <CustomImage src="https://picsum.photos/800/650" alt="" />
+            <CustomImage :src="carouselItem.img" alt="" />
           </div>
         </li>
       </ul>
@@ -74,9 +59,12 @@
       </div>
     </div>
     <div class="dots">
-      <span class="dot" @click="currentSlide(1)"></span>
-      <span class="dot" @click="currentSlide(2)"></span>
-      <span class="dot" @click="currentSlide(3)"></span>
+      <span
+        v-for="(carouselItem, index) in carouselItems"
+        :key="carouselItem.img"
+        class="dot"
+        @click="showSlides(index + 1)"
+      ></span>
     </div>
   </div>
 </template>
@@ -89,6 +77,26 @@ export default {
       interval: null,
       isPlaying: false,
       delay: 4000,
+      carouselItems: [
+        {
+          text: "L'association havraise qui accompagne la valorisation des bio-déchets",
+          link: '/adherer',
+          linkText: "Adhérer à l'association",
+          img: '/blog/test.jpg',
+        },
+        {
+          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+          link: '/',
+          linkText: 'Un lien',
+          img: '/blog/test2.jpg',
+        },
+        {
+          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+          link: '/',
+          linkText: 'Un autre lien',
+          img: 'https://picsum.photos/800/650',
+        },
+      ],
     }
   },
   watch: {
@@ -121,33 +129,36 @@ export default {
     },
     prev(e) {
       e.preventDefault()
-      this.showSlides((this.slideIndex = this.slideIndex - 1))
+      this.showSlides(this.slideIndex - 1)
     },
     next(e) {
       if (e) e.preventDefault()
-      this.showSlides((this.slideIndex = this.slideIndex + 1))
-    },
-    currentSlide(n) {
-      this.showSlides((this.slideIndex = n))
+      this.showSlides(this.slideIndex + 1)
     },
     showSlides(n) {
-      let i
       const slides = document.getElementsByClassName('mySlides')
       const dots = document.getElementsByClassName('dot')
+
+      this.slideIndex = n
+
       if (n > slides.length) {
         this.slideIndex = 1
       }
+
       if (n < 1) {
         this.slideIndex = slides.length
       }
-      for (i = 0; i < slides.length; i++) {
-        slides[i].className = slides[i].className.replace(' active', '')
+
+      for (const slide of slides) {
+        slide.classList.remove('active')
       }
-      for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(' active', '')
+
+      for (const dot of dots) {
+        dot.classList.remove('active')
       }
-      slides[this.slideIndex - 1].className += ' active'
-      dots[this.slideIndex - 1].className += ' active'
+
+      slides[this.slideIndex - 1].classList.add('active')
+      dots[this.slideIndex - 1].classList.add('active')
     },
   },
 }

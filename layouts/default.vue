@@ -41,7 +41,7 @@ export default {
 
       // Menu
       const menu = document.querySelector('.main-menu')
-      window.scrollY > 250
+      window.scrollY > 60
         ? menu.classList.add('reduced')
         : menu.classList.remove('reduced')
     })
@@ -130,7 +130,7 @@ h1 {
   padding-left: 35px;
   max-height: 67px;
   overflow: hidden;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-out;
 
   @media (min-width: 370px) {
     font-size: 2rem;
@@ -149,6 +149,7 @@ h1 {
 
   img {
     max-width: 45px;
+    transition: all 0.1s ease-out;
 
     @media (min-width: 850px) {
       max-width: 75px;
