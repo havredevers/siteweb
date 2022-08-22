@@ -4,9 +4,10 @@
       <CustomImage class="logo" src="/ui/logo-blanc.png" alt="Logo" />
       <ul>
         <li
-          v-for="carouselItem in carouselItems"
+          v-for="(carouselItem, i) in carouselItems"
           :key="carouselItem.img"
           class="slide"
+          :class="{ active: i == slideIndex - 1 }"
         >
           <div class="carousel-img">
             <CustomImage :src="carouselItem.img" alt="" />
@@ -59,6 +60,7 @@
         v-for="n in carouselItems.length"
         :key="n"
         class="dot"
+        :class="{ active: n == slideIndex }"
         @click="showSlides(n)"
       ></span>
     </div>
@@ -90,7 +92,7 @@ export default {
           text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           link: '/',
           linkText: 'Un autre lien',
-          img: '/blog/test.jpg',
+          img: '/blog/test3.jpg',
         },
       ],
     }
@@ -100,9 +102,6 @@ export default {
       clearInterval(this.interval)
     },
   },
-  mounted() {
-    this.showSlides(this.slideIndex)
-  },
   destroyed() {
     clearInterval(this.interval)
   },
@@ -110,7 +109,7 @@ export default {
     launch(e) {
       if (e) e.preventDefault()
       this.isPlaying = true
-      this.showSlides(this.slideIndex + 1)
+      this.next()
       this.interval = setInterval(
         function () {
           this.next()
@@ -133,7 +132,6 @@ export default {
     },
     showSlides(n) {
       const slides = document.getElementsByClassName('slide')
-      const dots = document.getElementsByClassName('dot')
 
       this.slideIndex = n
 
@@ -144,17 +142,6 @@ export default {
       if (n < 1) {
         this.slideIndex = slides.length
       }
-
-      for (const slide of slides) {
-        slide.classList.remove('active')
-      }
-
-      for (const dot of dots) {
-        dot.classList.remove('active')
-      }
-
-      slides[this.slideIndex - 1].classList.add('active')
-      dots[this.slideIndex - 1].classList.add('active')
     },
   },
 }
@@ -204,10 +191,13 @@ export default {
 
   .prev,
   .next {
-    display: block;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
     height: 100%;
     z-index: 3;
     top: 0;
+    width: 15%;
 
     svg {
       position: relative;
@@ -322,9 +312,15 @@ export default {
     }
 
     &-img {
-      width: 65%;
+      width: 60%;
+      height: 100%;
       position: absolute;
       right: 0;
+
+      img {
+        height: 100%;
+        width: initial;
+      }
     }
 
     .logo {
@@ -346,8 +342,8 @@ export default {
     .prev,
     .next {
       width: 10%;
-      display: flex;
       justify-content: center;
+      align-items: center;
 
       svg {
         position: initial;

@@ -26,7 +26,6 @@ export default {
     $route() {
       document.getElementById('menu-btn').checked = false
       const loader = document.querySelector('.loader')
-      console.log('change route')
       loader.classList.add('show')
     },
   },

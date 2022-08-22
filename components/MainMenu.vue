@@ -24,13 +24,81 @@
 </template>
 
 <style lang="scss">
+.menu {
+  position: absolute;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  max-width: 850px;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+  background: var(--clr-bg);
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+
+  @media (min-width: 850px) {
+    height: initial;
+    position: initial;
+    padding: 1rem 2rem 1rem;
+    box-shadow: initial;
+  }
+
+  svg {
+    display: none;
+
+    @media (min-width: 850px) {
+      display: inline-block;
+      fill: var(--clr-primary);
+      max-width: 30px;
+    }
+  }
+
+  li:not(:first-child) {
+    width: 100%;
+    margin-left: 2.5rem;
+
+    @media (min-width: 850px) {
+      width: initial;
+      margin-left: 0;
+    }
+
+    a {
+      color: var(--clr-font);
+      position: relative;
+
+      &::after {
+        display: block;
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 0;
+        background-color: var(--clr-primary);
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:hover::after,
+      &.active::after {
+        width: 100%;
+        height: 5px;
+      }
+    }
+  }
+}
+
 #menu-btn {
   display: none;
 
-  @media (max-width: 850px) {
+  @media (max-width: 849px) {
     &:checked {
       & ~ .menu {
         height: 300px;
+        width: 100%;
       }
 
       & ~ .menu-icon .navicon {
@@ -101,67 +169,6 @@
 
   &::after {
     top: -5px;
-  }
-}
-
-.menu {
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem 2rem;
-  margin: 0 2.5rem;
-  font-size: 1.5rem;
-  max-width: 850px;
-  height: 0;
-  overflow: hidden;
-  transition: height 0.3s ease-in-out;
-
-  @media (min-width: 850px) {
-    height: initial;
-    overflow: initial;
-    padding: 1rem 2rem 1rem;
-    margin: 0 auto;
-  }
-
-  svg {
-    display: none;
-
-    @media (min-width: 850px) {
-      display: inline-block;
-      fill: var(--clr-primary);
-      max-width: 30px;
-    }
-  }
-
-  li:not(:first-child) {
-    width: 100%;
-    @media (min-width: 850px) {
-      width: initial;
-    }
-
-    a {
-      color: var(--clr-font);
-      position: relative;
-
-      &::after {
-        display: block;
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -5px;
-        width: 0;
-        background-color: var(--clr-primary);
-        transition: all 0.3s ease-in-out;
-      }
-
-      &:hover::after,
-      &.active::after {
-        width: 100%;
-        height: 5px;
-      }
-    }
   }
 }
 </style>
