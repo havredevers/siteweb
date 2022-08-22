@@ -6,16 +6,16 @@
         <li
           v-for="carouselItem in carouselItems"
           :key="carouselItem.img"
-          class="mySlides"
+          class="slide"
         >
+          <div class="carousel-img">
+            <CustomImage :src="carouselItem.img" alt="" />
+          </div>
           <div class="carousel-title">
-            {{ carouselItem.text }}
+            <p>{{ carouselItem.text }}</p>
             <NuxtLink :to="carouselItem.link" class="cta">
               {{ carouselItem.linkText }}
             </NuxtLink>
-          </div>
-          <div class="carousel-img">
-            <CustomImage :src="carouselItem.img" alt="" />
           </div>
         </li>
       </ul>
@@ -39,31 +39,27 @@
       </div>
     </div>
     <div class="pagination">
-      <div class="prev">
-        <a title="Précédent" href="#" @click="prev($event)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-            <path
-              d="M224 480c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z"
-            />
-          </svg>
-        </a>
-      </div>
-      <div class="next">
-        <a title="Suivant" href="#" @click="next($event)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-            <path
-              d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"
-            />
-          </svg>
-        </a>
-      </div>
+      <a title="Précédent" href="#" class="prev" @click="prev($event)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+          <path
+            d="M224 480c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z"
+          />
+        </svg>
+      </a>
+      <a title="Suivant" href="#" class="next" @click="next($event)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+          <path
+            d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"
+          />
+        </svg>
+      </a>
     </div>
     <div class="dots">
       <span
-        v-for="(carouselItem, index) in carouselItems"
-        :key="carouselItem.img"
+        v-for="n in carouselItems.length"
+        :key="n"
         class="dot"
-        @click="showSlides(index + 1)"
+        @click="showSlides(n)"
       ></span>
     </div>
   </div>
@@ -94,7 +90,7 @@ export default {
           text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           link: '/',
           linkText: 'Un autre lien',
-          img: 'https://picsum.photos/800/650',
+          img: '/blog/test.jpg',
         },
       ],
     }
@@ -136,7 +132,7 @@ export default {
       this.showSlides(this.slideIndex + 1)
     },
     showSlides(n) {
-      const slides = document.getElementsByClassName('mySlides')
+      const slides = document.getElementsByClassName('slide')
       const dots = document.getElementsByClassName('dot')
 
       this.slideIndex = n
@@ -167,85 +163,121 @@ export default {
 <style lang="scss">
 .carousel {
   --dot-size: 1rem;
-  --btn-nav-color: var(--clr-font);
-  --btn-pagination-color: white;
-  --btn-nav-size: 75px;
-  --bg-carousel: #6b7a6e;
-
-  background: var(--bg-carousel);
-  aspect-ratio: 16/6;
   position: relative;
+  width: 100%;
+  min-height: 420px;
   margin: 0 auto;
   max-width: 1600px;
-  display: none;
-
-  @media (min-width: 850px) {
-    display: block;
-  }
-
-  ul,
-  li {
-    inset: 0;
-    overflow: hidden;
-  }
-
-  .mySlides {
-    opacity: 0;
-    height: 0;
-    transition: all 0.5s ease-in-out;
-
-    &.active {
-      opacity: 1;
-      height: 100%;
-    }
-  }
-
-  .dots,
-  .prev,
-  .next,
-  &-img,
-  ul,
-  li,
-  .cta,
-  .controls {
-    position: absolute;
-  }
-
-  .logo,
-  &-title {
-    width: 30%;
-    margin: 2.5%;
-  }
-
-  .logo {
-    background: var(--bg-carousel);
-    z-index: 5;
-    position: relative;
-  }
 
   &-inner {
-    width: 80%;
-    margin: auto;
-    height: 100%;
-    position: relative;
-  }
-
-  &-title {
-    color: var(--btn-pagination-color);
-    font-size: clamp(16px, 2.25vw, 40px);
-    font-weight: bold;
-    position: relative;
-    top: 40%;
-    height: 55%;
+    position: absolute;
+    inset: 0;
+    background: #6b7a6e;
   }
 
   &-img {
-    right: 0;
-    top: 0;
-    max-width: 65%;
+    overflow: hidden;
 
     img {
-      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  &-title {
+    padding: 1.5rem 1rem 2.5rem;
+    color: white;
+    font-size: clamp(20px, 2.25vw, 40px);
+    font-weight: bold;
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .controls,
+  .prev,
+  .next,
+  .slide,
+  .dots {
+    position: absolute;
+  }
+
+  .prev,
+  .next {
+    display: block;
+    height: 100%;
+    z-index: 3;
+    top: 0;
+
+    svg {
+      position: relative;
+      top: 15%;
+      width: 50px;
+      fill: white;
+    }
+  }
+
+  .next {
+    right: 0;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+
+    &.active {
+      opacity: 1;
+      z-index: 2;
+    }
+  }
+
+  .cta {
+    display: block;
+    margin: auto;
+    width: fit-content;
+    border-radius: 1rem;
+    background-color: #d7e188;
+    color: var(--clr-font);
+    padding: 0.75rem 1.5rem;
+    font-size: clamp(12px, 1vw, 16px);
+  }
+
+  .dots {
+    bottom: 0;
+    width: 150px;
+    display: flex;
+    justify-content: space-around;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 0;
+    z-index: 3;
+  }
+
+  .dot {
+    display: inline-block;
+    border-radius: 100%;
+    background: white;
+    width: var(--dot-size);
+    height: var(--dot-size);
+    box-shadow: 1px 2px 2px 2px #aaaaaa;
+    position: relative;
+    transition: all 0.1s ease-in-out;
+
+    &:hover,
+    &.active {
+      cursor: url('~assets/img/cursor-hover.png'), auto;
+      top: -0.1rem;
     }
   }
 
@@ -253,7 +285,7 @@ export default {
     --control-size: 30px;
     z-index: 5;
     bottom: 2rem;
-    right: 2rem;
+    right: 5%;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 100%;
     border: 1px solid black;
@@ -271,87 +303,57 @@ export default {
     }
   }
 
-  .cta {
-    display: block;
-    border-radius: 1rem;
-    background-color: #d7e188;
-    color: var(--clr-font);
-    padding: 0.75rem 1.5rem;
-    font-size: clamp(12px, 1vw, 16px);
-    bottom: 10%;
+  @media (min-width: 550px) {
+    min-height: 500px;
   }
 
-  .dots {
-    bottom: 0;
-    width: 150px;
-    display: flex;
-    justify-content: space-around;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 0;
-  }
+  @media (min-width: 850px) {
+    min-height: initial;
+    aspect-ratio: 16/6;
 
-  .dot {
-    display: inline-block;
-    border-radius: 100%;
-    background: var(--btn-pagination-color);
-    width: var(--dot-size);
-    height: var(--dot-size);
-    box-shadow: 1px 2px 2px 2px #aaaaaa;
-    position: relative;
-    transition: all 0.1s ease-in-out;
-
-    &:hover,
-    &.active {
-      cursor: url('~assets/img/cursor-hover.png'), auto;
-      top: -0.1rem;
+    &-inner {
+      width: 80%;
+      margin: auto;
     }
-  }
 
-  .prev,
-  .next {
-    top: 0;
-    bottom: 0;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--clr-bg);
+    &-title {
+      padding: 18% 3% 1rem;
+      width: 35%;
+    }
 
-    a {
+    &-img {
+      width: 65%;
+      position: absolute;
+      right: 0;
+    }
+
+    .logo {
+      display: block;
+      position: absolute;
+      width: 25%;
+      top: 5%;
+      left: 5%;
+    }
+
+    .slide {
+      flex-direction: initial;
+    }
+
+    .cta {
+      margin: initial;
+    }
+
+    .prev,
+    .next {
+      width: 10%;
       display: flex;
-      border-radius: 100%;
-      border: 3px solid var(--btn-nav-color);
-      color: var(--btn-nav-color);
-      width: var(--btn-nav-size);
-      height: var(--btn-nav-size);
-      line-height: var(--btn-nav-size);
-      text-align: center;
-      transition: all 0.1s ease-in-out;
-      font-weight: bold;
+      justify-content: center;
 
       svg {
-        height: 65%;
-        margin: auto;
-        transition: inherit;
-      }
-
-      &:hover {
-        --btn-nav-color: var(--clr-secondary);
-
-        svg {
-          fill: var(--clr-secondary);
-        }
+        position: initial;
+        fill: var(--clr-font);
       }
     }
-  }
-
-  .prev {
-    left: 0;
-  }
-
-  .next {
-    right: 0;
   }
 }
 </style>

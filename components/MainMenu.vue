@@ -27,25 +27,27 @@
 #menu-btn {
   display: none;
 
-  &:checked {
-    & ~ .menu {
-      height: 300px;
-    }
-
-    & ~ .menu-icon .navicon {
-      background: transparent;
-
-      &::after,
-      &::before {
-        top: 0;
+  @media (max-width: 850px) {
+    &:checked {
+      & ~ .menu {
+        height: 300px;
       }
 
-      &::before {
-        transform: rotate(-45deg);
-      }
+      & ~ .menu-icon .navicon {
+        background: transparent;
 
-      &::after {
-        transform: rotate(45deg);
+        &::after,
+        &::before {
+          top: 0;
+        }
+
+        &::before {
+          transform: rotate(-45deg);
+        }
+
+        &::after {
+          transform: rotate(45deg);
+        }
       }
     }
   }
@@ -109,7 +111,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem 2rem;
-  margin: 0 auto;
+  margin: 0 2.5rem;
   font-size: 1.5rem;
   max-width: 850px;
   height: 0;
@@ -120,6 +122,7 @@
     height: initial;
     overflow: initial;
     padding: 1rem 2rem 1rem;
+    margin: 0 auto;
   }
 
   svg {
