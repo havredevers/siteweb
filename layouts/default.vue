@@ -118,6 +118,10 @@ export default {
           max-width: 40px;
         }
       }
+
+      .menu {
+        gap: 2rem;
+      }
     }
   }
 }

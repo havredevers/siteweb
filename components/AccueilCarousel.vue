@@ -149,7 +149,7 @@ export default {
 
 <style lang="scss">
 .carousel {
-  --dot-size: 1rem;
+  --dot-size: 0.6rem;
   position: relative;
   width: 100%;
   min-height: 420px;
@@ -201,8 +201,8 @@ export default {
 
     svg {
       position: relative;
-      top: 15%;
-      width: 50px;
+      top: 20%;
+      width: 30px;
       fill: white;
     }
   }
@@ -260,7 +260,7 @@ export default {
     background: white;
     width: var(--dot-size);
     height: var(--dot-size);
-    box-shadow: 1px 2px 2px 2px #aaaaaa;
+    box-shadow: 1px 1px 1px 1px #aaaaaa;
     position: relative;
     transition: all 0.1s ease-in-out;
 
@@ -308,7 +308,7 @@ export default {
 
     &-title {
       padding: 18% 3% 1rem;
-      width: 35%;
+      width: 38%;
     }
 
     &-img {
@@ -327,8 +327,8 @@ export default {
       display: block;
       position: absolute;
       width: 25%;
-      top: 5%;
-      left: 5%;
+      top: 7%;
+      left: 3%;
     }
 
     .slide {

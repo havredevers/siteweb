@@ -26,6 +26,7 @@
 <style lang="scss">
 .menu {
   position: absolute;
+  width: 100%;
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
