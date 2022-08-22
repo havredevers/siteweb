@@ -36,7 +36,7 @@ export default {
 
   &:hover .btn {
     color: var(--clr-secondary);
-    background: var(--clr-bg);
+    background: var(--clr-bg1);
   }
 
   h3 {
@@ -82,7 +82,7 @@ export default {
 
   .btn {
     margin-top: 30px;
-    color: var(--clr-bg);
+    color: var(--clr-bg1);
     background: var(--clr-secondary);
     border: 1px solid var(--clr-secondary);
     border-radius: 0.375rem;

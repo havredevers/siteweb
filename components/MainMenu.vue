@@ -38,7 +38,7 @@
   height: 0;
   overflow: hidden;
   transition: height 0.3s ease-in-out;
-  background: var(--clr-bg);
+  background: var(--clr-bg1);
   box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.15),
     inset 0 -1px 0 rgba(0, 0, 0, 0.15);
 

@@ -57,7 +57,7 @@ export default {
   h2 {
     --hauteur-titre: 240px;
     margin-top: -3rem;
-    color: var(--clr-bg);
+    color: var(--clr-bg1);
     background-image: url('/ui/association/bg-title3.png');
 
     @media (min-width: 550px) {

@@ -5,12 +5,10 @@
       <div class="visually-hidden">Chargement...</div>
     </div>
     <header class="main-menu">
-      <NuxtLink to="/">
-        <h1>
-          HAVRE
-          <CustomImage src="/ui/logo-vert.png" alt="" />
-          DE VERS
-        </h1>
+      <NuxtLink to="/" class="title">
+        HAVRE
+        <CustomImage src="/ui/logo-vert.png" alt="" />
+        DE VERS
       </NuxtLink>
       <MainMenu />
     </header>
@@ -60,7 +58,7 @@ export default {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: var(--clr-bg);
+  background: var(--clr-bg1);
   z-index: 200;
   display: flex;
   justify-content: center;
@@ -83,8 +81,47 @@ export default {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--clr-bg);
+  background: var(--clr-bg1);
   padding: 1rem 0 0.5rem;
+
+  .title {
+    color: var(--clr-primary);
+    font-family: 'FRUIT PUNCH';
+    font-size: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 0.5rem;
+    padding-right: 75px;
+    padding-left: 35px;
+    max-height: 67px;
+    overflow: hidden;
+    transition: all 0.1s ease-out;
+
+    @media (min-width: 370px) {
+      font-size: 2rem;
+    }
+
+    @media (min-width: 550px) {
+      font-size: 3rem;
+    }
+
+    @media (min-width: 850px) {
+      justify-content: center;
+      padding-right: 0;
+      font-size: 4rem;
+      column-gap: 1.5rem;
+    }
+
+    img {
+      max-width: 45px;
+      transition: all 0.1s ease-out;
+
+      @media (min-width: 850px) {
+        max-width: 75px;
+      }
+    }
+  }
 
   &.reduced {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15),
@@ -95,7 +132,7 @@ export default {
     }
 
     @media (min-width: 850px) {
-      h1 {
+      .title {
         max-height: 0;
       }
     }
@@ -109,7 +146,7 @@ export default {
         align-items: center;
       }
 
-      h1 {
+      .title {
         font-size: 1.5rem;
         column-gap: 0.5rem;
         max-height: initial;
@@ -122,45 +159,6 @@ export default {
       .menu {
         gap: 2rem;
       }
-    }
-  }
-}
-
-h1 {
-  color: var(--clr-primary);
-  font-family: 'FRUIT PUNCH';
-  font-size: 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  column-gap: 0.5rem;
-  padding-right: 75px;
-  padding-left: 35px;
-  max-height: 67px;
-  overflow: hidden;
-  transition: all 0.1s ease-out;
-
-  @media (min-width: 370px) {
-    font-size: 2rem;
-  }
-
-  @media (min-width: 550px) {
-    font-size: 3rem;
-  }
-
-  @media (min-width: 850px) {
-    justify-content: center;
-    padding-right: 0;
-    font-size: 4rem;
-    column-gap: 1.5rem;
-  }
-
-  img {
-    max-width: 45px;
-    transition: all 0.1s ease-out;
-
-    @media (min-width: 850px) {
-      max-width: 75px;
     }
   }
 }

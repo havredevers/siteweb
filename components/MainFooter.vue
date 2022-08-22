@@ -69,11 +69,11 @@ footer {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
+  background-color: var(--clr-bg2);
   color: var(--clr-secondary);
   font-size: 1.1rem;
   font-weight: bold;
   padding: 2rem 1rem 0;
-  margin-top: 2rem;
   align-items: center;
   justify-content: center;
   gap: 15%;
@@ -141,7 +141,7 @@ footer {
       &:focus-visible svg,
       &:hover svg {
         background-color: var(--clr-secondary);
-        fill: var(--clr-bg);
+        fill: var(--clr-bg1);
       }
     }
   }

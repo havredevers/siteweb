@@ -1,6 +1,6 @@
 <template>
-  <section class="accueil-3">
-    <h2>Les actus</h2>
+  <section class="accueil-2">
+    <h1>Les actus</h1>
     <ul class="list-actus">
       <li v-for="article in articles" :key="article.title">
         <BlogArticle :article="article" />
@@ -24,10 +24,17 @@ export default {
 </script>
 
 <style lang="scss">
-.accueil-3 {
-  h2 {
-    --hauteur-titre: 190px;
+.accueil-2 {
+  background-color: var(--clr-bg2);
+
+  h1 {
+    --hauteur-titre: clamp(90px, 30vw, 175px);
     background-image: url('/ui/accueil/bg-title2.png');
+    color: white;
+
+    @media (min-width: 850px) {
+      width: 350px;
+    }
   }
 }
 

@@ -2,28 +2,49 @@
   <div>
     <AccueilCarousel />
     <section class="accueil-1">
-      <div class="accroche">
-        <div class="title">Ici, on voit la vie en VERS&nbsp;!</div>
-        <p>
-          Association pour l'accompagnement d'une revalorisation des bio-déchets
-          au HAVRE
-        </p>
-      </div>
-    </section>
-    <section class="accueil-2">
-      <h2>Nos valeurs</h2>
+      <h1>Nos valeurs</h1>
       <ul>
         <li>
-          <CustomImage src="/ui/accueil/ver.png" alt="" />
-          <h3>Prendre soin des êtres vivants</h3>
+          <div class="title-wrapper">
+            <div class="logo">
+              <CustomImage src="/ui/accueil/ver.png" alt="" />
+            </div>
+            <h2>Prendre soin des êtres vivants</h2>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
+            ullam maxime temporibus, et doloremque harum fugit magni expedita
+            omnis voluptates tempora optio repellat. Harum voluptas alias
+            molestiae ipsam veniam iusto.
+          </p>
         </li>
         <li>
-          <CustomImage src="/ui/accueil/plante.png" alt="" />
-          <h3>Prendre soin du sol</h3>
+          <div class="title-wrapper">
+            <div class="logo">
+              <CustomImage src="/ui/accueil/plante.png" alt="" />
+            </div>
+            <h2>Prendre soin du sol</h2>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
+            ullam maxime temporibus, et doloremque harum fugit magni expedita
+            omnis voluptates tempora optio repellat. Harum voluptas alias
+            molestiae ipsam veniam iusto.
+          </p>
         </li>
         <li>
-          <CustomImage src="/ui/accueil/solidarite.png" alt="" />
-          <h3>Partager son temps et ses ressources</h3>
+          <div class="title-wrapper">
+            <div class="logo">
+              <CustomImage src="/ui/accueil/solidarite.png" alt="" />
+            </div>
+            <h2>Partager son temps et ses ressources</h2>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
+            ullam maxime temporibus, et doloremque harum fugit magni expedita
+            omnis voluptates tempora optio repellat. Harum voluptas alias
+            molestiae ipsam veniam iusto.
+          </p>
         </li>
       </ul>
     </section>
@@ -49,79 +70,16 @@ export default {
 
 <style lang="scss">
 .accueil-1 {
-  position: relative;
-  background-image: url('/ui/accueil/ver-main.png');
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: cover;
-
-  @media (min-width: 850px) {
-    background-size: initial;
-    min-height: 1050px;
-  }
-  .accroche {
-    position: relative;
-    color: var(--clr-primary);
-    padding: 2rem 0;
-    max-width: 770px;
-
-    & > * {
-      padding: 1rem 2rem;
-      background-color: rgba(238, 236, 228, 0.8);
-    }
-
-    .title {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-weight: 300;
-      font-size: 2rem;
-      margin: 1rem 0 5rem;
-
-      @media (min-width: 550px) {
-        font-size: 3rem;
-      }
-
-      @media (min-width: 850px) {
-        margin-top: 5rem;
-        font-size: 5rem;
-      }
-    }
-
-    p {
-      font-weight: bold;
-      font-size: 1.2rem;
-
-      @media (min-width: 550px) {
-        font-size: 1.5rem;
-      }
-
-      @media (min-width: 850px) {
-        font-size: 2rem;
-      }
-    }
-  }
-}
-
-.accueil-2 {
-  color: var(--clr-secondary);
-
-  @media (min-width: 850px) {
-    margin-top: -7rem;
-  }
-
-  h2 {
-    --hauteur-titre: 250px;
+  h1 {
+    --hauteur-titre: clamp(130px, 30vw, 215px);
     background-image: url('/ui/accueil/bg-title1.png');
-    color: inherit;
-
-    @media (min-width: 850px) {
-      margin-top: 0;
-    }
+    color: var(--clr-secondary);
   }
 
   ul {
     padding: 0 2rem;
     margin-top: 1rem;
+    gap: 1rem;
 
     @media (min-width: 850px) {
       display: flex;
@@ -130,23 +88,43 @@ export default {
 
     li {
       list-style-type: none;
-      text-align: center;
-      font-weight: bold;
-      font-size: 2rem;
-      flex: 0 0 25%;
+      flex: 0 0 33%;
       padding-bottom: 2rem;
 
-      img {
-        width: 100%;
-        max-width: 200px;
+      h2 {
+        font-size: clamp(1.2rem, 2vw, 2rem);
+        margin: 0 0 1rem 0.5rem;
+        font-family: 'Times New Roman', Times, serif;
       }
 
-      h3 {
-        margin-top: 1rem;
-        padding: 0 1rem;
-        font-size: 2rem;
+      p {
+        margin-left: 58px;
+
+        @media (min-width: 850px) {
+          margin-left: clamp(53px, 20%, 83px);
+        }
       }
     }
+
+    .title-wrapper {
+      display: flex;
+
+      .logo {
+        flex: 0 0 50px;
+
+        @media (min-width: 850px) {
+          flex: 0 0 clamp(45px, 15%, 75px);
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 850px) {
+    padding: 0 10%;
   }
 }
 </style>

@@ -1,6 +1,7 @@
 $clr-primary: #84aa4b;
 $clr-secondary: #e17f62;
-$clr-bg: #eeece4;
+$clr-bg1: #fffaf4;
+$clr-bg2: #f1f2ee;
 $clr-green1: #d7e188;
 $clr-green2: #90a73f;
 $clr-font: #403429;
@@ -16,7 +17,8 @@ $clr-font: #403429;
 :root {
   --clr-primary: #{$clr-primary};
   --clr-secondary: #{$clr-secondary};
-  --clr-bg: #{$clr-bg};
+  --clr-bg1: #{$clr-bg1};
+  --clr-bg2: #{$clr-bg2};
   --clr-green1: #{$clr-green1};
   --clr-green2: #{$clr-green2};
   --clr-font: #{$clr-font};
@@ -39,35 +41,26 @@ $clr-font: #403429;
 }
 
 body {
-  background-color: var(--clr-bg);
+  background-color: var(--clr-bg1);
   color: var(--clr-font);
   font-family: 'Work Sans', Verdana, sans-serif;
   --font-serif: Georgia, 'Times New Roman', Times, serif;
   cursor: url('~assets/img/cursor.png'), auto;
 }
 
-h2 {
-  font-size: 1.5rem;
+h1 {
+  font-size: clamp(1.5rem, 5vw, 40px);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  margin: 2rem auto 0;
-  padding-top: 1rem;
+  padding: 0.5rem 3rem 0;
   height: var(--hauteur-titre);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  line-height: var(--hauteur-titre);
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  max-width: 600px;
-  color: var(--clr-bg);
-
-  @media (min-width: 550px) {
-    font-size: 2rem;
-  }
-
-  @media (min-width: 850px) {
-    font-size: 2.5rem;
-  }
 }
 
 a {
