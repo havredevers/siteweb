@@ -55,12 +55,9 @@ h1 {
   background-size: contain;
   padding: 0.5rem 3rem 0;
   height: var(--hauteur-titre);
-  line-height: var(--hauteur-titre);
-  display: inline-block;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 a {

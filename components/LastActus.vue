@@ -31,10 +31,6 @@ export default {
     --hauteur-titre: clamp(90px, 30vw, 175px);
     background-image: url('/ui/accueil/bg-title2.png');
     color: white;
-
-    @media (min-width: 850px) {
-      width: 350px;
-    }
   }
 }
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="asso-1">
-      <h2>Qui sommes-nous ?</h2>
+      <h1>Qui sommes-nous ?</h1>
       <p>
         HAVRE DE VERS est née, le 14 janvier 2016, d'une envie commune de trois
         amis, Marian, Flavien et Léo, afin d'apporter une solution face å la
@@ -54,7 +54,7 @@ export default {
   margin-bottom: 2rem;
   font-size: 1.5rem;
 
-  h2 {
+  h1 {
     --hauteur-titre: 240px;
     margin-top: -3rem;
     color: var(--clr-bg1);

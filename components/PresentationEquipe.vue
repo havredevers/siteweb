@@ -1,6 +1,6 @@
 <template>
   <section class="asso-2">
-    <h2>Présentation<br />de l'équipe</h2>
+    <h1>Présentation<br />de l'équipe</h1>
     <ul class="membres">
       <li v-for="membre in equipe" :key="membre.order" class="membre">
         <div class="photo">
@@ -31,10 +31,10 @@ export default {
 <style lang="scss">
 .asso-2 {
   margin-bottom: 2rem;
-  h2 {
+  h1 {
     --hauteur-titre: 285px;
     background-image: url('/ui/accueil/bg-title2.png');
-    line-height: initial;
+    color: white;
   }
 
   ul {
