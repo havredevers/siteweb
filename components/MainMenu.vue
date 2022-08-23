@@ -77,7 +77,7 @@
         content: '';
         position: absolute;
         left: 0;
-        bottom: -5px;
+        bottom: -10px;
         width: 0;
         background-color: var(--clr-primary);
         transition: all 0.3s ease-in-out;

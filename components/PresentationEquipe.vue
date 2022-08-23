@@ -30,7 +30,8 @@ export default {
 
 <style lang="scss">
 .asso-2 {
-  margin-bottom: 2rem;
+  background-color: var(--clr-bg2);
+
   h1 {
     --hauteur-titre: 285px;
     background-image: url('/ui/accueil/bg-title2.png');

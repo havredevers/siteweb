@@ -1,6 +1,6 @@
 <template>
   <div class="blog">
-    <h2>Le Blog</h2>
+    <h1>Le Blog</h1>
     <ul class="list-actus">
       <li v-for="article in articles" :key="article.slug">
         <BlogArticle :article="article" />
@@ -54,9 +54,10 @@ export default {
 
 <style lang="scss">
 .blog {
-  h2 {
+  h1 {
     --hauteur-titre: 190px;
     background-image: url('/ui/accueil/bg-title2.png');
+    color: white;
   }
 
   .list-actus {
