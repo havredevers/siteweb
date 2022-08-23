@@ -130,7 +130,10 @@ export default {
     .menu {
       padding-top: 0;
       padding-bottom: 0;
-      overflow: initial;
+
+      @media (min-width: 850px) {
+        overflow: initial;
+      }
     }
 
     @media (min-width: 850px) {
