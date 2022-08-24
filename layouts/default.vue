@@ -179,7 +179,15 @@ export default {
   transition: all 0.3s ease-in-out;
 
   &.show {
-    bottom: 110px;
+    bottom: 20px;
+
+    @media (min-width: 700px) {
+      bottom: 110px;
+    }
+
+    @media (min-width: 1200px) {
+      bottom: 20px;
+    }
   }
 
   &:hover {

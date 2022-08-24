@@ -143,6 +143,11 @@ footer {
 
     a {
       display: block;
+      position: relative;
+      z-index: 1;
+      border-radius: 100%;
+      overflow: hidden;
+      aspect-ratio: 1/1;
 
       svg {
         fill: white;
@@ -151,15 +156,43 @@ footer {
         border: 2px solid white;
         border-radius: 50%;
         padding: 0.5rem;
-        transition: all 0.3s ease-in-out;
       }
 
-      &:focus-visible svg,
-      &:hover svg {
-        background-color: var(--clr-primary);
-        fill: var(--clr-bg1);
+      &::before {
+        position: absolute;
+        content: '';
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+      }
+
+      &:hover::before {
+        opacity: 1;
       }
     }
   }
+}
+
+a[title='Instagram']:hover::before {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+}
+
+a[title='Facebook']:hover::before {
+  background: #4661b0;
+}
+
+a[title='Discord']:hover::before {
+  background: #5662f6;
 }
 </style>
