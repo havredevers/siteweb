@@ -26,6 +26,7 @@
 <style lang="scss">
 .menu {
   position: absolute;
+  left: 0;
   width: 100%;
   list-style-type: none;
   display: flex;
@@ -45,7 +46,7 @@
   @media (min-width: 850px) {
     height: initial;
     position: initial;
-    padding: 1rem 2rem 1rem;
+    padding: 1rem 0;
     box-shadow: initial;
   }
 

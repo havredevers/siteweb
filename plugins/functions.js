@@ -20,5 +20,5 @@ Vue.prototype.$handleImagesLoad = (e) => {
 }
 
 export default ({ app }, inject) => {
-  inject('variables', Vue.observable({ blogPagination: 3 }))
+  inject('variables', Vue.observable({ blogPagination: 2 }))
 }

@@ -39,22 +39,6 @@
         </a>
       </div>
     </div>
-    <div class="pagination">
-      <a title="Précédent" href="#" class="prev" @click="prev($event)">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-          <path
-            d="M224 480c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z"
-          />
-        </svg>
-      </a>
-      <a title="Suivant" href="#" class="next" @click="next($event)">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-          <path
-            d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"
-          />
-        </svg>
-      </a>
-    </div>
     <div class="dots">
       <span
         v-for="n in carouselItems.length"
@@ -71,28 +55,28 @@
 export default {
   data() {
     return {
-      slideIndex: 1,
+      slideIndex: 3,
       interval: null,
-      isPlaying: false,
+      isPlaying: true,
       delay: 4000,
       carouselItems: [
         {
           text: "L'association havraise qui accompagne la valorisation des bio-déchets",
           link: '/adherer',
           linkText: "Adhérer à l'association",
-          img: '/blog/test.jpg',
+          img: '/carousel/test1.png',
         },
         {
           text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          link: '/',
-          linkText: 'Un lien',
-          img: '/blog/test2.jpg',
+          link: '/prestations',
+          linkText: 'Voir nos prestations',
+          img: '/carousel/test2.png',
         },
         {
           text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          link: '/',
-          linkText: 'Un autre lien',
-          img: '/blog/test3.jpg',
+          link: '/boutique',
+          linkText: 'Visiter la boutique',
+          img: '/carousel/test3.png',
         },
       ],
     }
@@ -101,6 +85,9 @@ export default {
     $route() {
       clearInterval(this.interval)
     },
+  },
+  mounted() {
+    this.launch()
   },
   destroyed() {
     clearInterval(this.interval)
@@ -121,10 +108,6 @@ export default {
       e.preventDefault()
       clearInterval(this.interval)
       this.isPlaying = false
-    },
-    prev(e) {
-      e.preventDefault()
-      this.showSlides(this.slideIndex - 1)
     },
     next(e) {
       if (e) e.preventDefault()
@@ -154,12 +137,11 @@ export default {
   width: 100%;
   min-height: 420px;
   margin: 0 auto;
-  max-width: 1600px;
+  background-color: var(--clr-bg-dark);
 
   &-inner {
     position: absolute;
     inset: 0;
-    background: #6b7a6e;
   }
 
   &-img {
@@ -171,9 +153,9 @@ export default {
   }
 
   &-title {
-    padding: 1.5rem 1rem 2.5rem;
+    padding: 1.5rem 1rem 1rem;
     color: white;
-    font-size: clamp(20px, 2.25vw, 40px);
+    font-size: clamp(1.25rem, 2.25vw, 2.25rem);
     font-weight: bold;
 
     p {
@@ -182,33 +164,9 @@ export default {
   }
 
   .controls,
-  .prev,
-  .next,
   .slide,
   .dots {
     position: absolute;
-  }
-
-  .prev,
-  .next {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    height: 100%;
-    z-index: 3;
-    top: 0;
-    width: 15%;
-
-    svg {
-      position: relative;
-      top: 20%;
-      width: 30px;
-      fill: white;
-    }
-  }
-
-  .next {
-    right: 0;
   }
 
   .logo {
@@ -232,17 +190,6 @@ export default {
     }
   }
 
-  .cta {
-    display: block;
-    margin: auto;
-    width: fit-content;
-    border-radius: 1rem;
-    background-color: #d7e188;
-    color: var(--clr-font);
-    padding: 0.75rem 1.5rem;
-    font-size: clamp(12px, 1vw, 16px);
-  }
-
   .dots {
     bottom: 0;
     width: 150px;
@@ -263,11 +210,12 @@ export default {
     box-shadow: 1px 1px 1px 1px #aaaaaa;
     position: relative;
     transition: all 0.1s ease-in-out;
+    opacity: 0.5;
 
     &:hover,
     &.active {
       cursor: url('~assets/img/cursor-hover.png'), auto;
-      top: -0.1rem;
+      opacity: 1;
     }
   }
 
@@ -300,19 +248,20 @@ export default {
   @media (min-width: 850px) {
     min-height: initial;
     aspect-ratio: 16/6;
+    max-height: 530px;
 
     &-inner {
-      width: 80%;
+      max-width: var(--container-width);
       margin: auto;
     }
 
     &-title {
-      padding: 18% 3% 1rem;
+      padding: 17% 5% 1rem 1.5rem;
       width: 38%;
     }
 
     &-img {
-      width: 60%;
+      width: 55%;
       height: 100%;
       position: absolute;
       right: 0;
@@ -327,8 +276,8 @@ export default {
       display: block;
       position: absolute;
       width: 25%;
-      top: 7%;
-      left: 3%;
+      top: 1.5rem;
+      left: 1.5rem;
     }
 
     .slide {
@@ -337,18 +286,6 @@ export default {
 
     .cta {
       margin: initial;
-    }
-
-    .prev,
-    .next {
-      width: 10%;
-      justify-content: center;
-      align-items: center;
-
-      svg {
-        position: initial;
-        fill: var(--clr-font);
-      }
     }
   }
 }

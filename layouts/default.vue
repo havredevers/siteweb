@@ -1,16 +1,18 @@
 <template>
-  <div class="container">
+  <div>
     <div class="loader show">
       <CustomImage src="/loader/loader.gif" alt="Chargement" />
       <div class="visually-hidden">Chargement...</div>
     </div>
     <header class="main-menu">
-      <NuxtLink to="/" class="title">
-        HAVRE
-        <CustomImage src="/ui/logo-vert.png" alt="" />
-        DE VERS
-      </NuxtLink>
-      <MainMenu />
+      <div class="container">
+        <NuxtLink to="/" class="title">
+          HAVRE
+          <CustomImage src="/ui/logo-vert.png" alt="" />
+          DE VERS
+        </NuxtLink>
+        <MainMenu />
+      </div>
     </header>
     <Nuxt />
     <MainFooter />
@@ -72,17 +74,12 @@ export default {
   }
 }
 
-.container {
-  max-width: 1920px;
-  position: relative;
-}
-
 .main-menu {
   position: sticky;
   top: 0;
   z-index: 100;
   background: var(--clr-bg1);
-  padding: 1rem 0 0.5rem;
+  padding: 1rem 0;
 
   .title {
     color: var(--clr-primary);
@@ -92,8 +89,6 @@ export default {
     flex-wrap: wrap;
     align-items: center;
     column-gap: 0.5rem;
-    padding-right: 75px;
-    padding-left: 35px;
     max-height: 67px;
     overflow: hidden;
     transition: all 0.1s ease-out;
@@ -143,8 +138,10 @@ export default {
     }
 
     @media (min-width: 1050px) {
-      display: flex;
-      justify-content: space-between;
+      .container {
+        display: flex;
+        justify-content: space-between;
+      }
 
       & > a {
         display: flex;
@@ -176,18 +173,21 @@ export default {
   line-height: 50px;
   height: 50px;
   width: 50px;
-  background-color: var(--clr-primary);
-  color: white;
-  box-shadow: 0 0 14px -5px rgba(0, 0, 0, 0.5);
+  background-color: var(--clr-green1);
+  color: var(--clr-font);
+  box-shadow: 0 5px 5px 0px rgba(50, 50, 50, 0.5);
   transition: all 0.3s ease-in-out;
 
   &.show {
-    bottom: 20px;
+    bottom: 110px;
   }
 
   &:hover {
     cursor: url('~assets/img/cursor-hover.png'), auto;
     transform: translateY(-10px);
+    background-color: var(--clr-green3);
+    color: white;
+    box-shadow: 0 15px 15px 0px rgba(50, 50, 50, 0.5);
   }
 }
 </style>

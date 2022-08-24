@@ -6,6 +6,7 @@
         <BlogArticle :article="article" />
       </li>
     </ul>
+    <NuxtLink to="/blog" class="cta"> Voir tous les articles </NuxtLink>
   </section>
 </template>
 
@@ -26,6 +27,7 @@ export default {
 <style lang="scss">
 .accueil-2 {
   background-color: var(--clr-bg2);
+  padding-bottom: 1rem;
 
   h1 {
     --hauteur-titre: clamp(90px, 30vw, 175px);
@@ -36,21 +38,22 @@ export default {
 
 .list-actus {
   list-style-type: none;
-  padding: 0 3rem;
   flex-wrap: wrap;
+  padding: 0 1rem;
 
-  li {
-    margin-top: 2rem;
-  }
+  li:nth-child(even) .article {
+    .mask {
+      top: 2rem;
+    }
 
-  @media (min-width: 850px) {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 2rem;
+    img {
+      mask-image: url('/ui/mask2.svg');
+    }
 
-    a:hover .mask,
-    a:focus-visible .mask {
-      transform: initial;
+    @media (min-width: 700px) {
+      grid-template:
+        'title logo' minmax(80px, auto)
+        'desc logo' minmax(80px, 1fr) / 1fr 35%;
     }
   }
 }

@@ -1,6 +1,6 @@
 ---
 title: Mon 5eme article de blog
-description: Ceci est la descripion d'un article de blog
+description: Ceci est la descripion du 5e article de blog
 img: /blog/test3.jpg
 ---
 

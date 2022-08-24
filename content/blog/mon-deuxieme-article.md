@@ -1,6 +1,6 @@
 ---
 title: Mon 2eme article de blog
-description: Ceci est la descripion d'un article de blog
+description: Ceci est la descripion du 2e article de blog
 img: /blog/test2.jpg
 ---
 

@@ -1,13 +1,13 @@
 <template>
   <footer>
     <div class="logo">
-      <CustomImage src="/ui/logo-rose.png" alt="" />
+      <CustomImage src="/ui/logo-blanc.png" alt="" />
     </div>
     <div class="coord">
       <address>
         Havre de Vers<br />13, rue de Tourville<br />76600 LE HAVRE
       </address>
-      <CustomImage src="/ui/accueil/ver.png" alt="" />
+      <hr />
       <div class="horaires">
         LUNDI, MERCREDI<br />ET VENDREDI<br />DE 10H A 19H
       </div>
@@ -70,20 +70,23 @@ footer {
   background-repeat: no-repeat;
   background-position: top center;
   background-color: var(--clr-bg2);
-  color: var(--clr-secondary);
+  color: white;
   font-size: 1.1rem;
   font-weight: bold;
   padding: 2rem 1rem 0;
   align-items: center;
   justify-content: center;
-  gap: 15%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
   & > * {
     padding-bottom: 1rem;
   }
 
   @media (min-width: 700px) {
-    display: flex;
+    flex-direction: row;
+    gap: 15%;
   }
 
   @media (min-width: 850px) {
@@ -104,10 +107,18 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    margin-top: 1rem;
+
+    @media (min-width: 800px) {
+      gap: 2rem;
+    }
 
     address {
       font-style: normal;
+    }
+
+    hr {
+      width: 75%;
     }
 
     img {
@@ -116,7 +127,12 @@ footer {
   }
 
   .reseaux {
-    align-self: end;
+    align-self: start;
+    flex: 0 0 auto;
+
+    @media (min-width: 700px) {
+      align-self: end;
+    }
 
     ul {
       margin-top: 0.5rem;
@@ -129,10 +145,10 @@ footer {
       display: block;
 
       svg {
-        fill: var(--clr-secondary);
+        fill: white;
         width: 45px;
         height: 45px;
-        border: 2px solid var(--clr-secondary);
+        border: 2px solid white;
         border-radius: 50%;
         padding: 0.5rem;
         transition: all 0.3s ease-in-out;
@@ -140,7 +156,7 @@ footer {
 
       &:focus-visible svg,
       &:hover svg {
-        background-color: var(--clr-secondary);
+        background-color: var(--clr-primary);
         fill: var(--clr-bg1);
       }
     }

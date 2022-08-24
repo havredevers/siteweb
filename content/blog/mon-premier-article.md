@@ -1,6 +1,6 @@
 ---
 title: Mon 1er article de blog
-description: Ceci est la descripion d'un article de blog
+description: Ceci est la descripion du 1er article de blog
 img: /blog/test.jpg
 ---
 
