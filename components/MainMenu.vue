@@ -135,7 +135,7 @@
   border: 1px solid var(--clr-hamburger);
   border-radius: 10%;
   right: 1rem;
-  position: fixed;
+  position: absolute;
   top: 0.5rem;
 
   @media (min-width: 550px) {

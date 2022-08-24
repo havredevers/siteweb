@@ -22,6 +22,12 @@
 
 <script>
 export default {
+  data() {
+    return {
+      newOffset: 0,
+      oldOffset: 0,
+    }
+  },
   watch: {
     $route() {
       document.getElementById('menu-btn').checked = false
@@ -30,7 +36,9 @@ export default {
     },
   },
   beforeMount() {
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', function () {
+      const menu = document.querySelector('.main-menu')
+
       // Scroll To Top
       const btnClassList = document.querySelector('.scroll-to-top').classList
       const isVisible = btnClassList.contains('show')
@@ -39,10 +47,19 @@ export default {
         : isVisible && window.scrollY <= 250 && btnClassList.remove('show')
 
       // Menu
-      const menu = document.querySelector('.main-menu')
-      window.scrollY > 60
+      window.scrollY > 150
         ? menu.classList.add('reduced')
         : menu.classList.remove('reduced')
+
+      // Menu smartphones
+      this.newOffset = window.pageYOffset
+      console.log(this.newOffset)
+      if (this.oldOffset < this.newOffset) {
+        menu.classList.remove('sticky')
+      } else if (this.oldOffset > this.newOffset) {
+        menu.classList.add('sticky')
+      }
+      this.oldOffset = this.newOffset
     })
   },
   methods: {
@@ -75,11 +92,16 @@ export default {
 }
 
 .main-menu {
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 100;
   background: var(--clr-bg1);
   padding: 1rem 0;
+
+  @media (min-width: 1200px) {
+    position: sticky;
+    top: 0;
+  }
 
   .title {
     color: var(--clr-primary);
@@ -118,9 +140,25 @@ export default {
     }
   }
 
+  &.sticky {
+    position: sticky;
+    top: 0;
+  }
+
   &.reduced {
+    position: sticky;
+    top: -100px;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15),
       inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+
+    @media (min-width: 850px) {
+      top: 0;
+    }
+
+    &.sticky {
+      transition: all 0.3s ease-in-out;
+      top: 0;
+    }
 
     .menu {
       padding-top: 0;
