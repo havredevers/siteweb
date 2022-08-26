@@ -5,7 +5,7 @@
       <div class="container">
         <h1>Nos valeurs</h1>
         <ul>
-          <li>
+          <li data-aos="fade-up" data-aos-delay="0">
             <div class="title-wrapper">
               <div class="logo">
                 <CustomImage src="/ui/accueil/ver.png" alt="" />
@@ -19,7 +19,7 @@
               molestiae ipsam veniam iusto.
             </p>
           </li>
-          <li>
+          <li data-aos="fade-up" data-aos-delay="100">
             <div class="title-wrapper">
               <div class="logo">
                 <CustomImage src="/ui/accueil/plante.png" alt="" />
@@ -33,7 +33,7 @@
               molestiae ipsam veniam iusto.
             </p>
           </li>
-          <li>
+          <li data-aos="fade-up" data-aos-delay="200">
             <div class="title-wrapper">
               <div class="logo">
                 <CustomImage src="/ui/accueil/solidarite.png" alt="" />

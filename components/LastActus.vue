@@ -2,7 +2,7 @@
   <section class="accueil-2">
     <h1>Les actus</h1>
     <ul class="list-actus">
-      <li v-for="article in articles" :key="article.title">
+      <li v-for="article in articles" :key="article.title" data-aos="fade-up">
         <BlogArticle :article="article" />
       </li>
     </ul>
