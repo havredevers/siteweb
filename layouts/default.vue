@@ -36,6 +36,7 @@ export default {
       document.getElementById('menu-btn').checked = false
       const loader = document.querySelector('.loader')
       loader.classList.add('show')
+      window.scrollTo(0, 0)
     },
   },
   beforeMount() {
@@ -67,7 +68,7 @@ export default {
   },
   methods: {
     scrollToTop() {
-      window.scrollTo(0, 0)
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
     },
   },
 }
