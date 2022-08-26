@@ -99,7 +99,6 @@ export default {
       h2 {
         font-size: clamp(1.2rem, 2vw, 2rem);
         margin-left: 1.2rem;
-        font-family: 'Times New Roman', Times, serif;
       }
 
       p {

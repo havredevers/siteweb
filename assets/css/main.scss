@@ -61,6 +61,7 @@ body {
 }
 
 h1 {
+  font-family: 'Changa One', Arial, sans-serif;
   font-size: clamp(1.5rem, 5vw, 40px);
   background-repeat: no-repeat;
   background-position: center;
@@ -70,6 +71,12 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+h2,
+h3 {
+  font-family: 'Vibur', 'Times New Roman', Times, serif;
+  font-weight: 400;
 }
 
 hr {
@@ -114,7 +121,7 @@ a:focus-visible {
   color: var(--clr-font);
   padding: 0.75rem 1.5rem;
   font-size: clamp(12px, 1vw, 16px);
-  font-weight: bold;
+  font-weight: 600;
   margin: 1rem auto;
   display: block;
   width: fit-content;

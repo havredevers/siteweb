@@ -63,7 +63,19 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    'nuxt-webfontloader',
   ],
+
+  webfontloader: {
+    google: {
+      families: ['Work Sans', 'Changa One', 'Vibur'],
+      urls: [
+        'https://fonts.googleapis.com/css2?family=Work+Sans:wght@400..700&display=swap',
+        'https://fonts.googleapis.com/css2?family=Changa+One:wght@400..700&display=swap',
+        'https://fonts.googleapis.com/css2?family=Vibur:wght@400..700&display=swap',
+      ],
+    },
+  },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
