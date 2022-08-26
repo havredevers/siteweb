@@ -28,7 +28,6 @@
   position: absolute;
   left: 0;
   width: 100%;
-  list-style-type: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

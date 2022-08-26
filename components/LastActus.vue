@@ -37,7 +37,6 @@ export default {
 }
 
 .list-actus {
-  list-style-type: none;
   flex-wrap: wrap;
   padding: 0 1rem;
 

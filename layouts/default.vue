@@ -40,27 +40,27 @@ export default {
   },
   beforeMount() {
     window.addEventListener('scroll', function () {
-      const menu = document.querySelector('.main-menu')
+      this.newOffset = window.pageYOffset
 
       // Scroll To Top
       const btnClassList = document.querySelector('.scroll-to-top').classList
       const isVisible = btnClassList.contains('show')
-      !isVisible && window.scrollY > 250
+      !isVisible && this.newOffset > 250
         ? btnClassList.add('show')
-        : isVisible && window.scrollY <= 250 && btnClassList.remove('show')
+        : isVisible && this.newOffset <= 250 && btnClassList.remove('show')
 
       // Menu
-      window.scrollY > 150
-        ? menu.classList.add('reduced')
-        : menu.classList.remove('reduced')
+      const menuClassList = document.querySelector('.main-menu').classList
+
+      this.newOffset > 0
+        ? menuClassList.add('reduced')
+        : menuClassList.remove('reduced')
 
       // Menu smartphones
-      this.newOffset = window.pageYOffset
-      console.log(this.newOffset)
       if (this.oldOffset < this.newOffset) {
-        menu.classList.remove('sticky')
+        menuClassList.remove('sticky')
       } else if (this.oldOffset > this.newOffset) {
-        menu.classList.add('sticky')
+        menuClassList.add('sticky')
       }
       this.oldOffset = this.newOffset
     })

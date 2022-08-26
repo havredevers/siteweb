@@ -33,7 +33,6 @@ export default {
   }
 
   ul {
-    list-style-type: none;
     display: flex;
     justify-content: space-between;
     gap: 1rem;

@@ -15,7 +15,7 @@ Vue.prototype.$handleImagesLoad = (e) => {
   if (images.length <= 1) {
     const loader = document.querySelector('.loader')
     loader.classList.remove('show')
-    window.scrollTo(0, 1)
+    window.scrollTo(0, 0)
   }
 }
 

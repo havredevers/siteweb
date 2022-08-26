@@ -92,7 +92,6 @@ export default {
     }
 
     li {
-      list-style-type: none;
       flex: 0 0 30%;
       padding-bottom: 2rem;
 

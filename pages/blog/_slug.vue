@@ -36,7 +36,7 @@ export default {
     color: var(--clr-font);
   }
 
-  nav ul {
+  nav li {
     list-style-type: upper-roman;
     margin-left: 2rem;
   }

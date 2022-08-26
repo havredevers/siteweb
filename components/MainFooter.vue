@@ -136,7 +136,6 @@ footer {
 
     ul {
       margin-top: 0.5rem;
-      list-style-type: none;
       display: flex;
       gap: 1rem;
     }
