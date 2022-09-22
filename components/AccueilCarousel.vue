@@ -1,6 +1,14 @@
 <template>
   <div class="carousel">
-    <div class="carousel-inner">
+    <div
+      class="carousel-inner"
+      @mousedown="handleTouchStart($event)"
+      @mousemove="handleTouchMove($event)"
+      @mouseup="handleTouchEnd($event)"
+      @touchstart="handleTouchStart($event)"
+      @touchmove="handleTouchMove($event)"
+      @touchend="handleTouchEnd($event)"
+    >
       <CustomImage class="logo" src="/ui/logo-blanc.png" alt="Logo" />
       <ul>
         <li
@@ -79,6 +87,10 @@ export default {
           img: '/carousel/test3.png',
         },
       ],
+      pointerPositionDown: {
+        x: null,
+        y: null,
+      },
     }
   },
   watch: {
@@ -113,6 +125,9 @@ export default {
       if (e) e.preventDefault()
       this.showSlides(this.slideIndex + 1)
     },
+    prev() {
+      this.showSlides(this.slideIndex - 1)
+    },
     showSlides(n) {
       const slides = document.getElementsByClassName('slide')
 
@@ -124,6 +139,46 @@ export default {
 
       if (n < 1) {
         this.slideIndex = slides.length
+      }
+    },
+    handleTouchStart(e) {
+      this.getPointerPosition(e, this.pointerPositionDown)
+    },
+    handleTouchMove(e) {
+      if (!this.pointerPositionDown.x || !this.pointerPositionDown.y) {
+        return
+      }
+
+      const pointerPositionUp = {
+        x: null,
+        y: null,
+      }
+
+      this.getPointerPosition(e, pointerPositionUp)
+
+      const xDiff = this.pointerPositionDown.x - pointerPositionUp.x
+
+      if (xDiff > 0) {
+        /* left swipe */
+        this.next()
+      } else {
+        /* right swipe */
+        this.prev()
+      }
+
+      this.handleTouchEnd()
+    },
+    handleTouchEnd(e) {
+      this.pointerPositionDown.x = null
+      this.pointerPositionDown.y = null
+    },
+    getPointerPosition(e, objCoord) {
+      if (e.touches) {
+        objCoord.x = e.touches[0].clientX
+        objCoord.y = e.touches[0].clientY
+      } else {
+        objCoord.x = e.clientX
+        objCoord.y = e.clientY
       }
     },
   },
