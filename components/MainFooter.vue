@@ -78,15 +78,20 @@ footer {
   justify-content: center;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 
   & > * {
     padding-bottom: 1rem;
   }
 
+  & > * + * {
+    margin-left: 2rem;
+  }
+
   @media (min-width: 700px) {
     flex-direction: row;
-    gap: 15%;
+    & > * + * {
+      margin-left: 15%;
+    }
   }
 
   @media (min-width: 850px) {
@@ -110,7 +115,9 @@ footer {
     margin-top: 1rem;
 
     @media (min-width: 800px) {
-      gap: 2rem;
+      & > * + * {
+        margin-left: 2rem;
+      }
     }
 
     address {
@@ -137,7 +144,10 @@ footer {
     ul {
       margin-top: 0.5rem;
       display: flex;
-      gap: 1rem;
+
+      & > * + * {
+        margin-left: 1rem;
+      }
     }
 
     a {

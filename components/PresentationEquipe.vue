@@ -51,7 +51,10 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 0 10%;
-  gap: 2rem;
+
+  & > * + * {
+    margin-left: 2rem;
+  }
 
   @media (min-width: 850px) {
     flex-direction: row;

@@ -35,9 +35,12 @@ export default {
   ul {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
     flex-direction: column;
     padding: 0 7%;
+
+    & > * + * {
+      margin-left: 1rem;
+    }
 
     @media (min-width: 850px) {
       flex-direction: row;

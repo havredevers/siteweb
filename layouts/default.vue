@@ -34,7 +34,7 @@ export default {
   watch: {
     $route() {
       document.getElementById('menu-btn').checked = false
-      const loader = document.querySelector('.loader')
+      // const loader = document.querySelector('.loader')
       // loader.classList.add('show')
       window.scrollTo(0, 0)
     },
@@ -114,10 +114,13 @@ export default {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    column-gap: 0.5rem;
     max-height: 67px;
     overflow: hidden;
     transition: all 0.1s ease-out;
+
+    & > * + * {
+      margin-left: 0.5rem;
+    }
 
     @media (min-width: 370px) {
       font-size: 2rem;
@@ -131,7 +134,10 @@ export default {
       justify-content: center;
       padding-right: 0;
       font-size: 4rem;
-      column-gap: 1.5rem;
+
+      & > * + * {
+        margin-left: 1.5rem;
+      }
     }
 
     img {
@@ -192,16 +198,19 @@ export default {
 
       .title {
         font-size: 1.5rem;
-        column-gap: 0.5rem;
         max-height: initial;
+
+        & > * + * {
+          margin-left: 0.5rem;
+        }
 
         img {
           max-width: 40px;
         }
       }
 
-      .menu {
-        gap: 2rem;
+      .menu > * + * {
+        margin-left: 2rem;
       }
     }
   }
