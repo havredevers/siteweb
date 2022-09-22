@@ -1,19 +1,22 @@
 ---
-title: Mon 1er article de blog
-description: Ceci est la descripion du 1er article de blog
-img: /blog/test.jpg
+title: Les travaux du laboratoire au Hangar 0
+description: Premiers jours de chantier
+img: /blog/article_1/IMG_0596-min.jpg
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis sodales lectus, non ullamcorper neque. Integer ut diam vitae metus viverra maximus. Vestibulum posuere nisl sed nulla sagittis, sit amet consequat tortor venenatis. Suspendisse nec justo vel lorem pellentesque dignissim. Aenean faucibus, purus ac euismod sollicitudin, est lorem pellentesque enim, vitae tempor felis odio porta odio. Nullam efficitur leo at hendrerit varius.
+### TOUS LES MARDI 
 
-### Un titre
+Nous sommes en plein travaux au sein du Hangar 0.
+Rendez-vous tous les **mardi** 
 
-Learn how to write your `content/`, supporting Markdown, YAML, CSV and JSON: https://content.nuxtjs.org/writing.
+<img src="/blog/article_1/IMG_0605-min.jpg">
 
-### Un autre titre
+### Le Hangar 0
 
-Learn how to fetch your content with `$content`: https://content.nuxtjs.org/fetching.
+Si vous ne connaissez pas encore la SCIC du Hanga 0, venez découvrir un espace d’échange, de partage et d’expérimentation
+pour valoriser l’humain et l’environnement.
 
-## Displaying content
+<img src="/blog/article_1/c0b3.jpg">
+<img src="/blog/article_1/IMG_0641-min.jpg" >
 
-Learn how to display your Markdown content with the `<nuxt-content>` component directly in your template: https://content.nuxtjs.org/displaying.
+## Bientôt les fruits secs made in HAVRE DE VERS partout chez vous!
