@@ -35,7 +35,7 @@ export default {
     $route() {
       document.getElementById('menu-btn').checked = false
       const loader = document.querySelector('.loader')
-      loader.classList.add('show')
+      // loader.classList.add('show')
       window.scrollTo(0, 0)
     },
   },
