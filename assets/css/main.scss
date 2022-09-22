@@ -132,3 +132,8 @@ a:focus-visible {
     color: white;
   }
 }
+
+iframe .NavStep-Completed,
+.NavStep-Current {
+  background-color: red;
+}
