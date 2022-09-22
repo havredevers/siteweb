@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="loader show">
+    <div class="loader">
       <CustomImage src="/loader/loader.gif" alt="Chargement" />
       <div class="visually-hidden">Chargement...</div>
     </div>

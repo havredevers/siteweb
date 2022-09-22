@@ -4,10 +4,10 @@ description: Premiers jours de chantier
 img: /blog/article_1/IMG_0596-min.jpg
 ---
 
-### TOUS LES MARDI 
+### TOUS LES MARDI
 
 Nous sommes en plein travaux au sein du Hangar 0.
-Rendez-vous tous les **mardi** 
+Rendez-vous tous les **mardi**
 
 <img src="/blog/article_1/IMG_0605-min.jpg">
 
