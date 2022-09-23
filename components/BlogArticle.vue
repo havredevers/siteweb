@@ -2,7 +2,7 @@
   <NuxtLink :to="article.path" class="article">
     <div class="article-logo">
       <div class="mask">
-        <CustomImage :src="article.img" alt="" />
+        <img :src="article.img" alt="" />
       </div>
     </div>
     <div class="article-title">

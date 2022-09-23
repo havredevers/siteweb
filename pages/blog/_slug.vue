@@ -12,7 +12,7 @@
         </li>
       </ul>
     </nav>
-    <CustomImage :src="article.img" alt="" />
+    <img :src="article.img" alt="" />
     <nuxt-content :document="article" />
   </article>
 </template>
@@ -23,9 +23,6 @@ export default {
     const article = await $content('blog', params.slug).fetch()
 
     return { article }
-  },
-  mounted() {
-    this.$handleImagesLoad()
   },
 }
 </script>

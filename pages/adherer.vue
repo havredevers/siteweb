@@ -60,8 +60,5 @@ export default {
       choix: 'proximite',
     }
   },
-  mounted() {
-    this.$handleImagesLoad()
-  },
 }
 </script>

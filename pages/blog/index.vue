@@ -46,9 +46,6 @@ export default {
       this.$nuxt.refresh()
     },
   },
-  mounted() {
-    this.$handleImagesLoad()
-  },
 }
 </script>
 

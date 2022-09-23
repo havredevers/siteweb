@@ -8,7 +8,7 @@
           <li data-aos="fade-up" data-aos-delay="0">
             <div class="title-wrapper">
               <div class="logo">
-                <CustomImage src="/ui/accueil/ver.png" alt="" />
+                <img src="/ui/accueil/ver.png" alt="" />
               </div>
               <h2>Prendre soin des êtres vivants</h2>
             </div>
@@ -22,7 +22,7 @@
           <li data-aos="fade-up" data-aos-delay="100">
             <div class="title-wrapper">
               <div class="logo">
-                <CustomImage src="/ui/accueil/plante.png" alt="" />
+                <img src="/ui/accueil/plante.png" alt="" />
               </div>
               <h2>Prendre soin du sol</h2>
             </div>
@@ -36,7 +36,7 @@
           <li data-aos="fade-up" data-aos-delay="200">
             <div class="title-wrapper">
               <div class="logo">
-                <CustomImage src="/ui/accueil/solidarite.png" alt="" />
+                <img src="/ui/accueil/solidarite.png" alt="" />
               </div>
               <h2>Partager son temps et ses ressources</h2>
             </div>
@@ -66,9 +66,6 @@ export default {
       .limit(2)
       .fetch()
     return { articles }
-  },
-  mounted() {
-    this.$handleImagesLoad()
   },
 }
 </script>

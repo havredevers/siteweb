@@ -5,26 +5,18 @@
       <li>
         <div>
           <h3>Atelier jardin/potager</h3>
-          <CustomImage src="/prestations/jardin.png" alt="" />
+          <img src="/prestations/jardin.png" alt="" />
         </div>
       </li>
       <li>
         <div>
           <h3>Compostage</h3>
-          <CustomImage src="/prestations/compostage.png" alt="" />
+          <img src="/prestations/compostage.png" alt="" />
         </div>
       </li>
     </ul>
   </div>
 </template>
-
-<script>
-export default {
-  mounted() {
-    this.$handleImagesLoad()
-  },
-}
-</script>
 
 <style lang="scss">
 .prestations {

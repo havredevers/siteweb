@@ -4,7 +4,7 @@
     <ul class="membres">
       <li v-for="membre in equipe" :key="membre.order" class="membre">
         <div class="photo">
-          <CustomImage :src="'/staff/' + membre.photo" alt="" />
+          <img :src="'/staff/' + membre.photo" alt="" />
         </div>
         <h3>{{ membre.nom }}</h3>
         <ul>

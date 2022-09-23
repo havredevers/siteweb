@@ -9,7 +9,7 @@
       @touchmove="handleTouchMove($event)"
       @touchend="handleTouchEnd($event)"
     >
-      <CustomImage class="logo" src="/ui/logo-blanc.png" alt="Logo" />
+      <img class="logo" src="/ui/logo-blanc.png" alt="Logo" />
       <ul>
         <li
           v-for="(carouselItem, i) in carouselItems"
@@ -18,7 +18,7 @@
           :class="{ active: i == slideIndex - 1 }"
         >
           <div class="carousel-img">
-            <CustomImage :src="carouselItem.img" alt="" />
+            <img :src="carouselItem.img" alt="" />
           </div>
           <div class="carousel-title">
             <p>{{ carouselItem.text }}</p>

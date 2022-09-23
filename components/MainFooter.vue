@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="logo">
-      <CustomImage src="/ui/logo-blanc.png" alt="" />
+      <img src="/ui/logo-blanc.png" alt="" />
     </div>
     <div class="coord">
       <address>

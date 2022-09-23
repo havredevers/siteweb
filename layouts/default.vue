@@ -1,14 +1,10 @@
 <template>
   <div>
-    <div class="loader">
-      <CustomImage src="/loader/loader.gif" alt="Chargement" />
-      <div class="visually-hidden">Chargement...</div>
-    </div>
     <header class="main-menu">
       <div class="container">
         <NuxtLink to="/" class="title">
           HAVRE
-          <CustomImage src="/ui/logo-vert.png" alt="" />
+          <img src="/ui/logo-vert.png" alt="" />
           DE VERS
         </NuxtLink>
         <MainMenu />
@@ -34,8 +30,6 @@ export default {
   watch: {
     $route() {
       document.getElementById('menu-btn').checked = false
-      // const loader = document.querySelector('.loader')
-      // loader.classList.add('show')
       window.scrollTo(0, 0)
     },
   },
@@ -75,26 +69,6 @@ export default {
 </script>
 
 <style lang="scss">
-.loader {
-  position: fixed;
-  top: -100vh;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: var(--clr-bg1);
-  z-index: 200;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-
-  &.show {
-    opacity: 1;
-    top: 0;
-  }
-}
-
 .main-menu {
   position: relative;
   top: 0;

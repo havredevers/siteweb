@@ -17,7 +17,6 @@ export default {
       { name: 'theme-color', content: '#ffffff' },
     ],
     link: [
-      { rel: 'preload', href: '/loader/loader.gif', as: 'image' },
       {
         rel: 'icon',
         type: 'image/png',
