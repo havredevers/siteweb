@@ -269,7 +269,7 @@ export default {
 
     &:hover,
     &.active {
-      cursor: url('~assets/img/cursor-hover.png'), auto;
+      cursor: pointer;
       opacity: 1;
     }
   }
@@ -306,24 +306,24 @@ export default {
     max-height: 530px;
 
     &-inner {
-      max-width: var(--container-width);
       margin: auto;
     }
 
     &-title {
       padding: 17% 5% 1rem 1.5rem;
-      width: 38%;
+      flex: 0 1 33%;
     }
 
     &-img {
-      width: 55%;
+      position: relative;
+      flex: 0 1 67%;
+      order: 2;
       height: 100%;
-      position: absolute;
-      right: 0;
 
       img {
-        height: 100%;
-        width: initial;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
       }
     }
 
