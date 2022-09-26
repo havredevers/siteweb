@@ -127,7 +127,7 @@
 
 .menu-icon {
   --clr-hamburger: white;
-  cursor: url('~assets/img/cursor-hover.png'), auto;
+  cursor: pointer;
   user-select: none;
   display: flex;
   width: 45px;

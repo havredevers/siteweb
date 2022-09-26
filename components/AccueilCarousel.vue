@@ -9,7 +9,6 @@
       @touchmove="handleTouchMove($event)"
       @touchend="handleTouchEnd($event)"
     >
-      <img class="logo" src="/ui/logo-blanc.png" alt="Logo" />
       <ul>
         <li
           v-for="(carouselItem, i) in carouselItems"
@@ -69,7 +68,7 @@ export default {
       delay: 4000,
       carouselItems: [
         {
-          text: "L'association havraise qui accompagne la valorisation des bio-déchets",
+          text: "L'association havraise qui accompagne la valorisation des biodéchets",
           link: '/adherer',
           linkText: "Adhérer à l'association",
           img: '/carousel/test1.png',
@@ -210,11 +209,12 @@ export default {
   &-title {
     padding: 1.5rem 1rem 1rem;
     color: white;
-    font-size: clamp(1.25rem, 2.25vw, 2.25rem);
-    font-weight: bold;
+    font-size: clamp(1.25rem, 3vw, 3rem);
 
     p {
+      font-family: 'Changa One', Arial, sans-serif;
       margin-bottom: 1.5rem;
+      text-align: center;
     }
   }
 
@@ -310,8 +310,15 @@ export default {
     }
 
     &-title {
-      padding: 17% 5% 1rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       flex: 0 1 33%;
+      padding: 2rem 2rem 2rem 6%;
+
+      p {
+        text-align: initial;
+      }
     }
 
     &-img {

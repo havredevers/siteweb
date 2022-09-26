@@ -160,7 +160,7 @@ export default {
   }
 
   &:hover {
-    cursor: url('~assets/img/cursor-hover.png'), auto;
+    cursor: pointer;
     transform: translateY(-10px);
     background-color: var(--clr-green3);
     color: white;
