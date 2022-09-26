@@ -18,6 +18,9 @@
         <NuxtLink to="/blog" class="cta"> Voir tous les articles </NuxtLink>
       </div>
     </div>
+    <div class="wave">
+      <img src="/ui/wave_final2.svg" />
+    </div>
   </section>
 </template>
 

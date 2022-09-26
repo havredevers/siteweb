@@ -139,6 +139,7 @@ export default {
   position: fixed;
   bottom: -100px;
   right: 20px;
+  z-index: 200;
   text-align: center;
   line-height: 50px;
   height: 50px;

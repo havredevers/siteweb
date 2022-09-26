@@ -66,6 +66,9 @@
           </NuxtLink>
         </div>
       </div>
+      <div class="wave">
+        <img src="/ui/wave_final.svg" />
+      </div>
     </section>
     <LastActus :articles="articles" />
   </div>
@@ -86,6 +89,8 @@ export default {
 
 <style lang="scss">
 .accueil section {
+  position: relative;
+
   .title {
     flex: 0 0 33%;
     text-align: center;
@@ -96,9 +101,25 @@ export default {
     font-size: clamp(1.5rem, 4vw, 2.5rem);
   }
 
+  .wave {
+    display: none;
+    position: absolute;
+    top: 99%;
+    width: 100%;
+    z-index: 2;
+
+    img {
+      width: 100%;
+    }
+
+    @media (min-width: 850px) {
+      display: initial;
+    }
+  }
+
   .content {
     flex: 0 0 67%;
-    padding: 6% 10%;
+    padding: 6% 10% 1rem 10%;
 
     ul.valeurs li {
       display: flex;
@@ -154,6 +175,13 @@ export default {
     .content {
       max-width: 67%;
     }
+  }
+}
+
+@media (min-width: 850px) {
+  .accueil .accueil-2 > :not(.wave),
+  .footer > * {
+    padding-top: var(--wave-height);
   }
 }
 </style>
