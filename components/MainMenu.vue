@@ -25,51 +25,38 @@
 
 <style lang="scss">
 .menu {
+  background-color: var(--clr-green2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  font-size: 1rem;
   position: absolute;
+  top: var(--hauteur-menu);
   left: 0;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-  font-size: 1.5rem;
-  max-width: 850px;
   height: 0;
   overflow: hidden;
   transition: height 0.3s ease-in-out;
-  background: var(--clr-bg1);
-  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.15),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  z-index: 50;
 
-  @media (min-width: 850px) {
-    height: initial;
-    position: initial;
-    padding: 1rem 0;
-    box-shadow: initial;
-  }
-
-  svg {
+  li:first-child {
     display: none;
 
-    @media (min-width: 850px) {
+    svg {
       display: inline-block;
-      fill: var(--clr-primary);
+      fill: var(--clr-green3);
       max-width: 30px;
     }
   }
 
   li:not(:first-child) {
-    width: 100%;
-    margin-left: 2.5rem;
-
-    @media (min-width: 850px) {
-      width: initial;
-      margin-left: 0;
-    }
+    margin-left: 3%;
 
     a {
       color: var(--clr-font);
+      text-transform: uppercase;
+      font-weight: bold;
       position: relative;
 
       &::after {
@@ -79,8 +66,12 @@
         left: 0;
         bottom: -10px;
         width: 0;
-        background-color: var(--clr-primary);
+        background-color: var(--clr-green3);
         transition: all 0.3s ease-in-out;
+      }
+
+      &.active {
+        color: var(--clr-green3);
       }
 
       &:hover::after,
@@ -89,6 +80,17 @@
         height: 5px;
       }
     }
+  }
+
+  @media (min-width: 850px) {
+    position: initial;
+    height: initial;
+    flex-direction: row;
+    background: transparent;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 1.5rem;
   }
 }
 
@@ -123,7 +125,7 @@
 }
 
 .menu-icon {
-  --clr-hamburger: var(--clr-primary);
+  --clr-hamburger: white;
   cursor: url('~assets/img/cursor-hover.png'), auto;
   user-select: none;
   display: flex;
@@ -135,11 +137,7 @@
   border-radius: 10%;
   right: 1rem;
   position: absolute;
-  top: 0.5rem;
-
-  @media (min-width: 550px) {
-    top: 1rem;
-  }
+  top: 1.5rem;
 
   @media (min-width: 850px) {
     display: none;

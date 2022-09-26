@@ -1,14 +1,11 @@
 <template>
   <div>
     <header class="main-menu">
-      <div class="container">
-        <NuxtLink to="/" class="title">
-          HAVRE
-          <img src="/ui/logo-vert.png" alt="" />
-          DE VERS
-        </NuxtLink>
-        <MainMenu />
-      </div>
+      <NuxtLink to="/" class="title">
+        <img src="/ui/pomme-blanc.png" alt="" />
+        <span>HAVRE DE VERS</span>
+      </NuxtLink>
+      <MainMenu />
     </header>
     <Nuxt />
     <MainFooter />
@@ -70,72 +67,58 @@ export default {
 
 <style lang="scss">
 .main-menu {
-  position: relative;
-  top: 0;
+  --hauteur-menu: 100px;
+  display: flex;
+  min-height: var(--hauteur-menu);
   z-index: 100;
-  background: var(--clr-bg1);
-  padding: 1rem 0;
-
-  @media (min-width: 1200px) {
-    position: sticky;
-    top: 0;
-  }
 
   .title {
-    color: var(--clr-primary);
+    background-color: var(--clr-green2);
+    color: white;
     font-family: 'FRUIT PUNCH';
     font-size: 1.5rem;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    max-height: 67px;
-    overflow: hidden;
-    transition: all 0.1s ease-out;
+    flex: 0 1 100%;
+    padding: 1.5rem;
 
     & > * + * {
-      margin-left: 0.5rem;
-    }
-
-    @media (min-width: 370px) {
-      font-size: 2rem;
-    }
-
-    @media (min-width: 550px) {
-      font-size: 3rem;
-    }
-
-    @media (min-width: 850px) {
-      justify-content: center;
-      padding-right: 0;
-      font-size: 4rem;
-
-      & > * + * {
-        margin-left: 1.5rem;
-      }
+      margin-left: 1rem;
     }
 
     img {
-      max-width: 45px;
-      transition: all 0.1s ease-out;
+      width: 55px;
+    }
 
-      @media (min-width: 850px) {
-        max-width: 75px;
-      }
+    @media (min-width: 850px) {
+      flex: 0 1 33%;
+      font-size: 2rem;
+      justify-content: center;
+    }
+
+    @media (min-width: 1250px) {
+      font-size: 3rem;
     }
   }
 
-  &.sticky {
-    position: sticky;
-    top: 0;
+  & > div {
+    background-color: var(--clr-green1);
+    display: flex;
+    align-items: center;
+
+    @media (min-width: 850px) {
+      flex: 0 1 67%;
+    }
   }
 
   &.reduced {
-    position: sticky;
+    position: relative;
     top: -100px;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15),
       inset 0 -1px 0 rgba(0, 0, 0, 0.15);
 
     @media (min-width: 850px) {
+      position: sticky;
       top: 0;
     }
 
@@ -143,50 +126,11 @@ export default {
       transition: all 0.3s ease-in-out;
       top: 0;
     }
+  }
 
-    .menu {
-      padding-top: 0;
-      padding-bottom: 0;
-
-      @media (min-width: 850px) {
-        overflow: initial;
-      }
-    }
-
-    @media (min-width: 850px) {
-      .title {
-        max-height: 0;
-      }
-    }
-
-    @media (min-width: 1050px) {
-      .container {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      & > a {
-        display: flex;
-        align-items: center;
-      }
-
-      .title {
-        font-size: 1.5rem;
-        max-height: initial;
-
-        & > * + * {
-          margin-left: 0.5rem;
-        }
-
-        img {
-          max-width: 40px;
-        }
-      }
-
-      .menu > * + * {
-        margin-left: 2rem;
-      }
-    }
+  &.sticky {
+    position: sticky;
+    top: 0;
   }
 }
 

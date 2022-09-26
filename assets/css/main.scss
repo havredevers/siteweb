@@ -3,10 +3,10 @@ $clr-secondary: #e17f62;
 $clr-bg1: #fffaf4;
 $clr-bg2: #f1f2ee;
 $clr-bg-dark: #403429;
-$clr-green1: #d7e188;
+$clr-green1: #d3d9ac;
 $clr-green2: #90a73f;
 $clr-green3: #5c7811;
-$clr-font: #403429;
+$clr-font: #3b3025;
 
 @font-face {
   font-family: 'Fruit Punch';
@@ -92,10 +92,6 @@ hr {
 
 a {
   text-decoration: none;
-
-  &:hover {
-    cursor: url('~assets/img/cursor-hover.png'), auto;
-  }
 }
 
 a:focus-visible {
