@@ -180,7 +180,7 @@ export default {
 
 @media (min-width: 850px) {
   .accueil .accueil-2 > :not(.wave),
-  .footer > * {
+  footer.footer > * {
     padding-top: var(--wave-height);
   }
 }
