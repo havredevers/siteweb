@@ -87,6 +87,7 @@
     height: initial;
     flex-direction: row;
     background: transparent;
+    overflow: initial;
   }
 
   @media (min-width: 1200px) {
