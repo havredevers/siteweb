@@ -1,15 +1,13 @@
 <template>
-  <NuxtLink :to="article.path" class="article">
+  <NuxtLink :to="article.path">
     <div class="article-logo">
-      <div class="mask">
-        <img :src="article.img" alt="" />
+      <img :src="article.img" alt="" />
+    </div>
+    <div class="article-content">
+      <div class="article-title">
+        <h2>{{ article.title }}</h2>
+        <small>{{ 'Mis en ligne le ' + $formatDate(article.updatedAt) }}</small>
       </div>
-    </div>
-    <div class="article-title">
-      <h3>{{ article.title }}</h3>
-      <small>{{ 'Mis à jour le ' + $formatDate(article.updatedAt) }}</small>
-    </div>
-    <div class="article-desc">
       <p>{{ article.description }}</p>
       <span>Lire l'article</span>
     </div>
@@ -31,101 +29,66 @@ export default {
 
 <style lang="scss">
 .article {
-  display: grid;
-  grid-template:
-    'title'
-    'logo'
-    'desc';
-  max-width: 850px;
-  margin: 0 auto 3rem;
-  padding: 1rem;
-  overflow: hidden;
-  color: var(--clr-font);
-  transition: all 0.3s ease-in-out;
-  border-radius: 0.5rem;
+  margin-bottom: 3rem;
+
+  a {
+    display: block;
+    max-width: 850px;
+    color: var(--clr-font);
+
+    &:hover img {
+      filter: sepia(0%);
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+  }
 
   &-logo {
-    flex: 0 0 35%;
-    grid-area: logo;
-    transition: inherit;
-  }
-
-  &-title {
-    grid-area: title;
-  }
-
-  &-desc {
-    grid-area: desc;
-  }
-
-  h3 {
-    font-size: clamp(1.5rem, 5vw, 2rem);
-  }
-
-  small {
-    display: block;
-    padding-bottom: 1rem;
-    opacity: 0.8;
-  }
-
-  p {
-    margin-bottom: 1.5rem;
-  }
-
-  span {
-    color: var(--clr-primary);
-    font-weight: bold;
-  }
-
-  .mask {
-    display: flex;
-    align-items: center;
-    margin: -50px -150px 0;
+    --img-size: 250px;
+    width: var(--img-size);
+    height: var(--img-size);
+    flex: 0 0 var(--img-size);
+    overflow: hidden;
+    border-radius: 15px;
+    margin: 0 auto;
     position: relative;
-    transition: inherit;
-    top: 0;
-  }
 
-  img {
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: contain;
-    mask-image: url('/ui/mask.svg');
-    transition: inherit;
-    width: 100%;
-    max-height: 325px;
-    filter: sepia(80%);
-  }
-
-  @media (min-width: 700px) {
-    padding: 2rem 1rem 0;
-
-    grid-template:
-      'logo title' minmax(80px, auto)
-      'logo desc' minmax(80px, 1fr) / 35% 1fr;
-
-    &-title {
-      margin-top: 3rem;
-    }
-    &-title,
-    &-desc {
-      padding-left: 1.5rem;
-    }
-  }
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
     img {
-      filter: sepia(0%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: sepia(80%);
+      transition: all 0.3s ease-in-out;
     }
+  }
 
-    .mask {
-      transform: translateY(-15px);
-      filter: drop-shadow(2px 9px 6px rgba(0, 0, 0, 0.5));
+  &-title small {
+    color: #666;
+  }
+
+  &-content {
+    flex: 0 0 70%;
+
+    p {
+      margin-top: 1.5rem;
     }
 
     span {
+      color: var(--clr-green3);
+      font-weight: bold;
+      margin-top: 1.5rem;
+      display: block;
       text-decoration: underline;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    a {
+      display: flex;
+    }
+
+    &-content {
+      margin-left: 1.5rem;
     }
   }
 }

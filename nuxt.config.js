@@ -15,6 +15,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'msapplication-TileColor', content: '#84aa4b' },
       { name: 'theme-color', content: '#ffffff' },
+      { name: 'robots', content: 'noindex' },
     ],
     link: [
       {

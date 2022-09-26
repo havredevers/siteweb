@@ -313,7 +313,7 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      flex: 0 1 33%;
+      flex: 0 0 33%;
       padding: 2rem 2rem 2rem 6%;
 
       p {
@@ -323,7 +323,7 @@ export default {
 
     &-img {
       position: relative;
-      flex: 0 1 67%;
+      flex: 0 0 67%;
       order: 2;
       height: 100%;
 

@@ -91,7 +91,7 @@ export default {
     }
 
     @media (min-width: 850px) {
-      flex: 0 1 33%;
+      flex: 0 0 33%;
       font-size: 2rem;
       justify-content: center;
     }
@@ -107,7 +107,8 @@ export default {
     align-items: center;
 
     @media (min-width: 850px) {
-      flex: 0 1 67%;
+      flex: 0 0 67%;
+      padding: 0.5rem;
     }
   }
 
@@ -142,27 +143,18 @@ export default {
   line-height: 50px;
   height: 50px;
   width: 50px;
-  background-color: var(--clr-green1);
-  color: var(--clr-font);
+  background-color: var(--clr-bg-dark);
+  color: white;
   box-shadow: 0 5px 5px 0px rgba(50, 50, 50, 0.5);
   transition: all 0.3s ease-in-out;
 
   &.show {
     bottom: 20px;
-
-    @media (min-width: 700px) {
-      bottom: 110px;
-    }
-
-    @media (min-width: 1200px) {
-      bottom: 20px;
-    }
   }
 
   &:hover {
     cursor: pointer;
     transform: translateY(-10px);
-    background-color: var(--clr-green3);
     color: white;
     box-shadow: 0 15px 15px 0px rgba(50, 50, 50, 0.5);
   }
