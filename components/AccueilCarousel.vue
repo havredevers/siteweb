@@ -186,7 +186,7 @@ export default {
 
 <style lang="scss">
 .carousel {
-  --dot-size: 0.6rem;
+  --dot-size: 1.2rem;
   position: relative;
   width: 100%;
   min-height: 420px;

@@ -66,24 +66,7 @@
           </NuxtLink>
         </div>
       </div>
-      <div class="wave">
-        <svg
-          viewBox="0 0 1440 130"
-          version="1.1"
-          width="1440"
-          height="130"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            style="fill: #e3ad89; fill-opacity: 1"
-            d="M 475 0 L 475 0 L 80 0 L 0 0 L 0 63.349609 L 80 77.404297 C 159.99992 91.723908 320.00016 119.44071 475 119.63867 C 475 119.63865 475 119.6387 475 119.63867 L 475 0 z "
-          />
-          <path
-            style="fill: #f4dbc9; fill-opacity: 1"
-            d="M 475 0 L 475 119.63867 C 640.0389 119.43402 800.01969 91.723804 960 87.962891 C 1119.9998 84.465474 1280.0001 105.5824 1360 116.14062 L 1440 126.69922 L 1440 0 L 1360 0 L 960 0 L 475 0 z "
-          />
-        </svg>
-      </div>
+      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
     <LastActus :articles="articles" />
   </div>
@@ -109,33 +92,16 @@ export default {
   .title {
     flex: 0 0 33%;
     text-align: center;
-    padding: 6%;
+    padding: 3% 6%;
   }
 
   h2 {
     font-size: clamp(1.5rem, 4vw, 2.5rem);
   }
 
-  .wave {
-    display: none;
-    position: absolute;
-    top: 99%;
-    width: 100%;
-    z-index: 2;
-
-    svg {
-      width: 100%;
-      height: auto;
-    }
-
-    @media (min-width: 850px) {
-      display: initial;
-    }
-  }
-
   .content {
     flex: 0 0 67%;
-    padding: 6% 10% 1rem 10%;
+    padding: 3% 10% 1rem 10%;
 
     ul.valeurs li {
       display: flex;
@@ -191,13 +157,6 @@ export default {
     .content {
       max-width: 67%;
     }
-  }
-}
-
-@media (min-width: 850px) {
-  .accueil .accueil-2 > :not(.wave),
-  footer.footer > * {
-    padding-top: var(--wave-height);
   }
 }
 </style>

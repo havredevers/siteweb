@@ -70,7 +70,10 @@ export default {
   --hauteur-menu: 100px;
   display: flex;
   min-height: var(--hauteur-menu);
+  position: relative;
+  top: 0;
   z-index: 100;
+  transition: all 0.3s ease-in 0.5s;
 
   .title {
     background-color: var(--clr-green2);
@@ -113,7 +116,6 @@ export default {
   }
 
   &.reduced {
-    position: relative;
     top: -100px;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15),
       inset 0 -1px 0 rgba(0, 0, 0, 0.15);
@@ -124,7 +126,7 @@ export default {
     }
 
     &.sticky {
-      transition: all 0.3s ease-in-out;
+      transition-delay: 0s;
       top: 0;
     }
   }
@@ -138,7 +140,7 @@ export default {
 .scroll-to-top {
   position: fixed;
   bottom: -100px;
-  right: 20px;
+  right: 10px;
   z-index: 200;
   text-align: center;
   line-height: 50px;

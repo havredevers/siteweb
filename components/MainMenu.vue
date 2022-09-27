@@ -21,7 +21,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   flex-grow: 1;
-  font-size: 1rem;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   position: absolute;
   top: var(--hauteur-menu);
   left: 0;
@@ -68,10 +68,6 @@
     height: initial;
     flex-direction: row;
     overflow: initial;
-  }
-
-  @media (min-width: 1200px) {
-    font-size: 1.5rem;
   }
 }
 

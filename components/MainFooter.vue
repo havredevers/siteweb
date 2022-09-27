@@ -69,6 +69,7 @@
         </ul>
       </div>
     </div>
+    <HomeWave :colors="['#90a73f', '#d3d9ac']" />
   </footer>
 </template>
 
@@ -87,7 +88,9 @@ export default {
 
 <style lang="scss">
 .footer {
-  & > * {
+  position: relative;
+
+  & > *:not(.wave) {
     padding: 10%;
   }
 
@@ -99,8 +102,12 @@ export default {
   .logo {
     flex: 0 0 33%;
     background-color: var(--clr-green2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     img {
+      width: 300px;
       max-width: 100%;
     }
   }
@@ -186,8 +193,8 @@ export default {
   @media (min-width: 700px) {
     display: flex;
 
-    & > * {
-      padding: 3% 6%;
+    & > *:not(.wave) {
+      padding: 1% 6%;
     }
   }
 }
