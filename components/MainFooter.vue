@@ -87,12 +87,8 @@ export default {
 
 <style lang="scss">
 .footer {
-  @media (min-width: 700px) {
-    display: flex;
-  }
-
   & > * {
-    padding: 3% 6%;
+    padding: 10%;
   }
 
   &-title {
@@ -128,6 +124,12 @@ export default {
     align-self: start;
     flex: 0 0 auto;
 
+    .footer-title {
+      @media (min-width: 550px) {
+        text-align: right;
+      }
+    }
+
     ul {
       margin-top: 0.5rem;
       display: flex;
@@ -148,9 +150,10 @@ export default {
       transition: all 0.3s ease-in-out;
 
       svg {
+        --svg-size: clamp(30px, 4vw, 45px);
         fill: var(--clr-font);
-        width: 45px;
-        height: 45px;
+        width: var(--svg-size);
+        height: var(--svg-size);
         padding: 0.5rem;
       }
 
@@ -177,6 +180,14 @@ export default {
           opacity: 1;
         }
       }
+    }
+  }
+
+  @media (min-width: 700px) {
+    display: flex;
+
+    & > * {
+      padding: 3% 6%;
     }
   }
 }

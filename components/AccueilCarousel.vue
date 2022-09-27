@@ -207,7 +207,7 @@ export default {
   }
 
   &-title {
-    padding: 1.5rem 1rem 1rem;
+    padding: 1.5rem 1rem 2rem;
     color: white;
     font-size: clamp(1.25rem, 3vw, 3rem);
 

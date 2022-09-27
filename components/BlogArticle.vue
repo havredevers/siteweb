@@ -32,18 +32,18 @@ export default {
   margin-bottom: 3rem;
 
   a {
+    --img-size: 250px;
     display: block;
     max-width: 850px;
     color: var(--clr-font);
 
     &:hover img {
-      filter: sepia(0%);
+      filter: brightness(75%);
       transform: translate(-50%, -50%) scale(0.8);
     }
   }
 
   &-logo {
-    --img-size: 250px;
     width: var(--img-size);
     height: var(--img-size);
     flex: 0 0 var(--img-size);
@@ -57,20 +57,27 @@ export default {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      filter: sepia(80%);
+      filter: brightness(35%);
       transition: all 0.3s ease-in-out;
     }
   }
 
   &-title small {
-    color: #666;
+    color: #ddd;
   }
 
   &-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(0.8 * var(--img-size));
+    color: white;
     flex: 0 0 70%;
 
     p {
       margin-top: 1.5rem;
+      display: none;
     }
 
     span {
@@ -79,6 +86,7 @@ export default {
       margin-top: 1.5rem;
       display: block;
       text-decoration: underline;
+      display: none;
     }
   }
 
@@ -89,6 +97,18 @@ export default {
 
     &-content {
       margin-left: 1.5rem;
+      position: initial;
+      transform: initial;
+      color: var(--clr-font);
+
+      small {
+        color: #666;
+      }
+
+      p,
+      span {
+        display: block;
+      }
     }
   }
 }
