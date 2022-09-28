@@ -2,9 +2,6 @@
   <div class="carousel">
     <div
       class="carousel-inner"
-      @mousedown="handleTouchStart($event)"
-      @mousemove="handleTouchMove($event)"
-      @mouseup="handleTouchEnd($event)"
       @touchstart="handleTouchStart($event)"
       @touchmove="handleTouchMove($event)"
       @touchend="handleTouchEnd($event)"
@@ -52,7 +49,7 @@
         :key="n"
         class="dot"
         :class="{ active: n == slideIndex }"
-        @click="showSlides(n)"
+        @click="showSlides(n, $event)"
       ></span>
     </div>
   </div>
@@ -127,7 +124,11 @@ export default {
     prev() {
       this.showSlides(this.slideIndex - 1)
     },
-    showSlides(n) {
+    showSlides(n, e) {
+      if (e && e.target.classList.contains('active')) {
+        return
+      }
+
       const slides = document.getElementsByClassName('slide')
 
       this.slideIndex = n
@@ -264,26 +265,35 @@ export default {
     height: var(--dot-size);
     box-shadow: 1px 1px 1px 1px #aaaaaa;
     position: relative;
+    top: 0;
     transition: all 0.1s ease-in-out;
     opacity: 0.5;
 
+    &:not(.active):hover {
+      cursor: pointer;
+    }
+
     &:hover,
     &.active {
-      cursor: pointer;
       opacity: 1;
+    }
+
+    @media (min-width: 850px) {
+      background: var(--clr-bg-dark);
     }
   }
 
   .controls {
     --control-size: 30px;
     z-index: 5;
-    bottom: 2rem;
+    bottom: 0;
     right: 5%;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 100%;
     border: 1px solid black;
     width: var(--control-size);
     height: var(--control-size);
+    margin: 10px;
 
     a {
       display: flex;
@@ -304,6 +314,11 @@ export default {
     min-height: initial;
     aspect-ratio: 16/6;
     max-height: 530px;
+
+    .controls,
+    .dots {
+      bottom: -10px;
+    }
 
     &-inner {
       margin: auto;

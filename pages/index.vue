@@ -92,16 +92,16 @@ export default {
   .title {
     flex: 0 0 33%;
     text-align: center;
-    padding: 3% 6%;
+    padding: 6%;
   }
 
   h2 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-size: clamp(1.5rem, 2.7vw, 2.5rem);
   }
 
   .content {
     flex: 0 0 67%;
-    padding: 3% 10% 1rem 10%;
+    padding: 6% 10% 1rem 10%;
 
     ul.valeurs li {
       display: flex;

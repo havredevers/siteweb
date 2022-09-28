@@ -30,16 +30,31 @@ export default {
 <style lang="scss">
 .article {
   margin-bottom: 3rem;
+  text-align: center;
 
   a {
     --img-size: 250px;
-    display: block;
+    display: inline-block;
     max-width: 850px;
     color: var(--clr-font);
 
-    &:hover img {
-      filter: opacity(100%);
-      transform: scale(1.15);
+    &:hover {
+      .article-title {
+        opacity: 0;
+        height: 0;
+      }
+
+      span {
+        height: initial;
+        opacity: 1;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      img {
+        filter: opacity(85%);
+        transform: scale(1.15);
+      }
     }
   }
 
@@ -49,7 +64,7 @@ export default {
     overflow: hidden;
     margin: 0 auto;
     border-radius: 15px;
-    background: radial-gradient(circle, white 10%, black 75%);
+    background: black;
 
     img {
       display: block;
@@ -60,8 +75,13 @@ export default {
     }
   }
 
-  &-title small {
-    color: #ddd;
+  &-title {
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+
+    small {
+      color: #ddd;
+    }
   }
 
   &-content {
@@ -69,7 +89,8 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: calc(0.8 * var(--img-size));
+    width: var(--img-size);
+    padding: 1rem;
     color: white;
     flex: 0 0 70%;
 
@@ -80,18 +101,40 @@ export default {
 
     span {
       color: var(--clr-green3);
+      background: white;
+      border-radius: 10px;
       font-weight: bold;
-      margin-top: 1.5rem;
+      overflow: hidden;
       display: block;
       text-decoration: underline;
-      display: none;
+      height: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
     }
   }
 
   @media (min-width: 1200px) {
+    text-align: left;
+
     a {
       display: flex;
       align-items: flex-start;
+
+      &:hover {
+        .article-title {
+          opacity: initial;
+          height: initial;
+        }
+
+        img {
+          filter: opacity(100%);
+        }
+
+        span {
+          text-align: left;
+          padding: 0;
+        }
+      }
     }
 
     &-content {
@@ -99,14 +142,22 @@ export default {
       position: initial;
       transform: initial;
       color: var(--clr-font);
+      padding: 0;
 
       small {
         color: #666;
       }
 
-      p,
-      span {
+      p {
         display: block;
+      }
+
+      span {
+        margin-top: 1.5rem;
+        height: initial;
+        opacity: initial;
+        background: transparent;
+        border-radius: 0;
       }
     }
   }
