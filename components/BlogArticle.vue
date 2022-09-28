@@ -38,8 +38,8 @@ export default {
     color: var(--clr-font);
 
     &:hover img {
-      filter: brightness(75%);
-      transform: scale(1.2);
+      filter: opacity(100%);
+      transform: scale(1.15);
     }
   }
 
@@ -49,10 +49,11 @@ export default {
     overflow: hidden;
     margin: 0 auto;
     border-radius: 15px;
+    background: radial-gradient(circle, white 10%, black 75%);
 
     img {
       display: block;
-      filter: brightness(35%);
+      filter: opacity(50%);
       transition: all 0.3s ease-in-out;
       width: 100%;
       border-radius: 15px;
