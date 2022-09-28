@@ -42,17 +42,18 @@ export default {
         : isVisible && this.newOffset <= 250 && btnClassList.remove('show')
 
       // Menu
-      const menuClassList = document.querySelector('.main-menu').classList
-
-      this.newOffset > 0
-        ? menuClassList.add('reduced')
-        : menuClassList.remove('reduced')
+      const menu = document.querySelector('.main-menu')
+      const menuClassList = menu.classList
 
       // Menu smartphones
       if (this.oldOffset < this.newOffset) {
+        if (this.newOffset > menu.clientHeight) menuClassList.add('reduced')
         menuClassList.remove('sticky')
       } else if (this.oldOffset > this.newOffset) {
-        menuClassList.add('sticky')
+        menuClassList.remove('reduced')
+        this.newOffset === 0
+          ? menuClassList.remove('sticky')
+          : menuClassList.add('sticky')
       }
       this.oldOffset = this.newOffset
     })
@@ -70,10 +71,28 @@ export default {
   --hauteur-menu: 100px;
   display: flex;
   min-height: var(--hauteur-menu);
-  position: relative;
+  position: sticky;
   top: 0;
   z-index: 100;
-  transition: all 0.3s ease-in 0.5s;
+  transition: all 0.3s ease-in;
+
+  &.reduced,
+  &.sticky {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  &.reduced {
+    top: -150px;
+
+    @media (min-width: 850px) {
+      top: 0;
+    }
+  }
+
+  &.sticky {
+    top: 0;
+  }
 
   .title {
     background-color: var(--clr-green2);
@@ -113,27 +132,6 @@ export default {
       flex: 0 0 67%;
       padding: 0.5rem;
     }
-  }
-
-  &.reduced {
-    top: -100px;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-
-    @media (min-width: 850px) {
-      position: sticky;
-      top: 0;
-    }
-
-    &.sticky {
-      transition-delay: 0s;
-      top: 0;
-    }
-  }
-
-  &.sticky {
-    position: sticky;
-    top: 0;
   }
 }
 
