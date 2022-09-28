@@ -39,26 +39,23 @@ export default {
 
     &:hover img {
       filter: brightness(75%);
-      transform: translate(-50%, -50%) scale(0.8);
+      transform: scale(1.2);
     }
   }
 
   &-logo {
     width: var(--img-size);
-    height: var(--img-size);
     flex: 0 0 var(--img-size);
     overflow: hidden;
-    border-radius: 15px;
     margin: 0 auto;
-    position: relative;
+    border-radius: 15px;
 
     img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      display: block;
       filter: brightness(35%);
       transition: all 0.3s ease-in-out;
+      width: 100%;
+      border-radius: 15px;
     }
   }
 
@@ -93,6 +90,7 @@ export default {
   @media (min-width: 1200px) {
     a {
       display: flex;
+      align-items: flex-start;
     }
 
     &-content {
