@@ -84,7 +84,7 @@ export default {
   }
 
   &.reduced {
-    top: -150px;
+    top: -400px;
 
     @media (min-width: 850px) {
       top: 0;
