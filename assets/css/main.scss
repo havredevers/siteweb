@@ -59,11 +59,16 @@ body {
   margin: auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+
+  @media (min-width: 850px) {
+    padding-bottom: var(--wave-height);
+  }
 }
 
 h1 {
   font-family: 'Changa One', Arial, sans-serif;
   font-size: clamp(1.7rem, 4vw, 4rem);
+  margin-bottom: 1rem;
 }
 
 h2,
@@ -104,6 +109,13 @@ a:focus-visible {
   border: 0;
 }
 
+button {
+  overflow: visible;
+  text-transform: none;
+  font-family: inherit;
+  border: 0;
+}
+
 .cta {
   border-radius: 1rem;
   background-color: var(--clr-green1);
@@ -111,18 +123,14 @@ a:focus-visible {
   padding: 0.75rem 1.5rem;
   font-size: clamp(12px, 1vw, 16px);
   font-weight: 600;
-  margin: 1rem auto;
   display: block;
   width: fit-content;
   transition: all 0.3s ease-in-out;
 
-  &:hover {
+  &:hover,
+  &.active {
+    cursor: pointer;
     background-color: var(--clr-green3);
     color: white;
   }
-}
-
-iframe .NavStep-Completed,
-.NavStep-Current {
-  background-color: red;
 }

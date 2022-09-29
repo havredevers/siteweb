@@ -1,5 +1,5 @@
 <template>
-  <div class="prestations">
+  <div class="prestations container">
     <h1>Nos prestations</h1>
     <ul class="list-prestas">
       <li v-for="presta in prestations" :key="presta.slug" class="presta">
@@ -35,10 +35,6 @@ export default {
   & > ul {
     display: flex;
     flex-wrap: wrap;
-  }
-
-  @media (min-width: 850px) {
-    padding-bottom: var(--wave-height);
   }
 }
 

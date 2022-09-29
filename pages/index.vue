@@ -120,6 +120,10 @@ export default {
         margin-left: 1rem;
       }
     }
+
+    .cta {
+      margin: 1rem auto;
+    }
   }
 
   &.accueil-1 {

@@ -4,14 +4,14 @@
       <img src="/ui/logo-blanc.png" alt="" />
     </div>
     <div class="content">
-      <div class="coord" data-aos="fade-up">
+      <div class="coord">
         <div class="footer-title">Venez nous rencontrer</div>
         <address>13, rue de Tourville<br />76600 LE HAVRE</address>
         <div class="horaires">
           Le lundi, mercredi<br />et vendredi<br />de 10H à 19H
         </div>
       </div>
-      <div class="reseaux" data-aos="fade-up">
+      <div class="reseaux">
         <div class="footer-title">Contactez-nous !</div>
         <ul>
           <li>
