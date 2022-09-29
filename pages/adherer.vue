@@ -75,9 +75,15 @@ export default {
       loading: false,
     }
   },
+  mounted() {
+    const hash = this.$route.hash.slice(1)
+    this.choix = hash
+    this.loading = ['proximite', 'soutien'].includes(hash)
+  },
   methods: {
     setChoix(e) {
       this.choix = e.target.dataset.adhesion
+      this.$router.push('#' + this.choix)
       this.loading = true
       document.querySelector('#loader').scrollIntoView()
     },
