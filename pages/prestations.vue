@@ -1,57 +1,66 @@
 <template>
   <div class="prestations">
-    <h2>Nos prestations</h2>
-    <ul>
-      <li>
-        <div>
-          <h3>Atelier jardin/potager</h3>
-          <img src="/prestations/jardin.png" alt="" />
+    <h1>Nos prestations</h1>
+    <ul class="list-prestas">
+      <li v-for="presta in prestations" :key="presta.slug" class="presta">
+        <h2>
+          {{ presta.title }}
+          <small>{{ '(prix : ' + presta.prix + '€)' }}</small>
+        </h2>
+        <div class="desc">{{ presta.description }}</div>
+        <div class="logo">
+          <img :src="presta.img" alt="" />
         </div>
-      </li>
-      <li>
-        <div>
-          <h3>Compostage</h3>
-          <img src="/prestations/compostage.png" alt="" />
-        </div>
+        <nuxt-content :document="presta" />
       </li>
     </ul>
   </div>
 </template>
 
+<script>
+export default {
+  async asyncData({ $content, $variables, route }) {
+    const prestations = await $content('prestas')
+      // .without(['body'])
+      .sortBy('title')
+      .fetch()
+
+    return { prestations }
+  },
+}
+</script>
+
 <style lang="scss">
 .prestations {
-  h2 {
-    height: 0;
-  }
-
-  ul {
+  & > ul {
     display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    padding: 0 7%;
+    flex-wrap: wrap;
+  }
 
-    & > * + * {
-      margin-left: 1rem;
-    }
+  @media (min-width: 850px) {
+    padding-bottom: var(--wave-height);
+  }
+}
 
-    @media (min-width: 850px) {
-      flex-direction: row;
+.presta {
+  max-width: 500px;
+  margin: 0 auto 2rem;
+
+  .logo {
+    max-width: 350px;
+
+    img {
+      max-width: 100%;
     }
   }
 
-  h3 {
-    font-style: italic;
-    font-size: 2rem;
-    font-family: var(--font-serif);
-    color: var(--clr-secondary);
-    text-align: center;
+  li {
+    list-style-type: disc;
+    margin-left: 1rem;
+  }
+
+  .nuxt-content > * {
     margin-bottom: 1rem;
-  }
-
-  img {
-    max-width: 100%;
-    margin: auto;
-    display: block;
   }
 }
 </style>
