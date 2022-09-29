@@ -37,6 +37,7 @@ export default {
     display: inline-block;
     max-width: 850px;
     color: var(--clr-font);
+    position: relative;
 
     &:hover {
       .article-title {

@@ -30,6 +30,7 @@
   overflow: hidden;
   transition: height 0.3s ease-in-out;
   z-index: 50;
+  box-shadow: var(--shadow);
 
   li {
     margin-left: 3%;
@@ -68,6 +69,11 @@
     height: initial;
     flex-direction: row;
     overflow: initial;
+    box-shadow: initial;
+
+    li:first-child {
+      margin-left: 0;
+    }
   }
 }
 

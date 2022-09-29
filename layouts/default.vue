@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     scrollToTop() {
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+      window.scrollTo({ top: 0, left: 1, behavior: 'smooth' })
     },
   },
 }
@@ -68,6 +68,8 @@ export default {
 
 <style lang="scss">
 .main-menu {
+  --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   --hauteur-menu: 100px;
   display: flex;
   min-height: var(--hauteur-menu);
@@ -78,8 +80,7 @@ export default {
 
   &.reduced,
   &.sticky {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow);
   }
 
   &.reduced {

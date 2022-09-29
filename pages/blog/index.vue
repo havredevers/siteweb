@@ -2,7 +2,7 @@
   <div class="blog">
     <h1>Le Blog</h1>
     <ul class="list-actus">
-      <li v-for="article in articles" :key="article.slug">
+      <li v-for="article in articles" :key="article.slug" class="article">
         <BlogArticle :article="article" />
       </li>
     </ul>
