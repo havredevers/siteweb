@@ -30,7 +30,7 @@ export default {
     const page = parseInt(route.query.page) || 1
     const posts = await $content('blog')
       .without(['body'])
-      .sortBy('updatedAt')
+      .sortBy('updatedAt', 'desc')
       .skip((page - 1) * $variables.blogPagination)
       .limit($variables.blogPagination + 1)
       .fetch()
