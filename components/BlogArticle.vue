@@ -34,7 +34,8 @@ export default {
 
   a {
     --img-size: 250px;
-    display: inline-block;
+    display: block;
+    margin: auto;
     max-width: 850px;
     color: var(--clr-font);
     position: relative;

@@ -1,5 +1,5 @@
 <template>
-  <div class="blog">
+  <div class="blog container">
     <h1>Le Blog</h1>
     <ul class="list-actus">
       <li v-for="article in articles" :key="article.slug" class="article">
@@ -51,26 +51,16 @@ export default {
 
 <style lang="scss">
 .blog {
-  h1 {
-    --hauteur-titre: 190px;
-    background-image: url('/ui/accueil/bg-title2.png');
-    color: white;
-  }
-
-  .list-actus {
-    flex-direction: column;
-  }
-
   .prev-next {
     display: flex;
-    padding: 0 1rem;
     justify-content: space-between;
-    margin-top: 1rem;
+    margin: 2rem auto;
     font-weight: bold;
     font-size: 2rem;
+    max-width: 850px;
 
     @media (min-width: 550px) {
-      justify-content: space-around;
+      justify-content: space-between;
     }
 
     a {
