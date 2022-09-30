@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <section class="asso-1">
       <h1>Qui sommes-nous ?</h1>
       <p>
@@ -46,24 +46,12 @@
   margin-bottom: 2rem;
   font-size: 1.5rem;
 
-  h1 {
-    --hauteur-titre: 240px;
-    margin-top: -3rem;
-    color: var(--clr-bg1);
-    background-image: url('/ui/association/bg-title3.png');
-
-    @media (min-width: 550px) {
-      --hauteur-titre: 300px;
-    }
-
-    @media (min-width: 850px) {
-      --hauteur-titre: 385px;
-    }
+  ul li {
+    list-style-type: initial;
   }
 
   p,
   ul {
-    padding: 0 10%;
     text-align: center;
   }
 

@@ -80,7 +80,7 @@
 #menu-btn {
   display: none;
 
-  @media (max-width: 849px) {
+  @media (max-width: 850px) {
     &:checked {
       & ~ .menu {
         height: 300px;
