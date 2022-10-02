@@ -91,7 +91,7 @@ export default {
 
       setTimeout(() => {
         this.anim.play()
-      }, 200)
+      }, 300)
     },
   },
 }

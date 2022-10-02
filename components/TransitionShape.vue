@@ -16,7 +16,7 @@
 
 <style lang="scss">
 .shape-wrap {
-  --shape-color: var(--clr-green2);
+  --shape-color: hsl(73, 42%, 30%);
   position: fixed;
   z-index: -1;
   width: 100%;
@@ -29,10 +29,10 @@
 
   &.top {
     transition: opacity 0.2s ease-in-out,
-      top 1.5s cubic-bezier(0.37, 0, 0.63, 1) 0.2s;
+      top 1.6s cubic-bezier(0.37, 0, 0.63, 1) 0.2s;
 
     z-index: 90;
-    top: calc(-100vh - 1000px);
+    top: calc(-100vh - 1100px);
     opacity: 1;
   }
 
