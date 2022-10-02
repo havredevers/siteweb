@@ -16,28 +16,30 @@
 
 <style lang="scss">
 .shape-wrap {
+  --shape-color: var(--clr-green2);
   position: fixed;
   z-index: -1;
   width: 100%;
-  height: 100vh;
+  height: 1000px;
   top: 0;
   left: 0;
   opacity: 0;
-  background: var(--clr-font);
+  background: var(--shape-color);
+  background-position: 0px 0px;
 
   &.top {
-    transition: opacity 0.4s ease-in-out,
-      top 1.5s cubic-bezier(0.37, 0, 0.63, 1) 0.4s;
+    transition: opacity 0.2s ease-in-out,
+      top 1.5s cubic-bezier(0.37, 0, 0.63, 1) 0.2s;
 
     z-index: 90;
-    top: calc(-100vh - 1100px);
+    top: calc(-100vh - 1000px);
     opacity: 1;
   }
 
   & > svg {
     width: 100%;
     display: block;
-    fill: var(--clr-font);
+    fill: var(--shape-color);
     position: absolute;
     top: 100%;
   }

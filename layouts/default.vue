@@ -75,8 +75,6 @@ export default {
         wrap.classList.remove('top')
       },
     })
-
-    console.log(this.anim)
   },
   methods: {
     scrollToTop() {
@@ -89,7 +87,7 @@ export default {
 
       setTimeout(() => {
         this.anim.play()
-      }, 100)
+      }, 200)
     },
   },
 }
