@@ -29,7 +29,8 @@ export default {
   watch: {
     $route(to, from) {
       document.getElementById('menu-btn').checked = false
-      if (to.hash === '') {
+      console.log(to)
+      if (to.hash === '' && Object.keys(to.query).length === 0) {
         this.animShapeTransition()
       }
       setTimeout(() => {
