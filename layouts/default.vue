@@ -7,9 +7,10 @@
       </NuxtLink>
       <MainMenu />
     </header>
-    <Nuxt />
+    <Nuxt class="page" />
     <MainFooter />
     <div class="scroll-to-top" @click="scrollToTop()">&#8593;</div>
+    <TransitionShape />
   </div>
 </template>
 
@@ -22,12 +23,14 @@ export default {
     return {
       newOffset: 0,
       oldOffset: 0,
+      anim: {},
     }
   },
   watch: {
     $route() {
       document.getElementById('menu-btn').checked = false
       window.scrollTo(0, 0)
+      this.animShapeTransition()
     },
   },
   beforeMount() {
@@ -58,9 +61,35 @@ export default {
       this.oldOffset = this.newOffset
     })
   },
+  mounted() {
+    const wrap = document.querySelector('.shape-wrap')
+    const path = wrap.querySelector('path')
+
+    this.anim = this.$anime({
+      targets: path,
+      duration: 1500,
+      easing: 'easeInOutSine',
+      d: path.getAttribute('pathdata:id'),
+      autoplay: false,
+      complete: (anim) => {
+        wrap.classList.remove('top')
+      },
+    })
+
+    console.log(this.anim)
+  },
   methods: {
     scrollToTop() {
       window.scrollTo({ top: 0, left: 1, behavior: 'smooth' })
+    },
+    animShapeTransition() {
+      const wrap = document.querySelector('.shape-wrap')
+
+      wrap.classList.add('top')
+
+      setTimeout(() => {
+        this.anim.play()
+      }, 100)
     },
   },
 }
