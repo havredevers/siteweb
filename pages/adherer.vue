@@ -42,27 +42,34 @@
         Adhérent de soutien
       </button>
     </div>
-    <a id="loader"></a>
-    <div v-if="loading" class="loader">
-      <img src="/loader/loader.gif" alt="chargement" />
-    </div>
-    <div class="iframe-container" :class="{ loaded: !loading }">
-      <iframe
-        v-if="choix == 'proximite'"
-        id="haWidget"
-        allowtransparency="true"
-        scrolling="auto"
-        src="https://www.helloasso.com/associations/havre-de-vers/adhesions/havre-de-vers-adherent-de-proximite-1/widget"
-        @load="onLoad"
-      ></iframe>
-      <iframe
-        v-if="choix == 'soutien'"
-        id="haWidget"
-        allowtransparency="true"
-        scrolling="auto"
-        src="https://www.helloasso.com/associations/havre-de-vers/adhesions/havre-de-vers-adherent-de-soutien-from-the-ends-of-the-earth/widget"
-        @load="onLoad"
-      ></iframe>
+    <div class="result">
+      <Transition>
+        <div v-if="loading" class="loader">
+          <img src="/loader/loader.gif" alt="chargement" />
+        </div>
+      </Transition>
+      <div class="iframe-container">
+        <Transition>
+          <iframe
+            v-if="choix == 'proximite'"
+            id="haWidget"
+            allowtransparency="true"
+            scrolling="auto"
+            src="https://www.helloasso.com/associations/havre-de-vers/adhesions/havre-de-vers-adherent-de-proximite-1/widget"
+            @load="onLoad"
+          ></iframe>
+        </Transition>
+        <Transition>
+          <iframe
+            v-if="choix == 'soutien'"
+            id="haWidget"
+            allowtransparency="true"
+            scrolling="auto"
+            src="https://www.helloasso.com/associations/havre-de-vers/adhesions/havre-de-vers-adherent-de-soutien-from-the-ends-of-the-earth/widget"
+            @load="onLoad"
+          ></iframe>
+        </Transition>
+      </div>
     </div>
   </div>
 </template>
@@ -84,11 +91,12 @@ export default {
     setChoix(e) {
       this.choix = e.target.dataset.adhesion
       this.$router.push('#' + this.choix)
+      document.querySelector('.iframe-container').classList.remove('loaded')
       this.loading = true
-      document.querySelector('#loader').scrollIntoView()
     },
     onLoad(e) {
       this.loading = false
+      document.querySelector('.iframe-container').classList.add('loaded')
     },
   },
 }
@@ -97,12 +105,17 @@ export default {
 <style lang="scss">
 .loader {
   text-align: center;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.result {
+  position: relative;
 }
 
 .adherer {
-  position: relative;
-  overflow: hidden;
-
   li {
     margin-left: 2rem;
     list-style-type: initial;
@@ -121,11 +134,14 @@ export default {
   }
 
   .iframe-container {
-    position: absolute;
-    top: 100%;
+    opacity: 0;
+    min-height: 200px;
+    max-height: 200px;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
 
     &.loaded {
-      position: relative;
+      opacity: 1;
+      max-height: 1400px;
     }
 
     iframe {
