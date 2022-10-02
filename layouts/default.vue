@@ -27,10 +27,14 @@ export default {
     }
   },
   watch: {
-    $route() {
+    $route(to, from) {
       document.getElementById('menu-btn').checked = false
-      window.scrollTo(0, 0)
-      this.animShapeTransition()
+      if (to.hash === '') {
+        this.animShapeTransition()
+      }
+      setTimeout(() => {
+        window.scrollTo(0, 0)
+      }, 300)
     },
   },
   beforeMount() {
