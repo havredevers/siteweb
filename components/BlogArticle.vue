@@ -34,7 +34,7 @@ export default {
 
   a {
     --img-size: 250px;
-    display: block;
+    display: inline-block;
     margin: auto;
     max-width: 850px;
     color: var(--clr-font);
@@ -108,7 +108,6 @@ export default {
       font-weight: bold;
       overflow: hidden;
       display: block;
-      text-decoration: underline;
       height: 0;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
@@ -135,6 +134,7 @@ export default {
         span {
           text-align: left;
           padding: 0;
+          text-decoration: underline;
         }
       }
     }

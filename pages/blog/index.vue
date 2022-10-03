@@ -1,25 +1,31 @@
 <template>
-  <div class="blog container">
-    <h1>Le Blog</h1>
-    <ul class="list-actus">
-      <li v-for="article in articles" :key="article.slug" class="article">
-        <BlogArticle :article="article" />
-      </li>
-    </ul>
-    <section v-if="hasPrevPage || hasNextPage" class="prev-next">
-      <nuxt-link
-        v-if="hasPrevPage"
-        :to="'/blog/?page=' + (page - 1)"
-        title="Page précédente"
-        >&#60;&#60;</nuxt-link
-      >
-      <div v-if="!hasPrevPage || !hasNextPage"></div>
-      <nuxt-link
-        v-if="hasNextPage"
-        :to="'/blog/?page=' + (page + 1)"
-        title="Page suivante"
-        >&#62;&#62;</nuxt-link
-      >
+  <div class="blog">
+    <section class="section-page">
+      <div class="title">
+        <h1>Le Blog</h1>
+      </div>
+      <div class="content">
+        <ul class="list-actus">
+          <li v-for="article in articles" :key="article.slug" class="article">
+            <BlogArticle :article="article" />
+          </li>
+        </ul>
+        <section v-if="hasPrevPage || hasNextPage" class="prev-next">
+          <nuxt-link
+            v-if="hasPrevPage"
+            :to="'/blog/?page=' + (page - 1)"
+            title="Page précédente"
+            >&#60;&#60;</nuxt-link
+          >
+          <div v-if="!hasPrevPage || !hasNextPage"></div>
+          <nuxt-link
+            v-if="hasNextPage"
+            :to="'/blog/?page=' + (page + 1)"
+            title="Page suivante"
+            >&#62;&#62;</nuxt-link
+          >
+        </section>
+      </div>
     </section>
   </div>
 </template>
@@ -50,31 +56,29 @@ export default {
 </script>
 
 <style lang="scss">
-.blog {
-  .prev-next {
-    display: flex;
+.blog .prev-next {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto;
+  font-weight: bold;
+  font-size: 2rem;
+  max-width: 850px;
+
+  a {
+    color: var(--clr-primary);
+    border: 1px solid var(--clr-primary);
+    border-radius: 100%;
+    padding: 15px;
+
+    &:focus-visible,
+    &:hover {
+      background: var(--clr-primary);
+      color: white;
+    }
+  }
+
+  @media (min-width: 550px) {
     justify-content: space-between;
-    margin: 2rem auto;
-    font-weight: bold;
-    font-size: 2rem;
-    max-width: 850px;
-
-    @media (min-width: 550px) {
-      justify-content: space-between;
-    }
-
-    a {
-      color: var(--clr-primary);
-      border: 1px solid var(--clr-primary);
-      border-radius: 100%;
-      padding: 15px;
-
-      &:focus-visible,
-      &:hover {
-        background: var(--clr-primary);
-        color: white;
-      }
-    }
   }
 }
 </style>

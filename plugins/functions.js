@@ -6,5 +6,5 @@ Vue.prototype.$formatDate = (date) => {
 }
 
 export default ({ app }, inject) => {
-  inject('variables', Vue.observable({ blogPagination: 2 }))
+  inject('variables', Vue.observable({ blogPagination: 3 }))
 }
