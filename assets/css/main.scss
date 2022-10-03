@@ -68,7 +68,14 @@ body {
 h1 {
   font-family: 'Changa One', Arial, sans-serif;
   font-size: clamp(1.7rem, 4vw, 4rem);
-  margin-bottom: 1rem;
+
+  br {
+    display: none;
+
+    @media (min-width: 850px) {
+      display: inline;
+    }
+  }
 }
 
 h2,
@@ -132,6 +139,62 @@ button {
     cursor: pointer;
     background-color: var(--clr-green3);
     color: white;
+  }
+}
+
+.section-page {
+  position: relative;
+
+  .title {
+    flex: 0 0 33%;
+    text-align: center;
+    padding: 6% 1% 6% 6%;
+  }
+
+  .content {
+    flex: 0 0 67%;
+    padding: 6% 10% 1rem 10%;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 2.7vw, 2.5rem);
+  }
+
+  &:first-child {
+    .title {
+      background-color: #e3ad89;
+    }
+
+    .content {
+      background-color: #f4dbc9;
+    }
+  }
+
+  &:nth-child(2) {
+    .title {
+      background-color: #ead0a3;
+    }
+
+    .content {
+      background-color: #f7e9d4;
+    }
+  }
+
+  @media (min-width: 850px) {
+    display: flex;
+
+    h1 {
+      text-align: initial;
+    }
+
+    .content {
+      max-width: 67%;
+    }
+
+    .title,
+    .content {
+      padding-top: 3%;
+    }
   }
 }
 

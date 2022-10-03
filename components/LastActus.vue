@@ -1,7 +1,7 @@
 <template>
-  <section class="accueil-2">
+  <section class="accueil-2 section-page">
     <div class="title">
-      <h1>Nos actualités</h1>
+      <h1>Nos <br />actualités</h1>
     </div>
     <div class="content">
       <ul class="list-actus">

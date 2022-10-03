@@ -1,17 +1,22 @@
 <template>
-  <section class="asso-2">
-    <h1>Présentation de l'équipe</h1>
-    <ul class="membres">
-      <li v-for="membre in equipe" :key="membre.order" class="membre">
-        <div class="photo">
-          <img :src="'/staff/' + membre.photo" alt="" />
-        </div>
-        <h3>{{ membre.nom }}</h3>
-        <ul>
-          <li v-for="role in membre.roles" :key="role">{{ role }}</li>
-        </ul>
-      </li>
-    </ul>
+  <section class="asso-2 section-page">
+    <div class="title">
+      <h1>Présentation <br />de l'équipe</h1>
+    </div>
+    <div class="content">
+      <ul class="membres">
+        <li v-for="membre in equipe" :key="membre.order" class="membre">
+          <div class="photo">
+            <img :src="'/staff/' + membre.photo" alt="" />
+          </div>
+          <h3>{{ membre.nom }}</h3>
+          <ul>
+            <li v-for="role in membre.roles" :key="role">{{ role }}</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
   </section>
 </template>
 
@@ -32,7 +37,7 @@ export default {
 .membres {
   --largeur-photo: initial;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
@@ -44,12 +49,11 @@ export default {
   }
 
   @media (min-width: 850px) {
-    flex-direction: row;
-    --largeur-photo: 45%;
+    --largeur-photo: initial;
   }
 
   @media (min-width: 1200px) {
-    --largeur-photo: 30%;
+    --largeur-photo: 45%;
   }
 }
 

@@ -52,8 +52,7 @@ export default {
 }
 
 @media (min-width: 850px) {
-  .accueil .accueil-1 > :not(.wave),
-  .accueil .accueil-2 > :not(.wave) {
+  .section-page > :not(.wave) {
     padding-bottom: var(--wave-height);
   }
 }
