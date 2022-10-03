@@ -9,7 +9,7 @@
           <div class="photo">
             <img :src="'/staff/' + membre.photo" alt="" />
           </div>
-          <h3>{{ membre.nom }}</h3>
+          <h2>{{ membre.nom }}</h2>
           <ul>
             <li v-for="role in membre.roles" :key="role">{{ role }}</li>
           </ul>
@@ -62,6 +62,7 @@ export default {
   max-width: var(--largeur-photo);
   color: var(--clr-secondary);
   margin-top: 2rem;
+  text-align: center;
 
   .photo {
     aspect-ratio: 1/1;
@@ -71,19 +72,8 @@ export default {
     max-width: 100%;
   }
 
-  h3 {
-    font-style: italic;
-    font-size: 3rem;
-    font-family: var(--font-serif);
-  }
-
   ul {
-    font-size: 1.5rem;
-  }
-
-  h3,
-  ul {
-    text-align: center;
+    font-size: 0.9rem;
   }
 }
 </style>
