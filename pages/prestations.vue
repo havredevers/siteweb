@@ -40,10 +40,14 @@ export default {
 .list-prestas {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 
   h2 small {
     display: block;
+  }
+
+  @media (min-width: 1705px) {
+    justify-content: space-between;
   }
 }
 
