@@ -144,6 +144,7 @@ button {
 
 .section-page {
   position: relative;
+  flex: 1 1 100%;
 
   .title {
     flex: 0 0 33%;
@@ -206,8 +207,4 @@ button {
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
-}
-
-.page {
-  transition-duration: 0.3s;
 }

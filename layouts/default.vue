@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <header class="main-menu">
       <NuxtLink to="/" class="title">
         <img src="/ui/pomme-blanc.png" alt="" />
@@ -29,13 +29,10 @@ export default {
   watch: {
     $route(to, from) {
       document.getElementById('menu-btn').checked = false
-      console.log(to)
+
       if (to.hash === '' && Object.keys(to.query).length === 0) {
         this.animShapeTransition()
       }
-      setTimeout(() => {
-        window.scrollTo(0, 0)
-      }, 300)
     },
   },
   beforeMount() {
@@ -99,6 +96,20 @@ export default {
 </script>
 
 <style lang="scss">
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  transition-duration: 0.5s;
+  flex: 1 1 100%;
+}
+
 .main-menu {
   --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15),
     inset 0 -1px 0 rgba(0, 0, 0, 0.15);
