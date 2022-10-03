@@ -1,19 +1,25 @@
 <template>
-  <div class="prestations container">
-    <h1>Nos prestations</h1>
-    <ul class="list-prestas">
-      <li v-for="presta in prestations" :key="presta.slug" class="presta">
-        <h2>
-          {{ presta.title }}
-          <small>{{ '(prix : ' + presta.prix + '€)' }}</small>
-        </h2>
-        <div class="desc">{{ presta.description }}</div>
-        <div class="logo">
-          <img :src="presta.img" alt="" />
-        </div>
-        <nuxt-content :document="presta" />
-      </li>
-    </ul>
+  <div class="prestations">
+    <div class="section section-page">
+      <div class="title">
+        <h1>Nos prestations</h1>
+      </div>
+      <div class="content">
+        <ul class="list-prestas">
+          <li v-for="presta in prestations" :key="presta.slug" class="presta">
+            <h2>
+              {{ presta.title }}
+              <small>{{ '(prix : ' + presta.prix + '€)' }}</small>
+            </h2>
+            <div class="desc">{{ presta.description }}</div>
+            <div class="logo">
+              <img :src="presta.img" alt="" />
+            </div>
+            <nuxt-content :document="presta" />
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -31,16 +37,19 @@ export default {
 </script>
 
 <style lang="scss">
-.prestations {
-  & > ul {
-    display: flex;
-    flex-wrap: wrap;
+.list-prestas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  h2 small {
+    display: block;
   }
 }
 
 .presta {
-  max-width: 500px;
-  margin: 0 auto 2rem;
+  max-width: 400px;
+  margin-bottom: 2rem;
 
   .logo {
     max-width: 350px;

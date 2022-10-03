@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="association">
     <section class="asso-1 section-page">
       <div class="title">
         <h1>Qui sommes-nous ?</h1>
