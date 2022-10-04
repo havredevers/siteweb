@@ -10,21 +10,7 @@
             <BlogArticle :article="article" />
           </li>
         </ul>
-        <section v-if="hasPrevPage || hasNextPage" class="prev-next">
-          <nuxt-link
-            v-if="hasPrevPage"
-            :to="'/blog/?page=' + (page - 1)"
-            title="Page précédente"
-            >&#60;&#60;</nuxt-link
-          >
-          <div v-if="!hasPrevPage || !hasNextPage"></div>
-          <nuxt-link
-            v-if="hasNextPage"
-            :to="'/blog/?page=' + (page + 1)"
-            title="Page suivante"
-            >&#62;&#62;</nuxt-link
-          >
-        </section>
+        <BlogPagination :current-page="page" :nb-pages="nbPages" />
       </div>
     </section>
   </div>
@@ -34,18 +20,17 @@
 export default {
   async asyncData({ $content, $variables, route }) {
     const page = parseInt(route.query.page) || 1
-    const posts = await $content('blog')
+    const totalPosts = await $content('blog').only(['titre']).fetch()
+    const nbPages = Math.ceil(totalPosts.length / $variables.blogPagination)
+
+    const articles = await $content('blog')
       .without(['body'])
       .sortBy('updatedAt', 'desc')
       .skip((page - 1) * $variables.blogPagination)
-      .limit($variables.blogPagination + 1)
+      .limit($variables.blogPagination)
       .fetch()
 
-    const hasNextPage = posts.length === $variables.blogPagination + 1
-    const hasPrevPage = page > 1
-    const articles = hasNextPage ? posts.slice(0, -1) : posts
-
-    return { page, hasNextPage, hasPrevPage, articles }
+    return { page, nbPages, articles }
   },
   watch: {
     $route() {
