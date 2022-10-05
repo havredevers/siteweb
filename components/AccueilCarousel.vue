@@ -68,19 +68,19 @@ export default {
           text: "L'association havraise qui accompagne la valorisation des biodéchets",
           link: '/adherer',
           linkText: "Adhérer à l'association",
-          img: '/carousel/test1.png',
+          img: '/carousel/adherer.png',
         },
         {
           text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           link: '/prestations',
           linkText: 'Voir nos prestations',
-          img: '/carousel/test2.png',
+          img: '/carousel/prestations.png',
         },
         {
           text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           link: '/boutique',
           linkText: 'Visiter la boutique',
-          img: '/carousel/test3.png',
+          img: '/carousel/boutique.png',
         },
       ],
       pointerPositionDown: {
