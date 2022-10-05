@@ -18,24 +18,31 @@
 
 <script>
 export default {
-  async asyncData({ $content, $variables, route }) {
-    const page = parseInt(route.query.page) || 1
-    const totalPosts = await $content('blog').only(['titre']).fetch()
-    const nbPages = Math.ceil(totalPosts.length / $variables.blogPagination)
+  data() {
+    return {
+      page: 1,
+      nbPages: 1,
+      articles: [],
+    }
+  },
+  async fetch() {
+    const totalPosts = await this.$content('blog').only(['titre']).fetch()
+    this.nbPages = Math.ceil(totalPosts.length / this.$variables.blogPagination)
 
-    const articles = await $content('blog')
+    this.articles = await this.$content('blog')
       .without(['body'])
       .sortBy('updatedAt', 'desc')
-      .skip((page - 1) * $variables.blogPagination)
-      .limit($variables.blogPagination)
+      .skip((this.page - 1) * this.$variables.blogPagination)
+      .limit(this.$variables.blogPagination)
       .fetch()
-
-    return { page, nbPages, articles }
   },
   watch: {
     $route() {
       this.$nuxt.refresh()
     },
+  },
+  mounted() {
+    this.page = parseInt(this.$route.query.page) || 1
   },
 }
 </script>
