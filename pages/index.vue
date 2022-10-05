@@ -3,6 +3,7 @@
     <AccueilCarousel />
     <div class="sections">
       <section class="accueil-1 section-page">
+        <span id="valeurs" class="ancre"></span>
         <div class="title">
           <h1>Nos <br />valeurs</h1>
         </div>

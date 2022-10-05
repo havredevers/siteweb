@@ -69,7 +69,7 @@ export default {
 
     this.anim = this.$anime({
       targets: path,
-      duration: 1500,
+      duration: 1300,
       easing: 'easeInOutSine',
       d: path.getAttribute('pathdata:id'),
       autoplay: false,

@@ -1,5 +1,6 @@
 <template>
   <section class="asso-2 section-page">
+    <span id="equipe" class="ancre"></span>
     <div class="title">
       <h1>Présentation <br />de l'équipe</h1>
     </div>

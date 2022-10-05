@@ -1,5 +1,6 @@
 <template>
   <section class="accueil-2 section-page">
+    <span id="actualites" class="ancre"></span>
     <div class="title">
       <h1>Nos <br />actualités</h1>
     </div>

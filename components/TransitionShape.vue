@@ -32,7 +32,7 @@
       top 1.6s cubic-bezier(0.37, 0, 0.63, 1) 0.2s;
 
     z-index: 90;
-    top: calc(-100vh - 1100px);
+    top: calc(-100vh - 1200px);
     opacity: 1;
   }
 
