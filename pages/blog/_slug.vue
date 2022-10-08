@@ -19,10 +19,14 @@
 
 <script>
 export default {
-  async asyncData({ $content, params }) {
-    const article = await $content('blog', params.slug).fetch()
+  async asyncData({ $content, params, error }) {
+    try {
+      const article = await $content('blog', params.slug).fetch()
 
-    return { article }
+      return { article }
+    } catch (err) {
+      error(err)
+    }
   },
 }
 </script>

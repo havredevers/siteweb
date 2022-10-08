@@ -13,8 +13,19 @@ module.exports = {
   // add your custom rules here
   rules: {
     'no-console': 'off',
-    'vue/multi-word-component-names': ['error', {
-      'ignores': ['default', 'index', 'association', 'prestations', 'adherer', 'boutique']
-    }]
+    'vue/multi-word-component-names': [
+      'error',
+      {
+        ignores: [
+          'error',
+          'default',
+          'index',
+          'association',
+          'prestations',
+          'adherer',
+          'boutique',
+        ],
+      },
+    ],
   },
 }

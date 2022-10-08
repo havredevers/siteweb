@@ -32,7 +32,7 @@
         <div class="choix">
           <button
             class="cta"
-            :class="{ active: choix == 'proximite' }"
+            :class="{ actif: choix == 'proximite' }"
             data-adhesion="proximite"
             @click="setChoix($event)"
           >
@@ -40,7 +40,7 @@
           </button>
           <button
             class="cta"
-            :class="{ active: choix == 'soutien' }"
+            :class="{ actif: choix == 'soutien' }"
             data-adhesion="soutien"
             @click="setChoix($event)"
           >

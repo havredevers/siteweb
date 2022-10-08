@@ -135,7 +135,7 @@ button {
   transition: all 0.3s ease-in-out;
 
   &:hover,
-  &.active {
+  &.actif {
     cursor: pointer;
     background-color: var(--clr-green3);
     color: white;
