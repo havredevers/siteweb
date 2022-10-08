@@ -26,23 +26,27 @@ export default {
     }
   },
   async fetch() {
-    const totalPosts = await this.$content('blog').only(['titre']).fetch()
-    this.nbPages = Math.ceil(totalPosts.length / this.$variables.blogPagination)
+    this.page = parseInt(this.$route.query.page) || 1
 
     this.articles = await this.$content('blog')
-      .without(['body'])
-      .sortBy('updatedAt', 'desc')
-      .skip((this.page - 1) * this.$variables.blogPagination)
-      .limit(this.$variables.blogPagination)
+      .only(['titre'])
       .fetch()
-  },
-  watch: {
-    $route() {
-      this.$nuxt.refresh()
-    },
-  },
-  mounted() {
-    this.page = parseInt(this.$route.query.page) || 1
+      .then((reponse) => {
+        this.nbPages = Math.ceil(
+          reponse.length / this.$variables.blogPagination
+        )
+
+        if (this.page < 0 || this.page > this.nbPages) {
+          this.$nuxt.error({ statusCode: 404 })
+        }
+
+        return this.$content('blog')
+          .without(['body'])
+          .sortBy('updatedAt', 'desc')
+          .skip((this.page - 1) * this.$variables.blogPagination)
+          .limit(this.$variables.blogPagination)
+          .fetch()
+      })
   },
 }
 </script>
