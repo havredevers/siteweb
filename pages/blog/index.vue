@@ -51,6 +51,9 @@ export default {
       this.$nuxt.refresh()
     },
   },
+  mounted() {
+    this.page = parseInt(this.$route.query.page) || 1
+  },
 }
 </script>
 
