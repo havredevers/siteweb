@@ -8,7 +8,9 @@
         <span aria-hidden="true">...</span>
       </li>
       <li v-for="i in pagesDisplayed" :key="i">
-        <a v-if="i != currentPage" :href="'/blog/?page=' + i">{{ i }}</a>
+        <NuxtLink v-if="i != currentPage" :to="'/blog/?page=' + i">
+          {{ i }}
+        </NuxtLink>
         <span v-else class="active">{{ i }}</span>
       </li>
       <li v-if="currentPage < nbPages - 2 && nbPages > 4">
