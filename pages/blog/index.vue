@@ -30,6 +30,7 @@ export default {
       .only(['titre'])
       .fetch()
       .then((reponse) => {
+        this.page = parseInt(this.$route.query.page) || 1
         this.nbPages = Math.ceil(
           reponse.length / this.$variables.blogPagination
         )
@@ -48,11 +49,8 @@ export default {
   },
   watch: {
     $route() {
-      this.$nuxt.refresh()
+      this.$fetch()
     },
-  },
-  mounted() {
-    this.page = parseInt(this.$route.query.page) || 1
   },
 }
 </script>
