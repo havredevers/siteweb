@@ -6,11 +6,6 @@
       </div>
       <div class="content">
         <Transition>
-          <div v-if="$fetchState.pending" class="loader">
-            <img src="/loader/loader.gif" alt="chargement" />
-          </div>
-        </Transition>
-        <Transition>
           <div v-if="isError && !$fetchState.pending">
             <p class="error">La page demandée a été compostée</p>
             <NuxtLink class="cta" to="/">Retour à l'accueil</NuxtLink>
@@ -62,7 +57,6 @@ export default {
           .fetch()
       })
   },
-  fetchDelay: 500,
   computed: {
     isError() {
       return this.page < 0 || this.page > this.nbPages

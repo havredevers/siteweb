@@ -125,22 +125,10 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  height: 100%;
-  display: flex;
-  z-index: 10;
-
-  img {
-    margin: auto;
-    transform: translateY(-50%);
-  }
 }
 
 .result {
   position: relative;
-
-  .loader {
-    margin-top: 3rem;
-  }
 
   &.loading .iframe-container {
     min-height: 200px;
