@@ -43,10 +43,10 @@ export default {
   text-align: center;
 
   a {
-    --img-size: 250px;
+    --img-size: 100%;
     display: inline-block;
     margin: auto;
-    max-width: 850px;
+    width: 100%;
     color: var(--clr-font);
     position: relative;
     padding: 1rem;
@@ -54,8 +54,6 @@ export default {
     transition: all 0.3s ease-in-out;
 
     &:hover {
-      background: rgba(0, 0, 0, 0.1);
-
       .article-title {
         opacity: 0;
         height: 0;
@@ -66,11 +64,16 @@ export default {
         opacity: 1;
         text-align: center;
         padding: 1rem;
+        display: inline-block;
       }
 
       img {
         filter: opacity(85%);
         transform: scale(1.15);
+      }
+
+      @media (min-width: 1200px) {
+        background: rgba(0, 0, 0, 0.1);
       }
     }
   }
