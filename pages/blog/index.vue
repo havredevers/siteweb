@@ -5,18 +5,31 @@
         <h1>Le Blog</h1>
       </div>
       <div class="content">
-        <div v-if="page < 0 || page > nbPages">
-          <p class="error">La page demandée a été compostée</p>
-          <NuxtLink class="cta" to="/">Retour à l'accueil</NuxtLink>
-        </div>
-        <div v-else>
-          <ul class="list-actus">
-            <li v-for="article in articles" :key="article.slug" class="article">
-              <BlogArticle :article="article" />
-            </li>
-          </ul>
-          <BlogPagination :current-page="page" :nb-pages="nbPages" />
-        </div>
+        <Transition>
+          <div v-if="$fetchState.pending" class="loader">
+            <img src="/loader/loader.gif" alt="chargement" />
+          </div>
+        </Transition>
+        <Transition>
+          <div v-if="isError && !$fetchState.pending">
+            <p class="error">La page demandée a été compostée</p>
+            <NuxtLink class="cta" to="/">Retour à l'accueil</NuxtLink>
+          </div>
+        </Transition>
+        <Transition>
+          <div v-if="!isError && !$fetchState.pending">
+            <ul class="list-actus">
+              <li
+                v-for="article in articles"
+                :key="article.slug"
+                class="article"
+              >
+                <BlogArticle :article="article" />
+              </li>
+            </ul>
+            <BlogPagination :current-page="page" :nb-pages="nbPages" />
+          </div>
+        </Transition>
       </div>
     </section>
   </div>
@@ -49,10 +62,14 @@ export default {
           .fetch()
       })
   },
-  watch: {
-    $route() {
-      this.$fetch()
+  fetchDelay: 500,
+  computed: {
+    isError() {
+      return this.page < 0 || this.page > this.nbPages
     },
+  },
+  watch: {
+    '$route.query': '$fetch',
   },
   mounted() {
     this.page = parseInt(this.$route.query.page) || 1
@@ -61,29 +78,35 @@ export default {
 </script>
 
 <style lang="scss">
-.blog .prev-next {
-  display: flex;
-  justify-content: space-between;
-  margin: 2rem auto;
-  font-weight: bold;
-  font-size: 2rem;
-  max-width: 850px;
-
-  a {
-    color: var(--clr-primary);
-    border: 1px solid var(--clr-primary);
-    border-radius: 100%;
-    padding: 15px;
-
-    &:focus-visible,
-    &:hover {
-      background: var(--clr-primary);
-      color: white;
-    }
+.blog {
+  .content {
+    min-height: 100vh;
   }
 
-  @media (min-width: 550px) {
+  .prev-next {
+    display: flex;
     justify-content: space-between;
+    margin: 2rem auto;
+    font-weight: bold;
+    font-size: 2rem;
+    max-width: 850px;
+
+    a {
+      color: var(--clr-primary);
+      border: 1px solid var(--clr-primary);
+      border-radius: 100%;
+      padding: 15px;
+
+      &:focus-visible,
+      &:hover {
+        background: var(--clr-primary);
+        color: white;
+      }
+    }
+
+    @media (min-width: 550px) {
+      justify-content: space-between;
+    }
   }
 }
 </style>

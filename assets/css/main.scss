@@ -158,6 +158,7 @@ button {
   }
 
   .content {
+    position: relative;
     flex: 0 0 67%;
     padding: 6% 10% 1rem 10%;
   }
@@ -207,9 +208,10 @@ button {
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease;
+  opacity: 0;
 }
 
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
+.v-enter-active.v-enter-to,
+.v-leave-active.v-leave-from {
+  opacity: 1;
 }
