@@ -11,7 +11,7 @@
         <NuxtLink v-if="i != currentPage" :to="'/blog/?page=' + i">
           {{ i }}
         </NuxtLink>
-        <span v-else class="active">{{ i }}</span>
+        <span v-else class="actif">{{ i }}</span>
       </li>
       <li v-if="currentPage < nbPages - 2 && nbPages > 4">
         <span aria-hidden="true">...</span>
@@ -73,6 +73,12 @@ export default {
         display: block;
         padding: 1rem;
         background-color: var(--clr-green1);
+        transition: all 0.3s ease-in-out;
+
+        &:not(.actif):hover {
+          transform: scale(1.07);
+          box-shadow: var(--shadow);
+        }
       }
 
       &:first-child > * {
@@ -96,7 +102,7 @@ export default {
       span {
         cursor: not-allowed;
 
-        &.active {
+        &.actif {
           color: white;
           background: var(--clr-green2);
         }

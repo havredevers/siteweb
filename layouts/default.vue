@@ -97,6 +97,8 @@ export default {
 
 <style lang="scss">
 .app {
+  --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -111,8 +113,6 @@ export default {
 }
 
 .main-menu {
-  --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   --hauteur-menu: 100px;
   display: flex;
   min-height: var(--hauteur-menu);
