@@ -5,12 +5,18 @@
         <h1>Le Blog</h1>
       </div>
       <div class="content">
-        <ul class="list-actus">
-          <li v-for="article in articles" :key="article.slug" class="article">
-            <BlogArticle :article="article" />
-          </li>
-        </ul>
-        <BlogPagination :current-page="page" :nb-pages="nbPages" />
+        <div v-if="page < 0 || page > nbPages">
+          <p class="error">La page demandée a été compostée</p>
+          <NuxtLink class="cta" to="/">Retour à l'accueil</NuxtLink>
+        </div>
+        <div v-else>
+          <ul class="list-actus">
+            <li v-for="article in articles" :key="article.slug" class="article">
+              <BlogArticle :article="article" />
+            </li>
+          </ul>
+          <BlogPagination :current-page="page" :nb-pages="nbPages" />
+        </div>
       </div>
     </section>
   </div>
@@ -34,10 +40,6 @@ export default {
         this.nbPages = Math.ceil(
           reponse.length / this.$variables.blogPagination
         )
-
-        if (this.page < 0 || this.page > this.nbPages) {
-          this.$nuxt.error({ statusCode: 404 })
-        }
 
         return this.$content('blog')
           .without(['body'])

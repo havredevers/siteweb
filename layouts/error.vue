@@ -5,8 +5,10 @@
         <h1>Erreur {{ error.statusCode }}</h1>
       </div>
       <div class="content">
-        <p v-if="error.statusCode === 404">La page demandée a été compostée</p>
-        <p v-else>Une erreur est apparue</p>
+        <p v-if="error.statusCode === 404" class="error">
+          La page demandée a été compostée
+        </p>
+        <p v-else class="error">Une erreur est apparue</p>
         <NuxtLink to="/" class="cta">Retour à l'accueil</NuxtLink>
       </div>
     </section>
@@ -26,10 +28,8 @@ export default {
 </script>
 
 <style lang="scss">
-div[class*='error-'] {
-  p {
-    font-size: clamp(1.7rem, 4vw, 2.5rem);
-    margin-bottom: 3rem;
-  }
+.error {
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  margin-bottom: 3rem;
 }
 </style>
