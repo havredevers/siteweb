@@ -26,8 +26,6 @@ export default {
     }
   },
   async fetch() {
-    this.page = parseInt(this.$route.query.page) || 1
-
     this.articles = await this.$content('blog')
       .only(['titre'])
       .fetch()
@@ -47,6 +45,9 @@ export default {
           .limit(this.$variables.blogPagination)
           .fetch()
       })
+  },
+  created() {
+    this.page = parseInt(this.$route.query.page) || 1
   },
 }
 </script>
