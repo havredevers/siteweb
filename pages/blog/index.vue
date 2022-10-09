@@ -26,7 +26,7 @@
 export default {
   data() {
     return {
-      page: parseInt(this.$route.query.page) || 1,
+      page: 1,
       nbPages: 1,
       articles: [],
     }
@@ -53,6 +53,9 @@ export default {
     $route() {
       this.$fetch()
     },
+  },
+  mounted() {
+    this.page = parseInt(this.$route.query.page) || 1
   },
 }
 </script>
