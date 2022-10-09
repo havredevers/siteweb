@@ -176,6 +176,7 @@ export default {
         opacity: 0;
       }
 
+      &:focus-visible,
       &:hover {
         border-color: transparent;
 
@@ -199,6 +200,7 @@ export default {
   }
 }
 
+a[title='Instagram']:focus-visible::before,
 a[title='Instagram']:hover::before {
   background: radial-gradient(
     circle at 30% 107%,
@@ -210,14 +212,17 @@ a[title='Instagram']:hover::before {
   );
 }
 
+a[title='Facebook']:focus-visible::before,
 a[title='Facebook']:hover::before {
   background: #4661b0;
 }
 
+a[title='Discord']:focus-visible::before,
 a[title='Discord']:hover::before {
   background: #5662f6;
 }
 
+a[title='Mail']:focus-visible::before,
 a[title='Mail']:hover::before {
   background: var(--clr-secondary);
 }

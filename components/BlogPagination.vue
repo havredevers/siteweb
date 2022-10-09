@@ -76,8 +76,10 @@ export default {
         transition: all 0.3s ease-in-out;
 
         &:not(.actif):hover {
-          transform: scale(1.07);
+          transform: scale(1.1);
           box-shadow: var(--shadow);
+          background-color: var(--clr-green3);
+          color: white;
         }
       }
 

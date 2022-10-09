@@ -8,7 +8,9 @@
         <h2>{{ article.title }}</h2>
         <small>{{ 'Mis en ligne le ' + $formatDate(article.updatedAt) }}</small>
       </div>
-      <p>{{ article.description }}</p>
+      <p>
+        {{ truncateString(article.description, 200) }}
+      </p>
       <span>Lire l'article</span>
     </div>
   </NuxtLink>
@@ -22,6 +24,14 @@ export default {
       default() {
         return {}
       },
+    },
+  },
+  methods: {
+    truncateString(str, num) {
+      if (str.length <= num) {
+        return str
+      }
+      return str.slice(0, num) + '...'
     },
   },
 }
@@ -39,8 +49,13 @@ export default {
     max-width: 850px;
     color: var(--clr-font);
     position: relative;
+    padding: 1rem;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
 
     &:hover {
+      background: rgba(0, 0, 0, 0.1);
+
       .article-title {
         opacity: 0;
         height: 0;
@@ -78,6 +93,10 @@ export default {
       width: 100%;
       border-radius: 15px;
     }
+
+    @media (min-width: 1200px) {
+      --img-size: 35%;
+    }
   }
 
   &-title {
@@ -97,11 +116,12 @@ export default {
     width: var(--img-size);
     padding: 1rem;
     color: white;
-    flex: 0 0 70%;
+    flex: 0 0 60%;
 
     p {
       margin-top: 1.5rem;
       display: none;
+      hyphens: auto;
     }
 
     span {

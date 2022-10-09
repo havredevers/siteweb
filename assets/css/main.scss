@@ -139,6 +139,8 @@ button {
     cursor: pointer;
     background-color: var(--clr-green3);
     color: white;
+    box-shadow: var(--shadow);
+    transform: translateY(-10%);
   }
 }
 
