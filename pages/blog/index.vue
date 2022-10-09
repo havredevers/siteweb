@@ -27,9 +27,9 @@
                 <BlogArticle :article="article" />
               </li>
             </ul>
-            <BlogPagination :current-page="page" :nb-pages="nbPages" />
           </div>
         </Transition>
+        <BlogPagination :current-page="page" :nb-pages="nbPages" />
       </div>
     </section>
   </div>
@@ -79,10 +79,6 @@ export default {
 
 <style lang="scss">
 .blog {
-  .content {
-    min-height: 100vh;
-  }
-
   .prev-next {
     display: flex;
     justify-content: space-between;

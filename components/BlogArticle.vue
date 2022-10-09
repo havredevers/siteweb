@@ -67,6 +67,9 @@ export default {
     margin: 0 auto;
     border-radius: 15px;
     background: black;
+    aspect-ratio: 16/11;
+    display: flex;
+    align-items: center;
 
     img {
       display: block;
