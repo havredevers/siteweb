@@ -46,8 +46,10 @@ export default {
           .fetch()
       })
   },
-  created() {
-    this.page = parseInt(this.$route.query.page) || 1
+  watch: {
+    $route() {
+      this.$nuxt.refresh()
+    },
   },
 }
 </script>
