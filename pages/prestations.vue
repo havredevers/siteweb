@@ -51,13 +51,6 @@ export default {
 
     return { prestations }
   },
-  mounted() {
-    const divs = document.querySelectorAll('.nuxt-content > *')
-    divs.forEach((div) => {
-      console.log(div)
-      div.setAttribute('data-aos', 'fade-up')
-    })
-  },
   methods: {
     waveColors(i) {
       return i % 2 !== 0 ? ['#ead0a3', '#f7e9d4'] : ['#e3ad89', '#f4dbc9']

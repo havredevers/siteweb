@@ -3,6 +3,16 @@ import 'aos/dist/aos.css'
 
 export default {
   mounted() {
-    AOS.init({})
+    const route = this.$route.name
+
+    window.addEventListener('load', () => {
+      if (route === 'prestations') {
+        const divs = document.querySelectorAll('.nuxt-content > *')
+        divs.forEach((div) => {
+          div.setAttribute('data-aos', 'fade-up')
+        })
+      }
+      AOS.init({})
+    })
   },
 }
