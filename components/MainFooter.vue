@@ -73,19 +73,6 @@
   </footer>
 </template>
 
-<script>
-export default {
-  mounted() {
-    const oC = document.querySelector('.protect')
-
-    let sC = oC.getAttribute('data-protect')
-    sC = sC.replace('point', '.')
-    sC = sC.replace('arobas', '@')
-    oC.setAttribute('href', 'mailto:' + sC)
-  },
-}
-</script>
-
 <style lang="scss">
 .footer {
   position: relative;

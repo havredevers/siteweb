@@ -110,6 +110,35 @@ export default {
   flex-direction: column;
   transition-duration: 0.5s;
   flex: 1 1 100%;
+
+  &:not(.accueil) {
+    h1 {
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .carousel-title p {
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      font-family: var(--font-sans-serif);
+    }
+  }
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  @media (min-width: 850px) {
+    &:not(.accueil) h1 {
+      text-align: left;
+    }
+
+    &-header {
+      flex-direction: row;
+    }
+  }
 }
 
 .main-menu {

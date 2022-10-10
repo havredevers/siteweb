@@ -1,25 +1,43 @@
 <template>
   <div class="prestations">
-    <div class="section section-page">
-      <div class="title">
-        <h1>Nos prestations</h1>
-      </div>
-      <div class="content">
-        <ul class="list-prestas">
-          <li v-for="presta in prestations" :key="presta.slug" class="presta">
-            <h2>
-              {{ presta.title }}
-              <small>{{ '(prix : ' + presta.prix + '€)' }}</small>
-            </h2>
-            <div class="desc">{{ presta.description }}</div>
-            <div class="logo">
-              <img :src="presta.img" alt="" />
-            </div>
-            <nuxt-content :document="presta" />
-          </li>
-        </ul>
+    <div class="carousel">
+      <div class="page-header">
+        <div class="carousel-img">
+          <img src="/carousel/prestations.png" alt="" />
+        </div>
+        <div class="carousel-title">
+          <h1>Nos prestations</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
+            architecto laudantium
+          </p>
+          <a class="protect cta" data-protect="havredeversarobasgmailpointcom">
+            Contactez-nous
+          </a>
+        </div>
       </div>
     </div>
+    <section
+      v-for="(presta, index) in prestations"
+      :key="presta.slug"
+      class="section section-page"
+    >
+      <span :id="presta.slug" class="ancre"></span>
+      <div class="title">
+        <h2>
+          {{ presta.title }}
+        </h2>
+        <p>{{ 'A partir de ' + presta.prix + '€' }}</p>
+        <a class="protect cta" data-protect="havredeversarobasgmailpointcom">
+          Demandez un devis
+        </a>
+      </div>
+      <div class="content">
+        <div class="desc">{{ presta.description }}</div>
+        <nuxt-content :document="presta" />
+      </div>
+      <HomeWave :colors="waveColors(index)" />
+    </section>
   </div>
 </template>
 
@@ -33,43 +51,75 @@ export default {
 
     return { prestations }
   },
+  mounted() {
+    const divs = document.querySelectorAll('.nuxt-content > *')
+    divs.forEach((div) => {
+      console.log(div)
+      div.setAttribute('data-aos', 'fade-up')
+    })
+  },
+  methods: {
+    waveColors(i) {
+      return i % 2 !== 0 ? ['#ead0a3', '#f7e9d4'] : ['#e3ad89', '#f4dbc9']
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-.list-prestas {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  h2 small {
-    display: block;
+.prestations {
+  h2 {
+    font-family: var(--font-changa);
+    font-size: clamp(1.5rem, 3.5vw, 4rem);
+    hyphens: auto;
+    margin-bottom: 3vw;
   }
 
-  @media (min-width: 1705px) {
-    justify-content: space-between;
-  }
-}
+  h3 {
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    margin-bottom: 1.5rem;
 
-.presta {
-  max-width: 400px;
-  margin-bottom: 2rem;
-
-  .logo {
-    max-width: 350px;
-
-    img {
-      max-width: 100%;
+    &:not(:first-child) {
+      margin-top: 2rem;
     }
   }
 
   li {
-    list-style-type: disc;
-    margin-left: 1rem;
+    list-style: initial;
+    margin-left: 1.5rem;
   }
 
-  .nuxt-content > * {
-    margin-bottom: 1rem;
+  .title {
+    p {
+      font-weight: bold;
+      font-size: clamp(1rem, 2vw, 2rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .cta {
+      margin: 0 auto;
+
+      @media (min-width: 850px) {
+        margin: 0;
+      }
+    }
+  }
+
+  .content {
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
+
+    p {
+      &:last-child {
+        margin-bottom: 1rem;
+      }
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      border-radius: 15px;
+      margin: 1.5rem auto;
+    }
   }
 }
 </style>

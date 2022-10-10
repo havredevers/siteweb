@@ -49,8 +49,10 @@ $clr-font: #3b3025;
 body {
   background-color: var(--clr-bg1);
   color: var(--clr-font);
-  font-family: 'Work Sans', Verdana, sans-serif;
+  --font-sans-serif: 'Work Sans', Verdana, sans-serif;
   --font-serif: Georgia, 'Times New Roman', Times, serif;
+  --font-changa: 'Changa One', Arial, sans-serif;
+  font-family: var(--font-sans-serif);
   cursor: url('~assets/img/cursor.png'), auto;
 }
 
@@ -66,7 +68,7 @@ body {
 }
 
 h1 {
-  font-family: 'Changa One', Arial, sans-serif;
+  font-family: var(--font-changa);
   font-size: clamp(1.7rem, 4vw, 4rem);
 
   br {
@@ -156,7 +158,7 @@ button {
   .title {
     flex: 0 0 33%;
     text-align: center;
-    padding: 6% 1% 6% 6%;
+    padding: 6% 2.7% 6% 6%;
   }
 
   .content {
@@ -169,7 +171,7 @@ button {
     font-size: clamp(1.5rem, 2.7vw, 2.5rem);
   }
 
-  &:first-child {
+  &:nth-child(even) {
     .title {
       background-color: #e3ad89;
     }
@@ -179,7 +181,7 @@ button {
     }
   }
 
-  &:nth-child(2) {
+  &:nth-child(odd) {
     .title {
       background-color: #ead0a3;
     }
@@ -192,7 +194,7 @@ button {
   @media (min-width: 850px) {
     display: flex;
 
-    h1 {
+    .title {
       text-align: initial;
     }
 

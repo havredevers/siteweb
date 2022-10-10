@@ -306,6 +306,10 @@ export default {
     }
   }
 
+  .cta {
+    margin: 0 auto;
+  }
+
   @media (min-width: 550px) {
     min-height: 500px;
   }

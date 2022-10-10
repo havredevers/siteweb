@@ -1,13 +1,15 @@
 ---
 title: Atelier buttes en lasagne
-description: Comment enrichir son sol sans le travailler
 prix: 200
-img: /prestations/buttes_lasagne.jpg
 ---
+
+### Le principe
 
 Une butte en lasagne est une butte constituée de plusieurs couches de matières, qui offrira un terrain favorable à la culture des végétaux, en apportant au sol tous les éléments dont il a besoin, même si le sol d’origine n’est pas optimal pour la culture.
 Nous débuterons cet atelier par une partie théorique autour des questions suivantes : Qu’est-ce qu’un biodéchet ? Comment bien gérer ses biodéchets ? Qu’est-ce qu’une butte en lasagne ? Comment cela fonctionne ? Quels écosystèmes vivent dans le sol ?
 Ensuite, lors de la partie pratique, nous appliquerons les concepts abordés dans la partie théorique pour réaliser une butte avec les élèves, et verrons comment l’entretenir.
+
+![Description](/prestations/buttes/lasagnes.png)
 
 ### Programme
 
