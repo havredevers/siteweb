@@ -2,7 +2,7 @@
   <div class="app">
     <header class="main-menu">
       <NuxtLink to="/" class="title">
-        <img src="/ui/pomme-blanc.png" alt="" />
+        <nuxt-img format="webp" preload src="/ui/pomme-blanc.png" alt="" />
         <span>HAVRE DE VERS</span>
       </NuxtLink>
       <MainMenu />

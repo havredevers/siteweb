@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="logo">
-      <img src="/ui/logo-blanc.png" alt="" />
+      <nuxt-img format="webp" preload src="/ui/logo-blanc.png" alt="" />
     </div>
     <div class="content">
       <div class="coord">

@@ -59,6 +59,8 @@ export default {
     '@nuxtjs/eslint-module',
     // https://www.npmjs.com/package/nuxt-animejs
     'nuxt-animejs',
+    // https://image.nuxtjs.org
+    '@nuxt/image',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

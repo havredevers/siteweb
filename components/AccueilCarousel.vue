@@ -14,7 +14,7 @@
           :class="{ active: i == slideIndex - 1 }"
         >
           <div class="carousel-img">
-            <img :src="carouselItem.img" alt="" />
+            <nuxt-img format="webp" :src="carouselItem.img" alt="" />
           </div>
           <div class="carousel-title">
             <p>{{ carouselItem.text }}</p>

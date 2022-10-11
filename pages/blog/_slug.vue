@@ -12,7 +12,7 @@
         </li>
       </ul>
     </nav>
-    <img :src="article.img" alt="" />
+    <nuxt-img format="webp" :src="article.img" alt="" />
     <nuxt-content :document="article" />
   </article>
 </template>

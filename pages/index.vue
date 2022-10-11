@@ -10,7 +10,12 @@
         <ul class="valeurs">
           <li data-aos="fade-up">
             <div class="logo">
-              <img src="/ui/accueil/ver.png" alt="" />
+              <nuxt-img
+                format="webp"
+                src="/ui/accueil/ver.png"
+                alt=""
+                lazy="loading"
+              />
             </div>
             <div class="text">
               <h2>Prendre soin des êtres vivants</h2>
@@ -29,7 +34,12 @@
           </li>
           <li data-aos="fade-up">
             <div class="logo">
-              <img src="/ui/accueil/plante.png" alt="" />
+              <nuxt-img
+                format="webp"
+                src="/ui/accueil/plante.png"
+                alt=""
+                lazy="loading"
+              />
             </div>
             <div class="text">
               <h2>Prendre soin de notre environnement</h2>
@@ -44,7 +54,12 @@
           </li>
           <li data-aos="fade-up">
             <div class="logo">
-              <img src="/ui/accueil/solidarite.png" alt="" />
+              <nuxt-img
+                format="webp"
+                src="/ui/accueil/solidarite.png"
+                alt=""
+                lazy="loading"
+              />
             </div>
             <div class="text">
               <h2>Partager son temps et ses ressources</h2>

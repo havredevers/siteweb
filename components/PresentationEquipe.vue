@@ -8,7 +8,12 @@
       <ul class="membres">
         <li v-for="membre in equipe" :key="membre.order" class="membre">
           <div class="photo">
-            <img :src="'/staff/' + membre.photo" alt="" />
+            <nuxt-img
+              format="webp"
+              :src="'/staff/' + membre.photo"
+              alt=""
+              loading="lazy"
+            />
           </div>
           <h2>{{ membre.nom }}</h2>
           <ul>

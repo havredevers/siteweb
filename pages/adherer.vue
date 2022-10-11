@@ -50,7 +50,12 @@
         <div class="result" :class="{ loading: nbLoaded < 2 }">
           <Transition>
             <div v-if="nbLoaded < 2" class="loader">
-              <img src="/loader/loader.gif" alt="chargement" />
+              <nuxt-img
+                format="webp"
+                preload
+                src="/loader/loader.gif"
+                alt="chargement"
+              />
             </div>
           </Transition>
           <div class="iframe-container" :class="{ loaded: nbLoaded == 2 }">
