@@ -9,7 +9,7 @@ Une butte en lasagne est une butte constituée de plusieurs couches de matières
 Nous débuterons cet atelier par une partie théorique autour des questions suivantes : Qu’est-ce qu’un biodéchet ? Comment bien gérer ses biodéchets ? Qu’est-ce qu’une butte en lasagne ? Comment cela fonctionne ? Quels écosystèmes vivent dans le sol ?
 Ensuite, lors de la partie pratique, nous appliquerons les concepts abordés dans la partie théorique pour réaliser une butte avec les élèves, et verrons comment l’entretenir.
 
-<nuxt-img format="webp" src="/prestations/buttes/lasagnes.png" lazy="loading">
+<nuxt-img format="webp" src="/prestations/buttes/lasagnes.png" lazy="loading"></nuxt-img>
 
 ### Programme
 
