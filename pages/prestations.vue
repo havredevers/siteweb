@@ -72,7 +72,6 @@ export default {
 
   h3 {
     font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-    margin-bottom: 1.5rem;
 
     &:not(:first-child) {
       margin-top: 2rem;
@@ -103,18 +102,16 @@ export default {
   .content {
     font-size: clamp(1rem, 1.5vw, 1.4rem);
 
-    p {
-      &:last-child {
-        margin-bottom: 1rem;
-      }
-    }
-
     img {
       display: block;
       width: 100%;
       border-radius: 15px;
-      margin: 1.5rem auto;
+      margin: 2rem auto;
     }
+  }
+
+  .nuxt-content > * {
+    margin-bottom: 2rem;
   }
 }
 </style>
