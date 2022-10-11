@@ -5,14 +5,14 @@ export default {
   mounted() {
     const route = this.$route.name
 
-    window.addEventListener('load', () => {
-      if (route === 'prestations') {
-        const divs = document.querySelectorAll('.nuxt-content > *')
-        divs.forEach((div) => {
-          div.setAttribute('data-aos', 'fade-up')
+    if (route === 'prestations') {
+      const contents = document.querySelectorAll('.nuxt-content')
+      contents.forEach((content) => {
+        content.querySelectorAll('*').forEach((item) => {
+          item.setAttribute('data-aos', 'fade-up')
         })
-      }
-      AOS.init({})
-    })
+      })
+    }
+    AOS.init({})
   },
 }

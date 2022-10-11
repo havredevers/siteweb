@@ -42,7 +42,10 @@
 </template>
 
 <script>
+import aosMixin from '~/mixins/aos'
+
 export default {
+  mixins: [aosMixin],
   async asyncData({ $content, $variables, route }) {
     const prestations = await $content('prestas')
       // .without(['body'])
