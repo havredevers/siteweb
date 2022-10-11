@@ -56,8 +56,8 @@
           <div class="iframe-container">
             <Transition>
               <iframe
-                v-if="choix == 'proximite'"
                 id="haWidget"
+                :class="{ visible: choix == 'proximite' }"
                 allowtransparency="true"
                 scrolling="auto"
                 src="https://www.helloasso.com/associations/havre-de-vers/adhesions/havre-de-vers-adherent-de-proximite-1/widget"
@@ -66,8 +66,8 @@
             </Transition>
             <Transition>
               <iframe
-                v-if="choix == 'soutien'"
                 id="haWidget"
+                :class="{ visible: choix == 'soutien' }"
                 allowtransparency="true"
                 scrolling="auto"
                 src="https://www.helloasso.com/associations/havre-de-vers/adhesions/havre-de-vers-adherent-de-soutien-from-the-ends-of-the-earth/widget"
@@ -86,26 +86,27 @@ export default {
   data() {
     return {
       choix: '',
-      loading: false,
+      loading: true,
+      nbLoaded: 0,
     }
   },
   mounted() {
     const hash = this.$route.hash.slice(1)
     this.choix = hash
-    this.loading = ['proximite', 'soutien'].includes(hash)
   },
   methods: {
     setChoix(e) {
       this.choix = e.target.dataset.adhesion
       this.$router.push('#' + this.choix)
-      document.querySelector('.iframe-container').classList.remove('loaded')
-      this.loading = true
       setTimeout(this.scroll, 100)
     },
     onLoad(e) {
-      this.loading = false
-      document.querySelector('.iframe-container').classList.add('loaded')
-      this.scroll()
+      this.nbLoaded++
+      if (this.nbLoaded === 2) {
+        this.loading = false
+        document.querySelector('.iframe-container').classList.add('loaded')
+        this.scroll()
+      }
     },
     scroll() {
       window.scrollTo({
@@ -162,6 +163,11 @@ export default {
       border: none;
       width: 100%;
       max-height: 0;
+      display: none;
+
+      &.visible {
+        display: block;
+      }
     }
 
     &.loaded {
