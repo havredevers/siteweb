@@ -193,6 +193,7 @@ export default {
   min-height: 420px;
   margin: 0 auto;
   background-color: var(--clr-bg-dark);
+  overflow: hidden;
 
   &-inner {
     position: absolute;
