@@ -59,17 +59,6 @@ export default {
 
     return { prestations }
   },
-  mounted() {
-    const $this = this
-    window.onload = function () {
-      if ($this.$route.hash)
-        window.scrollTo({
-          top: document.querySelector('#' + this.$route.hash).offsetTop,
-          left: 1,
-          behavior: 'smooth',
-        })
-    }
-  },
   methods: {
     waveColors(i) {
       return i % 2 !== 0 ? ['#ead0a3', '#f7e9d4'] : ['#e3ad89', '#f4dbc9']
