@@ -3,7 +3,13 @@
     <div class="carousel">
       <div class="page-header">
         <div class="carousel-img">
-          <nuxt-img format="webp" src="/carousel/prestations.png" alt="" />
+          <nuxt-img
+            format="webp"
+            src="/carousel/prestations.png"
+            alt=""
+            width="1200"
+            height="815"
+          />
         </div>
         <div class="carousel-title">
           <h1>Nos prestations</h1>
