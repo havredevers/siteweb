@@ -73,11 +73,14 @@ export default {
         )
     ).then(() => {
       if ($this.$route.hash)
-        window.scrollTo({
-          top: document.querySelector('#' + this.$route.hash).offsetTop,
-          left: 1,
-          behavior: 'smooth',
-        })
+        setTimeout(() => {
+          console.log('images loaded')
+          window.scrollTo({
+            top: document.querySelector('#' + this.$route.hash).offsetTop,
+            left: 1,
+            behavior: 'smooth',
+          })
+        }, 50)
     })
   },
   methods: {
