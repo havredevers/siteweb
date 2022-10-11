@@ -74,10 +74,7 @@
 </template>
 
 <script>
-import aosMixin from '~/mixins/aos'
-
 export default {
-  mixins: [aosMixin],
   async asyncData({ $content, params }) {
     const articles = await $content('blog')
       .without(['body'])
