@@ -22,6 +22,10 @@ class AosPlugin {
         }, 100)
       },
       updated() {
+        if (this?.$vnode?.data?.staticClass !== 'page') {
+          return
+        }
+
         this.$nextTick(function () {
           console.log('hard refresh')
           AOS.refreshHard()

@@ -125,6 +125,8 @@ export default {
     display: flex;
     flex-direction: column;
     height: 100%;
+    position: absolute;
+    inset: 0;
   }
 
   @media (min-width: 850px) {
