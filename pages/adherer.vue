@@ -34,7 +34,7 @@
             class="cta"
             :class="{ actif: choix == 'proximite' }"
             data-adhesion="proximite"
-            @click="setChoix($event)"
+            @click="goTo($event.target.dataset.adhesion)"
           >
             Adhérent de proximité
           </button>
@@ -42,18 +42,18 @@
             class="cta"
             :class="{ actif: choix == 'soutien' }"
             data-adhesion="soutien"
-            @click="setChoix($event)"
+            @click="goTo($event.target.dataset.adhesion)"
           >
             Adhérent de soutien
           </button>
         </div>
-        <div class="result" :class="{ loading: loading }">
+        <div class="result" :class="{ loading: nbLoaded < 2 }">
           <Transition>
-            <div v-if="loading" class="loader">
+            <div v-if="nbLoaded < 2" class="loader">
               <img src="/loader/loader.gif" alt="chargement" />
             </div>
           </Transition>
-          <div class="iframe-container">
+          <div class="iframe-container" :class="{ loaded: nbLoaded == 2 }">
             <Transition>
               <iframe
                 id="haWidget"
@@ -86,33 +86,34 @@ export default {
   data() {
     return {
       choix: '',
-      loading: true,
       nbLoaded: 0,
     }
   },
   mounted() {
-    const hash = this.$route.hash.slice(1)
-    this.choix = hash
+    this.setChoix(this.$route.hash.slice(1))
   },
   methods: {
-    setChoix(e) {
-      this.choix = e.target.dataset.adhesion
-      this.$router.push('#' + this.choix)
-      setTimeout(this.scroll, 100)
+    setChoix(val) {
+      this.choix = ['soutien', 'proximite'].includes(val) ? val : ''
+    },
+    goTo(val) {
+      this.setChoix(val)
+      this.scroll()
     },
     onLoad(e) {
       this.nbLoaded++
-      if (this.nbLoaded === 2) {
-        this.loading = false
-        document.querySelector('.iframe-container').classList.add('loaded')
+      if (this.nbLoaded === 2 && this.choix !== '') {
         this.scroll()
       }
     },
     scroll() {
-      window.scrollTo({
-        top: document.querySelector('.choix').offsetTop + 100,
-        behavior: 'smooth',
-      })
+      this.$router.push('#' + this.choix)
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.querySelector('.choix').offsetTop + 100,
+          behavior: 'smooth',
+        })
+      }, 50)
     },
   },
 }
