@@ -59,7 +59,7 @@
 export default {
   data() {
     return {
-      slideIndex: 3,
+      slideIndex: 1,
       interval: null,
       isPlaying: true,
       delay: 4000,
@@ -104,7 +104,6 @@ export default {
     launch(e) {
       if (e) e.preventDefault()
       this.isPlaying = true
-      this.next()
       this.interval = setInterval(
         function () {
           this.next()
@@ -140,6 +139,8 @@ export default {
       if (n < 1) {
         this.slideIndex = slides.length
       }
+      clearInterval(this.interval)
+      this.launch()
     },
     handleTouchStart(e) {
       this.getPointerPosition(e, this.pointerPositionDown)
