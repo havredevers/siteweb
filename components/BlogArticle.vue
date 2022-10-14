@@ -184,6 +184,7 @@ export default {
         margin-top: 1.5rem;
         height: initial;
         opacity: initial;
+        overflow: initial;
         background: transparent;
         border-radius: 0;
       }

@@ -49,7 +49,7 @@
         </div>
         <div class="result" :class="{ loading: nbLoaded < 2 }">
           <Transition>
-            <div v-if="nbLoaded < 2" class="loader">
+            <div v-if="nbLoaded < 2 && choix != ''" class="loader">
               <nuxt-img preload src="/loader/loader.gif" alt="chargement" />
             </div>
           </Transition>
