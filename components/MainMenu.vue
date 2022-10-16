@@ -36,10 +36,6 @@ export default {
       .sortBy('title')
       .fetch()
   },
-  fetchOnServer: false,
-  mounted() {
-    this.$fetch()
-  },
   methods: {
     ToggleDropdown(e) {
       e.target.nextElementSibling.classList.toggle('open')
