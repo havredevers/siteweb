@@ -83,10 +83,11 @@ export default {
   methods: {
     animShapeTransition() {
       const wrap = document.querySelector('.shape-wrap')
-      window.scrollTo({ top: 0, left: 1 })
+
       wrap.classList.add('top')
 
       setTimeout(() => {
+        window.scrollTo({ top: 0, left: 1 })
         this.anim.play()
       }, 300)
     },

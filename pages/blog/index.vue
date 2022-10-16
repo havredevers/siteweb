@@ -25,6 +25,7 @@
             </ul>
           </div>
         </Transition>
+        <BlogPagination :current-page="page" :nb-pages="nbPages" />
       </div>
     </section>
   </div>
