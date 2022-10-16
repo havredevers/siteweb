@@ -61,6 +61,7 @@ export default {
       })
   },
   fetchOnServer: false,
+
   computed: {
     isError() {
       return this.page < 0 || this.page > this.nbPages
@@ -68,6 +69,9 @@ export default {
   },
   watch: {
     '$route.query': '$fetch',
+  },
+  mounted() {
+    this.$fetch()
   },
 }
 </script>
