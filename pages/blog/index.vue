@@ -40,11 +40,11 @@ export default {
     }
   },
   async fetch() {
+    this.page = parseInt(this.$route.query.page) || 1
     this.articles = await this.$content('blog')
       .only(['titre'])
       .fetch()
       .then((reponse) => {
-        this.page = parseInt(this.$route.query.page) || 1
         this.nbPages = Math.ceil(
           reponse.length / this.$variables.blogPagination
         )
