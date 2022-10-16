@@ -52,10 +52,7 @@ import 'aos/dist/aos.css'
 
 export default {
   async asyncData({ $content, $variables, route }) {
-    const prestations = await $content('prestas')
-      // .without(['body'])
-      .sortBy('title')
-      .fetch()
+    const prestations = await $content('prestas').sortBy('title').fetch()
 
     return { prestations }
   },

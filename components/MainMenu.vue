@@ -6,13 +6,47 @@
     </label>
     <ul class="menu">
       <li><NuxtLink to="/association">L'association</NuxtLink></li>
-      <li><NuxtLink to="/prestations">Prestations</NuxtLink></li>
+      <li>
+        <a @click="ToggleDropdown($event)">Prestations</a>
+        <ul class="dropdown">
+          <li v-for="prestation in prestations" :key="prestation.slug">
+            <NuxtLink :to="'/prestations/#' + prestation.slug">
+              {{ prestation.title }}
+            </NuxtLink>
+          </li>
+        </ul>
+      </li>
       <li><NuxtLink to="/blog">Blog</NuxtLink></li>
       <li><NuxtLink to="/adherer">Adhérer</NuxtLink></li>
       <li><NuxtLink to="/boutique">Boutique</NuxtLink></li>
     </ul>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      prestations: [],
+    }
+  },
+  async fetch() {
+    this.prestations = await this.$content('prestas')
+      .without(['body'])
+      .sortBy('title')
+      .fetch()
+  },
+  fetchOnServer: false,
+  mounted() {
+    this.$fetch()
+  },
+  methods: {
+    ToggleDropdown(e) {
+      e.target.nextElementSibling.classList.toggle('open')
+    },
+  },
+}
+</script>
 
 <style lang="scss">
 .menu {
@@ -26,20 +60,28 @@
   top: var(--hauteur-menu);
   left: 0;
   width: 100%;
-  height: 0;
+  max-height: 0;
   overflow: hidden;
-  transition: height 0.3s ease-in-out;
+  transition: max-height 0.3s ease-in-out;
   z-index: 50;
   box-shadow: var(--shadow);
 
   li {
+    padding-bottom: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  & > li {
     margin-left: 3%;
+    position: relative;
 
     a {
       color: var(--menu-font-color);
       text-transform: uppercase;
       font-weight: bold;
       position: relative;
+      max-width: 100%;
+      display: inline-block;
 
       &::after {
         display: block;
@@ -57,18 +99,63 @@
         width: 100%;
         height: 5px;
       }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    ul {
+      top: 4rem;
+      background: var(--clr-green3);
+      width: 100%;
+    }
+  }
+
+  .dropdown {
+    --menu-font-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    top: 1rem;
+    font-size: 0.8rem;
+
+    &.open {
+      max-height: 500px;
+      padding-top: 1rem;
+    }
+
+    li {
+      padding-left: 1rem;
+
+      a {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+
+    @media (min-width: 850px) {
+      position: absolute;
+      top: 4rem;
+      width: 300px;
+      font-size: 1rem;
     }
   }
 
   @media (min-width: 850px) {
     position: initial;
-    height: initial;
+    max-height: initial;
     flex-direction: row;
     overflow: initial;
     box-shadow: initial;
 
-    li:first-child {
-      margin-left: 0;
+    & > li {
+      padding: 0;
+      &:first-child {
+        margin-left: 0;
+      }
     }
   }
 }
@@ -76,10 +163,10 @@
 #menu-btn {
   display: none;
 
-  @media (max-width: 850px) {
+  @media (max-width: 849px) {
     &:checked {
       & ~ .menu {
-        height: 300px;
+        max-height: 500px;
         width: 100%;
       }
 

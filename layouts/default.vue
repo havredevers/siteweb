@@ -26,10 +26,17 @@ export default {
   watch: {
     $route(to, from) {
       document.getElementById('menu-btn').checked = false
+      document.querySelectorAll('.menu .dropdown').forEach((el) => {
+        el.classList.remove('open')
+      })
 
-      if (to.hash === '' && Object.keys(to.query).length === 0) {
+      if (to.name !== from.name) {
         this.animShapeTransition()
       }
+
+      setTimeout(() => {
+        document.querySelector('.main-menu').classList.add('sticky')
+      }, 800)
     },
   },
   beforeMount() {
@@ -209,7 +216,7 @@ export default {
 
     @media (min-width: 850px) {
       flex: 0 0 67%;
-      padding: 0.5rem;
+      padding: 1rem;
     }
   }
 }
