@@ -28,8 +28,8 @@
   background-position: 0px 0px;
 
   &.top {
-    transition: opacity 0.2s ease-in-out,
-      top 1.6s cubic-bezier(0.37, 0, 0.63, 1) 0.2s;
+    transition: opacity 0.05s ease-in-out,
+      top 1.2s cubic-bezier(0.37, 0, 0.63, 1) 0.2s;
 
     z-index: 90;
     top: calc(-100vh - 1200px);

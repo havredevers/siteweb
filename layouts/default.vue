@@ -71,7 +71,7 @@ export default {
 
     this.anim = this.$anime({
       targets: path,
-      duration: 1300,
+      duration: 1200,
       easing: 'easeInOutSine',
       d: path.getAttribute('pathdata:id'),
       autoplay: false,
@@ -87,9 +87,12 @@ export default {
       wrap.classList.add('top')
 
       setTimeout(() => {
+        document.querySelector('html').style.scrollBehavior = 'auto'
         window.scrollTo({ top: 0, left: 1 })
+        document.querySelector('html').style.scrollBehavior = 'smooth'
+
         this.anim.play()
-      }, 300)
+      }, 50)
     },
   },
 }
