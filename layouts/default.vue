@@ -9,12 +9,7 @@
     </header>
     <Nuxt class="page" />
     <MainFooter />
-    <div
-      class="scroll-to-top"
-      @click="window.scrollTo({ top: 0, left: 1, behavior: 'smooth' })"
-    >
-      &#8593;
-    </div>
+    <div class="scroll-to-top" @click="scrollToTop()">&#8593;</div>
     <TransitionShape />
   </div>
 </template>
@@ -81,6 +76,9 @@ export default {
     })
   },
   methods: {
+    scrollToTop() {
+      window.scrollTo({ top: 0, left: 1, behavior: 'smooth' })
+    },
     animShapeTransition() {
       const wrap = document.querySelector('.shape-wrap')
 
