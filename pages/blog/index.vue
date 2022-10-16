@@ -5,6 +5,7 @@
         <h1>Le Blog</h1>
       </div>
       <div class="content">
+        <a id="content" class="ancre"></a>
         <BlogPagination :current-page="page" :nb-pages="nbPages" />
         <Transition>
           <div v-if="isError && !$fetchState.pending">
@@ -41,6 +42,7 @@ export default {
     }
   },
   async fetch() {
+    document.querySelector('#content').scrollIntoView({ behavior: 'smooth' })
     this.page = parseInt(this.$route.query.page) || 1
     this.articles = await this.$content('blog')
       .only(['titre'])
