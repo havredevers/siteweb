@@ -62,8 +62,12 @@ export default {
       return this.page < 0 || this.page > this.nbPages
     },
   },
+
   watch: {
     '$route.query': '$fetch',
+  },
+  mounted() {
+    this.$fetch()
   },
 }
 </script>
