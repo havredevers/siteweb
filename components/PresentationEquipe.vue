@@ -1,16 +1,21 @@
 <template>
-  <section class="asso-2 section-page">
+  <section class="section-page">
     <span id="equipe" class="ancre"></span>
     <div class="title">
-      <h1>Présentation <br />de l'équipe</h1>
+      <h2>Présentation <br />de l'équipe</h2>
     </div>
     <div class="content">
       <ul class="membres">
-        <li v-for="membre in equipe" :key="membre.order" class="membre">
+        <li
+          v-for="membre in equipe"
+          :key="membre.order"
+          class="membre"
+          data-aos="fade-up"
+        >
           <div class="photo">
             <nuxt-img
               format="webp"
-              :src="'/staff/' + membre.photo"
+              :src="'/association/staff/' + membre.photo"
               alt=""
               loading="lazy"
             />

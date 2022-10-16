@@ -26,7 +26,7 @@
     <section
       v-for="(presta, index) in prestations"
       :key="presta.slug"
-      class="section section-page"
+      class="section-page"
     >
       <span :id="presta.slug" class="ancre"></span>
       <div class="title">
@@ -86,13 +86,6 @@ export default {
 
 <style lang="scss">
 .prestations {
-  h2 {
-    font-family: var(--font-changa);
-    font-size: clamp(1.5rem, 3.5vw, 4rem);
-    hyphens: auto;
-    margin-bottom: 3vw;
-  }
-
   h3 {
     font-size: clamp(1.5rem, 2.5vw, 2.5rem);
 
@@ -123,13 +116,15 @@ export default {
   }
 
   .content {
-    font-size: clamp(1rem, 1.5vw, 1.4rem);
-
     img {
       display: block;
       width: 100%;
       border-radius: 15px;
       margin: 2rem auto;
+
+      @media (min-width: 700px) {
+        width: 75%;
+      }
     }
   }
 

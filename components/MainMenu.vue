@@ -16,7 +16,7 @@
 
 <style lang="scss">
 .menu {
-  background-color: var(--clr-green1);
+  background-color: var(--bg-menu);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -36,7 +36,7 @@
     margin-left: 3%;
 
     a {
-      color: var(--clr-font);
+      color: var(--menu-font-color);
       text-transform: uppercase;
       font-weight: bold;
       position: relative;
@@ -48,12 +48,8 @@
         left: 0;
         bottom: -10px;
         width: 0;
-        background-color: var(--clr-green3);
+        background-color: var(--menu-font-color);
         transition: all 0.3s ease-in-out;
-      }
-
-      &.active {
-        color: var(--clr-green3);
       }
 
       &:hover::after,
@@ -108,7 +104,7 @@
 }
 
 .menu-icon {
-  --clr-hamburger: white;
+  --clr-hamburger: var(--menu-font-color);
   cursor: pointer;
   user-select: none;
   display: flex;
@@ -121,6 +117,7 @@
   right: 1rem;
   position: absolute;
   top: 1.5rem;
+  z-index: 75;
 
   @media (min-width: 850px) {
     display: none;

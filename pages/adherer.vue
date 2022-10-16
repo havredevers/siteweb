@@ -1,8 +1,31 @@
 <template>
   <div class="adherer">
+    <div class="carousel">
+      <div class="page-header">
+        <div class="carousel-img">
+          <nuxt-img
+            format="webp"
+            src="/carousel/adherer.png"
+            alt=""
+            width="1200"
+            height="815"
+          />
+        </div>
+        <div class="carousel-title">
+          <h1>Adhérer à l'association</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
+            architecto laudantium
+          </p>
+          <a class="protect cta" data-protect="havredeversarobasgmailpointcom">
+            Contactez-nous
+          </a>
+        </div>
+      </div>
+    </div>
     <section class="section-page">
       <div class="title">
-        <h1>Nous <br />rejoindre</h1>
+        <h2>Nous <br />rejoindre</h2>
       </div>
       <div class="content">
         <div class="intro">
@@ -30,11 +53,13 @@
           <q>Du jardin à l’assiette, nous envisageons un modèle bio-inspiré.</q>
         </div>
         <div class="choix">
+          <span id="proximite" class="ancre"></span>
+          <span id="soutien" class="ancre"></span>
           <button
             class="cta"
             :class="{ actif: choix == 'proximite' }"
             data-adhesion="proximite"
-            @click="goTo($event.target.dataset.adhesion)"
+            @click="setChoix($event.target.dataset.adhesion)"
           >
             Adhérent de proximité
           </button>
@@ -42,14 +67,17 @@
             class="cta"
             :class="{ actif: choix == 'soutien' }"
             data-adhesion="soutien"
-            @click="goTo($event.target.dataset.adhesion)"
+            @click="setChoix($event.target.dataset.adhesion)"
           >
             Adhérent de soutien
           </button>
         </div>
-        <div class="result" :class="{ loading: nbLoaded < 2 }">
+        <div class="result" :class="{ loading: nbLoaded < 2 && choix != '' }">
           <Transition>
-            <div v-if="nbLoaded < 2 && choix != ''" class="loader">
+            <div
+              v-if="nbLoaded < 2 && ['soutien', 'proximite'].includes(choix)"
+              class="loader"
+            >
               <nuxt-img preload src="/loader/loader.gif" alt="chargement" />
             </div>
           </Transition>
@@ -59,7 +87,6 @@
                 id="haWidget"
                 :class="{ visible: choix == 'proximite' }"
                 allowtransparency="true"
-                scrolling="auto"
                 src="https://www.helloasso.com/associations/havre-de-vers/adhesions/havre-de-vers-adherent-de-proximite-1/widget"
                 @load="onLoad"
               ></iframe>
@@ -69,7 +96,6 @@
                 id="haWidget"
                 :class="{ visible: choix == 'soutien' }"
                 allowtransparency="true"
-                scrolling="auto"
                 src="https://www.helloasso.com/associations/havre-de-vers/adhesions/havre-de-vers-adherent-de-soutien-from-the-ends-of-the-earth/widget"
                 @load="onLoad"
               ></iframe>
@@ -77,6 +103,7 @@
           </div>
         </div>
       </div>
+      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
   </div>
 </template>
@@ -89,31 +116,30 @@ export default {
       nbLoaded: 0,
     }
   },
+  watch: {
+    $route(to, from) {
+      this.choix = ['soutien', 'proximite'].includes(to.hash.slice(1))
+        ? to.hash.slice(1)
+        : ''
+    },
+  },
   mounted() {
     this.setChoix(this.$route.hash.slice(1))
   },
   methods: {
     setChoix(val) {
       this.choix = ['soutien', 'proximite'].includes(val) ? val : ''
-    },
-    goTo(val) {
-      this.setChoix(val)
-      this.scroll()
+      this.$router.push('#' + this.choix)
     },
     onLoad(e) {
       this.nbLoaded++
       if (this.nbLoaded === 2 && this.choix !== '') {
-        this.scroll()
+        setTimeout(() => {
+          document
+            .querySelector('.choix')
+            .scrollIntoView({ behavior: 'smooth' })
+        }, 50)
       }
-    },
-    scroll() {
-      this.$router.push('#' + this.choix)
-      setTimeout(() => {
-        window.scrollTo({
-          top: document.querySelector('.choix').offsetTop + 100,
-          behavior: 'smooth',
-        })
-      }, 50)
     },
   },
 }
@@ -146,14 +172,15 @@ export default {
   .choix {
     display: flex;
     justify-content: space-evenly;
+    position: relative;
 
-    & > .cta + .cta {
-      margin-left: 1rem;
+    & > .cta {
+      margin: 2rem 0;
+
+      & + .cta {
+        margin-left: 1rem;
+      }
     }
-  }
-
-  .cta {
-    margin: 2rem 0;
   }
 
   .iframe-container {

@@ -1,8 +1,30 @@
 <template>
   <div class="association">
-    <section class="asso-1 section-page">
+    <div class="carousel">
+      <div class="page-header">
+        <div class="carousel-img">
+          <nuxt-img
+            format="webp"
+            src="/association/cuisine.png"
+            alt=""
+            width="1200"
+            height="815"
+          />
+        </div>
+        <div class="carousel-title">
+          <h1>L'association</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
+            architecto laudantium
+          </p>
+          <NuxtLink to="/adherer" class="cta">Rejoignez-nous</NuxtLink>
+        </div>
+      </div>
+    </div>
+    <section class="section-page asso-1">
+      <span id="qui-sommes-nous" class="ancre"></span>
       <div class="title">
-        <h1>Qui sommes-nous ?</h1>
+        <h2>Qui sommes-nous ?</h2>
       </div>
       <div class="content">
         <p>
@@ -40,6 +62,7 @@
           </li>
         </ul>
       </div>
+      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
     <PresentationEquipe />
   </div>

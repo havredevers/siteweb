@@ -1,7 +1,7 @@
 <template>
   <div class="accueil">
     <AccueilCarousel />
-    <section class="accueil-1 section-page">
+    <section class="section-page">
       <span id="valeurs" class="ancre"></span>
       <div class="title">
         <h1>Nos <br />valeurs</h1>
@@ -125,10 +125,10 @@ export default {
     margin: 1rem auto;
   }
 
-  .accueil-1 {
-    h2 {
-      margin-bottom: 1rem;
-    }
+  h2 {
+    margin-bottom: 1rem;
+    font-family: Vibur, 'Times New Roman', Times, serif;
+    font-weight: 400;
   }
 }
 </style>

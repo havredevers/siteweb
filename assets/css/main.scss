@@ -46,6 +46,10 @@ $clr-font: #3b3025;
   list-style-type: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--clr-bg1);
   color: var(--clr-font);
@@ -80,7 +84,13 @@ h1 {
   }
 }
 
-h2,
+h2 {
+  font-family: var(--font-changa);
+  font-size: clamp(1.5rem, 3.5vw, 4rem);
+  hyphens: auto;
+  margin-bottom: 3vw;
+}
+
 h3 {
   font-family: 'Vibur', 'Times New Roman', Times, serif;
   font-weight: 400;

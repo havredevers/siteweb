@@ -2,14 +2,19 @@
   <div class="app">
     <header class="main-menu">
       <NuxtLink to="/" class="title">
-        <nuxt-img format="webp" preload src="/ui/pomme-blanc.png" alt="" />
+        <nuxt-img format="webp" preload src="/ui/pomme-marron.png" alt="" />
         <span>HAVRE DE VERS</span>
       </NuxtLink>
       <MainMenu />
     </header>
     <Nuxt class="page" />
     <MainFooter />
-    <div class="scroll-to-top" @click="scrollToTop()">&#8593;</div>
+    <div
+      class="scroll-to-top"
+      @click="window.scrollTo({ top: 0, left: 1, behavior: 'smooth' })"
+    >
+      &#8593;
+    </div>
     <TransitionShape />
   </div>
 </template>
@@ -76,12 +81,9 @@ export default {
     })
   },
   methods: {
-    scrollToTop() {
-      window.scrollTo({ top: 0, left: 1, behavior: 'smooth' })
-    },
     animShapeTransition() {
       const wrap = document.querySelector('.shape-wrap')
-
+      window.scrollTo({ top: 0, left: 1 })
       wrap.classList.add('top')
 
       setTimeout(() => {
@@ -94,6 +96,7 @@ export default {
 
 <style lang="scss">
 .app {
+  --bg-menu: var(--clr-primary);
   --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15),
     inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   min-height: 100vh;
@@ -141,13 +144,14 @@ export default {
 }
 
 .main-menu {
+  --menu-font-color: var(--clr-font);
   --hauteur-menu: 100px;
   display: flex;
   min-height: var(--hauteur-menu);
   position: sticky;
   top: 0;
   z-index: 100;
-  transition: all 0.3s ease-in;
+  transition: top 0.3s ease-in;
 
   &.reduced,
   &.sticky {
@@ -167,14 +171,15 @@ export default {
   }
 
   .title {
-    background-color: var(--clr-green2);
-    color: white;
+    background-color: var(--bg-menu);
+    color: var(--menu-font-color);
     font-family: 'FRUIT PUNCH';
     font-size: 1.5rem;
     display: flex;
     align-items: center;
     flex: 0 1 100%;
     padding: 1.5rem;
+    z-index: 60;
 
     & > * + * {
       margin-left: 1rem;
@@ -196,7 +201,7 @@ export default {
   }
 
   & > div {
-    background-color: var(--clr-green1);
+    background-color: var(--bg-menu);
     display: flex;
     align-items: center;
 

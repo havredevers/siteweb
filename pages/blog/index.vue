@@ -5,6 +5,7 @@
         <h1>Le Blog</h1>
       </div>
       <div class="content">
+        <BlogPagination :current-page="page" :nb-pages="nbPages" />
         <Transition>
           <div v-if="isError && !$fetchState.pending">
             <p class="error">La page demandée a été compostée</p>
@@ -24,7 +25,6 @@
             </ul>
           </div>
         </Transition>
-        <BlogPagination :current-page="page" :nb-pages="nbPages" />
       </div>
     </section>
   </div>
@@ -65,38 +65,13 @@ export default {
   watch: {
     '$route.query': '$fetch',
   },
-  mounted() {
-    this.page = parseInt(this.$route.query.page) || 1
-  },
 }
 </script>
 
 <style lang="scss">
 .blog {
-  .prev-next {
-    display: flex;
-    justify-content: space-between;
-    margin: 2rem auto;
-    font-weight: bold;
-    font-size: 2rem;
-    max-width: 850px;
-
-    a {
-      color: var(--clr-primary);
-      border: 1px solid var(--clr-primary);
-      border-radius: 100%;
-      padding: 15px;
-
-      &:focus-visible,
-      &:hover {
-        background: var(--clr-primary);
-        color: white;
-      }
-    }
-
-    @media (min-width: 550px) {
-      justify-content: space-between;
-    }
+  .pagination {
+    margin-bottom: 2rem;
   }
 }
 </style>

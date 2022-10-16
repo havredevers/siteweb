@@ -16,7 +16,7 @@
 
 <style lang="scss">
 .shape-wrap {
-  --shape-color: hsl(73, 42%, 30%);
+  --shape-color: var(--bg-menu);
   position: fixed;
   z-index: -1;
   width: 100%;
