@@ -41,6 +41,7 @@ export default {
   async fetch() {
     this.equipe = await this.$content('staff').sortBy('order').fetch()
   },
+  fetchOnServer: false,
 }
 </script>
 
