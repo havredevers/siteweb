@@ -42,7 +42,6 @@ export default {
     }
   },
   async fetch() {
-    document.querySelector('#content').scrollIntoView({ behavior: 'smooth' })
     this.page = parseInt(this.$route.query.page) || 1
     this.articles = await this.$content('blog')
       .only(['titre'])
@@ -61,17 +60,19 @@ export default {
       })
   },
   fetchOnServer: false,
-
   computed: {
     isError() {
       return this.page < 0 || this.page > this.nbPages
     },
   },
   watch: {
-    '$route.query': '$fetch',
+    '$route.query': 'launch',
   },
-  mounted() {
-    this.$fetch()
+  methods: {
+    launch() {
+      document.querySelector('#content').scrollIntoView({ behavior: 'smooth' })
+      this.$fetch()
+    },
   },
 }
 </script>
