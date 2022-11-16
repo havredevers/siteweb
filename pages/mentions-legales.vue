@@ -69,8 +69,21 @@
       <div class="content">
         <address>
           <div>Pierre-Jean CHANCELLIER</div>
-          14, impasse floréal<br />76600 LE HAVRE<br /><br />
-          Téléphone&nbsp;: <a href="tel:+33676836347">06.76.83.63.47</a>
+          <br />
+          <div class="contact">
+            Contact :
+            <ul>
+              <li>
+                Par mail :
+                <a
+                  class="protect"
+                  data-protect="pjchancellierarobasgmailpointcom"
+                >
+                  Envoyer un mail
+                </a>
+              </li>
+            </ul>
+          </div>
         </address>
         <br />
         <div>
@@ -88,7 +101,7 @@
       <div class="content">
         <address>
           <a href="https://netlify.app/" target="_blank">Netlify</a><br />
-          44 Montgomery Street, Suite 300<br />San Francisco, CA 94104
+          44 Montgomery Street, Suite 300<br />San Francisco, CA 94104<br /><br />support@netlify.com
         </address>
         <br />
         <p>

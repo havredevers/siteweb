@@ -67,7 +67,7 @@
             </a>
           </li>
         </ul>
-        <nuxtLink to="/mentions-legales" class="mentions">
+        <nuxtLink to="/mentions-legales" class="mentions-link">
           Mentions légales
         </nuxtLink>
       </div>
@@ -177,9 +177,13 @@
       }
     }
 
+    .mentions-link {
+      display: block;
+    }
+
     @media (min-width: 550px) {
       .footer-title,
-      .mentions {
+      .mentions-link {
         text-align: right;
       }
     }
