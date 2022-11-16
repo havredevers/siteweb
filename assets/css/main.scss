@@ -87,7 +87,6 @@ h1 {
 h2 {
   font-family: var(--font-changa);
   font-size: clamp(1.5rem, 3.5vw, 4rem);
-  margin-bottom: 3vw;
 }
 
 h3 {
@@ -353,6 +352,10 @@ button {
     flex: 0 0 33%;
     text-align: center;
     padding: 6% 2.7% 6% 6%;
+
+    h2 {
+      margin-bottom: 3vw;
+    }
   }
 
   .content {

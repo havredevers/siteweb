@@ -24,7 +24,7 @@
     <section class="section-page asso-1">
       <span id="qui-sommes-nous" class="ancre"></span>
       <div class="title">
-        <h2>Qui sommes-nous ?</h2>
+        <h2>Qui sommes-nous&nbsp;?</h2>
       </div>
       <div class="content">
         <p>

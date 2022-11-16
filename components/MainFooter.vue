@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="reseaux">
-        <div class="footer-title">Contactez-nous !</div>
+        <div class="footer-title">Contactez-nous&nbsp;!</div>
         <ul>
           <li>
             <a
