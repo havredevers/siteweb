@@ -1,5 +1,5 @@
 ---
-title: Atelier bombes à graines
+title: Atelier bombes de graines
 prix: 250
 ---
 
