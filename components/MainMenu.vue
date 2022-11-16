@@ -72,6 +72,7 @@ export default {
     position: relative;
 
     a {
+      text-decoration: none;
       color: var(--menu-font-color);
       text-transform: uppercase;
       font-weight: bold;

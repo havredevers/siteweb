@@ -87,7 +87,6 @@ h1 {
 h2 {
   font-family: var(--font-changa);
   font-size: clamp(1.5rem, 3.5vw, 4rem);
-  hyphens: auto;
   margin-bottom: 3vw;
 }
 
@@ -108,7 +107,8 @@ hr {
 }
 
 a {
-  text-decoration: none;
+  color: var(--clr-font);
+  font-weight: bold;
 }
 
 a:focus-visible {
@@ -319,6 +319,7 @@ button {
 }
 
 .cta {
+  text-decoration: none;
   border-radius: 1rem;
   background-color: var(--clr-green1);
   color: var(--clr-font);

@@ -20,7 +20,7 @@
               loading="lazy"
             />
           </div>
-          <h2>{{ membre.nom }}</h2>
+          <h3>{{ membre.nom }}</h3>
           <ul>
             <li v-for="role in membre.roles" :key="role">{{ role }}</li>
           </ul>
@@ -49,7 +49,7 @@ export default {
 .membres {
   --largeur-photo: initial;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
@@ -57,7 +57,7 @@ export default {
 
   @media (min-width: 550px) {
     flex-direction: row;
-    --largeur-photo: 45%;
+    --largeur-photo: 30%;
   }
 
   @media (min-width: 850px) {
@@ -65,7 +65,7 @@ export default {
   }
 
   @media (min-width: 1200px) {
-    --largeur-photo: 45%;
+    --largeur-photo: 30%;
   }
 }
 
@@ -73,8 +73,14 @@ export default {
   flex: var(--largeur-photo);
   max-width: var(--largeur-photo);
   color: var(--clr-secondary);
-  margin-top: 2rem;
+  margin: 2rem 3% 2rem 0;
   text-align: center;
+
+  h3 {
+    font-family: var(--font-changa);
+    font-size: clamp(1.5rem, 2.7vw, 2.5rem);
+    margin-bottom: 0.5rem;
+  }
 
   .photo {
     aspect-ratio: 1/1;

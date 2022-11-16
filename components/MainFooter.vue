@@ -67,6 +67,9 @@
             </a>
           </li>
         </ul>
+        <nuxtLink to="/mentions-legales" class="mentions">
+          Mentions légales
+        </nuxtLink>
       </div>
     </div>
     <HomeWave :colors="['#90a73f', '#d3d9ac']" />
@@ -103,10 +106,12 @@
     flex: 0 0 67%;
     background-color: var(--clr-green1);
     padding-bottom: 5rem;
+    text-align: center;
 
     @media (min-width: 550px) {
       display: flex;
       justify-content: space-between;
+      text-align: initial;
     }
   }
 
@@ -118,62 +123,64 @@
     align-self: start;
     flex: 0 0 auto;
 
-    .footer-title {
-      @media (min-width: 550px) {
-        text-align: right;
-      }
-    }
-
     ul {
-      margin-top: 0.5rem;
+      margin: 0.5rem 0 1rem;
       display: flex;
+      justify-content: center;
 
       & > * + * {
         margin-left: 1rem;
       }
-    }
 
-    a {
-      display: block;
-      position: relative;
-      z-index: 1;
-      border: 2px solid var(--clr-font);
-      border-radius: 100%;
-      overflow: hidden;
-      aspect-ratio: 1/1;
-      transition: all 0.3s ease-in-out;
-
-      svg {
-        --svg-size: clamp(30px, 4vw, 45px);
-        fill: var(--clr-font);
-        width: var(--svg-size);
-        height: var(--svg-size);
-        padding: 0.5rem;
-      }
-
-      &::before {
-        position: absolute;
-        content: '';
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        transition: opacity 0.3s ease-in-out;
-        opacity: 0;
-      }
-
-      &:focus-visible,
-      &:hover {
-        border-color: transparent;
+      a {
+        display: block;
+        position: relative;
+        z-index: 1;
+        border: 2px solid var(--clr-font);
+        border-radius: 100%;
+        overflow: hidden;
+        aspect-ratio: 1/1;
+        transition: all 0.3s ease-in-out;
 
         svg {
-          fill: white;
+          --svg-size: clamp(30px, 4vw, 45px);
+          fill: var(--clr-font);
+          width: var(--svg-size);
+          height: var(--svg-size);
+          padding: 0.5rem;
         }
 
         &::before {
-          opacity: 1;
+          position: absolute;
+          content: '';
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: -1;
+          transition: opacity 0.3s ease-in-out;
+          opacity: 0;
         }
+
+        &:focus-visible,
+        &:hover {
+          border-color: transparent;
+
+          svg {
+            fill: white;
+          }
+
+          &::before {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 550px) {
+      .footer-title,
+      .mentions {
+        text-align: right;
       }
     }
   }

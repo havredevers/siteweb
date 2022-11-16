@@ -43,6 +43,7 @@ export default {
   text-align: center;
 
   a {
+    text-decoration: none;
     --img-size: 100%;
     display: inline-block;
     margin: auto;

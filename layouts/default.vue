@@ -180,6 +180,7 @@ export default {
   }
 
   .title {
+    text-decoration: none;
     background-color: var(--bg-menu);
     color: var(--menu-font-color);
     font-family: 'FRUIT PUNCH';
