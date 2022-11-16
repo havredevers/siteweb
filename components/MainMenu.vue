@@ -7,7 +7,11 @@
     <ul class="menu">
       <li><NuxtLink to="/association">L'association</NuxtLink></li>
       <li>
-        <a @click="ToggleDropdown($event)">Prestations</a>
+        <a
+          :class="$route.name == 'prestations' ? 'active' : ''"
+          @click="ToggleDropdown($event)"
+          >Prestations</a
+        >
         <ul class="dropdown">
           <li v-for="prestation in prestations" :key="prestation.slug">
             <NuxtLink :to="'/prestations/#' + prestation.slug">
