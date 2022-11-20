@@ -61,7 +61,7 @@
             data-adhesion="proximite"
             @click="setChoix($event.target.dataset.adhesion)"
           >
-            Adhérent de proximité
+            Adhésion de proximité
           </button>
           <button
             class="cta"
@@ -69,7 +69,7 @@
             data-adhesion="soutien"
             @click="setChoix($event.target.dataset.adhesion)"
           >
-            Adhérent de soutien
+            Adhésion de soutien
           </button>
         </div>
         <div class="result" :class="{ loading: nbLoaded < 2 && choix != '' }">
