@@ -266,7 +266,7 @@ button {
 
   @media (min-width: 850px) {
     min-height: initial;
-    padding-bottom: 28%;
+    padding-bottom: 36%;
     max-height: 530px;
 
     .controls,
@@ -314,6 +314,10 @@ button {
     .cta {
       margin: initial;
     }
+  }
+
+  @media (min-width: 1600px) {
+    padding-bottom: 31%;
   }
 }
 
