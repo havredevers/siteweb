@@ -14,7 +14,7 @@
         >
           <div class="photo">
             <nuxt-img
-              format="webp"
+              format="png"
               :src="'/association/staff/' + membre.photo"
               alt=""
               loading="lazy"

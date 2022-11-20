@@ -11,7 +11,7 @@
           <li data-aos="fade-up">
             <div class="logo">
               <nuxt-img
-                format="webp"
+                format="png"
                 src="/ui/accueil/ver.png"
                 alt=""
                 lazy="loading"
@@ -35,7 +35,7 @@
           <li data-aos="fade-up">
             <div class="logo">
               <nuxt-img
-                format="webp"
+                format="png"
                 src="/ui/accueil/plante.png"
                 alt=""
                 lazy="loading"
@@ -55,7 +55,7 @@
           <li data-aos="fade-up">
             <div class="logo">
               <nuxt-img
-                format="webp"
+                format="png"
                 src="/ui/accueil/solidarite.png"
                 alt=""
                 lazy="loading"

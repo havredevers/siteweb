@@ -4,7 +4,7 @@
       <div class="page-header">
         <div class="carousel-img">
           <nuxt-img
-            format="webp"
+            format="png"
             src="/carousel/boutique.png"
             alt=""
             width="1200"

@@ -1,7 +1,7 @@
 <template>
   <NuxtLink :to="article.path">
     <div class="article-logo">
-      <nuxt-img format="webp" :src="article.img" alt="" loading="lazy" />
+      <nuxt-img format="png" :src="article.img" alt="" loading="lazy" />
     </div>
     <div class="article-content">
       <div class="article-title">
