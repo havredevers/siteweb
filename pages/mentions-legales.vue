@@ -57,7 +57,7 @@
       <div class="content">
         <address>
           <div>Léo MASSÉ</div>
-          <div>Président de l'association</div>
+          <div>Co-fondateur de l'association</div>
         </address>
       </div>
       <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
