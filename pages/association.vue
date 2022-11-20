@@ -13,9 +13,7 @@
         </div>
         <div class="carousel-title">
           <h1>L'association</h1>
-          <p>
-            Ici on voit la vie en VERS
-          </p>
+          <p>Ici on voit la vie en VERS</p>
           <NuxtLink to="/adherer" class="cta">Rejoignez-nous</NuxtLink>
         </div>
       </div>
@@ -25,7 +23,7 @@
       <div class="title">
         <h2>Qui sommes-nous&nbsp;?</h2>
       </div>
-      <div class="content">
+      <div class="content lead">
         <p>
           HAVRE DE VERS est née, le 14 janvier 2016, d'une envie commune de
           trois amis, Marian, Flavien et Léo, afin d'apporter une solution face

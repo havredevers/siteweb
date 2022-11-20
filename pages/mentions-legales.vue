@@ -24,7 +24,7 @@
       <div class="title">
         <h2>Coordonnées de l'association</h2>
       </div>
-      <div class="content">
+      <div class="content lead">
         <address data-aos="fade-up">
           <div>Havre De Vers</div>
           <div>13, rue de Tourville 76600 LE HAVRE</div>
@@ -54,7 +54,7 @@
       <div class="title">
         <h2>Directeur de la publication</h2>
       </div>
-      <div class="content">
+      <div class="content lead">
         <address data-aos="fade-up">
           <div>Léo MASSÉ</div>
           <div>Co-fondateur de l'association</div>
@@ -66,7 +66,7 @@
       <div class="title">
         <h2>Développement du site</h2>
       </div>
-      <div class="content">
+      <div class="content lead">
         <address data-aos="fade-up">
           <div>Pierre-Jean CHANCELLIER</div>
           <br />
@@ -102,7 +102,7 @@
       <div class="title">
         <h2>Hébergement du site</h2>
       </div>
-      <div class="content">
+      <div class="content lead">
         <address data-aos="fade-up">
           <a href="https://netlify.app/" target="_blank">Netlify</a><br />
           44 Montgomery Street, Suite 300<br />San Francisco, CA 94104<br /><br />support@netlify.com
@@ -121,7 +121,14 @@
       <div class="title">
         <h2>Règlement Général sur la Protection des Données</h2>
       </div>
-      <div class="content">
+      <div class="content lead">
+        <p data-aos="fade-up">
+          Les formulaires d'adhésion sont hébergés par HelloAsso. Vous pouvez
+          consulter leurs mentions légales à
+          <a href="https://www.helloasso.com/mentions-legales" target="_blank"
+            >cette adresse</a
+          >.
+        </p>
         <p data-aos="fade-up">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur,
           repellat beatae? Perferendis et praesentium quasi veniam doloribus

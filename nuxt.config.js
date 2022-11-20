@@ -73,11 +73,10 @@ export default {
 
   webfontloader: {
     google: {
-      families: ['Work Sans', 'Changa One', 'Vibur'],
-      urls: [
-        'https://fonts.googleapis.com/css2?family=Work+Sans:wght@400..700&display=swap',
-        'https://fonts.googleapis.com/css2?family=Changa+One:wght@400..700&display=swap',
-        'https://fonts.googleapis.com/css2?family=Vibur:wght@400..700&display=swap',
+      families: [
+        'Work Sans:300,400,700',
+        'Changa One:400,700',
+        'Vibur:400,700',
       ],
     },
   },

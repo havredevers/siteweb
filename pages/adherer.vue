@@ -28,7 +28,7 @@
         <h2>Nous <br />rejoindre</h2>
       </div>
       <div class="content">
-        <div class="intro">
+        <div class="intro lead">
           <p>
             Adhérez à l'association et profitez des avantages proposés par cette
             dernière :
@@ -164,6 +164,9 @@ export default {
 }
 
 .adherer {
+  ul {
+    margin: 1rem 0;
+  }
   li {
     margin-left: 2rem;
     list-style-type: initial;
