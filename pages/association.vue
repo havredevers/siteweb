@@ -14,8 +14,7 @@
         <div class="carousel-title">
           <h1>L'association</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
-            architecto laudantium
+            Ici on voit la vie en VERS
           </p>
           <NuxtLink to="/adherer" class="cta">Rejoignez-nous</NuxtLink>
         </div>
