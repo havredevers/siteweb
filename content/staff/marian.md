@@ -1,6 +1,6 @@
 ---
 nom: 'Marian'
-photo: 'marian.png'
+photo: 'marian.jpg'
 roles: [Co-fondateur, Maître composteur, Médiateur de l'association]
 order: 1
 ---

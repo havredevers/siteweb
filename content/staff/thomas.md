@@ -1,6 +1,6 @@
 ---
 nom: 'Thomas'
-photo: 'no-photo.png'
+photo: 'thomas.jpg'
 roles: [Co-président, Référent jardin]
 order: 3
 ---

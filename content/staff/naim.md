@@ -1,6 +1,6 @@
 ---
 nom: 'Naïm'
-photo: 'no-photo.png'
+photo: 'naim.jpg'
 roles: [Co-président]
 order: 6
 ---

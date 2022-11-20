@@ -54,6 +54,7 @@ export default {
   flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
+  align-items: flex-start;
 
   @media (min-width: 550px) {
     flex-direction: row;
@@ -79,11 +80,15 @@ export default {
   h3 {
     font-family: var(--font-changa);
     font-size: clamp(1.5rem, 2.7vw, 2.5rem);
-    margin-bottom: 0.5rem;
+    margin: 0.5rem 0;
   }
 
   .photo {
-    aspect-ratio: 1/1;
+    padding-bottom: 88%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 5px 5px 5px grey;
   }
 
   img {

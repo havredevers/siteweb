@@ -1,6 +1,6 @@
 ---
 nom: 'Claire'
-photo: 'no-photo.png'
+photo: 'claire.jpg'
 roles: [Co-présidente]
 order: 5
 ---

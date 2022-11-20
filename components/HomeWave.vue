@@ -36,7 +36,7 @@ export default {
 .wave {
   display: none;
   position: absolute;
-  bottom: 100%;
+  bottom: 99%;
   width: 100%;
   z-index: 2;
 

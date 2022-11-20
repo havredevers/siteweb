@@ -1,6 +1,6 @@
 ---
 nom: 'Edward'
-photo: 'no-photo.png'
+photo: 'edward.jpg'
 roles: [Co-président]
 order: 7
 ---

@@ -1,6 +1,6 @@
 ---
 nom: 'Aurore'
-photo: 'no-photo.png'
+photo: 'aurore.jpg'
 roles: [Co-présidente]
 order: 8
 ---
