@@ -29,10 +29,10 @@
       </div>
       <div class="content">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
-          non natus rem illum illo. Vitae quae, id facilis, ducimus doloribus
-          sit maxime cum odio aspernatur quo repellat nesciunt voluptatibus
-          iusto!
+          Nous ne disposons pas encore de boutique en ligne.
+          Mais ça ne devrait pas tarder !
+          
+          Les vers de terre n'ont pas encore fini les galeries pour y accéder...!
         </p>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
