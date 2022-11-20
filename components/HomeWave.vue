@@ -36,7 +36,7 @@ export default {
 .wave {
   display: none;
   position: absolute;
-  bottom: 99%;
+  bottom: 99.5%;
   width: 100%;
   z-index: 2;
 
@@ -54,6 +54,7 @@ export default {
 @media (min-width: 850px) {
   .section-page > :not(.wave) {
     padding-bottom: var(--wave-height);
+    padding-top: 1rem;
   }
 }
 </style>

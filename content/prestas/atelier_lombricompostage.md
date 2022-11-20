@@ -1,5 +1,5 @@
 ---
-title: Atelier lombricompostage
+title: Atelier compostage
 prix: 200
 ---
 

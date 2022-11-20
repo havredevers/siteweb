@@ -25,7 +25,7 @@
         <h2>Coordonnées de l'association</h2>
       </div>
       <div class="content">
-        <address>
+        <address data-aos="fade-up">
           <div>Havre De Vers</div>
           <div>13, rue de Tourville 76600 LE HAVRE</div>
           <br />
@@ -55,7 +55,7 @@
         <h2>Directeur de la publication</h2>
       </div>
       <div class="content">
-        <address>
+        <address data-aos="fade-up">
           <div>Léo MASSÉ</div>
           <div>Co-fondateur de l'association</div>
         </address>
@@ -67,7 +67,7 @@
         <h2>Développement du site</h2>
       </div>
       <div class="content">
-        <address>
+        <address data-aos="fade-up">
           <div>Pierre-Jean CHANCELLIER</div>
           <br />
           <div class="contact">
@@ -86,10 +86,14 @@
           </div>
         </address>
         <br />
-        <div>
+        <div data-aos="fade-up">
           Le site a été développé grâce à des technologies Open-Source. Le
           framework utilisé est
           <a href="https://nuxtjs.org/" target="_blank">Nuxt.js</a>.
+        </div>
+        <br />
+        <div data-aos="fade-up">
+          Crédits photos : Tony Bélénus pour les photos des membres du bureau.
         </div>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
@@ -99,12 +103,12 @@
         <h2>Hébergement du site</h2>
       </div>
       <div class="content">
-        <address>
+        <address data-aos="fade-up">
           <a href="https://netlify.app/" target="_blank">Netlify</a><br />
           44 Montgomery Street, Suite 300<br />San Francisco, CA 94104<br /><br />support@netlify.com
         </address>
         <br />
-        <p>
+        <p data-aos="fade-up">
           Le code source du site est stocké sur
           <a href="https://github.com/havredevers/siteweb" target="_blank">
             la plateforme Github</a
@@ -118,7 +122,7 @@
         <h2>Règlement Général sur la Protection des Données</h2>
       </div>
       <div class="content">
-        <p>
+        <p data-aos="fade-up">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur,
           repellat beatae? Perferendis et praesentium quasi veniam doloribus
           dolorem aliquid, sapiente dolore facilis tempore soluta natus aperiam

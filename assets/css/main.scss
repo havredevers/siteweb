@@ -27,7 +27,7 @@ $clr-font: #3b3025;
   --clr-green3: #{$clr-green3};
   --clr-font: #{$clr-font};
   --container-width: 1440px;
-  --wave-height: 6vw;
+  --wave-height: 8vw;
   font-size: 16px;
   scrollbar-color: var(--clr-secondary) var(--clr-primary);
 }
@@ -355,17 +355,17 @@ button {
   .title {
     flex: 0 0 33%;
     text-align: center;
-    padding: 6% 2.7% 6% 6%;
+    padding: 0% 2.7% 6% 6%;
 
     h2 {
-      margin-bottom: 3vw;
+      padding-top: 1.5rem;
     }
   }
 
   .content {
     position: relative;
     flex: 0 0 67%;
-    padding: 6% 10% 1rem 10%;
+    padding: 3% 10% 1rem 10%;
   }
 
   h2 {
@@ -403,9 +403,8 @@ button {
       max-width: 67%;
     }
 
-    .title,
-    .content {
-      padding-top: 3%;
+    .title h2 {
+      padding-top: 0;
     }
   }
 }
