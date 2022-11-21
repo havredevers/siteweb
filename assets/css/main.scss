@@ -8,13 +8,7 @@ $clr-green2: #90a73f;
 $clr-green3: #5c7811;
 $clr-font: #3b3025;
 
-@font-face {
-  font-family: 'Fruit Punch';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('~assets/fonts/FRUIT-PUNCH.ttf') format('truetype');
-}
+@import './fonts.scss';
 
 :root {
   --clr-primary: #{$clr-primary};
