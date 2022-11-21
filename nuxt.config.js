@@ -42,7 +42,6 @@ export default {
       {
         src: 'https://cdnjs.cloudflare.com/ajax/libs/tarteaucitronjs/1.9.9/tarteaucitron.js',
       },
-      { src: '/tarteaucitron.js' },
     ],
   },
 
