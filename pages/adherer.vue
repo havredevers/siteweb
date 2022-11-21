@@ -72,35 +72,17 @@
             Adhésion de soutien
           </button>
         </div>
-        <div class="result" :class="{ loading: nbLoaded < 2 && choix != '' }">
-          <Transition>
-            <div
-              v-if="nbLoaded < 2 && ['soutien', 'proximite'].includes(choix)"
-              class="loader"
-            >
-              <nuxt-img preload src="/loader/loader.gif" alt="chargement" />
-            </div>
-          </Transition>
-          <div class="iframe-container" :class="{ loaded: nbLoaded == 2 }">
-            <Transition>
-              <iframe
-                id="haWidget"
-                :class="{ visible: choix == 'proximite' }"
-                allowtransparency="true"
-                src="https://www.helloasso.com/associations/havre-de-vers/adhesions/havre-de-vers-adherent-de-proximite-1/widget"
-                @load="onLoad"
-              ></iframe>
-            </Transition>
-            <Transition>
-              <iframe
-                id="haWidget"
-                :class="{ visible: choix == 'soutien' }"
-                allowtransparency="true"
-                src="https://www.helloasso.com/associations/havre-de-vers/adhesions/havre-de-vers-adherent-de-soutien-from-the-ends-of-the-earth/widget"
-                @load="onLoad"
-              ></iframe>
-            </Transition>
-          </div>
+        <div class="iframe-container">
+          <div
+            class="tac_helloasso"
+            :class="{ visible: choix == 'proximite' }"
+            data-url="https://www.helloasso.com/associations/havre-de-vers/adhesions/havre-de-vers-adherent-de-proximite-1/widget"
+          ></div>
+          <div
+            class="tac_helloasso"
+            :class="{ visible: choix == 'soutien' }"
+            data-url="https://www.helloasso.com/associations/havre-de-vers/adhesions/havre-de-vers-adherent-de-soutien-from-the-ends-of-the-earth/widget"
+          ></div>
         </div>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
@@ -113,7 +95,6 @@ export default {
   data() {
     return {
       choix: '',
-      nbLoaded: 0,
     }
   },
   watch: {
@@ -131,36 +112,21 @@ export default {
       this.choix = ['soutien', 'proximite'].includes(val) ? val : ''
       this.$router.push('#' + this.choix)
     },
-    onLoad(e) {
-      this.nbLoaded++
-      if (this.nbLoaded === 2 && this.choix !== '') {
-        setTimeout(() => {
-          document
-            .querySelector('.choix')
-            .scrollIntoView({ behavior: 'smooth' })
-        }, 50)
-      }
-    },
   },
 }
 </script>
 
 <style lang="scss">
-.loader {
-  text-align: center;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
+.tac_helloasso {
+  display: none;
+
+  &.visible {
+    display: block;
+  }
 }
 
 .result {
   position: relative;
-
-  &.loading .iframe-container {
-    min-height: 200px;
-  }
 }
 
 .adherer {
@@ -187,46 +153,34 @@ export default {
   }
 
   .iframe-container {
-    opacity: 0;
-    transition: opacity 0.5s ease, max-height 0.5s ease;
+    min-height: 200px;
+    max-height: 1500px;
 
     iframe {
       border: none;
       width: 100%;
       max-height: 0;
-      display: none;
 
-      &.visible {
-        display: block;
+      min-height: 1500px;
+
+      @media (min-width: 435px) {
+        min-height: 1350px;
       }
-    }
 
-    &.loaded {
-      opacity: 1;
-      max-height: 1500px;
+      @media (min-width: 550px) {
+        min-height: 1250px;
+      }
 
-      iframe {
-        min-height: 1500px;
+      @media (min-width: 700px) {
+        min-height: 1150px;
+      }
 
-        @media (min-width: 435px) {
-          min-height: 1350px;
-        }
+      @media (min-width: 850px) {
+        min-height: 1300px;
+      }
 
-        @media (min-width: 550px) {
-          min-height: 1250px;
-        }
-
-        @media (min-width: 700px) {
-          min-height: 1150px;
-        }
-
-        @media (min-width: 850px) {
-          min-height: 1300px;
-        }
-
-        @media (min-width: 1200px) {
-          min-height: 1200px;
-        }
+      @media (min-width: 1200px) {
+        min-height: 1200px;
       }
     }
   }

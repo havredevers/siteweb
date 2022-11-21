@@ -38,6 +38,12 @@ export default {
       { rel: 'manifest', href: '/site.webmanifest' },
       { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#84aa4b' },
     ],
+    script: [
+      {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/tarteaucitronjs/1.9.9/tarteaucitron.js',
+      },
+      { src: '/tarteaucitron.js' },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
