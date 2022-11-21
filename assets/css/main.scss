@@ -352,8 +352,12 @@ button {
 }
 
 .ancre {
-  position: absolute;
-  top: -100px;
+  display: block;
+
+  @media (min-width: 850px) {
+    position: absolute;
+    top: -115px;
+  }
 }
 
 .section-page {
