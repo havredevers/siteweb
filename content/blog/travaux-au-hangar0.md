@@ -4,14 +4,14 @@ description: Premiers jours de chantier
 img: /blog/travaux-hangar-0/IMG_0596-min.jpg
 ---
 
-### TOUS LES MARDI
+## TOUS LES MARDI
 
 Nous sommes en plein travaux au sein du Hangar 0.
 Rendez-vous tous les **mardi**
 
 <nuxt-img format="png" src="/blog/travaux-hangar-0/IMG_0605-min.jpg" lazy="loading"></nuxt-img>
 
-### Le Hangar 0
+## Le Hangar 0
 
 Si vous ne connaissez pas encore la SCIC du Hanga 0, venez découvrir un espace d’échange, de partage et d’expérimentation
 pour valoriser l’humain et l’environnement.

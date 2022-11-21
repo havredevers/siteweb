@@ -6,11 +6,11 @@ img: /blog/bioturbation/sol.jpeg
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis sodales lectus, non ullamcorper neque. Integer ut diam vitae metus viverra maximus. Vestibulum posuere nisl sed nulla sagittis, sit amet consequat tortor venenatis. Suspendisse nec justo vel lorem pellentesque dignissim. Aenean faucibus, purus ac euismod sollicitudin, est lorem pellentesque enim, vitae tempor felis odio porta odio. Nullam efficitur leo at hendrerit varius.
 
-### Phase 1
+## Phase 1
 
 Learn how to write your `content/`, supporting Markdown, YAML, CSV and JSON: https://content.nuxtjs.org/writing.
 
-### Phase 2
+## Phase 2
 
 Learn how to fetch your content with `$content`: https://content.nuxtjs.org/fetching.
 

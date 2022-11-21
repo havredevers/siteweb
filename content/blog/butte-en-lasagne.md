@@ -11,7 +11,7 @@ Il est constitué en 2 parties :
 1. La théorie
 2. La pratique
 
-### Autrement appelé « cuisine pour sol » ou "la butte auto-fertile" --> la butte en lasagne est propice à la germination de graines (cucurbites, tomates, pommes de terre, pêcher, pommier, avocatier....)
+## Autrement appelé « cuisine pour sol » ou "la butte auto-fertile" --> la butte en lasagne est propice à la germination de graines (cucurbites, tomates, pommes de terre, pêcher, pommier, avocatier....)
 
 Les lasagnes agricoles sont des buttes vivantes faites de différentes couches de matériaux en décomposition sur lesquelles on plante directement.
 Un peu comme si l’on cultivait sur du compost.
@@ -23,11 +23,11 @@ Ce système est très prisé des permaculteurs, pas besoin de retourner la terre
 (Phrase de conclusion à ajouter)
 Amender par le dessus permet de conserver l'humidité (en évitant l'evapotranspiraiton), tout en maintenant une température plus élevée et en empêchant les adventices (que nous ne nommons généralement mauvaises herbes) de pousser.
 
-#### Un sous-titre
+### Un sous-titre
 
 Coucou hibou
 
-### Un autre titre
+## Un autre titre
 
 Learn how to fetch your content with `$content`: https://content.nuxtjs.org/fetching.
 
@@ -35,4 +35,4 @@ Learn how to fetch your content with `$content`: https://content.nuxtjs.org/fetc
 
 Learn how to display your Markdown content with the `<nuxt-content>` component directly in your template: https://content.nuxtjs.org/displaying.
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/L-O2XQGlWA8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoYoutube vid="L-O2XQGlWA8" />

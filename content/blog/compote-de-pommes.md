@@ -6,17 +6,17 @@ img: /blog/compote-de-pommes/Compote-de-pommes3.png
 
 La compote des potes!
 
-### C'est une base pour des muffins sucrés et/ou salés
+## C'est une base pour des muffins sucrés et/ou salés
 
-#### INGREDIENTS:
+### INGREDIENTS:
 
--pommes
--eau
--sucre
--épices
--écorces d'oranges, etc
+- pommes
+- eau
+- sucre
+- épices
+- écorces d'oranges, etc
 
-### PREPARATION
+## PREPARATION
 
 1. Eplucher les pommes et enlever les trognons
 2. Les couper en petits morceaux

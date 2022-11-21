@@ -23,8 +23,8 @@
     <section class="section-page">
       <div class="title">
         <nav>
-          <div>Table des matières</div>
-          <ul>
+          <div id="toc_title">Table des matières</div>
+          <ul aria-labelledby="toc_title">
             <li v-for="link of article.toc" :key="link.id">
               <NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
             </li>
@@ -73,13 +73,47 @@ export default {
       list-style-type: upper-roman;
       margin-left: 2rem;
     }
+
+    a {
+      font-weight: 400;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  #toc_title {
+    font-weight: bold;
+  }
+
+  .nuxt-content img,
+  iframe {
+    display: block;
+    margin: 1rem auto;
   }
 
   .nuxt-content {
-    img,
-    iframe {
-      display: block;
-      margin: 1rem auto;
+    h2,
+    h3,
+    h4,
+    h5,
+    p {
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: clamp(1.2rem, 2.7vw, 2rem);
+    }
+
+    ol > li {
+      list-style-type: decimal;
+    }
+
+    li {
+      list-style-type: initial;
+      margin-left: 1rem;
     }
   }
 }
