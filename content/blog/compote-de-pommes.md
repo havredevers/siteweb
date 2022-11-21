@@ -1,5 +1,5 @@
 ---
-title: Recette de compote de pommes 
+title: Recette de compote de pommes
 description: comment fait-on la compote de pommes au HAVRE DE VERS?
 img: /blog/compote-de-pommes/Compote-de-pommes3.png
 ---
@@ -7,8 +7,6 @@ img: /blog/compote-de-pommes/Compote-de-pommes3.png
 La compote des potes!
 
 ### C'est une base pour des muffins sucrés et/ou salés
-
-
 
 #### INGREDIENTS:
 
@@ -24,7 +22,5 @@ La compote des potes!
 2. Les couper en petits morceaux
 3. Les Faire chauffer à feux doux dans une casserole avec un peu d'eau (au moins 20 minutes)
 
-
-
 Et si on en fait pas des compotes... On peut en faire des Vénus de Milo végétales..!
-<img src="/blog/compote-de-pommes/pomme-venus.jpg">
+<nuxt-img format="jpg" src="/blog/compote-de-pommes/pomme-venus.jpg" lazy="loading"></nuxt-img>

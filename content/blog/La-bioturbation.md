@@ -1,7 +1,7 @@
 ---
 title: La Bioturbation
 description: Comment les vers de terre déplacent l'ensemble des grains du sol en 15 ans?
-img: /blog/bioturbation/images-4.jpeg
+img: /blog/bioturbation/sol.jpeg
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis sodales lectus, non ullamcorper neque. Integer ut diam vitae metus viverra maximus. Vestibulum posuere nisl sed nulla sagittis, sit amet consequat tortor venenatis. Suspendisse nec justo vel lorem pellentesque dignissim. Aenean faucibus, purus ac euismod sollicitudin, est lorem pellentesque enim, vitae tempor felis odio porta odio. Nullam efficitur leo at hendrerit varius.
