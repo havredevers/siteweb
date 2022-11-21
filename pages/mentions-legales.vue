@@ -119,30 +119,14 @@
     </section>
     <section class="section-page">
       <div class="title">
-        <h2>Règlement Général sur la Protection des Données</h2>
+        <h2>Politique de confidentialité</h2>
       </div>
       <div class="content lead">
         <p data-aos="fade-up">
-          Les formulaires d'adhésion sont hébergés par HelloAsso. Vous pouvez
-          consulter leurs mentions légales à
-          <a href="https://www.helloasso.com/mentions-legales" target="_blank"
-            >cette adresse</a
-          >.
-        </p>
-        <p data-aos="fade-up">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur,
-          repellat beatae? Perferendis et praesentium quasi veniam doloribus
-          dolorem aliquid, sapiente dolore facilis tempore soluta natus aperiam
-          nobis at non qui? Excepturi sequi minus reprehenderit deleniti tempore
-          voluptatem consectetur, quas est quidem libero animi. Maiores
-          voluptatibus cum facere repellat, praesentium earum sed impedit veniam
-          temporibus a veritatis distinctio, dolorum nihil magnam. Totam labore
-          distinctio nostrum eveniet. A obcaecati illo incidunt accusamus
-          distinctio officiis quae alias aut? Veniam iste, accusamus harum nihil
-          perferendis, fugiat quod dolorum soluta voluptas ullam, ad esse
-          repellendus. Accusantium quis fugiat, nobis a corrupti architecto
-          minima quidem aliquam ea ipsa est perferendis reprehenderit aliquid
-          dignissimos adipisci ex velit, similique in, sunt quos neque itaque.
+          La présente Politique de confidentialité décrit la façon dont vos
+          informations personnelles sont recueillies, utilisées et partagées
+          lorsque vous vous rendez sur notre site www.havredevers.fr ou que vous
+          y effectuez un achat.
         </p>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />

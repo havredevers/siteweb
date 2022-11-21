@@ -74,18 +74,7 @@ export default {
     'nuxt-content-git',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    'nuxt-webfontloader',
   ],
-
-  webfontloader: {
-    google: {
-      families: [
-        'Work Sans:300,400,700',
-        'Changa One:400,700',
-        'Vibur:400,700',
-      ],
-    },
-  },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},

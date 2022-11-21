@@ -46,3 +46,9 @@ tarteaucitron.init({
 
 // Services utilisés
 ;(tarteaucitron.job = tarteaucitron.job || []).push('helloasso')
+tarteaucitron.user.googleFonts = [
+  'Work Sans:300,400,700',
+  'Changa One:400,700',
+  'Vibur:400,700',
+]
+;(tarteaucitron.job = tarteaucitron.job || []).push('googlefonts')
