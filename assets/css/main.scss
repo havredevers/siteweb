@@ -427,3 +427,11 @@ button {
 .v-leave-active.v-leave-from {
   opacity: 1;
 }
+
+.tac_activate .tac_float {
+  padding: 0.5rem;
+
+  button.tarteaucitronAllow {
+    display: none;
+  }
+}
