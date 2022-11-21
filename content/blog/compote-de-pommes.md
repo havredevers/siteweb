@@ -1,6 +1,6 @@
 ---
 title: Recette de compote de pommes
-description: comment fait-on la compote de pommes au HAVRE DE VERS?
+description: Comment fait-on la compote de pommes au HAVRE DE VERS?
 img: /blog/compote-de-pommes/Compote-de-pommes3.png
 ---
 

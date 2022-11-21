@@ -1,6 +1,6 @@
 ---
-title: Recette d'une butte en lasagne au HAVRE DE VERS
-description: compostage de surface
+title: Recette d'une butte en lasagne
+description: Compostage de surface
 img: /blog/butte-en-lasagne/buttes.jpg
 ---
 
@@ -34,3 +34,5 @@ Learn how to fetch your content with `$content`: https://content.nuxtjs.org/fetc
 ## Displaying content
 
 Learn how to display your Markdown content with the `<nuxt-content>` component directly in your template: https://content.nuxtjs.org/displaying.
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/L-O2XQGlWA8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

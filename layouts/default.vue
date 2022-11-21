@@ -124,7 +124,6 @@ export default {
     h1 {
       font-size: clamp(1.7rem, 3.5vw, 2.5rem);
       margin-bottom: 1rem;
-      text-align: center;
     }
 
     .carousel-title p {
@@ -142,10 +141,6 @@ export default {
   }
 
   @media (min-width: 850px) {
-    &:not(.accueil) h1 {
-      text-align: left;
-    }
-
     &-header {
       flex-direction: row;
     }

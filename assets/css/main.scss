@@ -174,11 +174,11 @@ button {
     padding: 1.5rem 1rem 3rem;
     color: white;
     font-size: clamp(1.25rem, 3vw, 3rem);
+    text-align: center;
 
     p {
       font-family: 'Changa One', Arial, sans-serif;
       margin-bottom: 1.5rem;
-      text-align: center;
     }
   }
 
@@ -293,6 +293,7 @@ button {
       justify-content: center;
       flex: 0 0 33%;
       padding: 2rem 2rem 2rem 6%;
+      text-align: left;
 
       p {
         text-align: initial;

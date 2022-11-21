@@ -1,19 +1,41 @@
 <template>
   <article class="blog-article">
-    <h2>
-      {{ article.title }}
-    </h2>
-    <div>Mis à jour le {{ $formatDate(article.updatedAt) }}</div>
-    <nav>
-      <div>Table des matières</div>
-      <ul>
-        <li v-for="link of article.toc" :key="link.id">
-          <NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
-        </li>
-      </ul>
-    </nav>
-    <nuxt-img format="png" :src="article.img" alt="" />
-    <nuxt-content :document="article" />
+    <div class="carousel">
+      <div class="page-header">
+        <div class="carousel-img">
+          <nuxt-img
+            format="png"
+            :src="article.img"
+            alt=""
+            width="1200"
+            height="815"
+          />
+        </div>
+        <div class="carousel-title">
+          <h1>{{ article.title }}</h1>
+          <p>{{ article.description }}</p>
+          <div class="updatedat">
+            Mis à jour le {{ $formatDate(article.updatedAt) }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="section-page">
+      <div class="title">
+        <nav>
+          <div>Table des matières</div>
+          <ul>
+            <li v-for="link of article.toc" :key="link.id">
+              <NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="content">
+        <nuxt-content :document="article" />
+      </div>
+      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+    </section>
   </article>
 </template>
 
@@ -33,13 +55,32 @@ export default {
 
 <style lang="scss">
 .blog-article {
-  h2 {
-    color: var(--clr-font);
+  .updatedat {
+    font-size: 0.8rem;
+    font-style: italic;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
   }
 
-  nav li {
-    list-style-type: upper-roman;
-    margin-left: 2rem;
+  nav {
+    position: sticky;
+    top: 115px;
+    padding-top: 2rem;
+
+    li {
+      list-style-type: upper-roman;
+      margin-left: 2rem;
+    }
+  }
+
+  .nuxt-content {
+    img,
+    iframe {
+      display: block;
+      margin: 1rem auto;
+    }
   }
 }
 </style>
