@@ -22,7 +22,8 @@ Vue.mixin({
 
     /* eslint-disable no-undef */
     tarteaucitron.init({
-      privacyUrl: '' /* Privacy policy url */,
+      privacyUrl:
+        '/mentions-legales/#politique-confidentialite' /* Privacy policy url */,
       bodyPosition:
         'top' /* or top to bring it as first element for accessibility */,
 

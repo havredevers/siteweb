@@ -21,6 +21,7 @@
       </div>
     </div>
     <section class="section-page">
+      <span id="association" class="ancre"></span>
       <div class="title">
         <h2>Coordonnées de l'association</h2>
       </div>
@@ -51,6 +52,7 @@
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
     <section class="section-page">
+      <span id="publication" class="ancre"></span>
       <div class="title">
         <h2>Directeur de la publication</h2>
       </div>
@@ -63,6 +65,7 @@
       <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
     </section>
     <section class="section-page">
+      <span id="developpement" class="ancre"></span>
       <div class="title">
         <h2>Développement du site</h2>
       </div>
@@ -99,6 +102,7 @@
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
     <section class="section-page">
+      <span id="hebergement" class="ancre"></span>
       <div class="title">
         <h2>Hébergement du site</h2>
       </div>
@@ -118,6 +122,7 @@
       <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
     </section>
     <section class="section-page">
+      <span id="politique-confidentialite" class="ancre"></span>
       <div class="title">
         <h2>Politique de confidentialité</h2>
       </div>
