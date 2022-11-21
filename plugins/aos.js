@@ -12,7 +12,7 @@ class AosPlugin {
       mounted() {
         if (!this.$vnode?.data.nuxtChild) return
 
-        if (this.$route.name === 'prestations') {
+        if (['prestations', 'blog-slug'].includes(this.$route.name)) {
           const divs = document.querySelectorAll('.nuxt-content > *')
           divs.forEach((div) => {
             div.setAttribute('data-aos', 'fade-up')

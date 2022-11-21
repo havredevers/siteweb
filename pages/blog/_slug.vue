@@ -88,18 +88,14 @@ export default {
     font-weight: bold;
   }
 
-  .nuxt-content img,
-  iframe {
-    display: block;
-    margin: 1rem auto;
-  }
-
   .nuxt-content {
     h2,
     h3,
     h4,
     h5,
-    p {
+    p,
+    ul,
+    ol {
       margin-bottom: 1rem;
     }
 
@@ -114,6 +110,12 @@ export default {
     li {
       list-style-type: initial;
       margin-left: 1rem;
+    }
+
+    img,
+    iframe {
+      display: block;
+      margin: 1rem auto;
     }
   }
 }
