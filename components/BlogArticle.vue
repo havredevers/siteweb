@@ -70,7 +70,6 @@ export default {
       }
 
       img {
-        filter: opacity(85%);
         transform: scale(1.15);
       }
 
@@ -93,7 +92,6 @@ export default {
 
     img {
       display: block;
-      filter: opacity(50%);
       transition: all 0.3s ease-in-out;
       width: 100%;
       border-radius: 15px;
@@ -153,10 +151,6 @@ export default {
         .article-title {
           opacity: initial;
           height: initial;
-        }
-
-        img {
-          filter: opacity(100%);
         }
 
         span {
