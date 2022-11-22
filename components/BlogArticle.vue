@@ -105,6 +105,11 @@ export default {
   &-title {
     transition: all 0.3s ease-in-out;
     overflow: hidden;
+    width: 75%;
+    margin: auto;
+    padding: 1rem;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.7);
 
     small {
       color: #ddd;
@@ -159,6 +164,13 @@ export default {
           text-decoration: underline;
         }
       }
+    }
+
+    &-title {
+      padding: 0;
+      background: initial;
+      border-radius: initial;
+      width: initial;
     }
 
     &-content {
