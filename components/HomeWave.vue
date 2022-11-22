@@ -38,7 +38,7 @@ export default {
   position: absolute;
   bottom: 99.5%;
   width: 100%;
-  z-index: 2;
+  z-index: 25;
 
   svg {
     width: 100%;

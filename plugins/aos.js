@@ -16,6 +16,12 @@ class AosPlugin {
           const divs = document.querySelectorAll('.nuxt-content > *')
           divs.forEach((div) => {
             div.setAttribute('data-aos', 'fade-up')
+            if (
+              this.$route.name === 'blog-slug' &&
+              ['h2', 'h3'].includes(div.localName)
+            ) {
+              div.setAttribute('data-aos-offset', '200')
+            }
           })
         }
 

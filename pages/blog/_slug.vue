@@ -136,10 +136,7 @@ export default {
 
   .nuxt-content {
     h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    h3 {
       padding-top: 100px;
       margin-top: -100px;
     }
