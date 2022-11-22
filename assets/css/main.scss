@@ -180,6 +180,7 @@ button {
   .slide,
   .dots {
     position: absolute;
+    z-index: 30;
   }
 
   .logo {
@@ -211,7 +212,6 @@ button {
     left: 50%;
     transform: translateX(-50%);
     padding: 1rem 0;
-    z-index: 3;
   }
 
   .dot {
@@ -369,7 +369,7 @@ button {
     position: relative;
     flex: 0 0 33%;
     text-align: center;
-    padding: 0% 2.7% 6% 6%;
+    padding: 2rem 2.7% 6% 6%;
 
     h2 {
       padding-top: 1.5rem;
