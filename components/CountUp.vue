@@ -65,12 +65,19 @@ export default {
     const dom = this.$el
     this.countUp = new CountUp(dom, this.end, this.options)
     this.scrollSpy(this.countUp)
+
+    if (this.$route.hash === '#chiffres') {
+      this.$nextTick(function () {
+        this.countUp.start()
+      })
+    }
   },
   methods: {
     scrollSpy(countup) {
       window.addEventListener('scroll', function () {
         const bottomOfScroll = window.innerHeight + window.scrollY
         const rect = countup.el.getBoundingClientRect()
+        const topOfEl = rect.top + window.pageYOffset
         const bottomOfEl = rect.top + rect.height + window.pageYOffset
 
         if (
@@ -82,7 +89,7 @@ export default {
           countup.paused = false
           countup.start()
         } else if (
-          (window.scrollY > bottomOfEl || bottomOfEl > bottomOfScroll) &&
+          (window.scrollY > bottomOfEl || topOfEl > bottomOfScroll) &&
           !countup.paused
         ) {
           // scrolled past
