@@ -27,7 +27,7 @@
         </li>
       </ul>
     </div>
-    <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
+    <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
   </section>
 </template>
 
@@ -78,9 +78,7 @@ export default {
   text-align: center;
 
   h3 {
-    font-family: var(--font-changa);
     font-size: clamp(1.5rem, 2.7vw, 2.5rem);
-    margin: 0.5rem 0;
   }
 
   .photo {
