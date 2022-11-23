@@ -21,11 +21,7 @@ export default {
     },
     duration: {
       type: Number,
-      default: 2,
-    },
-    delay: {
-      type: Number,
-      default: 1000,
+      default: 3,
     },
     prefix: {
       type: String,

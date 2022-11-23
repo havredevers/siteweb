@@ -10,7 +10,7 @@
           v-for="membre in equipe"
           :key="membre.order"
           class="membre"
-          data-aos="fade-up"
+          data-aos="zoom-in"
         >
           <div class="photo">
             <nuxt-img

@@ -24,13 +24,13 @@
         <h2>Qui sommes-nous&nbsp;?</h2>
       </div>
       <div class="content lead">
-        <p>
+        <p data-aos="fade-up">
           HAVRE DE VERS est née, le 14 janvier 2016, d'une envie commune de
           trois amis, Marian, Flavien et Léo, afin d'apporter une solution face
           å la situation de crise importante dans les domaines de l'agriculture,
           de l'alimentation et de la santé.
         </p>
-        <p>
+        <p data-aos="fade-up">
           Gaspillage et inégalité alimentaire, impératifs écologiques, hégémonie
           de l'exploitation animate industrielle et de la grande distribution,
           déperdition des agricultures paysannes, perte de biodiversité, manque
@@ -45,7 +45,7 @@
           solidarités. Nous revalorisons les biodéchets par lombricompostage en
           vue d'assurer :
         </p>
-        <ul>
+        <ul data-aos="fade-up">
           <li>
             Une collecte décentralisée locale des biodéchets en milieu urbain ;
           </li>
@@ -68,7 +68,7 @@
       </div>
       <div class="content">
         <ul>
-          <li>
+          <li data-aos="zoom-in" data-aos-delay="100">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
                 <path
@@ -79,7 +79,7 @@
             <div class="value"><count-up :end="254" /></div>
             <div class="unit"><h3>Adhérent(e)s</h3></div>
           </li>
-          <li>
+          <li data-aos="zoom-in" data-aos-delay="250">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <path
@@ -90,7 +90,7 @@
             <div class="value"><count-up :end="8500" suffix="&nbsp;kg" /></div>
             <div class="unit"><h3>Collectés chaque année</h3></div>
           </li>
-          <li>
+          <li data-aos="zoom-in" data-aos-delay="400">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                 <path

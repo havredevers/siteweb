@@ -9,7 +9,7 @@ Nous débuterons cet atelier par une partie théorique autour des questions suiv
 
 Ensuite, lors de la partie pratique, nous découvrirons comment utiliser le lombricompost produit, et quels sont les avantages et inconvénients d’un lombricompost.
 
-<nuxt-img format="png" src="/prestations/lombricompost/composteur.png" lazy="loading"></nuxt-img>
+<nuxt-img format="png" src="/prestations/lombricompost/composteur.png" lazy="loading" data-aos="zoom-in"></nuxt-img>
 
 ### Programme
 

@@ -15,7 +15,12 @@ class AosPlugin {
         if (['prestations', 'blog-slug'].includes(this.$route.name)) {
           const divs = document.querySelectorAll('.nuxt-content > *')
           divs.forEach((div) => {
-            div.setAttribute('data-aos', 'fade-up')
+            if (['img', 'iframe'].includes(div.localName)) {
+              div.setAttribute('data-aos', 'zoom-in')
+            } else {
+              div.setAttribute('data-aos', 'fade-up')
+            }
+
             if (
               this.$route.name === 'blog-slug' &&
               ['h2', 'h3'].includes(div.localName)

@@ -12,7 +12,7 @@ Nous débuterons cet atelier par une partie théorique autour des questions suiv
 - Pourquoi et comment le récolter ?
 - Comment bien équilibrer son composteur pour l’optimiser ?
 
-<nuxt-img format="png" src="/prestations/eveil_permacole/poubelle.png" lazy="loading"></nuxt-img>
+<nuxt-img format="png" src="/prestations/eveil_permacole/poubelle.png" lazy="loading" data-aos="zoom-in"></nuxt-img>
 
 Ensuite, lors de la partie pratique, les élèves ouvriront un composteur pour regarder de plus près ce qu’il se passe à l’intérieur et comment l’entretenir : contrôle, tamisage et séchage du compost.
 Si l’établissement dispose déjà d’un composteur, nous apporterons nos conseils et notre expertise pour entretenir celui-ci au mieux.
