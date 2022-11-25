@@ -154,7 +154,7 @@ export default {
   min-height: var(--hauteur-menu);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1100;
   transition: top 0.3s ease-in;
 
   &.reduced,

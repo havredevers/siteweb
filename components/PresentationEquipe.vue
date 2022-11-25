@@ -27,7 +27,7 @@
         </li>
       </ul>
     </div>
-    <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+    <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
   </section>
 </template>
 

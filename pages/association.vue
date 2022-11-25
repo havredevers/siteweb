@@ -105,11 +105,70 @@
       </div>
       <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
     </section>
+    <section class="section-page chiffres">
+      <span id="chiffres" class="ancre"></span>
+      <div class="title">
+        <h2>Nous trouver</h2>
+      </div>
+      <div class="content">
+        <div style="height: 500px">
+          <client-only>
+            <l-map
+              :zoom="17"
+              :max-zoom="17"
+              :center="[49.49621, 0.12325]"
+              :options="{ attributionControl: false, scrollWheelZoom: false }"
+            >
+              <l-tile-layer
+                url="https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg"
+                attribution="Map tiles by <a href='http://stamen.com'>Stamen Design</a>, <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a> &mdash; Map data &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors'"
+              ></l-tile-layer>
+              <l-tile-layer
+                url="https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png"
+                attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors &copy; <a href='https://carto.com/attributions'>CARTO</a>"
+              ></l-tile-layer>
+              <l-marker :lat-lng="[49.4963, 0.12325]">
+                <l-icon
+                  :icon-size="[50, 50]"
+                  icon-url="/ui/pin-map.png"
+                  :tooltip-anchor="[17, 0]"
+                />
+                <l-tooltip
+                  :options="{
+                    className: 'map-tooltip',
+                  }"
+                >
+                  <div>
+                    <strong>Havre de Vers</strong><br />13, rue de Tourville<br />76600
+                    LE HAVRE
+                  </div>
+                </l-tooltip>
+              </l-marker>
+            </l-map>
+          </client-only>
+        </div>
+      </div>
+      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+    </section>
     <PresentationEquipe />
   </div>
 </template>
 
 <style lang="scss">
+.map-tooltip {
+  --tooltip-bg: #84aa4b;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 14px;
+  background-color: var(--tooltip-bg);
+  border-color: var(--tooltip-bg);
+
+  &.leaflet-tooltip-left::before {
+    border-left-color: var(--tooltip-bg);
+  }
+}
+
 .association h3 {
   font-family: var(--font-changa);
   margin: 0.5rem 0;
