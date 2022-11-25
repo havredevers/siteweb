@@ -35,6 +35,7 @@
                 className: 'map-tooltip',
               }"
             >
+              <img src="/ui/logo-blanc.png" />
               <div>
                 <strong>Havre de Vers</strong><br />13, rue de Tourville<br />76600
                 LE HAVRE
@@ -88,6 +89,16 @@ export default {
 
   &.leaflet-tooltip-left::before {
     border-left-color: var(--tooltip-bg);
+  }
+
+  & > div {
+    display: flex;
+    align-items: center;
+  }
+
+  img {
+    width: 150px;
+    margin-right: 1rem;
   }
 }
 
