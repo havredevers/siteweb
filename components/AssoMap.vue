@@ -44,11 +44,11 @@
             </l-tooltip>
           </l-marker>
         </l-map>
-        <div class="map-subtitle">
-          <a href="https://www.openstreetmap.org/way/70984658" target="_blank">
-            Afficher une carte plus grande
-          </a>
-        </div>
+      </div>
+      <div class="map-subtitle">
+        <a href="https://www.openstreetmap.org/way/70984658" target="_blank">
+          Afficher une carte plus grande
+        </a>
       </div>
     </div>
     <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
