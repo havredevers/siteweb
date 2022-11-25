@@ -31,7 +31,8 @@
             </l-icon>
             <l-tooltip
               :options="{
-                offset: [17, -30],
+                direction: 'top',
+                offset: [0, -45],
                 className: 'map-tooltip',
               }"
             >
@@ -54,24 +55,6 @@
   </section>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      iconSize: 160,
-    }
-  },
-  computed: {
-    dynamicSize() {
-      return [this.iconSize, this.iconSize * 1.15]
-    },
-    dynamicAnchor() {
-      return [this.iconSize / 2, this.iconSize * 1.15]
-    },
-  },
-}
-</script>
-
 <style lang="scss">
 .map-icon img {
   display: block;
@@ -87,18 +70,29 @@ export default {
   background-color: var(--tooltip-bg);
   border-color: var(--tooltip-bg);
 
-  &.leaflet-tooltip-left::before {
-    border-left-color: var(--tooltip-bg);
+  &.leaflet-tooltip-top::before {
+    border-top-color: var(--tooltip-bg);
   }
 
   & > div {
     display: flex;
     align-items: center;
+    flex-direction: column;
   }
 
   img {
     width: 150px;
-    margin-right: 1rem;
+    margin: 0 0 1rem 0;
+  }
+
+  @media (min-width: 550px) {
+    & > div {
+      flex-direction: row;
+    }
+
+    img {
+      margin: 0 1rem 0 0;
+    }
   }
 }
 
