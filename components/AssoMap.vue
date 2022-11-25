@@ -7,7 +7,7 @@
     <div class="content">
       <div style="height: 500px">
         <l-map
-          :zoom="17"
+          :zoom="16"
           :max-zoom="17"
           :center="[49.49621, 0.12325]"
           :options="{ attributionControl: false, scrollWheelZoom: false }"
