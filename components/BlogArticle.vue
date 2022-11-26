@@ -113,6 +113,7 @@ export default {
 
     small {
       color: #ddd;
+      display: none;
     }
   }
 
@@ -171,6 +172,10 @@ export default {
       background: initial;
       border-radius: initial;
       width: initial;
+
+      small {
+        display: initial;
+      }
     }
 
     &-content {
