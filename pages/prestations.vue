@@ -85,10 +85,7 @@ export default {
 .prestations {
   h3 {
     font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-
-    &:not(:first-child) {
-      margin-top: 2rem;
-    }
+    margin: 1rem 0;
   }
 
   li {
@@ -112,21 +109,38 @@ export default {
     }
   }
 
-  .content {
-    img {
-      display: block;
-      width: 100%;
-      border-radius: 15px;
-      margin: 2rem auto;
+  .nuxt-content {
+    p,
+    ul {
+      margin-bottom: 1.5rem;
+    }
 
-      @media (min-width: 700px) {
-        width: 75%;
-      }
+    img {
+      border-radius: 15px;
+      width: 100%;
+      margin-bottom: 1rem;
     }
   }
 
-  .nuxt-content > * {
+  .infos > * {
     margin-bottom: 2rem;
+    flex: 0 0 50%;
+  }
+
+  @media (min-width: 1200px) {
+    .nuxt-content img {
+      float: right;
+      width: 45%;
+      margin: 0 0 1rem 1rem;
+    }
+
+    .infos {
+      display: flex;
+
+      & > * {
+        margin: 0 1rem 0 0;
+      }
+    }
   }
 }
 </style>

@@ -29,11 +29,13 @@
       </div>
       <div class="content">
         <p>
-          Nous ne disposons pas encore de boutique en ligne.
-          Mais ça ne devrait pas tarder !
-          
-          Les vers de terre n'ont pas encore fini les galeries pour y accéder...!
+          Nous ne disposons pas encore de boutique en ligne. Mais ça ne devrait
+          pas tarder ! Les vers de terre n'ont pas encore fini les galeries pour
+          y accéder...!
         </p>
+        <div class="loader">
+          <nuxt-img src="/loader/loader.gif" alt="chargement" />
+        </div>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
@@ -41,7 +43,15 @@
 </template>
 
 <style lang="scss">
-.boutique p {
-  margin-bottom: 2rem;
+.boutique {
+  .loader {
+    height: 150px;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  p {
+    margin-bottom: 2rem;
+  }
 }
 </style>

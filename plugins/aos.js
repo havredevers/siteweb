@@ -12,22 +12,27 @@ class AosPlugin {
       mounted() {
         if (!this.$vnode?.data.nuxtChild) return
 
-        if (['prestations', 'blog-slug'].includes(this.$route.name)) {
-          const divs = document.querySelectorAll('.nuxt-content > *')
-          divs.forEach((div) => {
-            if (['img', 'iframe'].includes(div.localName)) {
-              div.setAttribute('data-aos', 'zoom-in')
-            } else {
-              div.setAttribute('data-aos', 'fade-up')
-            }
+        let divs
 
-            if (
-              this.$route.name === 'blog-slug' &&
-              ['h2', 'h3'].includes(div.localName)
-            ) {
-              div.setAttribute('data-aos-offset', '200')
-            }
-          })
+        switch (this.$route.name) {
+          case 'prestations':
+          case 'blog-slug':
+            divs = document.querySelectorAll('.nuxt-content > *')
+            divs.forEach((div) => {
+              if (['img', 'iframe'].includes(div.localName)) {
+                div.setAttribute('data-aos', 'zoom-in')
+              } else {
+                div.setAttribute('data-aos', 'fade-up')
+              }
+
+              if (
+                this.$route.name === 'blog-slug' &&
+                ['h2', 'h3'].includes(div.localName)
+              ) {
+                div.setAttribute('data-aos-offset', '200')
+              }
+            })
+            break
         }
 
         document.querySelectorAll('img').forEach((img) => {
