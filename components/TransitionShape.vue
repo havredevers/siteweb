@@ -30,7 +30,7 @@
   &.top {
     transition: opacity 0.05s ease-in-out,
       top 1.2s cubic-bezier(0.37, 0, 0.63, 1) 0.2s;
-    z-index: 105;
+    z-index: 1200;
     top: calc(-100vh - 1200px);
     opacity: 1;
   }
