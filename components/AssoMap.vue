@@ -91,7 +91,10 @@
         </client-only>
       </div>
       <div class="map-subtitle">
-        <a href="https://www.openstreetmap.org/way/70984658" target="_blank">
+        <a
+          href="https://www.openstreetmap.org/?mlat=49.49621&mlon=0.12330#map=13/49.49621/0.12325"
+          target="_blank"
+        >
           Afficher une carte plus grande
         </a>
       </div>
