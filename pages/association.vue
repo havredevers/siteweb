@@ -67,7 +67,7 @@
         <h2>L'association en quelques chiffres</h2>
       </div>
       <div class="content">
-        <ul v-if="loaded">
+        <ul v-if="isLoaded">
           <li data-aos="zoom-in" data-aos-delay="100">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -122,7 +122,7 @@ export default {
       nbAdhesions: 0,
       nbEvents: 0,
       fonds: 0,
-      loaded: false,
+      isLoaded: false,
     }
   },
   mounted() {
@@ -187,7 +187,7 @@ export default {
                 : 0
           })
         })
-        this.loaded = true
+        this.isLoaded = true
       })
       .catch((error) => console.log(error.message))
   },
