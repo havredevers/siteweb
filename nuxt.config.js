@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -66,6 +68,8 @@ export default {
     'nuxt-animejs',
     // https://image.nuxtjs.org
     '@nuxt/image',
+    // https://github.com/nuxt-community/dotenv-module
+    '@nuxtjs/dotenv',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -75,6 +79,8 @@ export default {
     '@nuxt/content',
     // https://github.com/schlunsen/nuxt-leaflet
     'nuxt-leaflet',
+    // https://axios.nuxtjs.org
+    '@nuxtjs/axios',
   ],
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
