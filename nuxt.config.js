@@ -83,6 +83,12 @@ export default {
     '@nuxtjs/axios',
   ],
 
+  // https://nuxtjs.org/docs/configuration-glossary/configuration-env/
+  env: {
+    CLIENT_ID: process.env.CLIENT_ID,
+    CLIENT_SECRET: process.env.CLIENT_SECRET,
+  },
+
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
 
