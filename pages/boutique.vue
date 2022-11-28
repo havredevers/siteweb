@@ -33,6 +33,16 @@
           pas tarder ! Les vers de terre n'ont pas encore fini les galeries pour
           y accéder...!
         </p>
+        <nuxt-img
+          src="/boutique/fruits_seches.jpg"
+          style="
+            max-width: 100%;
+            width: 500px;
+            display: block;
+            margin: auto;
+            border-radius: 40px;
+          "
+        />
         <div class="loader">
           <nuxt-img src="/loader/loader.gif" alt="chargement" />
         </div>
@@ -50,7 +60,7 @@ export default {
   data() {
     return {
       titre: 'La boutique',
-      desc: "Notre boutique n'est pas encore prête mais les vers de terre travaillent d'arrache-pied",
+      desc: "Notre boutique n'est pas encore prête. Les vers de terre n'ont pas encore fini les galeries pour y accéder...!",
       image: '',
     }
   },

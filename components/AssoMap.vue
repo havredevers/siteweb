@@ -2,7 +2,7 @@
   <section class="section-page carte">
     <span id="carte" class="ancre"></span>
     <div class="title">
-      <h2>Nous trouver</h2>
+      <h2>Où nous trouver ?</h2>
     </div>
     <div class="content">
       <div style="height: 500px">
@@ -81,8 +81,7 @@
                 <div class="tooltip-hours">
                   Permanences :
                   <ul>
-                    <li>Mardi : 10h à 19h</li>
-                    <li>Jeudi : 10h à 19h</li>
+                    <li>Mardi : 10h à 17h</li>
                   </ul>
                 </div>
               </l-tooltip>

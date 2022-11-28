@@ -17,7 +17,7 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          "L'association havraise qui accompagne la valorisation des biodéchets",
+          "L'association havraise qui accompagne à la valorisation des biodéchets",
       },
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'msapplication-TileColor', content: '#84aa4b' },
@@ -46,7 +46,7 @@ export default {
         hid: 'og:description',
         property: 'og:description',
         content:
-          "L'association havraise qui accompagne la valorisation des biodéchets",
+          "L'association havraise qui accompagne à la valorisation des biodéchets",
       },
       {
         hid: 'og:image',
@@ -73,7 +73,7 @@ export default {
         hid: 'twitter:description',
         name: 'twitter:description',
         content:
-          "L'association havraise qui accompagne la valorisation des biodéchets",
+          "L'association havraise qui accompagne à la valorisation des biodéchets",
       },
       {
         hid: 'twitter:image',

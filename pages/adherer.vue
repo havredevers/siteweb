@@ -99,7 +99,7 @@ export default {
     return {
       choix: '',
       titre: 'Adhésion',
-      desc: "Rejoignez nos adhérents pour bénéficier des avantages de l'association grâce à notre partenaire HelloAsso",
+      desc: "Rejoignez nos adhérents pour bénéficier des avantages de l'association",
       image: '',
     }
   },
