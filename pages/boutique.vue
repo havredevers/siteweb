@@ -33,16 +33,7 @@
           pas tarder ! Les vers de terre n'ont pas encore fini les galeries pour
           y accéder...!
         </p>
-        <nuxt-img
-          src="/boutique/fruits_seches.jpg"
-          style="
-            max-width: 100%;
-            width: 500px;
-            display: block;
-            margin: auto;
-            border-radius: 40px;
-          "
-        />
+        <nuxt-img src="/boutique/fruits_seches.jpg" class="vignette" />
         <div class="loader">
           <nuxt-img src="/loader/loader.gif" alt="chargement" />
         </div>

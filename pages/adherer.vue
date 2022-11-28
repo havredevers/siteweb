@@ -52,6 +52,12 @@
           </p>
           <q>Du jardin à l’assiette, nous envisageons un modèle bio-inspiré.</q>
         </div>
+        <nuxt-img
+          class="vignette"
+          data-aos="zoom-in"
+          format="jpg"
+          src="/adherer/cuisine.png"
+        ></nuxt-img>
         <div class="choix">
           <span id="proximite" class="ancre"></span>
           <span id="soutien" class="ancre"></span>
@@ -111,12 +117,14 @@ export default {
     },
   },
   mounted() {
-    this.setChoix(this.$route.hash.slice(1))
+    this.choix = ['soutien', 'proximite'].includes(this.$route.hash.slice(1))
+      ? this.$route.hash.slice(1)
+      : ''
   },
   methods: {
     setChoix(val) {
-      this.choix = ['soutien', 'proximite'].includes(val) ? val : ''
-      this.$router.push('#' + this.choix)
+      this.choix = val
+      this.$router.push('#' + val)
     },
   },
 }
@@ -136,9 +144,14 @@ export default {
 }
 
 .adherer {
+  .intro {
+    margin-bottom: 1rem;
+  }
+
   ul {
     margin: 1rem 0;
   }
+
   li {
     margin-left: 2rem;
     list-style-type: initial;

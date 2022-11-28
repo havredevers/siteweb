@@ -60,7 +60,7 @@
         </ul>
         <nuxt-img
           format="png"
-          style="border-radius: 40px"
+          class="vignette"
           src="/association/triporteur.png"
           data-aos="zoom-in"
         />

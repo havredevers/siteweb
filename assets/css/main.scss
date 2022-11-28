@@ -117,6 +117,15 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
+img.vignette,
+.nuxt-content img {
+  border-radius: 40px;
+  max-width: 100%;
+  max-width: 500px;
+  margin: auto;
+  display: block;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

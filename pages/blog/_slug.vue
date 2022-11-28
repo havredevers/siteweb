@@ -109,6 +109,7 @@ export default {
     position: sticky;
     top: 115px;
     padding-top: 2rem;
+    font-size: 1.1rem;
 
     li {
       padding: 0.2rem 0;
@@ -116,6 +117,7 @@ export default {
 
     li.toc3 {
       margin-left: 1rem;
+      font-size: 80%;
     }
 
     a {
@@ -136,7 +138,7 @@ export default {
   }
 
   #toc_title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: bold;
     margin-bottom: 1rem;
   }

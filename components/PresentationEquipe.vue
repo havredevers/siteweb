@@ -47,34 +47,16 @@ export default {
 
 <style lang="scss">
 .membres {
-  --largeur-photo: initial;
   display: flex;
   justify-content: space-evenly;
-  flex-wrap: wrap;
-  flex-direction: column;
   align-items: center;
-  margin-bottom: 2rem;
-  align-items: flex-start;
-
-  @media (min-width: 550px) {
-    flex-direction: row;
-    --largeur-photo: 30%;
-  }
-
-  @media (min-width: 850px) {
-    --largeur-photo: initial;
-  }
-
-  @media (min-width: 1200px) {
-    --largeur-photo: 30%;
-  }
+  flex-wrap: wrap;
 }
 
 .membre {
-  flex: var(--largeur-photo);
-  max-width: var(--largeur-photo);
+  flex: 0 1 250px;
   color: var(--clr-secondary);
-  margin: 2rem 3% 2rem 0;
+  padding: 1rem;
   text-align: center;
 
   h3 {
