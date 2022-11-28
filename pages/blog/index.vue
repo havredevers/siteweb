@@ -71,7 +71,7 @@ export default {
   watch: {
     '$route.query': 'launch',
   },
-  beforeMount() {
+  beforeCreate() {
     this.titre = 'Le blog'
     this.desc = "Actualités de l'association"
     // this.image = ''

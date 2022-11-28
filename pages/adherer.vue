@@ -107,7 +107,7 @@ export default {
         : ''
     },
   },
-  beforeMount() {
+  beforeCreate() {
     this.titre = 'Adhésion'
     this.desc =
       "Rejoignez nos adhérents pour bénéficier des avantages de l'association grâce à notre partenaire HelloAsso"

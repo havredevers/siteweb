@@ -59,7 +59,7 @@ export default {
       error(err)
     }
   },
-  beforeMount() {
+  beforeCreate() {
     this.titre = this.article.title
     this.desc = this.article.description
     this.image = this.article.img

@@ -58,7 +58,7 @@ export default {
 
     return { prestations }
   },
-  beforeMount() {
+  beforeCreate() {
     this.titre = 'Nos prestations'
     this.desc =
       "Venez découvrir les ateliers proposés par l'association pour apprendre tout en s'amusant"

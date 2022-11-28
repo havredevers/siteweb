@@ -127,9 +127,10 @@ export default {
       isLoaded: false,
     }
   },
-  beforeMount() {
+  beforeCreate() {
     this.titre = 'Présentation'
-    this.desc = 'mouarf'
+    this.desc =
+      'Havre de vers est une association loi 1901 visant à promouvoir la valorisation des biodéchets en milieu urbain grâce au reconditionnement et au lombricompostage'
     // this.image = ''
   },
   mounted() {
