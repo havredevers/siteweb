@@ -130,7 +130,7 @@ export default {
   beforeMount() {
     this.titre = 'Présentation'
     this.desc =
-      'Havre de vers est une association loi 1901 visant à promouvoir la valorisaion des biodéchets en milieu urbain grâce au reconditionnement et au lombricompostage'
+      'Havre de vers est une association loi 1901 visant à promouvoir la valorisation des biodéchets en milieu urbain grâce au reconditionnement et au lombricompostage'
     // this.image = ''
   },
   mounted() {
