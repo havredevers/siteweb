@@ -7,7 +7,7 @@
       </NuxtLink>
       <MainMenu />
     </header>
-    <Nuxt class="page" />
+    <Nuxt class="page" keep-alive />
     <MainFooter />
     <div class="scroll-to-top" @click="scrollToTop()">&#8593;</div>
     <TransitionShape />

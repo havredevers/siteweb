@@ -73,7 +73,10 @@
         <h2>L'association en quelques chiffres</h2>
       </div>
       <div class="content">
-        <ul v-if="isLoaded">
+        <p v-if="$fetchState.error">
+          Un problème est survenu en contactant l'API HelloAsso
+        </p>
+        <ul v-if="!$fetchState.pending">
           <li data-aos="zoom-in" data-aos-delay="100">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -122,23 +125,24 @@ import qs from 'qs'
 import meta from '~/plugins/meta'
 
 export default {
+  name: 'PageAssociation',
   mixins: [meta],
   data() {
     return {
       api_url: 'https://api.helloasso.com',
       token: '',
       nbAdhesions: 0,
-      isLoaded: false,
       titre: 'Présentation',
       desc: 'En savoir plus sur notre association',
       image: '',
     }
   },
-  mounted() {
+  fetchOnServer: false,
+  async fetch() {
     const currentForms = []
 
     // https://api.helloasso.com/v5/swagger/ui/index#/
-    this.$axios
+    await this.$axios
       .post(
         this.api_url + '/oauth2/token',
         qs.stringify({
@@ -189,7 +193,6 @@ export default {
                 : 0
           })
         })
-        this.isLoaded = true
       })
       .catch((error) => console.log(error.message))
   },
