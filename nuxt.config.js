@@ -13,11 +13,69 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          "L'association havraise qui accompagne la valorisation des biodéchets",
+      },
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'msapplication-TileColor', content: '#84aa4b' },
       { name: 'theme-color', content: '#ffffff' },
       { name: 'robots', content: 'noindex' },
+      // Facebook Meta Tags
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://www.havredevers.fr/',
+      },
+      {
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'Association Havre de vers',
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content:
+          "L'association havraise qui accompagne la valorisation des biodéchets",
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: 'https://www.havredevers.fr/opengraph_img.png',
+      },
+      // Twitter Meta Tags
+      {
+        name: 'twitter-card',
+        content: 'summary_large_image',
+      },
+      { property: 'twitter:domain', content: 'havredevers.fr' },
+      {
+        hid: 'twitter:url',
+        property: 'twitter:url',
+        content: 'https://www.havredevers.fr',
+      },
+      {
+        hid: 'twitter:title',
+        name: 'twitter:title',
+        content: 'Association Havre de vers',
+      },
+      {
+        hid: 'twitter:description',
+        name: 'twitter:description',
+        content:
+          "L'association havraise qui accompagne la valorisation des biodéchets",
+      },
+      {
+        hid: 'twitter:image',
+        name: 'twitter:image',
+        content: 'https://www.havredevers.fr/opengraph_img.png',
+      },
     ],
     link: [
       {
@@ -33,7 +91,7 @@ export default {
         href: '/favicon-16x16.png',
       },
       {
-        rel: 'apple-touch-icon',
+        rel: 'apple-touch-  ',
         sizes: '120x120',
         href: '/apple-touch-icon.png',
       },
