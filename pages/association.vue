@@ -113,8 +113,10 @@
 </template>
 <script>
 import qs from 'qs'
+import meta from '~/plugins/meta'
 
 export default {
+  mixins: [meta],
   data() {
     return {
       api_url: 'https://api.helloasso.com',
@@ -124,6 +126,12 @@ export default {
       fonds: 0,
       isLoaded: false,
     }
+  },
+  beforeMount() {
+    this.titre = 'Présentation'
+    this.desc =
+      'Havre de vers est une association loi 1901 visant à promouvoir la valorisaion des biodéchets en milieu urbain grâce au reconditionnement et au lombricompostage'
+    // this.image = ''
   },
   mounted() {
     const currentForms = []

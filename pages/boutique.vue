@@ -42,6 +42,20 @@
   </div>
 </template>
 
+<script>
+import meta from '~/plugins/meta'
+
+export default {
+  mixins: [meta],
+  beforeMount() {
+    this.titre = 'La boutique'
+    this.desc =
+      "Notre boutique n'est pas encore prête mais les vers de terre travaillent d'arrache-pied"
+    // this.image = ''
+  },
+}
+</script>
+
 <style lang="scss">
 .boutique {
   .loader {

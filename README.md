@@ -66,3 +66,9 @@ More information about the usage of this directory in [the documentation](https:
 This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+
+## Ajouter/modifier un article de blog, une prstation, un membre de l'équipe
+
+Créer, modifier ou supprimer un fichier dans le dossier `content`
+
+Pour le blog, il faut utiliser une img principale de 1200 x 630 pour un affichage optimal sur les réseaux sociaux

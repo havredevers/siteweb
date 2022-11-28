@@ -139,6 +139,20 @@
   </div>
 </template>
 
+<script>
+import meta from '~/plugins/meta'
+
+export default {
+  mixins: [meta],
+  beforeMount() {
+    this.titre = 'Mentions légales'
+    this.desc =
+      'Havre de Vers respecte votre privée et vos données personnelles'
+    // this.image = ''
+  },
+}
+</script>
+
 <style lang="scss">
 .mentions {
   .contact {

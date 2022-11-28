@@ -46,7 +46,10 @@
 </template>
 
 <script>
+import meta from '~/plugins/meta'
+
 export default {
+  mixins: [meta],
   async asyncData({ $content, params, error }) {
     try {
       const article = await $content('blog', params.slug).fetch()
@@ -55,6 +58,11 @@ export default {
     } catch (err) {
       error(err)
     }
+  },
+  beforeMount() {
+    this.titre = this.article.title
+    this.desc = this.article.description
+    this.image = this.article.img
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll)

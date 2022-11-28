@@ -91,7 +91,10 @@
 </template>
 
 <script>
+import meta from '~/plugins/meta'
+
 export default {
+  mixins: [meta],
   data() {
     return {
       choix: '',
@@ -103,6 +106,12 @@ export default {
         ? to.hash.slice(1)
         : ''
     },
+  },
+  beforeMount() {
+    this.titre = 'Adhésion'
+    this.desc =
+      "Rejoignez nos adhérents pour bénéficier des avantages de l'association grâce à notre partenaire HelloAsso"
+    // this.image = ''
   },
   mounted() {
     this.setChoix(this.$route.hash.slice(1))

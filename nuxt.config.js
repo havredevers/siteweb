@@ -6,7 +6,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Havre De Vers',
+    title: 'Association Havre de vers',
     htmlAttrs: {
       lang: 'fr',
     },
@@ -25,13 +25,17 @@ export default {
       { name: 'robots', content: 'noindex' },
       // Facebook Meta Tags
       {
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        property: 'og:site_name',
+        content: 'Havre de Vers',
+      },
+      {
         hid: 'og:url',
         property: 'og:url',
         content: 'https://www.havredevers.fr/',
-      },
-      {
-        property: 'og:type',
-        content: 'website',
       },
       {
         hid: 'og:title',

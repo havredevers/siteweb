@@ -48,13 +48,21 @@
 </template>
 
 <script>
+import meta from '~/plugins/meta'
 import 'aos/dist/aos.css'
 
 export default {
+  mixins: [meta],
   async asyncData({ $content, $variables, route }) {
     const prestations = await $content('prestas').sortBy('title').fetch()
 
     return { prestations }
+  },
+  beforeMount() {
+    this.titre = 'Nos prestations'
+    this.desc =
+      "Venez découvrir les ateliers proposés par l'association pour apprendre tout en s'amusant"
+    // this.image = ''
   },
   mounted() {
     const $this = this

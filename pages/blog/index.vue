@@ -33,7 +33,10 @@
 </template>
 
 <script>
+import meta from '~/plugins/meta'
+
 export default {
+  mixins: [meta],
   data() {
     return {
       page: 1,
@@ -67,6 +70,11 @@ export default {
   },
   watch: {
     '$route.query': 'launch',
+  },
+  beforeMount() {
+    this.titre = 'Le blog'
+    this.desc = "Actualités de l'association"
+    // this.image = ''
   },
   methods: {
     launch() {
