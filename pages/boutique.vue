@@ -47,11 +47,12 @@ import meta from '~/plugins/meta'
 
 export default {
   mixins: [meta],
-  beforeCreate() {
-    this.titre = 'La boutique'
-    this.desc =
-      "Notre boutique n'est pas encore prête mais les vers de terre travaillent d'arrache-pied"
-    // this.image = ''
+  data() {
+    return {
+      titre: 'La boutique',
+      desc: "Notre boutique n'est pas encore prête mais les vers de terre travaillent d'arrache-pied",
+      image: '',
+    }
   },
 }
 </script>

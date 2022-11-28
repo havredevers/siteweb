@@ -54,15 +54,14 @@ export default {
     try {
       const article = await $content('blog', params.slug).fetch()
 
-      return { article }
+      const titre = article.title
+      const desc = article.description
+      const image = article.img
+
+      return { article, titre, desc, image }
     } catch (err) {
       error(err)
     }
-  },
-  beforeCreate() {
-    this.titre = this.article.title
-    this.desc = this.article.description
-    this.image = this.article.img
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll)

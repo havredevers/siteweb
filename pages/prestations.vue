@@ -53,16 +53,18 @@ import 'aos/dist/aos.css'
 
 export default {
   mixins: [meta],
+
   async asyncData({ $content, $variables, route }) {
     const prestations = await $content('prestas').sortBy('title').fetch()
 
     return { prestations }
   },
-  beforeCreate() {
-    this.titre = 'Nos prestations'
-    this.desc =
-      "Venez découvrir les ateliers proposés par l'association pour apprendre tout en s'amusant"
-    // this.image = ''
+  data() {
+    return {
+      titre: 'Nos prestations',
+      desc: "Venez découvrir les ateliers proposés par l'association pour apprendre tout en s'amusant",
+      image: '',
+    }
   },
   mounted() {
     const $this = this

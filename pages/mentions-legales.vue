@@ -144,11 +144,12 @@ import meta from '~/plugins/meta'
 
 export default {
   mixins: [meta],
-  beforeCreate() {
-    this.titre = 'Mentions légales'
-    this.desc =
-      'Havre de Vers respecte votre privée et vos données personnelles'
-    // this.image = ''
+  data() {
+    return {
+      titre: 'Mentions légales',
+      desc: 'Havre de Vers respecte votre privée et vos données personnelles',
+      image: '',
+    }
   },
 }
 </script>

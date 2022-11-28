@@ -125,13 +125,10 @@ export default {
       nbEvents: 0,
       fonds: 0,
       isLoaded: false,
+      titre: 'Présentation',
+      desc: 'Havre de vers est une association loi 1901 visant à promouvoir la valorisation des biodéchets en milieu urbain grâce au reconditionnement et au lombricompostage',
+      image: '',
     }
-  },
-  beforeCreate() {
-    this.titre = 'Présentation'
-    this.desc =
-      'Havre de vers est une association loi 1901 visant à promouvoir la valorisation des biodéchets en milieu urbain grâce au reconditionnement et au lombricompostage'
-    // this.image = ''
   },
   mounted() {
     const currentForms = []

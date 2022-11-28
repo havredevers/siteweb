@@ -98,6 +98,9 @@ export default {
   data() {
     return {
       choix: '',
+      titre: 'Adhésion',
+      desc: "Rejoignez nos adhérents pour bénéficier des avantages de l'association grâce à notre partenaire HelloAsso",
+      image: '',
     }
   },
   watch: {
@@ -106,12 +109,6 @@ export default {
         ? to.hash.slice(1)
         : ''
     },
-  },
-  beforeCreate() {
-    this.titre = 'Adhésion'
-    this.desc =
-      "Rejoignez nos adhérents pour bénéficier des avantages de l'association grâce à notre partenaire HelloAsso"
-    // this.image = ''
   },
   mounted() {
     this.setChoix(this.$route.hash.slice(1))

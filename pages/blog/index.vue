@@ -42,6 +42,9 @@ export default {
       page: 1,
       nbPages: 1,
       articles: [],
+      titre: 'Le blog',
+      desc: "Actualités de l'association",
+      image: '',
     }
   },
   async fetch() {
@@ -70,11 +73,6 @@ export default {
   },
   watch: {
     '$route.query': 'launch',
-  },
-  beforeCreate() {
-    this.titre = 'Le blog'
-    this.desc = "Actualités de l'association"
-    // this.image = ''
   },
   methods: {
     launch() {

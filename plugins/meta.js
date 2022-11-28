@@ -2,10 +2,11 @@ export default {
   data() {
     return {
       root: 'https://www.havredevers.fr',
-      path: this.$route.path,
-      titre: '',
-      desc: '',
-      image: '',
+      // Set these variables in each page
+      // in data() or asyncData()
+      // titre: '',
+      // desc: '',
+      // image: '',
     }
   },
   computed: {
@@ -17,7 +18,7 @@ export default {
         : debutTitre + this.titre
     },
     url() {
-      return this.root + this.path
+      return this.root + this.$route.path
     },
     img() {
       return this.image === ''
