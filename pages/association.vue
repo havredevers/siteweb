@@ -105,7 +105,7 @@
               </svg>
             </div>
             <div class="value">
-              <count-up :end="2000" suffix="km" />
+              <count-up :end="4000" suffix="km" />
             </div>
             <div class="unit"><h3>Parcourus</h3></div>
           </li>
