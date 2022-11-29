@@ -2,6 +2,15 @@
   <div class="accueil">
     <AccueilCarousel />
     <section class="section-page">
+      <div class="title">
+        <h1>Le pouvoir des vers de terre</h1>
+      </div>
+      <div class="content">
+        <VideoYoutube vid="IlotXfNo17k" />
+      </div>
+      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+    </section>
+    <section class="section-page">
       <span id="valeurs" class="ancre"></span>
       <div class="title">
         <h1>Nos <br />valeurs</h1>
@@ -82,7 +91,7 @@
           </NuxtLink>
         </div>
       </div>
-      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+      <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
     </section>
     <LastActus :articles="articles" />
   </div>

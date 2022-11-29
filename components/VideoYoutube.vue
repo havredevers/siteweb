@@ -1,13 +1,15 @@
 <template>
-  <iframe
-    :width="width"
-    :height="height"
-    :src="'https://www.youtube-nocookie.com/embed/' + vid"
-    :title="title"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-  ></iframe>
+  <div class="video-responsive">
+    <iframe
+      width="560"
+      height="315"
+      :src="'https://www.youtube-nocookie.com/embed/' + vid"
+      :title="title"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
 </template>
 
 <script>
@@ -21,14 +23,23 @@ export default {
       type: String,
       default: 'YouTube video player',
     },
-    width: {
-      type: Number,
-      default: 560,
-    },
-    height: {
-      type: Number,
-      default: 315,
-    },
   },
 }
 </script>
+
+<style lang="scss">
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+
+  iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+}
+</style>

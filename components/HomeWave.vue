@@ -54,7 +54,7 @@ export default {
 @media (min-width: 850px) {
   .section-page > :not(.wave) {
     padding-bottom: var(--wave-height);
-    padding-top: 1rem;
+    padding-top: 2rem;
   }
 }
 </style>

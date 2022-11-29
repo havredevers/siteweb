@@ -19,7 +19,7 @@
         <NuxtLink to="/blog" class="cta"> Voir tous les articles </NuxtLink>
       </div>
     </div>
-    <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
+    <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
   </section>
 </template>
 
