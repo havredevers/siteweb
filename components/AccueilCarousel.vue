@@ -65,7 +65,7 @@ export default {
       delay: 4000,
       carouselItems: [
         {
-          text: "L'association havraise qui accompagne la valorisation des biodéchets",
+          text: "L'association havraise qui accompagne à la valorisation des biodéchets",
           link: '/adherer',
           linkText: "Adhérer à l'association",
           img: '/carousel/adherer.png',

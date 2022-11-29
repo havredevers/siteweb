@@ -3,7 +3,7 @@
     <AccueilCarousel />
     <section class="section-page">
       <div class="title">
-        <h1>Ici, on voit la vie en "VERS"</h1>
+        <h1>Ici,<br />on voit la vie en "VERS"</h1>
       </div>
       <div class="content">
         <VideoYoutube vid="IlotXfNo17k" />
