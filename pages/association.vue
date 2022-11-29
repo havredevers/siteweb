@@ -13,7 +13,10 @@
         </div>
         <div class="carousel-title">
           <h1>L'association</h1>
-          <p>Ici on voit la vie en VERS</p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
+            architecto laudantium
+          </p>
           <NuxtLink to="/adherer" class="cta">Rejoignez-nous</NuxtLink>
         </div>
       </div>
