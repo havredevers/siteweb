@@ -91,7 +91,11 @@ export default {
     prestations: {
       query: PRESTAS,
       update(data) {
-        return data.prestations.edges.map((el) => el.node)
+        return data.prestations.edges
+          .map((el) => el.node)
+          .sort((a, b) => {
+            return a.title.toLowerCase() > b.title.toLowerCase()
+          })
       },
     },
   },
