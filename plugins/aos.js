@@ -15,7 +15,6 @@ class AosPlugin {
         let divs
 
         switch (this.$route.name) {
-          case 'prestations':
           case 'blog-slug':
             divs = document.querySelectorAll('.nuxt-content > *')
             divs.forEach((div) => {

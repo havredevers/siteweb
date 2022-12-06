@@ -117,7 +117,7 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/functions', '~/plugins/aos'],
+  plugins: ['~/plugins/functions', '~/plugins/aos', '~/plugins/sanitize'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -143,7 +143,17 @@ export default {
     'nuxt-leaflet',
     // https://axios.nuxtjs.org
     '@nuxtjs/axios',
+    // https://github.com/nuxt-modules/apollo/tree/v4
+    '@nuxtjs/apollo',
   ],
+
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'https://h2v.normandie-libre.fr/graphql',
+      },
+    },
+  },
 
   // https://nuxtjs.org/docs/configuration-glossary/configuration-env/
   env: {

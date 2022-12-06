@@ -28,17 +28,16 @@
 </template>
 
 <script>
+import { PRESTAS } from '@/apollo/queries'
+
 export default {
-  data() {
-    return {
-      prestations: [],
-    }
-  },
-  async fetch() {
-    this.prestations = await this.$content('prestas')
-      .without(['body'])
-      .sortBy('title')
-      .fetch()
+  apollo: {
+    prestations: {
+      query: PRESTAS,
+      update(data) {
+        return data.prestations.edges.map((el) => el.node)
+      },
+    },
   },
   methods: {
     ToggleDropdown(e) {
