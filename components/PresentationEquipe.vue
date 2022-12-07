@@ -7,20 +7,19 @@
     <div class="content">
       <ul class="membres">
         <li
-          v-for="membre in equipe"
-          :key="membre.order"
+          v-for="membre in membres"
+          :key="membre.databaseId"
           class="membre"
           data-aos="zoom-in"
         >
           <div class="photo">
-            <nuxt-img
-              format="png"
-              :src="'/association/staff/' + membre.photo"
-              alt=""
-              loading="lazy"
+            <img
+              :src="membre.photo.mediaItemUrl"
+              :alt="membre.photo.altText"
+              data-aos="zoom-in"
             />
           </div>
-          <h3>{{ membre.nom }}</h3>
+          <h3>{{ membre.title }}</h3>
           <ul>
             <li v-for="role in membre.roles" :key="role">{{ role }}</li>
           </ul>
@@ -32,16 +31,19 @@
 </template>
 
 <script>
+import { MEMBRES } from '@/apollo/queries'
+
 export default {
-  data() {
-    return {
-      equipe: [],
-    }
+  apollo: {
+    membres: {
+      query: MEMBRES,
+      update(data) {
+        return data.membres.nodes.sort((a, b) => {
+          return a.ordre > b.ordre
+        })
+      },
+    },
   },
-  async fetch() {
-    this.equipe = await this.$content('staff').sortBy('order').fetch()
-  },
-  fetchOnServer: false,
 }
 </script>
 
