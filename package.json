@@ -13,7 +13,6 @@
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix"
   },
   "dependencies": {
-    "@nuxt/content": "^1.15.1",
     "@nuxtjs/apollo": "^4.0.1-rc.5",
     "@nuxtjs/axios": "^5.13.6",
     "aos": "^2.3.4",
@@ -21,7 +20,6 @@
     "countup.js": "^2.3.2",
     "graphql-tag": "^2.12.6",
     "nuxt": "^2.15.8",
-    "nuxt-content-git": "^2.0.14",
     "nuxt-leaflet": "^0.0.27",
     "sanitize-html": "^2.7.3",
     "vue": "^2.6.14",

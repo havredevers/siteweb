@@ -5,28 +5,23 @@
         <h1>Le Blog</h1>
       </div>
       <div class="content">
-        <a id="content" class="ancre"></a>
-        <BlogPagination :current-page="page" :nb-pages="nbPages" />
-        <Transition>
-          <div v-if="isError && !$fetchState.pending">
-            <p class="error">La page demandée a été compostée</p>
-            <NuxtLink class="cta" to="/">Retour à l'accueil</NuxtLink>
-          </div>
-        </Transition>
-        <Transition>
-          <div v-if="!isError && !$fetchState.pending">
-            <ul class="list-actus">
-              <li
-                v-for="article in articles"
-                :key="article.slug"
-                class="article"
-              >
-                <BlogArticle :article="article" />
-              </li>
-            </ul>
-          </div>
-        </Transition>
-        <BlogPagination :current-page="page" :nb-pages="nbPages" />
+        <div>
+          <ul v-if="articles" class="list-actus">
+            <li v-for="article in articles" :key="article.slug" class="article">
+              <BlogArticle :article="article.node" />
+            </li>
+          </ul>
+        </div>
+        <button
+          v-if="pageInfo.hasNextPage && !$apollo.queries.articles.loading"
+          class="cta"
+          @click="showNextArticles"
+        >
+          Afficher plus
+        </button>
+        <div v-if="$apollo.queries.articles.loading" class="loader">
+          <nuxt-img src="/loader/loader.gif" alt="chargement" />
+        </div>
       </div>
     </section>
   </div>
@@ -34,50 +29,54 @@
 
 <script>
 import meta from '~/plugins/meta'
+import { PAGINATED_POSTS } from '@/apollo/queries'
 
 export default {
   mixins: [meta],
   data() {
     return {
-      page: 1,
-      nbPages: 1,
-      articles: [],
+      pagination: 4,
+      pageInfo: {
+        hasNextPage: false,
+        endCursor: '',
+      },
       titre: 'Le blog',
       desc: "Actualités de l'association",
       image: '',
     }
   },
-  async fetch() {
-    this.page = parseInt(this.$route.query.page) || 1
-    this.articles = await this.$content('blog')
-      .only(['titre'])
-      .fetch()
-      .then((reponse) => {
-        this.nbPages = Math.ceil(
-          reponse.length / this.$variables.blogPagination
-        )
-
-        return this.$content('blog')
-          .without(['body'])
-          .sortBy('updatedAt', 'desc')
-          .skip((this.page - 1) * this.$variables.blogPagination)
-          .limit(this.$variables.blogPagination)
-          .fetch()
-      })
-  },
-  fetchOnServer: false,
-  computed: {
-    isError() {
-      return this.page < 0 || this.page > this.nbPages
+  apollo: {
+    articles: {
+      query: PAGINATED_POSTS,
+      variables() {
+        return { first: this.pagination }
+      },
+      update(data) {
+        this.pageInfo = data.posts.pageInfo
+        return data.posts.edges
+      },
     },
   },
-  watch: {
-    '$route.query': 'launch',
-  },
   methods: {
-    launch() {
-      document.querySelector('#content').scrollIntoView({ behavior: 'smooth' })
-      this.$fetch()
+    showNextArticles() {
+      this.$apollo.queries.articles.fetchMore({
+        variables: {
+          first: this.pagination,
+          after: this.pageInfo.endCursor,
+        },
+        updateQuery: (previousResult, { fetchMoreResult }) => {
+          const newPosts = fetchMoreResult.posts.edges
+          this.pageInfo = fetchMoreResult.posts.pageInfo
+
+          return {
+            posts: {
+              __typename: previousResult.posts.__typename,
+              edges: [...previousResult.posts.edges, ...newPosts],
+              pageInfo: this.pageInfo,
+            },
+          }
+        },
+      })
     },
   },
 }
@@ -87,6 +86,10 @@ export default {
 .blog {
   .pagination {
     margin-bottom: 2rem;
+  }
+
+  .cta {
+    margin: auto;
   }
 }
 </style>

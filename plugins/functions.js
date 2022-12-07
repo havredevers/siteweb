@@ -5,10 +5,6 @@ Vue.prototype.$formatDate = (date) => {
   return new Date(date).toLocaleDateString('fr', options)
 }
 
-export default ({ app }, inject) => {
-  inject('variables', Vue.observable({ blogPagination: 3 }))
-}
-
 Vue.mixin({
   mounted: () => {
     const oC = document.querySelectorAll('.protect')

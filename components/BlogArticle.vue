@@ -1,16 +1,20 @@
 <template>
-  <NuxtLink :to="article.path">
+  <NuxtLink :to="'/blog/' + article.slug">
     <div class="article-logo">
-      <nuxt-img format="png" :src="article.img" alt="" loading="lazy" />
+      <img
+        :src="article.featuredImage.node.mediaItemUrl"
+        :alt="article.featuredImage.node.altText"
+        loading="lazy"
+      />
     </div>
     <div class="article-content">
       <div class="article-title">
         <h2>{{ article.title }}</h2>
-        <small>{{ 'Mis en ligne le ' + $formatDate(article.updatedAt) }}</small>
+        <small>{{
+          'Mis en ligne le ' + $formatDate(article.modifiedGmt)
+        }}</small>
       </div>
-      <p>
-        {{ truncateString(article.description, 200) }}
-      </p>
+      <p v-sanitize-html="article.excerpt"></p>
       <span>Lire l'article</span>
     </div>
   </NuxtLink>
@@ -39,8 +43,12 @@ export default {
 
 <style lang="scss">
 .article {
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   text-align: center;
+
+  h2 {
+    font-family: Vibur, 'Times New Roman', Times, serif;
+  }
 
   a {
     font-weight: initial;
@@ -51,14 +59,11 @@ export default {
     width: 100%;
     color: var(--clr-font);
     position: relative;
-    padding: 1rem;
     border-radius: 15px;
-    transition: all 0.3s ease-in-out;
 
     &:hover {
       .article-title {
         opacity: 0;
-        height: 0;
       }
 
       span {
@@ -103,7 +108,6 @@ export default {
   }
 
   &-title {
-    transition: all 0.3s ease-in-out;
     overflow: hidden;
     width: 75%;
     margin: auto;
@@ -148,10 +152,12 @@ export default {
 
   @media (min-width: 1200px) {
     text-align: left;
+    margin-bottom: 3rem;
 
     a {
       display: flex;
       align-items: flex-start;
+      padding: 1rem;
 
       &:hover {
         .article-title {

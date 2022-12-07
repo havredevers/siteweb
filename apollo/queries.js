@@ -39,3 +39,60 @@ export const MEMBRES = gql`
     }
   }
 `
+
+export const PAGINATED_POSTS = gql`
+  query GET_PAGINATED_POSTS(
+    $first: Int
+    $after: String
+    $field: PostObjectsConnectionOrderbyEnum = MODIFIED
+    $order: OrderEnum = DESC
+  ) {
+    posts(
+      first: $first
+      after: $after
+      where: { orderby: { field: $field, order: $order } }
+    ) {
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          title
+          excerpt
+          slug
+          modifiedGmt
+          featuredImage {
+            node {
+              altText
+              mediaItemUrl
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+export const SINGLE_POST = gql`
+  query SINGLE_POST($id: ID!) {
+    post(id: $id, idType: SLUG) {
+      title
+      excerpt
+      content
+      modifiedGmt
+      featuredImage {
+        node {
+          altText
+          mediaItemUrl
+        }
+      }
+      author {
+        node {
+          name
+        }
+      }
+    }
+  }
+`

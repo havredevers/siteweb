@@ -98,14 +98,19 @@
 </template>
 
 <script>
+import { PAGINATED_POSTS } from '@/apollo/queries'
+
 export default {
-  async asyncData({ $content, params }) {
-    const articles = await $content('blog')
-      .without(['body'])
-      .sortBy('updatedAt', 'desc')
-      .limit(2)
-      .fetch()
-    return { articles }
+  apollo: {
+    articles: {
+      query: PAGINATED_POSTS,
+      variables() {
+        return { first: 2 }
+      },
+      update(data) {
+        return data.posts.edges
+      },
+    },
   },
 }
 </script>
@@ -136,7 +141,6 @@ export default {
 
   h2 {
     margin-bottom: 1rem;
-    font-family: Vibur, 'Times New Roman', Times, serif;
     font-weight: 400;
   }
 }

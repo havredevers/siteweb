@@ -8,11 +8,11 @@
       <ul class="list-actus">
         <li
           v-for="article in articles"
-          :key="article.title"
+          :key="article.slug"
           data-aos="fade-up"
           class="article"
         >
-          <BlogArticle :article="article" />
+          <BlogArticle :article="article.node" />
         </li>
       </ul>
       <div data-aos="fade-up">

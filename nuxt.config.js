@@ -136,9 +136,6 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    'nuxt-content-git',
-    // https://go.nuxtjs.dev/content
-    '@nuxt/content',
     // https://github.com/schlunsen/nuxt-leaflet
     'nuxt-leaflet',
     // https://axios.nuxtjs.org

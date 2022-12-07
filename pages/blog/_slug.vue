@@ -1,44 +1,26 @@
 <template>
-  <article class="blog-article">
+  <article v-if="article" class="blog-article">
     <div class="carousel">
       <div class="page-header">
         <div class="carousel-img">
-          <nuxt-img
-            format="png"
-            :src="article.img"
-            alt=""
-            width="1200"
-            height="815"
+          <img
+            :src="article.featuredImage.node.mediaItemUrl"
+            :alt="article.featuredImage.node.altText"
           />
         </div>
         <div class="carousel-title">
           <h1>{{ article.title }}</h1>
-          <p>{{ article.description }}</p>
+          <div v-sanitize-html="article.excerpt"></div>
           <div class="updatedat">
-            Mis à jour le {{ $formatDate(article.updatedAt) }}
+            Mis à jour le {{ $formatDate(article.modifiedGmt) }}
           </div>
         </div>
       </div>
     </div>
     <section class="section-page">
-      <div class="title">
-        <nav>
-          <div id="toc_title">Table des matières</div>
-          <ul aria-labelledby="toc_title">
-            <li
-              v-for="link of article.toc"
-              :key="link.id"
-              :class="{ toc2: link.depth === 2, toc3: link.depth === 3 }"
-            >
-              <NuxtLink :to="`#${link.id}`" :data-toc="link.id">{{
-                link.text
-              }}</NuxtLink>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <div class="title"></div>
       <div class="content">
-        <nuxt-content :document="article" />
+        <div v-sanitize-html="article.content"></div>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
@@ -47,49 +29,26 @@
 
 <script>
 import meta from '~/plugins/meta'
+import { SINGLE_POST } from '@/apollo/queries'
 
 export default {
   mixins: [meta],
-  async asyncData({ $content, params, error }) {
-    try {
-      const article = await $content('blog', params.slug).fetch()
+  async asyncData({ app, params }) {
+    const client = app.apolloProvider.defaultClient
 
-      const titre = article.title
-      const desc = article.description
-      const image = article.img
+    const res = await client.query({
+      query: SINGLE_POST,
+      variables: {
+        id: params.slug,
+      },
+    })
 
-      return { article, titre, desc, image }
-    } catch (err) {
-      error(err)
-    }
-  },
-  mounted() {
-    window.addEventListener('scroll', this.handleScroll)
-  },
-  destroyed() {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
-  methods: {
-    handleScroll() {
-      const els = document.querySelectorAll('h2,h3,h4,h5,h6')
-      els.forEach((el) => {
-        const elTop = el.getBoundingClientRect().top
+    const article = res.data.post
+    const titre = article.title
+    const desc = article.excerpt
+    const image = article.featuredImage.node.mediaItemUrl
 
-        if (elTop < 1) {
-          const current = document.querySelector(
-            '.section-page .title nav a[class~="actif"]'
-          )
-
-          if (current) {
-            current.classList.remove('actif')
-          }
-
-          document
-            .querySelector('.section-page .title nav a[data-toc=' + el.id + ']')
-            .classList.add('actif')
-        }
-      })
-    },
+    return { article, titre, desc, image }
   },
 }
 </script>

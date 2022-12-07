@@ -63,7 +63,6 @@ export default {
   .loader {
     height: 150px;
     overflow: hidden;
-    text-align: center;
   }
 
   p {
