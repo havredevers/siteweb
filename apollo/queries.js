@@ -112,3 +112,11 @@ export const CATEGORIES = gql`
     }
   }
 `
+
+export const ACCUEIL = gql`
+  query ACCUEIL {
+    page(id: "accueil", idType: URI) {
+      content
+    }
+  }
+`
