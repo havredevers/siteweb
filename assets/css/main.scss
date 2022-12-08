@@ -387,6 +387,10 @@ button {
     flex: 0 0 33%;
     text-align: center;
     padding: 6% 2.7% 6% 6%;
+
+    h2 {
+      font-family: var(--font-changa);
+    }
   }
 
   .content {
