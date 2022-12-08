@@ -5,7 +5,11 @@
       <h2>Présentation <br />de l'équipe</h2>
     </div>
     <div class="content">
-      <ul class="membres">
+      <div v-if="$apollo.queries.membres.loading" class="loader">
+        <img src="~/assets/img/ui/loader.gif" alt="chargement" />
+      </div>
+      <div v-else-if="error != ''">{{ error }}</div>
+      <ul v-else class="membres">
         <li
           v-for="membre in membres"
           :key="membre.databaseId"
@@ -30,6 +34,11 @@
 import { MEMBRES } from '@/apollo/queries'
 
 export default {
+  data() {
+    return {
+      error: '',
+    }
+  },
   apollo: {
     membres: {
       query: MEMBRES,
@@ -37,6 +46,9 @@ export default {
         return data.membres.nodes.sort((a, b) => {
           return a.ordre > b.ordre
         })
+      },
+      error(err) {
+        this.error = err.message
       },
     },
   },

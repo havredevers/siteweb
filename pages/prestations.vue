@@ -15,7 +15,10 @@
         </div>
       </div>
     </div>
-    <div v-if="$apollo.queries.prestations.loading">Chargement...</div>
+    <div v-if="$apollo.queries.prestations.loading" class="loader">
+      <img src="~/assets/img/ui/loader.gif" alt="chargement" />
+    </div>
+    <div v-else-if="error != ''">{{ error }}</div>
     <div v-else>
       <div></div>
       <section
@@ -75,6 +78,7 @@ export default {
   mixins: [meta],
   data() {
     return {
+      error: '',
       titre: 'Nos prestations',
       desc: "Venez découvrir les ateliers proposés par l'association pour apprendre tout en s'amusant",
       image: '',
@@ -87,6 +91,9 @@ export default {
         return data.prestations.nodes.sort((a, b) => {
           return a.title.toLowerCase() > b.title.toLowerCase()
         })
+      },
+      error(err) {
+        this.error = err.message
       },
     },
   },

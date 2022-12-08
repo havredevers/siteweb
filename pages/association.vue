@@ -68,10 +68,13 @@
         <h2>L'association en quelques chiffres</h2>
       </div>
       <div class="content">
-        <p v-if="$fetchState.error">
+        <div v-if="$fetchState.pending" class="loader">
+          <img src="~/assets/img/ui/loader.gif" alt="chargement" />
+        </div>
+        <p v-else-if="$fetchState.error">
           Un problème est survenu en contactant l'API HelloAsso
         </p>
-        <ul v-if="!$fetchState.pending">
+        <ul v-else>
           <li data-aos="zoom-in" data-aos-delay="100">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">

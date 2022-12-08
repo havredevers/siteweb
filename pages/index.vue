@@ -72,7 +72,23 @@
       </div>
       <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
     </section>
-    <LastActus :articles="articles" />
+    <section class="accueil-2 section-page">
+      <span id="actualites" class="ancre"></span>
+      <div class="title">
+        <h1>Nos <br />actualités</h1>
+      </div>
+      <div class="content">
+        <div v-if="$apollo.queries.articles.loading" class="loader">
+          <img src="~/assets/img/ui/loader.gif" alt="chargement" />
+        </div>
+        <div v-else-if="error != ''">{{ error }}</div>
+        <ListActus v-else :articles="articles" />
+        <div data-aos="fade-up">
+          <NuxtLink to="/blog" class="cta">Voir tous les articles</NuxtLink>
+        </div>
+      </div>
+      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+    </section>
   </div>
 </template>
 
@@ -80,6 +96,11 @@
 import { PAGINATED_POSTS } from '@/apollo/queries'
 
 export default {
+  data() {
+    return {
+      error: '',
+    }
+  },
   apollo: {
     articles: {
       query: PAGINATED_POSTS,
@@ -88,6 +109,9 @@ export default {
       },
       update(data) {
         return data.posts.edges
+      },
+      error(err) {
+        this.error = err.message
       },
     },
   },

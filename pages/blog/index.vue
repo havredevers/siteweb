@@ -11,7 +11,11 @@
     </div>
     <section class="section-page">
       <div class="title">
-        <fieldset v-if="categories">
+        <div v-if="$apollo.queries.categories.loading" class="loader">
+          <img src="~/assets/img/ui/loader.gif" alt="chargement" />
+        </div>
+        <div v-else-if="error != ''">{{ error }}</div>
+        <fieldset v-else>
           <legend>Filtrer les articles</legend>
           <div class="filter">
             <div>
@@ -26,26 +30,23 @@
                 :id="cat.slug"
                 v-model="filter"
                 type="radio"
-                :value="cat.name"
-              /><label v-if="cat.name != 'Non classé'" :for="cat.slug">{{
-                cat.name
-              }}</label>
+                :value="cat.slug"
+              /><label
+                v-if="cat.name != 'Non classé'"
+                :for="cat.slug"
+                @click="pushRoute($event)"
+                >{{ cat.name }}</label
+              >
             </div>
           </div>
         </fieldset>
       </div>
       <div class="content">
-        <div
-          v-if="
-            (isFectchingMore || !$apollo.queries.articles.loading) && articles
-          "
-        >
-          <ul class="list-actus">
-            <li v-for="article in articles" :key="article.slug" class="article">
-              <BlogArticle :article="article.node" />
-            </li>
-          </ul>
-        </div>
+        <ul v-if="articles" class="list-actus">
+          <li v-for="article in articles" :key="article.slug" class="article">
+            <BlogArticle :article="article.node" />
+          </li>
+        </ul>
         <button
           v-if="pageInfo.hasNextPage && !$apollo.queries.articles.loading"
           class="cta"
@@ -56,6 +57,7 @@
         <div v-if="$apollo.queries.articles.loading" class="loader">
           <img src="~/assets/img/ui/loader.gif" alt="chargement" />
         </div>
+        <div v-else-if="error != ''">{{ error }}</div>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
@@ -70,7 +72,7 @@ export default {
   mixins: [meta],
   data() {
     return {
-      isFectchingMore: false,
+      error: '',
       filter: 'all',
       pagination: 4,
       pageInfo: {
@@ -88,6 +90,9 @@ export default {
       update(data) {
         return data.categories.nodes
       },
+      error(err) {
+        this.error = err.message
+      },
     },
     articles: {
       query: PAGINATED_POSTS,
@@ -101,6 +106,9 @@ export default {
         this.pageInfo = data.posts.pageInfo
         return data.posts.edges
       },
+      error(err) {
+        this.error = err.message
+      },
     },
   },
   watch: {
@@ -108,10 +116,14 @@ export default {
       this.$apollo.queries.articles.refetch()
     },
   },
+  mounted() {
+    this.filter = this.$route.hash.substring(1)
+  },
   methods: {
+    pushRoute(e) {
+      this.$router.push({ hash: e.target.attributes.for.value })
+    },
     showNextArticles() {
-      this.isFectchingMore = true
-
       this.$apollo.queries.articles.fetchMore({
         variables: {
           first: this.pagination,
@@ -120,7 +132,6 @@ export default {
         updateQuery: (previousResult, { fetchMoreResult }) => {
           const newPosts = fetchMoreResult.posts.edges
           this.pageInfo = fetchMoreResult.posts.pageInfo
-          this.isFectchingMore = false
 
           return {
             posts: {
