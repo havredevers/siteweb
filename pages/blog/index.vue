@@ -42,16 +42,13 @@
         </fieldset>
       </div>
       <div class="content">
-        <ul
+        <div
           v-if="
             (isFectchingMore || !$apollo.queries.articles.loading) && articles
           "
-          class="list-actus"
         >
-          <li v-for="article in articles" :key="article.slug" class="article">
-            <BlogArticle :article="article.node" />
-          </li>
-        </ul>
+          <ListActus :articles="articles" />
+        </div>
         <button
           v-if="pageInfo.hasNextPage && !$apollo.queries.articles.loading"
           class="cta"
