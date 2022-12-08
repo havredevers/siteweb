@@ -46,11 +46,15 @@ export const PAGINATED_POSTS = gql`
     $after: String
     $field: PostObjectsConnectionOrderbyEnum = MODIFIED
     $order: OrderEnum = DESC
+    $categoryName: String
   ) {
     posts(
       first: $first
       after: $after
-      where: { orderby: { field: $field, order: $order } }
+      where: {
+        orderby: { field: $field, order: $order }
+        categoryName: $categoryName
+      }
     ) {
       pageInfo {
         endCursor
@@ -92,6 +96,18 @@ export const SINGLE_POST = gql`
         node {
           name
         }
+      }
+    }
+  }
+`
+
+export const CATEGORIES = gql`
+  query GET_PAGINATED_POSTS {
+    categories {
+      nodes {
+        id
+        name
+        slug
       }
     }
   }

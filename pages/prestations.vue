@@ -17,6 +17,7 @@
     </div>
     <div v-if="$apollo.queries.prestations.loading">Chargement...</div>
     <div v-else>
+      <div></div>
       <section
         v-for="(presta, index) in prestations"
         :key="presta.slug"
@@ -108,7 +109,7 @@ export default {
   },
   methods: {
     waveColors(i) {
-      return i % 2 === 0 ? ['#ead0a3', '#f7e9d4'] : ['#e3ad89', '#f4dbc9']
+      return i % 2 !== 0 ? ['#ead0a3', '#f7e9d4'] : ['#e3ad89', '#f4dbc9']
     },
   },
 }

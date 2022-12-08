@@ -1,12 +1,46 @@
 <template>
   <div class="blog">
+    <div class="carousel">
+      <div class="page-header">
+        <div class="carousel-img"></div>
+        <div class="carousel-title">
+          <h1>Blog</h1>
+          <p>Retrouvez ici toutes nos actualités, recettes, reportages...</p>
+        </div>
+      </div>
+    </div>
     <section class="section-page">
       <div class="title">
-        <h1>Le Blog</h1>
+        <fieldset v-if="categories">
+          <legend>Filtrer les articles</legend>
+          <div class="filter">
+            <div>
+              <input id="all" v-model="filter" type="radio" value="all" /><label
+                for="all"
+                >Tous</label
+              >
+            </div>
+            <div v-for="cat in categories" :key="cat.id">
+              <input
+                v-if="cat.name != 'Non classé'"
+                :id="cat.slug"
+                v-model="filter"
+                type="radio"
+                :value="cat.name"
+              /><label v-if="cat.name != 'Non classé'" :for="cat.slug">{{
+                cat.name
+              }}</label>
+            </div>
+          </div>
+        </fieldset>
       </div>
       <div class="content">
-        <div>
-          <ul v-if="articles" class="list-actus">
+        <div
+          v-if="
+            (isFectchingMore || !$apollo.queries.articles.loading) && articles
+          "
+        >
+          <ul class="list-actus">
             <li v-for="article in articles" :key="article.slug" class="article">
               <BlogArticle :article="article.node" />
             </li>
@@ -23,18 +57,21 @@
           <img src="~/assets/img/ui/loader.gif" alt="chargement" />
         </div>
       </div>
+      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
   </div>
 </template>
 
 <script>
 import meta from '~/plugins/meta'
-import { PAGINATED_POSTS } from '@/apollo/queries'
+import { PAGINATED_POSTS, CATEGORIES } from '@/apollo/queries'
 
 export default {
   mixins: [meta],
   data() {
     return {
+      isFectchingMore: false,
+      filter: 'all',
       pagination: 4,
       pageInfo: {
         hasNextPage: false,
@@ -46,10 +83,19 @@ export default {
     }
   },
   apollo: {
+    categories: {
+      query: CATEGORIES,
+      update(data) {
+        return data.categories.nodes
+      },
+    },
     articles: {
       query: PAGINATED_POSTS,
       variables() {
-        return { first: this.pagination }
+        return {
+          first: this.pagination,
+          categoryName: this.filter === 'all' ? '' : this.filter,
+        }
       },
       update(data) {
         this.pageInfo = data.posts.pageInfo
@@ -57,8 +103,15 @@ export default {
       },
     },
   },
+  watch: {
+    filter() {
+      this.$apollo.queries.articles.refetch()
+    },
+  },
   methods: {
     showNextArticles() {
+      this.isFectchingMore = true
+
       this.$apollo.queries.articles.fetchMore({
         variables: {
           first: this.pagination,
@@ -67,6 +120,7 @@ export default {
         updateQuery: (previousResult, { fetchMoreResult }) => {
           const newPosts = fetchMoreResult.posts.edges
           this.pageInfo = fetchMoreResult.posts.pageInfo
+          this.isFectchingMore = false
 
           return {
             posts: {
@@ -84,8 +138,45 @@ export default {
 
 <style lang="scss">
 .blog {
-  .pagination {
-    margin-bottom: 2rem;
+  .carousel-img {
+    background-image: url('~/assets/img/pages/adherer/cuisine.png');
+  }
+
+  fieldset {
+    border: none;
+
+    legend {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    input {
+      display: none;
+    }
+
+    label {
+      display: block;
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 0.5rem;
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--clr-primary);
+      }
+    }
+  }
+
+  .filter {
+    background-color: var(--clr-green1);
+    border-radius: 20px;
+    max-width: 350px;
+    overflow: hidden;
+
+    input:checked + label {
+      background-color: var(--clr-primary);
+    }
   }
 
   .cta {

@@ -84,7 +84,7 @@ export default {
     articles: {
       query: PAGINATED_POSTS,
       variables() {
-        return { first: 2 }
+        return { first: 2, categoryName: 'Actualités' }
       },
       update(data) {
         return data.posts.edges

@@ -30,9 +30,6 @@
           alt=""
           class="vignette"
         />
-        <div class="loader">
-          <img src="~/assets/img/ui/loader.gif" alt="chargement" />
-        </div>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
@@ -58,11 +55,6 @@ export default {
 .boutique {
   .carousel-img {
     background-image: url('~/assets/img/pages/boutique/local.png');
-  }
-
-  .loader {
-    height: 150px;
-    overflow: hidden;
   }
 
   p {
