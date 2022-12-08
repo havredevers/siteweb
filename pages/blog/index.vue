@@ -120,7 +120,7 @@ export default {
     },
   },
   mounted() {
-    this.filter = this.$route.hash.substring(1)
+    this.filter = this.$route.hash ? this.$route.hash.substring(1) : 'all'
   },
   methods: {
     pushRoute(e) {
