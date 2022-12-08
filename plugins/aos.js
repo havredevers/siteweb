@@ -42,6 +42,17 @@ class AosPlugin {
 
         import('~/node_modules/aos').then((AOS) => AOS.init(this.config))
       },
+      methods: {
+        aosTrigger(divs) {
+          divs.forEach((div) => {
+            if (['img', 'iframe'].includes(div.localName)) {
+              div.setAttribute('data-aos', 'zoom-in')
+            } else {
+              div.setAttribute('data-aos', 'fade-up')
+            }
+          })
+        },
+      },
     })
   }
 }

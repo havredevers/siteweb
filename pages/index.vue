@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { PAGINATED_POSTS, ACCUEIL } from '@/apollo/queries'
+import { PAGINATED_POSTS, GET_PAGE } from '@/apollo/queries'
 
 export default {
   data() {
@@ -61,7 +61,10 @@ export default {
   },
   apollo: {
     accueil: {
-      query: ACCUEIL,
+      query: GET_PAGE,
+      variables() {
+        return { id: 'accueil' }
+      },
       update(data) {
         return data.page.content
       },

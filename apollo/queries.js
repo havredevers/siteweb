@@ -113,9 +113,9 @@ export const CATEGORIES = gql`
   }
 `
 
-export const ACCUEIL = gql`
-  query ACCUEIL {
-    page(id: "accueil", idType: URI) {
+export const GET_PAGE = gql`
+  query GET_PAGE($id: ID!) {
+    page(id: $id, idType: URI) {
       content
     }
   }

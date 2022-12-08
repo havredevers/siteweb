@@ -118,11 +118,12 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-img.vignette,
-.nuxt-content img {
+.vignette > img,
+img.vignette {
   border-radius: 40px;
   width: 100%;
   max-width: 500px;
+  height: auto;
   margin: auto;
   display: block;
 }
