@@ -42,7 +42,12 @@
         </fieldset>
       </div>
       <div class="content">
-        <ul v-if="articles" class="list-actus">
+        <ul
+          v-if="
+            (isFectchingMore || !$apollo.queries.articles.loading) && articles
+          "
+          class="list-actus"
+        >
           <li v-for="article in articles" :key="article.slug" class="article">
             <BlogArticle :article="article.node" />
           </li>
@@ -73,6 +78,7 @@ export default {
   data() {
     return {
       error: '',
+      isFectchingMore: false,
       filter: 'all',
       pagination: 4,
       pageInfo: {
@@ -124,6 +130,8 @@ export default {
       this.$router.push({ hash: e.target.attributes.for.value })
     },
     showNextArticles() {
+      this.isFectchingMore = true
+
       this.$apollo.queries.articles.fetchMore({
         variables: {
           first: this.pagination,
@@ -132,6 +140,7 @@ export default {
         updateQuery: (previousResult, { fetchMoreResult }) => {
           const newPosts = fetchMoreResult.posts.edges
           this.pageInfo = fetchMoreResult.posts.pageInfo
+          this.isFectchingMore = false
 
           return {
             posts: {
