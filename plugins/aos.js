@@ -43,7 +43,8 @@ class AosPlugin {
         import('~/node_modules/aos').then((AOS) => AOS.init(this.config))
       },
       methods: {
-        aosTrigger(divs) {
+        aosTrigger() {
+          const divs = document.querySelectorAll('.wp-api > *')
           divs.forEach((div) => {
             if (['img', 'iframe', 'figure'].includes(div.localName)) {
               div.setAttribute('data-aos', 'zoom-in')

@@ -101,7 +101,7 @@ export default {
     },
     adherer(n, o) {
       if (n !== o) {
-        this.aosTrigger(document.querySelectorAll('.wp-api > *'))
+        this.aosTrigger()
       }
     },
   },

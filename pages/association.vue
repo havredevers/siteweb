@@ -179,7 +179,7 @@ export default {
   watch: {
     asso(n, o) {
       if (n !== o) {
-        this.aosTrigger(document.querySelectorAll('.wp-api > *'))
+        this.aosTrigger()
       }
     },
   },
