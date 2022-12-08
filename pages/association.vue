@@ -2,15 +2,7 @@
   <div class="association">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img">
-          <nuxt-img
-            format="png"
-            src="/association/cuisine.png"
-            alt=""
-            width="1200"
-            height="815"
-          />
-        </div>
+        <div class="carousel-img"></div>
         <div class="carousel-title">
           <h1>L'association</h1>
           <p>
@@ -61,10 +53,10 @@
             gestion des biodéchets.
           </li>
         </ul>
-        <nuxt-img
-          format="png"
+        <img
+          src="~/assets/img/pages/association/triporteur.png"
+          alt=""
           class="vignette"
-          src="/association/triporteur.png"
           data-aos="zoom-in"
         />
       </div>
@@ -243,9 +235,15 @@ export default {
 </script>
 
 <style lang="scss">
-.association h3 {
-  font-family: var(--font-changa);
-  margin: 0.5rem 0;
+.association {
+  h3 {
+    font-family: var(--font-changa);
+    margin: 0.5rem 0;
+  }
+
+  .carousel-img {
+    background-image: url('~/assets/img/pages/association/cuisine.png');
+  }
 }
 
 .asso-1 {

@@ -28,7 +28,7 @@
                 :icon-anchor="[12, 41]"
                 class-name="map-icon"
               >
-                <img src="/ui/pin-map.png" width="50" />
+                <img src="~/assets/img/ui/pin-map.png" width="50" />
               </l-icon>
               <l-tooltip
                 :options="{
@@ -38,7 +38,7 @@
                 }"
               >
                 <div class="tooltip-header">
-                  <img src="/ui/logo-blanc.png" />
+                  <img src="~/assets/img/ui/logo-blanc.png" />
                   <div>
                     <strong>Havre de Vers</strong><br />13, rue de Tourville<br />76600
                     LE HAVRE
@@ -61,7 +61,7 @@
                 :icon-anchor="[12, 41]"
                 class-name="map-icon"
               >
-                <img src="/ui/pin-map.png" width="50" />
+                <img src="~/assets/img/ui/pin-map.png" width="50" />
               </l-icon>
               <l-tooltip
                 :options="{
@@ -71,7 +71,7 @@
                 }"
               >
                 <div class="tooltip-header">
-                  <img src="/ui/logo-blanc.png" />
+                  <img src="~/assets/img/ui/logo-blanc.png" />
                   <div>
                     <strong>Hangar zéro</strong><br />37 Quai de la Saône<br />76600
                     LE HAVRE

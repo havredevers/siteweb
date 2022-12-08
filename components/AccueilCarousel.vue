@@ -14,7 +14,7 @@
           :class="{ active: i == slideIndex - 1 }"
         >
           <div class="carousel-img">
-            <nuxt-img format="png" :src="carouselItem.img" alt="" />
+            <img :src="carouselItem.img" alt="" />
           </div>
           <div class="carousel-title">
             <p>{{ carouselItem.text }}</p>
@@ -68,19 +68,19 @@ export default {
           text: "L'association havraise qui accompagne à la valorisation des biodéchets",
           link: '/adherer',
           linkText: "Adhérer à l'association",
-          img: '/carousel/adherer.png',
+          img: require('~/assets/img/pages/adherer/vers.png'),
         },
         {
           text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           link: '/prestations',
           linkText: 'Voir nos prestations',
-          img: '/carousel/prestations.png',
+          img: require('~/assets/img/pages/prestations/maternelle.png'),
         },
         {
           text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           link: '/boutique',
           linkText: 'Visiter la boutique',
-          img: '/carousel/boutique.png',
+          img: require('~/assets/img/pages/boutique/local.png'),
         },
       ],
       pointerPositionDown: {

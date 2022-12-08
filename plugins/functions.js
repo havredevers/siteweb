@@ -37,7 +37,7 @@ Vue.mixin({
       closePopup: false /* Show a close X on the banner */,
 
       showIcon: true /* Show cookie icon to manage cookies */,
-      iconSrc: '/ui/cookie.png' /* Optionnal: URL or base64 encoded image */,
+      iconSrc: require('~/assets/img/ui/cookie.png') /* Optionnal: URL or base64 encoded image */,
       iconPosition:
         'BottomLeft' /* BottomRight, BottomLeft, TopRight and TopLeft */,
 

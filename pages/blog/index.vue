@@ -20,7 +20,7 @@
           Afficher plus
         </button>
         <div v-if="$apollo.queries.articles.loading" class="loader">
-          <nuxt-img src="/loader/loader.gif" alt="chargement" />
+          <img src="~/assets/img/ui/loader.gif" alt="chargement" />
         </div>
       </div>
     </section>

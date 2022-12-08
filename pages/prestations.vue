@@ -2,15 +2,7 @@
   <div class="prestations">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img">
-          <nuxt-img
-            format="png"
-            src="/carousel/prestations.png"
-            alt=""
-            width="1200"
-            height="815"
-          />
-        </div>
+        <div class="carousel-img"></div>
         <div class="carousel-title">
           <h1>Nos prestations</h1>
           <p>
@@ -124,6 +116,14 @@ export default {
 
 <style lang="scss">
 .prestations {
+  .carousel-img {
+    background-image: url('~/assets/img/pages/prestations/maternelle.png');
+  }
+
+  h2 {
+    font-family: var(--font-changa);
+  }
+
   h3 {
     font-size: clamp(1.5rem, 2.5vw, 2.5rem);
     margin: 1rem 0;

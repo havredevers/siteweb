@@ -50,6 +50,7 @@ body {
   --font-sans-serif: 'Work Sans', Verdana, sans-serif;
   --font-serif: Georgia, 'Times New Roman', Times, serif;
   --font-changa: 'Changa One', Arial, sans-serif;
+  --font-vibur: 'Vibur', 'Times New Roman', Times, serif;
   font-family: var(--font-sans-serif);
   cursor: url('~assets/img/cursor.png'), auto;
 
@@ -87,12 +88,12 @@ h1 {
 }
 
 h2 {
-  font-family: var(--font-changa);
+  font-family: var(--font-vibur);
   font-size: clamp(1.5rem, 3.5vw, 4rem);
 }
 
 h3 {
-  font-family: 'Vibur', 'Times New Roman', Times, serif;
+  font-family: var(--font-vibur);
   font-weight: 400;
 }
 
@@ -169,7 +170,10 @@ button {
   }
 
   &-img {
-    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
 
     img {
       width: 100%;

@@ -2,15 +2,7 @@
   <div class="adherer">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img">
-          <nuxt-img
-            format="png"
-            src="/carousel/adherer.png"
-            alt=""
-            width="1200"
-            height="815"
-          />
-        </div>
+        <div class="carousel-img"></div>
         <div class="carousel-title">
           <h1>Adhérer à l'association</h1>
           <p>
@@ -52,12 +44,12 @@
           </p>
           <q>Du jardin à l’assiette, nous envisageons un modèle bio-inspiré.</q>
         </div>
-        <nuxt-img
+        <img
+          src="~/assets/img/pages/adherer/cuisine.png"
+          alt=""
           class="vignette"
           data-aos="zoom-in"
-          format="jpg"
-          src="/adherer/cuisine.png"
-        ></nuxt-img>
+        />
         <div class="choix">
           <span id="proximite" class="ancre"></span>
           <span id="soutien" class="ancre"></span>
@@ -144,6 +136,10 @@ export default {
 }
 
 .adherer {
+  .carousel-img {
+    background-image: url('~/assets/img/pages/adherer/vers.png');
+  }
+
   .intro {
     margin-bottom: 1rem;
   }

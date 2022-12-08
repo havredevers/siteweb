@@ -2,15 +2,7 @@
   <div class="boutique">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img">
-          <nuxt-img
-            format="png"
-            src="/carousel/boutique.png"
-            alt=""
-            width="1200"
-            height="815"
-          />
-        </div>
+        <div class="carousel-img"></div>
         <div class="carousel-title">
           <h1>La boutique</h1>
           <p>
@@ -33,9 +25,13 @@
           pas tarder ! Les vers de terre n'ont pas encore fini les galeries pour
           y accéder...!
         </p>
-        <nuxt-img src="/boutique/fruits_seches.jpg" class="vignette" />
+        <img
+          src="~/assets/img/pages/boutique/fruits_seches.jpg"
+          alt=""
+          class="vignette"
+        />
         <div class="loader">
-          <nuxt-img src="/loader/loader.gif" alt="chargement" />
+          <img src="~/assets/img/ui/loader.gif" alt="chargement" />
         </div>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
@@ -60,6 +56,10 @@ export default {
 
 <style lang="scss">
 .boutique {
+  .carousel-img {
+    background-image: url('~/assets/img/pages/boutique/local.png');
+  }
+
   .loader {
     height: 150px;
     overflow: hidden;

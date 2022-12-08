@@ -2,15 +2,7 @@
   <div class="mentions">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img">
-          <nuxt-img
-            format="png"
-            src="/mentions-legales/livre-ouvert.png"
-            alt=""
-            width="1200"
-            height="815"
-          />
-        </div>
+        <div class="carousel-img"></div>
         <div class="carousel-title">
           <h1>Mentions légales</h1>
           <p>
@@ -156,6 +148,10 @@ export default {
 
 <style lang="scss">
 .mentions {
+  .carousel-img {
+    background-image: url('~/assets/img/pages/mentions-legales/livre-ouvert.png');
+  }
+
   .contact {
     li {
       list-style: disc;

@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="logo">
-      <nuxt-img format="png" preload src="/ui/logo-blanc.png" alt="" />
+      <img src="~/assets/img/ui/logo-blanc.png" alt="" />
     </div>
     <div class="content">
       <div class="main">
@@ -97,7 +97,7 @@
   }
 
   &-title {
-    font-family: 'Vibur', 'Times New Roman', Times, serif;
+    font-family: var(--font-vibur);
     font-size: clamp(1.5rem, 3vw, 2.5rem);
   }
 

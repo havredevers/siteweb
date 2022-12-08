@@ -18,14 +18,7 @@
       <div class="content">
         <ul class="valeurs">
           <li data-aos="fade-up">
-            <div class="logo">
-              <nuxt-img
-                format="png"
-                src="/ui/accueil/ver.png"
-                alt=""
-                lazy="loading"
-              />
-            </div>
+            <div class="logo ver"></div>
             <div class="text">
               <h2>Prendre soin des êtres vivants</h2>
               <p>
@@ -42,14 +35,7 @@
             </div>
           </li>
           <li data-aos="fade-up">
-            <div class="logo">
-              <nuxt-img
-                format="png"
-                src="/ui/accueil/plante.png"
-                alt=""
-                lazy="loading"
-              />
-            </div>
+            <div class="logo plante"></div>
             <div class="text">
               <h2>Prendre soin de notre environnement</h2>
               <p>
@@ -62,14 +48,7 @@
             </div>
           </li>
           <li data-aos="fade-up">
-            <div class="logo">
-              <nuxt-img
-                format="png"
-                src="/ui/accueil/solidarite.png"
-                alt=""
-                lazy="loading"
-              />
-            </div>
+            <div class="logo solidarite"></div>
             <div class="text">
               <h2>Partager son temps et ses ressources</h2>
               <p>
@@ -116,17 +95,27 @@ export default {
 </script>
 
 <style lang="scss">
+.logo {
+  &.ver {
+    background-image: url('~/assets/img/pages/accueil/ver.png');
+  }
+  &.plante {
+    background-image: url('~/assets/img/pages/accueil/plante.png');
+  }
+  &.solidarite {
+    background-image: url('~/assets/img/pages/accueil/solidarite.png');
+  }
+}
+
 .accueil {
   ul.valeurs li {
     display: flex;
     margin-bottom: 3rem;
 
     .logo {
-      flex: 0 1 10%;
-
-      img {
-        width: 100%;
-      }
+      flex: 0 1 70px;
+      background-size: contain;
+      background-repeat: no-repeat;
     }
 
     .text {

@@ -46,10 +46,6 @@ export default {
   margin-bottom: 1rem;
   text-align: center;
 
-  h2 {
-    font-family: Vibur, 'Times New Roman', Times, serif;
-  }
-
   a {
     font-weight: initial;
     text-decoration: none;
