@@ -24,7 +24,7 @@
           <img src="~/assets/img/ui/loader.gif" alt="chargement" />
         </div>
         <div v-else-if="error != ''">{{ error }}</div>
-        <div v-else class="lead" v-html="asso"></div>
+        <div v-else class="lead wp-api" v-html="asso"></div>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
@@ -179,7 +179,7 @@ export default {
   watch: {
     asso(n, o) {
       if (n !== o) {
-        this.aosTrigger(document.querySelectorAll('.asso-1 .content .lead > *'))
+        this.aosTrigger(document.querySelectorAll('.wp-api > *'))
       }
     },
   },
@@ -245,10 +245,6 @@ export default {
 
   .lead {
     text-align: center;
-
-    & > * + * {
-      margin-top: 2rem;
-    }
   }
 }
 

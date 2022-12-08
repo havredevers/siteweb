@@ -98,21 +98,8 @@ export default {
     },
   },
   mounted() {
-    const $this = this
-
-    Promise.all(
-      Array.from(document.images)
-        .filter((img) => !img.complete)
-        .map(
-          (img) =>
-            new Promise((resolve) => {
-              img.onload = img.onerror = resolve
-            })
-        )
-    ).then(() => {
-      if ($this.$route.hash)
-        document.querySelector(this.$route.hash).scrollIntoView()
-    })
+    if (this.$route.hash)
+      document.querySelector(this.$route.hash).scrollIntoView()
   },
   methods: {
     waveColors(i) {

@@ -156,7 +156,7 @@ export default {
 <style lang="scss">
 .blog {
   .carousel-img {
-    background-image: url('~/assets/img/pages/adherer/cuisine.png');
+    background-image: url('~/assets/img/pages/adherer/vers.png');
   }
 
   fieldset {

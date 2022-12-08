@@ -20,36 +20,12 @@
         <h2>Nous <br />rejoindre</h2>
       </div>
       <div class="content">
-        <div class="intro lead">
-          <p>
-            Adhérez à l'association et profitez des avantages proposés par cette
-            dernière :
-          </p>
-          <ul>
-            <li>
-              Récupérations d'invendus et de préparations culinaires à prix
-              libre
-            </li>
-            <li>Ateliers de cuisine végétale</li>
-            <li>Partages de savoir-faire</li>
-            <li>
-              Devenez incollable sur le compostage et la gestion des biodéchets
-            </li>
-          </ul>
-          <p>
-            Répondons ensemble à un premier objectif qui est de sensibiliser à
-            la revalorisation des déchets organiques au niveau local,
-            principalement par lombricompostage. Et plus globalement, appliquons
-            nous à développer le concept de "permaculure urbaine".
-          </p>
-          <q>Du jardin à l’assiette, nous envisageons un modèle bio-inspiré.</q>
+        <div v-if="$apollo.queries.adherer.loading" class="loader">
+          <img src="~/assets/img/ui/loader.gif" alt="chargement" />
         </div>
-        <img
-          src="~/assets/img/pages/adherer/cuisine.png"
-          alt=""
-          class="vignette"
-          data-aos="zoom-in"
-        />
+        <div v-else-if="error != ''">{{ error }}</div>
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div v-else class="lead wp-api" v-html="adherer"></div>
         <div class="choix">
           <span id="proximite" class="ancre"></span>
           <span id="soutien" class="ancre"></span>
@@ -90,22 +66,43 @@
 
 <script>
 import meta from '~/plugins/meta'
+import { GET_PAGE } from '@/apollo/queries'
 
 export default {
   mixins: [meta],
   data() {
     return {
+      error: '',
       choix: '',
       titre: 'Adhésion',
       desc: "Rejoignez nos adhérents pour bénéficier des avantages de l'association",
       image: '',
     }
   },
+  apollo: {
+    adherer: {
+      query: GET_PAGE,
+      variables() {
+        return { id: 'adherer' }
+      },
+      update(data) {
+        return data.page.content
+      },
+      error(err) {
+        this.error = err.message
+      },
+    },
+  },
   watch: {
     $route(to, from) {
       this.choix = ['soutien', 'proximite'].includes(to.hash.slice(1))
         ? to.hash.slice(1)
         : ''
+    },
+    adherer(n, o) {
+      if (n !== o) {
+        this.aosTrigger(document.querySelectorAll('.wp-api > *'))
+      }
     },
   },
   mounted() {
@@ -138,14 +135,6 @@ export default {
 .adherer {
   .carousel-img {
     background-image: url('~/assets/img/pages/adherer/vers.png');
-  }
-
-  .intro {
-    margin-bottom: 1rem;
-  }
-
-  ul {
-    margin: 1rem 0;
   }
 
   li {

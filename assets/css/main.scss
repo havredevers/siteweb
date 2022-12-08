@@ -398,6 +398,10 @@ button {
     position: relative;
     flex: 0 0 67%;
     padding: 3% 10% 1rem 10%;
+
+    .wp-api > * + * {
+      margin-top: 2rem;
+    }
   }
 
   h2 {

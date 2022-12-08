@@ -45,7 +45,7 @@ class AosPlugin {
       methods: {
         aosTrigger(divs) {
           divs.forEach((div) => {
-            if (['img', 'iframe'].includes(div.localName)) {
+            if (['img', 'iframe', 'figure'].includes(div.localName)) {
               div.setAttribute('data-aos', 'zoom-in')
             } else {
               div.setAttribute('data-aos', 'fade-up')
