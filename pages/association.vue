@@ -20,11 +20,11 @@
         <h2>Qui sommes-nous&nbsp;?</h2>
       </div>
       <div class="content">
-        <div v-if="$apollo.queries.asso.loading" class="loader">
+        <div v-if="$apollo.queries.page.loading" class="loader">
           <img src="~/assets/img/ui/loader.gif" alt="chargement" />
         </div>
         <div v-else-if="error != ''">{{ error }}</div>
-        <div v-else class="lead wp-api" v-html="asso"></div>
+        <div v-else class="lead wp-api" v-html="page"></div>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
@@ -87,14 +87,13 @@
 <script>
 import qs from 'qs'
 import meta from '~/plugins/meta'
-import { GET_PAGE } from '@/apollo/queries'
+import mixinApollo from '~/plugins/mixinApollo'
 
 export default {
   name: 'PageAssociation',
-  mixins: [meta],
+  mixins: [meta, mixinApollo],
   data() {
     return {
-      error: '',
       api_url: 'https://api.helloasso.com',
       token: '',
       nbAdhesions: 0,
@@ -102,20 +101,6 @@ export default {
       desc: 'En savoir plus sur notre association',
       image: '',
     }
-  },
-  apollo: {
-    asso: {
-      query: GET_PAGE,
-      variables() {
-        return { id: 'association' }
-      },
-      update(data) {
-        return data.page.content
-      },
-      error(err) {
-        this.error = err.message
-      },
-    },
   },
   fetchOnServer: false,
   async fetch() {
@@ -175,13 +160,6 @@ export default {
         })
       })
       .catch((error) => console.log(error.message))
-  },
-  watch: {
-    asso(n, o) {
-      if (n !== o) {
-        this.aosTrigger()
-      }
-    },
   },
   methods: {
     async fetchSomething(query) {

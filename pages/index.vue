@@ -16,12 +16,12 @@
         <h1>Nos <br />valeurs</h1>
       </div>
       <div class="content">
-        <div v-if="$apollo.queries.accueil.loading" class="loader">
+        <div v-if="$apollo.queries.page.loading" class="loader">
           <img src="~/assets/img/ui/loader.gif" alt="chargement" />
         </div>
         <div v-else-if="error != ''">{{ error }}</div>
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-else v-html="accueil"></div>
+        <div v-else v-html="page"></div>
         <div data-aos="fade-up">
           <NuxtLink to="/association" class="cta">
             Découvrir l'association
@@ -51,27 +51,12 @@
 </template>
 
 <script>
-import { PAGINATED_POSTS, GET_PAGE } from '@/apollo/queries'
+import { PAGINATED_POSTS } from '@/apollo/queries'
+import mixinApollo from '~/plugins/mixinApollo'
 
 export default {
-  data() {
-    return {
-      error: '',
-    }
-  },
+  mixins: [mixinApollo],
   apollo: {
-    accueil: {
-      query: GET_PAGE,
-      variables() {
-        return { id: 'accueil' }
-      },
-      update(data) {
-        return data.page.content
-      },
-      error(err) {
-        this.error = err.message
-      },
-    },
     articles: {
       query: PAGINATED_POSTS,
       variables() {

@@ -20,12 +20,12 @@
         <h2>La boutique</h2>
       </div>
       <div class="content">
-        <div v-if="$apollo.queries.boutique.loading" class="loader">
+        <div v-if="$apollo.queries.page.loading" class="loader">
           <img src="~/assets/img/ui/loader.gif" alt="chargement" />
         </div>
         <div v-else-if="error != ''">{{ error }}</div>
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-else class="lead wp-api" v-html="boutique"></div>
+        <div v-else class="lead wp-api" v-html="page"></div>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
@@ -34,38 +34,16 @@
 
 <script>
 import meta from '~/plugins/meta'
-import { GET_PAGE } from '@/apollo/queries'
+import mixinApollo from '~/plugins/mixinApollo'
 
 export default {
-  mixins: [meta],
+  mixins: [meta, mixinApollo],
   data() {
     return {
-      error: '',
       titre: 'La boutique',
       desc: "Notre boutique n'est pas encore prête. Les vers de terre n'ont pas encore fini les galeries pour y accéder...!",
       image: '',
     }
-  },
-  apollo: {
-    boutique: {
-      query: GET_PAGE,
-      variables() {
-        return { id: 'boutique' }
-      },
-      update(data) {
-        return data.page.content
-      },
-      error(err) {
-        this.error = err.message
-      },
-    },
-  },
-  watch: {
-    boutique(n, o) {
-      if (n !== o) {
-        this.aosTrigger()
-      }
-    },
   },
 }
 </script>

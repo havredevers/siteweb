@@ -20,12 +20,12 @@
         <h2>Nous <br />rejoindre</h2>
       </div>
       <div class="content">
-        <div v-if="$apollo.queries.adherer.loading" class="loader">
+        <div v-if="$apollo.queries.page.loading" class="loader">
           <img src="~/assets/img/ui/loader.gif" alt="chargement" />
         </div>
         <div v-else-if="error != ''">{{ error }}</div>
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-else class="lead wp-api" v-html="adherer"></div>
+        <div v-else class="lead wp-api" v-html="page"></div>
         <div class="choix">
           <span id="proximite" class="ancre"></span>
           <span id="soutien" class="ancre"></span>
@@ -66,43 +66,23 @@
 
 <script>
 import meta from '~/plugins/meta'
-import { GET_PAGE } from '@/apollo/queries'
+import mixinApollo from '~/plugins/mixinApollo'
 
 export default {
-  mixins: [meta],
+  mixins: [meta, mixinApollo],
   data() {
     return {
-      error: '',
       choix: '',
       titre: 'Adhésion',
       desc: "Rejoignez nos adhérents pour bénéficier des avantages de l'association",
       image: '',
     }
   },
-  apollo: {
-    adherer: {
-      query: GET_PAGE,
-      variables() {
-        return { id: 'adherer' }
-      },
-      update(data) {
-        return data.page.content
-      },
-      error(err) {
-        this.error = err.message
-      },
-    },
-  },
   watch: {
     $route(to, from) {
       this.choix = ['soutien', 'proximite'].includes(to.hash.slice(1))
         ? to.hash.slice(1)
         : ''
-    },
-    adherer(n, o) {
-      if (n !== o) {
-        this.aosTrigger()
-      }
     },
   },
   mounted() {

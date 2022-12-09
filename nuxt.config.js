@@ -117,7 +117,14 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/functions', '~/plugins/aos', '~/plugins/sanitize'],
+  plugins: [
+    '~/plugins/functions',
+    {
+      src: '~/plugins/aos.js',
+      mode: 'client',
+    },
+    '~/plugins/sanitize',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
