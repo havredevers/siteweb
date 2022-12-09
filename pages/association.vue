@@ -13,9 +13,8 @@
         ></div>
         <div class="carousel-title">
           <h1>L'association</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
-            architecto laudantium
+          <p v-if="!$apollo.queries.page.loading">
+            {{ page?.extrait }}
           </p>
           <NuxtLink to="/adherer" class="cta">Rejoignez-nous</NuxtLink>
         </div>

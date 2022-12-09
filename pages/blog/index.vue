@@ -12,7 +12,9 @@
         ></div>
         <div class="carousel-title">
           <h1>Blog</h1>
-          <p>Retrouvez ici toutes nos actualités, recettes, reportages...</p>
+          <p v-if="!$apollo.queries.page.loading">
+            {{ page?.extrait }}
+          </p>
         </div>
       </div>
     </div>

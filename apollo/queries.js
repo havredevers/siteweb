@@ -116,6 +116,7 @@ export const CATEGORIES = gql`
 export const GET_PAGE = gql`
   query GET_PAGE($id: ID!) {
     page(id: $id, idType: URI) {
+      extrait
       content
       featuredImage {
         node {

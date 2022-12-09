@@ -12,9 +12,8 @@
         ></div>
         <div class="carousel-title">
           <h1>Adhérer à l'association</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
-            architecto laudantium
+          <p v-if="!$apollo.queries.page.loading">
+            {{ page?.extrait }}
           </p>
           <a class="protect cta" data-protect="havredeversarobasgmailpointcom">
             Contactez-nous

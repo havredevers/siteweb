@@ -12,9 +12,8 @@
         ></div>
         <div class="carousel-title">
           <h1>Nos prestations</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
-            architecto laudantium
+          <p v-if="!$apollo.queries.page.loading">
+            {{ page?.extrait }}
           </p>
           <a class="protect cta" data-protect="havredeversarobasgmailpointcom">
             Contactez-nous
@@ -86,7 +85,6 @@ export default {
   mixins: [meta, mixinApollo],
   data() {
     return {
-      error: '',
       titre: 'Nos prestations',
       desc: "Venez découvrir les ateliers proposés par l'association pour apprendre tout en s'amusant",
       image: '',
@@ -95,6 +93,7 @@ export default {
   apollo: {
     prestations: {
       query: PRESTAS,
+      prefetch: false,
       update(data) {
         return data.prestations.nodes.sort((a, b) => {
           return a.title.toLowerCase() > b.title.toLowerCase()
@@ -103,11 +102,11 @@ export default {
       error(err) {
         this.error = err.message
       },
+      watchLoading(isLoading, countModifier) {
+        if (!isLoading && this.$route.hash)
+          document.querySelector(this.$route.hash).scrollIntoView()
+      },
     },
-  },
-  mounted() {
-    if (this.$route.hash)
-      document.querySelector(this.$route.hash).scrollIntoView()
   },
   methods: {
     waveColors(i) {

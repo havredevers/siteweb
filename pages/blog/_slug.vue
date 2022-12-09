@@ -2,12 +2,14 @@
   <article v-if="article" class="blog-article">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img">
-          <img
-            :src="article.featuredImage.node.mediaItemUrl"
-            :alt="article.featuredImage.node.altText"
-          />
-        </div>
+        <div
+          class="carousel-img"
+          :style="
+            'background-image: url(' +
+            article.featuredImage.node.mediaItemUrl +
+            ')'
+          "
+        ></div>
         <div class="carousel-title">
           <h1>{{ article.title }}</h1>
           <div v-sanitize-html="article.excerpt"></div>
