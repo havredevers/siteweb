@@ -63,7 +63,7 @@ export default {
     this.scrollSpy(this.countUp)
 
     if (this.$route.hash === '#chiffres') {
-      this.$nextTick(function () {
+      this.$nextTick(() => {
         this.countUp.start()
       })
     }

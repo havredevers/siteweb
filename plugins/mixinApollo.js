@@ -24,6 +24,12 @@ export default {
       error(err) {
         this.error = err.message
       },
+      watchLoading(isLoading, countModifier) {
+        if (!isLoading)
+          this.$nextTick(() => {
+            this.$secureMail()
+          })
+      },
     },
   },
 }

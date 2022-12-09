@@ -52,6 +52,21 @@ export default {
 
 <style lang="scss">
 .mentions {
+  .wp-block-group + .wp-block-group {
+    padding-top: 2rem;
+    border-top: 1px solid #c5af9f;
+    margin-top: 2rem;
+  }
+
+  h2 {
+    font-family: var(--font-changa);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
   .contact {
     li {
       list-style: disc;

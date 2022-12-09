@@ -5,17 +5,19 @@ Vue.prototype.$formatDate = (date) => {
   return new Date(date).toLocaleDateString('fr', options)
 }
 
+Vue.prototype.$secureMail = () => {
+  const oC = document.querySelectorAll('.protect')
+
+  oC.forEach((link) => {
+    let sC = link.getAttribute('data-protect')
+    sC = sC.replace('point', '.')
+    sC = sC.replace('arobas', '@')
+    link.setAttribute('href', 'mailto:' + sC)
+  })
+}
+
 Vue.mixin({
   mounted: () => {
-    const oC = document.querySelectorAll('.protect')
-
-    oC.forEach((link) => {
-      let sC = link.getAttribute('data-protect')
-      sC = sC.replace('point', '.')
-      sC = sC.replace('arobas', '@')
-      link.setAttribute('href', 'mailto:' + sC)
-    })
-
     /* eslint-disable no-undef */
     tarteaucitron.init({
       privacyUrl:

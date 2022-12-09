@@ -81,6 +81,8 @@ export default {
         wrap.classList.remove('top')
       },
     })
+
+    this.$secureMail()
   },
   methods: {
     scrollToTop() {
