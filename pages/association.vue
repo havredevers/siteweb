@@ -28,7 +28,7 @@
       </div>
       <div class="content">
         <div v-if="$apollo.queries.page.loading" class="loader">
-          <img src="~/assets/img/ui/loader.gif" alt="chargement" />
+          <img src="~/assets/img/loader.gif" alt="chargement" />
         </div>
         <div v-else-if="error != ''">{{ error }}</div>
         <div v-else class="lead wp-api" v-html="page?.content"></div>
@@ -42,7 +42,7 @@
       </div>
       <div class="content">
         <div v-if="$fetchState.pending" class="loader">
-          <img src="~/assets/img/ui/loader.gif" alt="chargement" />
+          <img src="~/assets/img/loader.gif" alt="chargement" />
         </div>
         <p v-else-if="$fetchState.error">
           Un problème est survenu en contactant l'API HelloAsso

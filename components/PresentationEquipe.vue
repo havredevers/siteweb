@@ -6,7 +6,7 @@
     </div>
     <div class="content">
       <div v-if="$apollo.queries.membres.loading" class="loader">
-        <img src="~/assets/img/ui/loader.gif" alt="chargement" />
+        <img src="~/assets/img/loader.gif" alt="chargement" />
       </div>
       <div v-else-if="error != ''">{{ error }}</div>
       <ul v-else class="membres">

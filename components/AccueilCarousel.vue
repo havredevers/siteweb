@@ -68,19 +68,19 @@ export default {
           text: "L'association havraise qui accompagne à la valorisation des biodéchets",
           link: '/adherer',
           linkText: "Adhérer à l'association",
-          img: require('~/assets/img/pages/adherer/vers.png'),
+          img: 'https://h2v.normandie-libre.fr/wp-content/uploads/2022/12/vers.png',
         },
         {
           text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           link: '/prestations',
           linkText: 'Voir nos prestations',
-          img: require('~/assets/img/pages/prestations/maternelle.png'),
+          img: 'https://h2v.normandie-libre.fr/wp-content/uploads/2022/12/maternelle.png',
         },
         {
           text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           link: '/boutique',
           linkText: 'Visiter la boutique',
-          img: require('~/assets/img/pages/boutique/local.png'),
+          img: 'https://h2v.normandie-libre.fr/wp-content/uploads/2022/12/local.png',
         },
       ],
       pointerPositionDown: {

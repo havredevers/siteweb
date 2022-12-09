@@ -2,7 +2,14 @@
   <div class="blog">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img"></div>
+        <div
+          class="carousel-img"
+          :style="
+            'background-image: url(' +
+            page?.featuredImage.node.mediaItemUrl +
+            ')'
+          "
+        ></div>
         <div class="carousel-title">
           <h1>Blog</h1>
           <p>Retrouvez ici toutes nos actualités, recettes, reportages...</p>
@@ -12,7 +19,7 @@
     <section class="section-page">
       <div class="title">
         <div v-if="$apollo.queries.categories.loading" class="loader">
-          <img src="~/assets/img/ui/loader.gif" alt="chargement" />
+          <img src="~/assets/img/loader.gif" alt="chargement" />
         </div>
         <div v-else-if="error != ''">{{ error }}</div>
         <fieldset v-else>
@@ -57,7 +64,7 @@
           Afficher plus
         </button>
         <div v-if="$apollo.queries.articles.loading" class="loader">
-          <img src="~/assets/img/ui/loader.gif" alt="chargement" />
+          <img src="~/assets/img/loader.gif" alt="chargement" />
         </div>
         <div v-else-if="error != ''">{{ error }}</div>
       </div>
@@ -68,13 +75,13 @@
 
 <script>
 import meta from '~/plugins/meta'
+import mixinApollo from '~/plugins/mixinApollo'
 import { PAGINATED_POSTS, CATEGORIES } from '@/apollo/queries'
 
 export default {
-  mixins: [meta],
+  mixins: [meta, mixinApollo],
   data() {
     return {
-      error: '',
       isFectchingMore: false,
       filter: 'all',
       pagination: 4,
@@ -155,10 +162,6 @@ export default {
 
 <style lang="scss">
 .blog {
-  .carousel-img {
-    background-image: url('~/assets/img/pages/adherer/vers.png');
-  }
-
   fieldset {
     border: none;
 

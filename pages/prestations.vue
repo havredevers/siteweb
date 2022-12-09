@@ -2,7 +2,14 @@
   <div class="prestations">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img"></div>
+        <div
+          class="carousel-img"
+          :style="
+            'background-image: url(' +
+            page?.featuredImage.node.mediaItemUrl +
+            ')'
+          "
+        ></div>
         <div class="carousel-title">
           <h1>Nos prestations</h1>
           <p>
@@ -16,7 +23,7 @@
       </div>
     </div>
     <div v-if="$apollo.queries.prestations.loading" class="loader">
-      <img src="~/assets/img/ui/loader.gif" alt="chargement" />
+      <img src="~/assets/img/loader.gif" alt="chargement" />
     </div>
     <div v-else-if="error != ''">{{ error }}</div>
     <div v-else>
@@ -72,10 +79,11 @@
 
 <script>
 import meta from '~/plugins/meta'
+import mixinApollo from '~/plugins/mixinApollo'
 import { PRESTAS } from '@/apollo/queries'
 
 export default {
-  mixins: [meta],
+  mixins: [meta, mixinApollo],
   data() {
     return {
       error: '',
@@ -111,10 +119,6 @@ export default {
 
 <style lang="scss">
 .prestations {
-  .carousel-img {
-    background-image: url('~/assets/img/pages/prestations/maternelle.png');
-  }
-
   h2 {
     font-family: var(--font-changa);
   }

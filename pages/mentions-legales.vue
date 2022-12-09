@@ -2,7 +2,14 @@
   <div class="mentions">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img"></div>
+        <div
+          class="carousel-img"
+          :style="
+            'background-image: url(' +
+            page?.featuredImage.node.mediaItemUrl +
+            ')'
+          "
+        ></div>
         <div class="carousel-title">
           <h1>Mentions légales</h1>
           <p>
@@ -133,9 +140,10 @@
 
 <script>
 import meta from '~/plugins/meta'
+import mixinApollo from '~/plugins/mixinApollo'
 
 export default {
-  mixins: [meta],
+  mixins: [meta, mixinApollo],
   data() {
     return {
       titre: 'Mentions légales',
@@ -148,10 +156,6 @@ export default {
 
 <style lang="scss">
 .mentions {
-  .carousel-img {
-    background-image: url('~/assets/img/pages/mentions-legales/livre-ouvert.png');
-  }
-
   .contact {
     li {
       list-style: disc;

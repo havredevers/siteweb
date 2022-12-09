@@ -17,7 +17,7 @@
       </div>
       <div class="content">
         <div v-if="$apollo.queries.page.loading" class="loader">
-          <img src="~/assets/img/ui/loader.gif" alt="chargement" />
+          <img src="~/assets/img/loader.gif" alt="chargement" />
         </div>
         <div v-else-if="error != ''">{{ error }}</div>
         <!-- eslint-disable-next-line vue/no-v-html -->
@@ -37,7 +37,7 @@
       </div>
       <div class="content">
         <div v-if="$apollo.queries.articles.loading" class="loader">
-          <img src="~/assets/img/ui/loader.gif" alt="chargement" />
+          <img src="~/assets/img/loader.gif" alt="chargement" />
         </div>
         <div v-else-if="error != ''">{{ error }}</div>
         <ListActus v-else :articles="articles" />
@@ -76,13 +76,13 @@ export default {
 <style lang="scss">
 .logo {
   &.ver {
-    background-image: url('~/assets/img/pages/accueil/ver.png');
+    background-image: url('~/assets/img/accueil/ver.png');
   }
   &.plante {
-    background-image: url('~/assets/img/pages/accueil/plante.png');
+    background-image: url('~/assets/img/accueil/plante.png');
   }
   &.solidarite {
-    background-image: url('~/assets/img/pages/accueil/solidarite.png');
+    background-image: url('~/assets/img/accueil/solidarite.png');
   }
 }
 

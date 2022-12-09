@@ -28,7 +28,7 @@
       </div>
       <div class="content">
         <div v-if="$apollo.queries.page.loading" class="loader">
-          <img src="~/assets/img/ui/loader.gif" alt="chargement" />
+          <img src="~/assets/img/loader.gif" alt="chargement" />
         </div>
         <div v-else-if="error != ''">{{ error }}</div>
         <!-- eslint-disable-next-line vue/no-v-html -->
