@@ -118,6 +118,8 @@ export const GET_PAGE = gql`
     page(id: $id, idType: URI) {
       extrait
       content
+      parcours
+      collecte
       featuredImage {
         node {
           mediaItemUrl

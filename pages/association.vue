@@ -40,7 +40,10 @@
         <h2>L'association en quelques chiffres</h2>
       </div>
       <div class="content">
-        <div v-if="$fetchState.pending" class="loader">
+        <div
+          v-if="$fetchState.pending || $apollo.queries.page.loading"
+          class="loader"
+        >
           <img src="~/assets/img/loader.gif" alt="chargement" />
         </div>
         <p v-else-if="$fetchState.error">
@@ -66,7 +69,9 @@
                 />
               </svg>
             </div>
-            <div class="value"><count-up :end="50000" suffix="kg" /></div>
+            <div class="value">
+              <count-up :end="parseInt(page?.collecte)" suffix="kg" />
+            </div>
             <div class="unit"><h3>Collectés</h3></div>
           </li>
           <li data-aos="zoom-in" data-aos-delay="400">
@@ -78,7 +83,7 @@
               </svg>
             </div>
             <div class="value">
-              <count-up :end="4000" suffix="km" />
+              <count-up :end="parseInt(page?.parcours)" suffix="km" />
             </div>
             <div class="unit"><h3>Parcourus</h3></div>
           </li>
