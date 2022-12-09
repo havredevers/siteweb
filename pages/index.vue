@@ -21,7 +21,7 @@
         </div>
         <div v-else-if="error != ''">{{ error }}</div>
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-else v-html="page"></div>
+        <div v-else v-html="page?.content"></div>
         <div data-aos="fade-up">
           <NuxtLink to="/association" class="cta">
             Découvrir l'association

@@ -2,7 +2,14 @@
   <div class="adherer">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img"></div>
+        <div
+          class="carousel-img"
+          :style="
+            'background-image: url(' +
+            page?.featuredImage.node.mediaItemUrl +
+            ')'
+          "
+        ></div>
         <div class="carousel-title">
           <h1>Adhérer à l'association</h1>
           <p>
@@ -25,7 +32,7 @@
         </div>
         <div v-else-if="error != ''">{{ error }}</div>
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-else class="lead wp-api" v-html="page"></div>
+        <div v-else class="lead wp-api" v-html="page?.content"></div>
         <div class="choix">
           <span id="proximite" class="ancre"></span>
           <span id="soutien" class="ancre"></span>
@@ -113,10 +120,6 @@ export default {
 }
 
 .adherer {
-  .carousel-img {
-    background-image: url('~/assets/img/pages/adherer/vers.png');
-  }
-
   li {
     margin-left: 2rem;
     list-style-type: initial;

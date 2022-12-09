@@ -19,7 +19,7 @@ export default {
         return { id: this.name }
       },
       update(data) {
-        return data.page.content
+        return data.page
       },
       error(err) {
         this.error = err.message

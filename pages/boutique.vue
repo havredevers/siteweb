@@ -2,7 +2,14 @@
   <div class="boutique">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img"></div>
+        <div
+          class="carousel-img"
+          :style="
+            'background-image: url(' +
+            page?.featuredImage.node.mediaItemUrl +
+            ')'
+          "
+        ></div>
         <div class="carousel-title">
           <h1>La boutique</h1>
           <p>
@@ -25,7 +32,7 @@
         </div>
         <div v-else-if="error != ''">{{ error }}</div>
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-else class="lead wp-api" v-html="page"></div>
+        <div v-else class="lead wp-api" v-html="page?.content"></div>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
@@ -50,10 +57,6 @@ export default {
 
 <style lang="scss">
 .boutique {
-  .carousel-img {
-    background-image: url('~/assets/img/pages/boutique/local.png');
-  }
-
   p {
     margin-bottom: 2rem;
   }

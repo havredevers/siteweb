@@ -3,7 +3,14 @@
   <div class="association">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img"></div>
+        <div
+          class="carousel-img"
+          :style="
+            'background-image: url(' +
+            page?.featuredImage.node.mediaItemUrl +
+            ')'
+          "
+        ></div>
         <div class="carousel-title">
           <h1>L'association</h1>
           <p>
@@ -24,7 +31,7 @@
           <img src="~/assets/img/ui/loader.gif" alt="chargement" />
         </div>
         <div v-else-if="error != ''">{{ error }}</div>
-        <div v-else class="lead wp-api" v-html="page"></div>
+        <div v-else class="lead wp-api" v-html="page?.content"></div>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
@@ -209,10 +216,6 @@ export default {
   h3 {
     font-family: var(--font-changa);
     margin: 0.5rem 0;
-  }
-
-  .carousel-img {
-    background-image: url('~/assets/img/pages/association/cuisine.png');
   }
 }
 

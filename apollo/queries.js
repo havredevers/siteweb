@@ -117,6 +117,11 @@ export const GET_PAGE = gql`
   query GET_PAGE($id: ID!) {
     page(id: $id, idType: URI) {
       content
+      featuredImage {
+        node {
+          mediaItemUrl
+        }
+      }
     }
   }
 `
