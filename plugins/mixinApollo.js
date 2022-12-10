@@ -8,7 +8,7 @@ export default {
   },
   computed: {
     name() {
-      return this.$route.name === 'index' ? 'accueil' : this.$route.name
+      return this.pageName ? this.pageName : this.$route.name
     },
   },
   apollo: {

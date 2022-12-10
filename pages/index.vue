@@ -6,7 +6,7 @@
         <h1>Ici,<br />on voit la vie en "VERS"</h1>
       </div>
       <div class="content">
-        <VideoYoutube vid="IlotXfNo17k" />
+        <PageWordpress page-name="video-accueil" />
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
@@ -56,6 +56,11 @@ import mixinApollo from '~/plugins/mixinApollo'
 
 export default {
   mixins: [mixinApollo],
+  data() {
+    return {
+      pageName: 'accueil',
+    }
+  },
   apollo: {
     articles: {
       query: PAGINATED_POSTS,

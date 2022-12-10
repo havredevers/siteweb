@@ -56,6 +56,7 @@ export default {
     color: var(--clr-font);
     position: relative;
     border-radius: 15px;
+    transition: all 0.3s ease-in-out;
 
     &:hover {
       .article-title {
