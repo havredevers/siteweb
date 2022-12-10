@@ -39,22 +39,44 @@ import { SINGLE_POST } from '@/apollo/queries'
 
 export default {
   mixins: [meta],
-  async asyncData({ app, params }) {
-    const client = app.apolloProvider.defaultClient
-
+  data() {
+    return {
+      article: {
+        title: '',
+        excerpt: '',
+        content: '',
+        modifiedGmt: '',
+        featuredImage: {
+          node: {
+            altText: '',
+            mediaItemUrl: '',
+          },
+        },
+        author: {
+          node: {
+            name: '',
+          },
+        },
+      },
+      titre: '',
+      desc: '',
+      image: '',
+    }
+  },
+  async fetch() {
+    const slug = this.$route.params.slug
+    const client = this.$apolloProvider.defaultClient
     const res = await client.query({
       query: SINGLE_POST,
       variables: {
-        id: params.slug,
+        id: slug,
       },
     })
 
-    const article = res.data.post
-    const titre = article.title
-    const desc = article.excerpt
-    const image = article.featuredImage.node.mediaItemUrl
-
-    return { article, titre, desc, image }
+    this.article = res.data.post
+    this.titre = this.article.title
+    this.desc = this.article.excerpt
+    this.image = this.article.featuredImage.node.mediaItemUrl
   },
 }
 </script>

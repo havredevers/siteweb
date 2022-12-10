@@ -7,8 +7,6 @@
 
 <script>
 import Tocbot from 'tocbot'
-// import 'tocbot/dist/styles.css'
-// import 'tocbot/dist/tocbot.css'
 
 export default {
   props: {
