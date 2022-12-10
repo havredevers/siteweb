@@ -14,21 +14,19 @@ export default {
   apollo: {
     page: {
       query: GET_PAGE,
-      prefetch: false,
       variables() {
         return { id: this.name }
       },
       update(data) {
+        if (this.$route.name === 'association') {
+          this.nbParcours = parseInt(data.page.parcours)
+          this.nbCollecte = parseInt(data.page.collecte)
+        }
+
         return data.page
       },
       error(err) {
         this.error = err.message
-      },
-      watchLoading(isLoading, countModifier) {
-        if (!isLoading)
-          this.$nextTick(() => {
-            this.$secureMail()
-          })
       },
     },
   },

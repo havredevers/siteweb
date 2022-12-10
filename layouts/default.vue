@@ -35,7 +35,7 @@ export default {
       }
 
       setTimeout(() => {
-        document.querySelector('.main-menu').classList.add('sticky')
+        this.$secureMail()
       }, 800)
     },
   },

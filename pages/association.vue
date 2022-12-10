@@ -65,7 +65,7 @@
               </svg>
             </div>
             <div class="value">
-              <count-up :end="parseInt(page?.collecte)" suffix="kg" />
+              <count-up :end="nbCollecte" suffix="kg" />
             </div>
             <div class="unit"><h3>Collectés</h3></div>
           </li>
@@ -78,7 +78,7 @@
               </svg>
             </div>
             <div class="value">
-              <count-up :end="parseInt(page?.parcours)" suffix="km" />
+              <count-up :end="nbParcours" suffix="km" />
             </div>
             <div class="unit"><h3>Parcourus</h3></div>
           </li>
@@ -103,6 +103,8 @@ export default {
       api_url: 'https://api.helloasso.com',
       token: '',
       nbAdhesions: 0,
+      nbCollecte: 0,
+      nbParcours: 0,
       titre: 'Présentation',
       desc: 'En savoir plus sur notre association',
       image: '',

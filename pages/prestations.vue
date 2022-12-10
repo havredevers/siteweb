@@ -91,7 +91,6 @@ export default {
   apollo: {
     prestations: {
       query: PRESTAS,
-      prefetch: false,
       update(data) {
         return data.prestations.nodes.sort((a, b) => {
           return a.title.toLowerCase() > b.title.toLowerCase()
