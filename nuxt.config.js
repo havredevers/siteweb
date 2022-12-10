@@ -123,7 +123,6 @@ export default {
       src: '~/plugins/aos.js',
       mode: 'client',
     },
-    '~/plugins/sanitize',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

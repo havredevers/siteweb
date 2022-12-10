@@ -14,7 +14,8 @@
           'Mis en ligne le ' + $formatDate(article.modifiedGmt)
         }}</small>
       </div>
-      <p v-sanitize-html="article.excerpt"></p>
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <p v-html="article.excerpt"></p>
       <span>Lire l'article</span>
     </div>
   </NuxtLink>

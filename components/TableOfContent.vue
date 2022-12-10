@@ -1,7 +1,7 @@
 <template>
   <div id="toc">
-    <div class="toc-title">Table des matières</div>
-    <div class="js-toc"></div>
+    <div id="toc-title" class="toc-title">Table des matières</div>
+    <nav class="js-toc" aria-labelledby="toc-title"></nav>
   </div>
 </template>
 
@@ -37,7 +37,7 @@ export default {
 
 .js-toc > ol {
   li {
-    margin-left: 1rem;
+    margin-left: 1.5rem;
 
     a {
       text-decoration: none;

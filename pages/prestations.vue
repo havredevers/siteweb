@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="prestations">
     <div class="carousel">
@@ -50,20 +51,20 @@
             />
             <div v-if="presta.principe" data-aos="fade-up">
               <h3>Le principe</h3>
-              <div v-sanitize-html="presta.principe" class="bloc" />
+              <div class="bloc" v-html="presta.principe" />
             </div>
             <div v-if="presta.lieux" data-aos="fade-up">
               <h3>Lieux de sortie</h3>
-              <div v-sanitize-html="presta.lieux" class="bloc" />
+              <div class="bloc" v-html="presta.lieux" />
             </div>
             <div class="infos">
               <div v-if="presta.programme" data-aos="fade-up">
                 <h3>Le programme</h3>
-                <div v-sanitize-html="presta.programme" class="bloc" />
+                <div class="bloc" v-html="presta.programme" />
               </div>
               <div v-if="presta.equipement" data-aos="fade-up">
                 <h3>Équipement nécessaire</h3>
-                <div v-sanitize-html="presta.equipement" class="bloc" />
+                <div class="bloc" v-html="presta.equipement" />
               </div>
             </div>
           </div>

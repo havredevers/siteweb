@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <article v-if="article" class="blog-article">
     <div class="carousel">
@@ -12,7 +13,7 @@
         ></div>
         <div class="carousel-title">
           <h1>{{ article.title }}</h1>
-          <div v-sanitize-html="article.excerpt"></div>
+          <div v-html="article.excerpt"></div>
           <div class="updatedat">
             Mis à jour le {{ $formatDate(article.modifiedGmt) }}
           </div>
@@ -26,7 +27,7 @@
         </client-only>
       </div>
       <div class="content">
-        <div v-sanitize-html="article.content" class="js-toc-content"></div>
+        <div class="js-toc-content" v-html="article.content"></div>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
@@ -89,6 +90,10 @@ export default {
     margin-top: calc(-1 * var(--menu-height));
   }
 
+  .js-toc-content > * {
+    margin-bottom: 1rem;
+  }
+
   .updatedat {
     font-size: 0.8rem;
     font-style: italic;
@@ -96,44 +101,6 @@ export default {
     &:first-letter {
       text-transform: uppercase;
     }
-  }
-
-  nav {
-    position: sticky;
-    top: 115px;
-    padding-top: 2rem;
-    font-size: 1.1rem;
-
-    li {
-      padding: 0.2rem 0;
-    }
-
-    li.toc3 {
-      margin-left: 1rem;
-      font-size: 80%;
-    }
-
-    a {
-      font-weight: 400;
-      text-decoration: none;
-      opacity: 0.8;
-
-      &.actif {
-        color: var(--clr-bg2);
-      }
-
-      &:hover {
-        opacity: 1;
-
-        color: var(--clr-bg2);
-      }
-    }
-  }
-
-  #toc_title {
-    font-size: 1.6rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
   }
 }
 </style>
