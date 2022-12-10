@@ -41,9 +41,7 @@ export default {
     membres: {
       query: MEMBRES,
       update(data) {
-        return data.membres.nodes.sort((a, b) => {
-          return a.ordre > b.ordre
-        })
+        return data.membres.nodes.sort((a, b) => a.ordre - b.ordre)
       },
       error(err) {
         this.error = err.message
