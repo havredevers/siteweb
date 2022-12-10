@@ -20,9 +20,13 @@
       </div>
     </div>
     <section class="section-page">
-      <div class="title"></div>
+      <div class="title">
+        <client-only>
+          <TableOfContent :is-loading="false" />
+        </client-only>
+      </div>
       <div class="content">
-        <div v-sanitize-html="article.content"></div>
+        <div v-sanitize-html="article.content" class="js-toc-content"></div>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
