@@ -15,6 +15,11 @@ export default {
       default: true,
     },
   },
+  watch: {
+    isLoading(n, o) {
+      if (!n) Tocbot.init()
+    },
+  },
   mounted() {
     Tocbot.init()
   },
@@ -29,10 +34,12 @@ export default {
   font-size: 1.1rem;
   border: 1px solid var(--clr-font);
   border-radius: 10px;
+  max-width: 300px;
+  margin: auto;
 }
 
 .toc-title {
-  font-size: 1.6rem;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
   font-weight: 700;
   margin-bottom: 1rem;
   position: absolute;

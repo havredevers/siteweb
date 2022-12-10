@@ -62,7 +62,7 @@
                 <h3>Le programme</h3>
                 <div class="bloc" v-html="presta.programme" />
               </div>
-              <div v-if="presta.equipement" data-aos="fade-up">
+              <div v-show="presta.equipement" data-aos="fade-up">
                 <h3>Équipement nécessaire</h3>
                 <div class="bloc" v-html="presta.equipement" />
               </div>
@@ -93,9 +93,9 @@ export default {
     prestations: {
       query: PRESTAS,
       update(data) {
-        return data.prestations.nodes.sort((a, b) => {
-          return a.title.toLowerCase() > b.title.toLowerCase()
-        })
+        return data.prestations.nodes.sort(
+          (a, b) => a.title.toLowerCase() - b.title.toLowerCase()
+        )
       },
       error(err) {
         this.error = err.message

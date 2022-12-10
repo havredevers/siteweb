@@ -15,7 +15,7 @@
         }}</small>
       </div>
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <p v-html="article.excerpt"></p>
+      <div v-html="article.excerpt"></div>
       <span>Lire l'article</span>
     </div>
   </NuxtLink>
@@ -26,17 +26,7 @@ export default {
   props: {
     article: {
       type: Object,
-      default() {
-        return {}
-      },
-    },
-  },
-  methods: {
-    truncateString(str, num) {
-      if (str.length <= num) {
-        return str
-      }
-      return str.slice(0, num) + '...'
+      required: true,
     },
   },
 }
