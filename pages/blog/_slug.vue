@@ -61,6 +61,12 @@ export default {
 
 <style lang="scss">
 .blog-article {
+  .section-page .content *[id] {
+    --menu-height: 110px;
+    padding-top: var(--menu-height);
+    margin-top: calc(-1 * var(--menu-height));
+  }
+
   .updatedat {
     font-size: 0.8rem;
     font-style: italic;
@@ -106,43 +112,6 @@ export default {
     font-size: 1.6rem;
     font-weight: bold;
     margin-bottom: 1rem;
-  }
-
-  .nuxt-content {
-    h2,
-    h3 {
-      padding-top: 100px;
-      margin-top: -100px;
-    }
-
-    h2,
-    h3,
-    h4,
-    h5,
-    p,
-    ul,
-    ol {
-      margin-bottom: 1rem;
-    }
-
-    h3 {
-      font-size: clamp(1.2rem, 2.7vw, 2rem);
-    }
-
-    ol > li {
-      list-style-type: decimal;
-    }
-
-    li {
-      list-style-type: initial;
-      margin-left: 1rem;
-    }
-
-    img,
-    iframe {
-      display: block;
-      margin: 1rem auto;
-    }
   }
 }
 </style>
