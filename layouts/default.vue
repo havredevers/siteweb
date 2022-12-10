@@ -40,7 +40,7 @@ export default {
     },
   },
   beforeMount() {
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', () => {
       this.newOffset = window.pageYOffset
 
       // Scroll To Top

@@ -21,9 +21,7 @@
         </div>
       </div>
     </div>
-    <div v-if="$apollo.queries.prestations.loading" class="loader">
-      <img src="~/assets/img/loader.gif" alt="chargement" />
-    </div>
+    <LoaderApple v-if="$apollo.queries.prestations.loading" />
     <div v-else-if="error != ''">{{ error }}</div>
     <div v-else>
       <div></div>

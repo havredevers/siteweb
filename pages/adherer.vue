@@ -26,9 +26,7 @@
         <h2>Nous <br />rejoindre</h2>
       </div>
       <div class="content">
-        <div v-if="$apollo.queries.page.loading" class="loader">
-          <img src="~/assets/img/loader.gif" alt="chargement" />
-        </div>
+        <LoaderApple v-if="$apollo.queries.page.loading" />
         <div v-else-if="error != ''">{{ error }}</div>
         <!-- eslint-disable-next-line vue/no-v-html -->
         <div v-else class="lead wp-api" v-html="page?.content"></div>

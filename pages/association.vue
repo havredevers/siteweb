@@ -26,9 +26,7 @@
         <h2>Qui sommes-nous&nbsp;?</h2>
       </div>
       <div class="content">
-        <div v-if="$apollo.queries.page.loading" class="loader">
-          <img src="~/assets/img/loader.gif" alt="chargement" />
-        </div>
+        <LoaderApple v-if="$apollo.queries.page.loading" />
         <div v-else-if="error != ''">{{ error }}</div>
         <div v-else class="lead wp-api" v-html="page?.content"></div>
       </div>
@@ -40,12 +38,9 @@
         <h2>L'association en quelques chiffres</h2>
       </div>
       <div class="content">
-        <div
+        <LoaderApple
           v-if="$fetchState.pending || $apollo.queries.page.loading"
-          class="loader"
-        >
-          <img src="~/assets/img/loader.gif" alt="chargement" />
-        </div>
+        />
         <p v-else-if="$fetchState.error">
           Un problème est survenu en contactant l'API HelloAsso
         </p>

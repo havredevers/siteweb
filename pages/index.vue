@@ -16,9 +16,7 @@
         <h1>Nos <br />valeurs</h1>
       </div>
       <div class="content">
-        <div v-if="$apollo.queries.page.loading" class="loader">
-          <img src="~/assets/img/loader.gif" alt="chargement" />
-        </div>
+        <LoaderApple v-if="$apollo.queries.page.loading" />
         <div v-else-if="error != ''">{{ error }}</div>
         <!-- eslint-disable-next-line vue/no-v-html -->
         <div v-else v-html="page?.content"></div>
@@ -36,9 +34,7 @@
         <h1>Nos <br />actualités</h1>
       </div>
       <div class="content">
-        <div v-if="$apollo.queries.articles.loading" class="loader">
-          <img src="~/assets/img/loader.gif" alt="chargement" />
-        </div>
+        <LoaderApple v-if="$apollo.queries.articles.loading" />
         <div v-else-if="error != ''">{{ error }}</div>
         <ListActus v-else :articles="articles" />
         <div data-aos="fade-up">

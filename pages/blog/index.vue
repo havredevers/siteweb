@@ -20,9 +20,7 @@
     </div>
     <section class="section-page">
       <div class="title">
-        <div v-if="$apollo.queries.categories.loading" class="loader">
-          <img src="~/assets/img/loader.gif" alt="chargement" />
-        </div>
+        <LoaderApple v-if="$apollo.queries.categories.loading" />
         <div v-else-if="error != ''">{{ error }}</div>
         <fieldset v-else>
           <legend>Filtrer les articles</legend>
@@ -65,9 +63,7 @@
         >
           Afficher plus
         </button>
-        <div v-if="$apollo.queries.articles.loading" class="loader">
-          <img src="~/assets/img/loader.gif" alt="chargement" />
-        </div>
+        <LoaderApple v-if="$apollo.queries.articles.loading" />
         <div v-else-if="error != ''">{{ error }}</div>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />

@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     scrollSpy(countup) {
-      window.addEventListener('scroll', function () {
+      window.addEventListener('scroll', () => {
         const bottomOfScroll = window.innerHeight + window.scrollY
         const rect = countup.el.getBoundingClientRect()
         const topOfEl = rect.top + window.pageYOffset

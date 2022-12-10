@@ -5,9 +5,7 @@
       <h2>Présentation <br />de l'équipe</h2>
     </div>
     <div class="content">
-      <div v-if="$apollo.queries.membres.loading" class="loader">
-        <img src="~/assets/img/loader.gif" alt="chargement" />
-      </div>
+      <LoaderApple v-if="$apollo.queries.membres.loading" />
       <div v-else-if="error != ''">{{ error }}</div>
       <ul v-else class="membres">
         <li

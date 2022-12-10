@@ -22,9 +22,7 @@
       <span id="association" class="ancre"></span>
       <div class="title">Que mettre ici ?</div>
       <div class="content lead">
-        <div v-if="$apollo.queries.page.loading" class="loader">
-          <img src="~/assets/img/loader.gif" alt="chargement" />
-        </div>
+        <LoaderApple v-if="$apollo.queries.page.loading" />
         <div v-else-if="error != ''">{{ error }}</div>
         <!-- eslint-disable-next-line vue/no-v-html -->
         <div v-else class="lead wp-api" v-html="page?.content"></div>
