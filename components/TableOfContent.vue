@@ -24,15 +24,22 @@ export default {
 <style lang="scss">
 #toc {
   position: sticky;
-  top: 115px;
-  padding-top: 2rem;
+  top: 125px;
+  padding: 2rem 1rem 1rem;
   font-size: 1.1rem;
+  border: 1px solid var(--clr-font);
+  border-radius: 10px;
 }
 
 .toc-title {
   font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  position: absolute;
+  transform: translate(0px, -50%);
+  top: 0;
+  padding: 0.5rem;
+  background: var(--bg-color);
 }
 
 .js-toc > ol {

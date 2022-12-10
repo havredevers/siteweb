@@ -403,6 +403,7 @@ button {
     flex: 0 0 33%;
     text-align: center;
     padding: 6% 2.7% 6% 6%;
+    background-color: var(--bg-color);
 
     h2 {
       font-family: var(--font-changa);
@@ -425,7 +426,7 @@ button {
 
   &:nth-child(even) {
     .title {
-      background-color: #e3ad89;
+      --bg-color: #e3ad89;
     }
 
     .content {
@@ -435,7 +436,7 @@ button {
 
   &:nth-child(odd) {
     .title {
-      background-color: #ead0a3;
+      --bg-color: #ead0a3;
     }
 
     .content {
