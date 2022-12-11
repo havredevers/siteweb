@@ -48,6 +48,13 @@ export default {
       },
     },
   },
+  watch: {
+    membres() {
+      this.$nextTick(() => {
+        this.$linkImages()
+      })
+    },
+  },
 }
 </script>
 
