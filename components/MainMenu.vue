@@ -4,34 +4,41 @@
     <label class="menu-icon" for="menu-btn">
       <span class="navicon" />
     </label>
-    <ul class="menu">
-      <li><NuxtLink to="/association">L'association</NuxtLink></li>
-      <li>
-        <a
-          :class="$route.name == 'prestations' ? 'active' : ''"
-          @click="ToggleDropdown($event)"
-          >Prestations</a
-        >
-        <ul class="dropdown">
-          <li v-for="prestation in prestations" :key="prestation.slug">
-            <NuxtLink :to="'/prestations/#' + prestation.slug">
-              {{ prestation.title }}
-            </NuxtLink>
-          </li>
-        </ul>
+    <ul v-if="!$apollo.queries.menuItems.loading" class="menu">
+      <li v-for="menuItem in menuItems" :key="menuItem.id">
+        <span v-if="menuItem.path !== '/prestations/'">
+          <NuxtLink :to="menuItem.path"> {{ menuItem.label }} </NuxtLink>
+        </span>
+        <span v-else>
+          <a
+            :class="$route.name == 'prestations' ? 'active' : ''"
+            @click="ToggleDropdown($event)"
+            >Prestations</a
+          >
+          <ul class="dropdown">
+            <li v-for="prestation in prestations" :key="prestation.slug">
+              <NuxtLink :to="'/prestations/#' + prestation.slug">
+                {{ prestation.title }}
+              </NuxtLink>
+            </li>
+          </ul>
+        </span>
       </li>
-      <li><NuxtLink to="/blog">Blog</NuxtLink></li>
-      <li><NuxtLink to="/adherer">Adhérer</NuxtLink></li>
-      <li><NuxtLink to="/boutique">Boutique</NuxtLink></li>
     </ul>
   </div>
 </template>
 
 <script>
-import { PRESTAS } from '@/apollo/queries'
+import { PRESTAS, GET_MENU } from '@/apollo/queries'
 
 export default {
   apollo: {
+    menuItems: {
+      query: GET_MENU,
+      update(data) {
+        return data.menus.nodes[0].menuItems.edges.map((el) => el.node)
+      },
+    },
     prestations: {
       query: PRESTAS,
       update(data) {

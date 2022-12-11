@@ -128,3 +128,24 @@ export const GET_PAGE = gql`
     }
   }
 `
+
+export const GET_MENU = gql`
+  query GET_MENU {
+    menus(where: { slug: "menu-principal" }) {
+      nodes {
+        id
+        databaseId
+        name
+        menuItems {
+          edges {
+            node {
+              id
+              label
+              path
+            }
+          }
+        }
+      }
+    }
+  }
+`
