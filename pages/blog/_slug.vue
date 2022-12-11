@@ -21,7 +21,7 @@
       </div>
     </div>
     <section class="section-page">
-      <div class="title">
+      <div class="title with-toc">
         <TableOfContent :is-loading="$fetchState.pending" />
       </div>
       <div class="content">
@@ -88,37 +88,37 @@ export default {
       },
     ],
   },
+
   watch: {
     article() {
-      if (!this.$fetchState.pending && process.client) {
-        import('~/node_modules/tiny-slider/src/tiny-slider').then(({ tns }) => {
-          this.createCarousel(document.querySelector('.wp-block-gallery'))
+      import('~/node_modules/tiny-slider/src/tiny-slider').then(({ tns }) => {
+        this.createCarousel()
 
-          tns({
-            container: '.wp-block-gallery',
-            preventScrollOnTouch: 'auto',
-            preventActionWhenRunning: true,
-            items: 1,
-            navAsThumbnails: true,
-            navContainer: '.dots',
-            controls: false,
-            responsive: {
-              1200: {
-                items: 2,
-                gutter: 10,
-              },
-              1600: {
-                items: 3,
-                gutter: 10,
-              },
+        tns({
+          container: '.wp-block-gallery',
+          preventScrollOnTouch: 'auto',
+          preventActionWhenRunning: true,
+          items: 1,
+          navAsThumbnails: true,
+          navContainer: '.dots',
+          controls: false,
+          responsive: {
+            1200: {
+              items: 2,
+              gutter: 10,
             },
-          })
+            1600: {
+              items: 3,
+              gutter: 10,
+            },
+          },
         })
-      }
+      })
     },
   },
   methods: {
-    createCarousel(div) {
+    createCarousel() {
+      const div = document.querySelector('.wp-block-gallery')
       const modal = document.createElement('div')
       modal.id = 'modal'
       modal.classList.add('modal')
@@ -160,15 +160,6 @@ export default {
 
 <style lang="scss">
 .blog-article {
-  .section-page .content {
-    h2[id],
-    h3[id] {
-      --menu-height: 110px;
-      padding-top: var(--menu-height);
-      margin-top: calc(-1 * var(--menu-height));
-    }
-  }
-
   .js-toc-content > * {
     margin-bottom: 1rem;
   }

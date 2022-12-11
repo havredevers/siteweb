@@ -402,11 +402,15 @@ button {
     position: relative;
     flex: 0 0 33%;
     text-align: center;
-    padding: 6% 2.7% 6% 6%;
+    padding: 1rem;
     background-color: var(--bg-color);
 
     h2 {
       font-family: var(--font-changa);
+    }
+
+    @media (min-width: 850px) {
+      padding: 6% 2.7% 6% 6%;
     }
   }
 

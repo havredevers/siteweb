@@ -17,16 +17,39 @@ export default {
   },
   watch: {
     isLoading(n, o) {
-      if (!n) Tocbot.init()
+      if (!n)
+        Tocbot.init({
+          hasInnerContainers: true,
+        })
     },
   },
   mounted() {
-    Tocbot.init()
+    Tocbot.init({
+      hasInnerContainers: true,
+    })
   },
 }
 </script>
 
 <style lang="scss">
+.section-page .content {
+  h2[id],
+  h3[id] {
+    --menu-height: 230px;
+    padding-top: var(--menu-height);
+    margin-top: calc(-1 * var(--menu-height));
+
+    @media (min-width: 850px) {
+      --menu-height: 110px;
+    }
+  }
+}
+
+.section-page .title.with-toc {
+  position: sticky;
+  top: 0;
+}
+
 #toc {
   position: sticky;
   top: 125px;
