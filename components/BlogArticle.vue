@@ -33,6 +33,31 @@ export default {
 </script>
 
 <style lang="scss">
+.page .article a .article-logo {
+  width: var(--img-size);
+  flex: 0 0 var(--img-size);
+  overflow: hidden;
+  margin: 0 auto;
+  border-radius: 15px;
+  background: black;
+  aspect-ratio: 16/11;
+  display: flex;
+  align-items: center;
+  margin: auto;
+
+  img {
+    display: block;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    border-radius: 15px;
+    z-index: 0;
+  }
+
+  @media (min-width: 1200px) {
+    --img-size: 35%;
+  }
+}
+
 .article {
   margin-bottom: 1rem;
   text-align: center;
@@ -73,30 +98,6 @@ export default {
       @media (min-width: 1200px) {
         background: rgba(0, 0, 0, 0.1);
       }
-    }
-  }
-
-  &-logo {
-    width: var(--img-size);
-    flex: 0 0 var(--img-size);
-    overflow: hidden;
-    margin: 0 auto;
-    border-radius: 15px;
-    background: black;
-    aspect-ratio: 16/11;
-    display: flex;
-    align-items: center;
-    margin: auto;
-
-    img {
-      display: block;
-      transition: all 0.3s ease-in-out;
-      width: 100%;
-      border-radius: 15px;
-    }
-
-    @media (min-width: 1200px) {
-      --img-size: 35%;
     }
   }
 

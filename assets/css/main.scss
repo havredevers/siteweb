@@ -118,8 +118,8 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-.section-page .content img {
-  z-index: 200;
+.section-page:not(.carte) .content img {
+  z-index: 1;
   position: relative;
 
   &:hover {
