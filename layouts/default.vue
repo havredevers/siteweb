@@ -9,6 +9,7 @@
     </header>
     <Nuxt class="page" keep-alive />
     <MainFooter />
+    <ImageModal />
     <div class="scroll-to-top" @click="scrollToTop()">&#8593;</div>
     <TransitionShape />
   </div>
@@ -36,6 +37,7 @@ export default {
 
       setTimeout(() => {
         this.$secureMail()
+        this.linkImages()
       }, 800)
     },
   },
@@ -83,6 +85,7 @@ export default {
     })
 
     this.$secureMail()
+    this.linkImages()
   },
   methods: {
     scrollToTop() {
@@ -100,6 +103,18 @@ export default {
 
         this.anim.play()
       }, 50)
+    },
+    linkImages() {
+      const imgs = document.querySelectorAll('.section-page img')
+
+      imgs.forEach((img) =>
+        img.addEventListener('click', (e) => {
+          e.preventDefault()
+          document.querySelector('#modal').style.display = 'block'
+          document.querySelector('#modal img').src = img.src
+          document.querySelector('#modal .caption').innerHTML = img.alt
+        })
+      )
     },
   },
 }

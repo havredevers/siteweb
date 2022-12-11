@@ -118,6 +118,16 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
+.section-page .content img {
+  z-index: 200;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+
 .vignette > img,
 img.vignette {
   border-radius: 40px;
@@ -511,11 +521,6 @@ button {
       max-width: 100%;
       height: auto;
       transition: 0.3s;
-
-      &:hover {
-        opacity: 0.8;
-        cursor: pointer;
-      }
     }
   }
 }
