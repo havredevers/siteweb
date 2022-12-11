@@ -30,29 +30,23 @@
               >
                 <img src="~/assets/img/pin-map.png" width="50" />
               </l-icon>
+              <l-popup
+                :options="{
+                  offset: [0, -30],
+                  className: 'map-popup',
+                }"
+              >
+                <TooltipBureauAsso />
+              </l-popup>
               <l-tooltip
                 :options="{
                   direction: 'top',
                   offset: [0, -45],
                   className: 'map-tooltip',
+                  opacity: 1,
                 }"
               >
-                <div class="tooltip-header">
-                  <img src="~/assets/img/logo-blanc.png" />
-                  <div>
-                    <strong>Havre de Vers</strong><br />13, rue de Tourville<br />76600
-                    LE HAVRE
-                  </div>
-                </div>
-                <hr />
-                <div class="tooltip-hours">
-                  Permanences :
-                  <ul>
-                    <li>Lundi : 10h à 19h</li>
-                    <li>Mercredi : 10h à 19h</li>
-                    <li>Vendredi : 10h à 19h</li>
-                  </ul>
-                </div>
+                <TooltipBureauAsso />
               </l-tooltip>
             </l-marker>
             <l-marker :lat-lng="[49.4831, 0.13625]">
@@ -63,27 +57,23 @@
               >
                 <img src="~/assets/img/pin-map.png" width="50" />
               </l-icon>
+              <l-popup
+                :options="{
+                  offset: [0, -30],
+                  className: 'map-popup',
+                }"
+              >
+                <TooltipHangarZero />
+              </l-popup>
               <l-tooltip
                 :options="{
                   direction: 'top',
                   offset: [0, -45],
                   className: 'map-tooltip',
+                  opacity: 1,
                 }"
               >
-                <div class="tooltip-header">
-                  <img src="~/assets/img/logo-blanc.png" />
-                  <div>
-                    <strong>Hangar zéro</strong><br />37 Quai de la Saône<br />76600
-                    LE HAVRE
-                  </div>
-                </div>
-                <hr />
-                <div class="tooltip-hours">
-                  Permanences :
-                  <ul>
-                    <li>Mardi : 10h à 17h</li>
-                  </ul>
-                </div>
+                <TooltipHangarZero />
               </l-tooltip>
             </l-marker>
           </l-map>
@@ -103,18 +93,27 @@
 </template>
 
 <style lang="scss">
+.carte {
+  --tooltip-bg: #84aa4b;
+}
+
 .map-icon img {
   display: block;
   margin: auto;
 }
 
+.map-popup .leaflet-popup-content-wrapper,
+.leaflet-popup-tip,
+.map-tooltip,
+.leaflet-container a.leaflet-popup-close-button {
+  background-color: var(--tooltip-bg);
+  color: white;
+}
+
 .map-tooltip {
-  --tooltip-bg: #84aa4b;
   padding: 0.5rem;
   font-size: 0.8rem;
-  color: white;
   border-radius: 14px;
-  background-color: var(--tooltip-bg);
   border-color: var(--tooltip-bg);
 
   &.leaflet-tooltip-top::before {
@@ -139,6 +138,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  font-size: 1.1rem;
 
   img {
     width: 100px;
@@ -155,7 +155,7 @@
 }
 
 .tooltip-hours {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
 }
 
 .map-subtitle {
