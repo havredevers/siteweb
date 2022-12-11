@@ -1,5 +1,5 @@
 <template>
-  <div id="toc">
+  <div v-if="!isLoading" id="toc">
     <div id="toc-title" class="toc-title">Table des matières</div>
     <nav class="js-toc" aria-labelledby="toc-title"></nav>
   </div>

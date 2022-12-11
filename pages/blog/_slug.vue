@@ -22,7 +22,9 @@
     </div>
     <section class="section-page">
       <div class="title with-toc">
-        <TableOfContent :is-loading="$fetchState.pending" />
+        <TableOfContent
+          :is-loading="$fetchState.pending || !hasHeadings(article.content)"
+        />
       </div>
       <div class="content">
         <div class="js-toc-content" v-html="article.content"></div>
@@ -87,7 +89,6 @@ export default {
       },
     ],
   },
-
   watch: {
     article() {
       import('~/node_modules/tiny-slider/src/tiny-slider').then(({ tns }) => {
@@ -116,6 +117,9 @@ export default {
     },
   },
   methods: {
+    hasHeadings(str) {
+      return str.includes('</h2>')
+    },
     createCarousel() {
       const div = document.querySelector('.wp-block-gallery')
       const modal = document.createElement('div')
