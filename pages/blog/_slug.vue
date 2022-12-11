@@ -121,41 +121,44 @@ export default {
       return str.includes('</h2>')
     },
     createCarousel() {
-      const div = document.querySelector('.wp-block-gallery')
-      const modal = document.createElement('div')
-      modal.id = 'modal'
-      modal.classList.add('modal')
+      const divs = document.querySelectorAll('.wp-block-gallery')
 
-      let newGallery = document.createElement('div')
-      newGallery.classList.add('wp-block-gallery')
+      if (!divs) return
 
-      const dotsContainer = document.createElement('ul')
-      dotsContainer.classList.add('dots')
+      divs.forEach((div) => {
+        let newGallery = document.createElement('div')
+        newGallery.classList.add('wp-block-gallery')
 
-      const sliders = div.querySelectorAll('.wp-block-image')
-      sliders.forEach((slider) => {
-        const newSlider = document.createElement('div')
-        const img = slider.querySelector('img')
-        img.addEventListener('click', () => {
-          document.querySelector('#modal').style.display = 'flex'
-          document.querySelector('#modal img').src = img.src
-          document.querySelector('#modal .caption').innerHTML = img.alt
+        const dotsContainer = document.createElement('ul')
+        dotsContainer.classList.add('dots')
+
+        const sliders = div.querySelectorAll('.wp-block-image')
+        sliders.forEach((slider) => {
+          const newSlider = document.createElement('div')
+          const img = slider.querySelector('img')
+          img.addEventListener('click', () => {
+            document.querySelector('#modal').style.display = 'flex'
+            document.querySelector('#modal img').src = img.src
+            document.querySelector('#modal .caption').innerHTML = img.alt
+          })
+          newSlider.appendChild(img)
+          newGallery.appendChild(newSlider)
+
+          const dot = document.createElement('li')
+          dot.classList.add('dot')
+          dot.appendChild(img.cloneNode(true))
+          dotsContainer.appendChild(dot)
         })
-        newSlider.appendChild(img)
-        newGallery.appendChild(newSlider)
 
-        const dot = document.createElement('li')
-        dot.classList.add('dot')
-        dot.appendChild(img.cloneNode(true))
-        dotsContainer.appendChild(dot)
+        div.parentNode.replaceChild(newGallery, div)
+
+        newGallery = document.querySelector('.wp-block-gallery')
+        newGallery.parentNode.insertBefore(
+          dotsContainer,
+          newGallery.nextSibling
+        )
       })
-
-      div.parentNode.replaceChild(newGallery, div)
-
-      newGallery = document.querySelector('.wp-block-gallery')
-      newGallery.parentNode.insertBefore(dotsContainer, newGallery.nextSibling)
     },
-    bindImg() {},
   },
 }
 </script>
