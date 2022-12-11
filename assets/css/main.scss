@@ -383,6 +383,8 @@ button {
   padding-bottom: 56.25%;
   position: relative;
   height: 0;
+  max-width: 800px;
+  margin: auto;
 
   iframe {
     left: 0;
@@ -417,7 +419,7 @@ button {
   .content {
     position: relative;
     flex: 0 0 67%;
-    padding: 3% 10% 1rem 10%;
+    padding: 3% 5% 1rem 5%;
 
     .wp-api > * + * {
       margin-top: 2rem;

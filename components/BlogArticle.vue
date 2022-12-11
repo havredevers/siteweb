@@ -60,6 +60,10 @@ export default {
         text-align: center;
         padding: 1rem;
         display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
 
       img {
@@ -82,6 +86,7 @@ export default {
     aspect-ratio: 16/11;
     display: flex;
     align-items: center;
+    margin: auto;
 
     img {
       display: block;
@@ -157,6 +162,10 @@ export default {
           text-align: left;
           padding: 0;
           text-decoration: underline;
+          position: relative;
+          top: 0;
+          left: 0;
+          transform: initial;
         }
       }
     }
