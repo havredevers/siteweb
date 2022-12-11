@@ -36,7 +36,7 @@ export default {
       }
 
       setTimeout(() => {
-        this.resetPage()
+        this.resetPage(!(from.path === to.path))
       }, 800)
     },
   },
@@ -83,7 +83,7 @@ export default {
       },
     })
 
-    this.resetPage()
+    this.resetPage(true)
   },
   methods: {
     scrollToTop() {
@@ -153,8 +153,8 @@ export default {
       // Services utilisés
       ;(tarteaucitron.job = tarteaucitron.job || []).push('helloasso')
     },
-    resetPage() {
-      this.launchTarteAuCitron()
+    resetPage(init) {
+      if (init) this.launchTarteAuCitron()
       this.$secureMail()
       this.$linkImages()
     },
