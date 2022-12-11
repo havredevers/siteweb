@@ -22,7 +22,7 @@ Vue.prototype.$linkImages = () => {
   imgs.forEach((img) =>
     img.addEventListener('click', (e) => {
       e.preventDefault()
-      document.querySelector('#modal').style.display = 'block'
+      document.querySelector('#modal').style.display = 'flex'
       document.querySelector('#modal img').src = img.src
       document.querySelector('#modal .caption').innerHTML = img.alt
     })

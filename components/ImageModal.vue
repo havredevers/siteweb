@@ -1,8 +1,10 @@
 <template>
   <div id="modal" class="modal" @click="closeModal">
     <span class="close" @click="closeModal">&times;</span>
-    <img />
-    <div class="caption"></div>
+    <div class="img-container">
+      <img />
+      <div class="caption"></div>
+    </div>
   </div>
 </template>
 
@@ -30,22 +32,36 @@ export default {
   display: none;
   position: fixed;
   z-index: 1500;
-  padding-top: 100px;
+  justify-content: center;
+  align-items: center;
+  // padding: 100px 0;
   inset: 0;
-  width: 100%;
+  // width: 100%;
   overflow: hidden;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.9);
 
-  img {
-    margin: auto;
-    display: block;
-    width: 100%;
-    max-width: 1000px;
-
+  .img-container {
+    max-width: 100%;
+    // margin: auto;
+    height: calc(100vh - 200px);
     @media (min-width: 700px) {
-      width: 80%;
+      max-width: 80%;
     }
+  }
+
+  img {
+    // margin: auto;
+    // display: block;
+    // margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    // width: 100%;
+    // max-width: 1000px;
+
+    // @media (min-width: 700px) {
+    //   width: 80%;
+    // }
   }
 
   .caption {

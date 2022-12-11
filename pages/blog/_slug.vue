@@ -133,7 +133,7 @@ export default {
         const newSlider = document.createElement('div')
         const img = slider.querySelector('img')
         img.addEventListener('click', () => {
-          document.querySelector('#modal').style.display = 'block'
+          document.querySelector('#modal').style.display = 'flex'
           document.querySelector('#modal img').src = img.src
           document.querySelector('#modal .caption').innerHTML = img.alt
         })
