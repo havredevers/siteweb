@@ -92,38 +92,39 @@ export default {
   watch: {
     article() {
       import('~/node_modules/tiny-slider/src/tiny-slider').then(({ tns }) => {
-        this.createCarousel()
+        const hasCarousel = this.createCarousel()
 
-        tns({
-          container: '.wp-block-gallery',
-          preventScrollOnTouch: 'auto',
-          preventActionWhenRunning: true,
-          items: 1,
-          navAsThumbnails: true,
-          navContainer: '.dots',
-          controls: false,
-          responsive: {
-            1200: {
-              items: 2,
-              gutter: 10,
+        if (hasCarousel)
+          tns({
+            container: '.wp-block-gallery',
+            preventScrollOnTouch: 'auto',
+            preventActionWhenRunning: true,
+            items: 1,
+            navAsThumbnails: true,
+            navContainer: '.dots',
+            controls: false,
+            responsive: {
+              1200: {
+                items: 2,
+                gutter: 10,
+              },
+              1600: {
+                items: 3,
+                gutter: 10,
+              },
             },
-            1600: {
-              items: 3,
-              gutter: 10,
-            },
-          },
-        })
+          })
       })
     },
   },
   methods: {
     hasHeadings(str) {
-      return str.includes('</h2>')
+      const regex = /<h2.+id=".+".+<\/h2>/g
+      return str.search(regex) !== -1
     },
     createCarousel() {
       const divs = document.querySelectorAll('.wp-block-gallery')
-
-      if (!divs) return
+      if (divs.length === 0) return false
 
       divs.forEach((div) => {
         let newGallery = document.createElement('div')
@@ -158,6 +159,8 @@ export default {
           newGallery.nextSibling
         )
       })
+
+      return true
     },
   },
 }
