@@ -22,9 +22,7 @@
     </div>
     <section class="section-page">
       <div class="title with-toc">
-        <TableOfContent
-          :is-loading="$fetchState.pending || !hasHeadings(article.content)"
-        />
+        <TableOfContent :is-loading="$fetchState.pending || !hasHeadings" />
       </div>
       <div class="content">
         <div class="js-toc-content" v-html="article.content"></div>
@@ -43,6 +41,7 @@ export default {
   mixins: [meta],
   data() {
     return {
+      hasHeadings: false,
       slider: {},
       article: {
         title: '',
@@ -92,6 +91,8 @@ export default {
   watch: {
     article() {
       import('~/node_modules/tiny-slider/src/tiny-slider').then(({ tns }) => {
+        const regex = /<h2.+id=".+".+<\/h2>/g
+        this.hasHeadings = this.article.content.search(regex) !== -1
         const hasCarousel = this.createCarousel()
 
         if (hasCarousel)
@@ -118,10 +119,6 @@ export default {
     },
   },
   methods: {
-    hasHeadings(str) {
-      const regex = /<h2.+id=".+".+<\/h2>/g
-      return str.search(regex) !== -1
-    },
     createCarousel() {
       const divs = document.querySelectorAll('.wp-block-gallery')
       if (divs.length === 0) return false

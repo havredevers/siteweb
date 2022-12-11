@@ -17,10 +17,12 @@ export default {
   },
   watch: {
     isLoading(n, o) {
-      if (!n)
-        Tocbot.init({
-          hasInnerContainers: true,
-        })
+      this.$nextTick(() => {
+        if (!n)
+          Tocbot.init({
+            hasInnerContainers: true,
+          })
+      })
     },
   },
   mounted() {
