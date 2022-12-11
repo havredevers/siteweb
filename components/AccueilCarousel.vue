@@ -89,11 +89,6 @@ export default {
       },
     }
   },
-  watch: {
-    $route() {
-      clearInterval(this.interval)
-    },
-  },
   mounted() {
     this.launch()
   },
