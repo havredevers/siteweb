@@ -42,9 +42,9 @@ export default {
     prestations: {
       query: PRESTAS,
       update(data) {
-        return data.prestations.nodes.sort((a, b) => {
-          return a.title.toLowerCase() > b.title.toLowerCase()
-        })
+        return data.prestations.nodes.sort((a, b) =>
+          a.title.localeCompare(b.title)
+        )
       },
     },
   },

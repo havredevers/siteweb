@@ -93,8 +93,8 @@ export default {
     prestations: {
       query: PRESTAS,
       update(data) {
-        return data.prestations.nodes.sort(
-          (a, b) => a.title.toLowerCase() - b.title.toLowerCase()
+        return data.prestations.nodes.sort((a, b) =>
+          a.title.localeCompare(b.title)
         )
       },
       error(err) {
@@ -105,6 +105,10 @@ export default {
           document.querySelector(this.$route.hash).scrollIntoView()
       },
     },
+  },
+  mounted() {
+    if (this.$route.hash)
+      document.querySelector(this.$route.hash).scrollIntoView()
   },
   methods: {
     waveColors(i) {
