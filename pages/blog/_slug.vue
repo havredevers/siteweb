@@ -143,8 +143,10 @@ export default {
           newGallery.appendChild(newSlider)
 
           const dot = document.createElement('li')
+          const miniature = img.cloneNode(true)
+          miniature.classList.add('dot-img')
           dot.classList.add('dot')
-          dot.appendChild(img.cloneNode(true))
+          dot.appendChild(miniature)
           dotsContainer.appendChild(dot)
         })
 

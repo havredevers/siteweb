@@ -118,14 +118,14 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-.section-page:not(.carte) .content img {
+.section-page:not(.carte) .content img:not(.dot-img) {
   z-index: 1;
   position: relative;
   transition: opacity 0.3s ease-in-out;
 
   &:hover {
-    cursor: pointer;
-    opacity: 0.8;
+    cursor: zoom-in;
+    opacity: 0.9;
   }
 }
 

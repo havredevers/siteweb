@@ -62,7 +62,7 @@ export default {
 .membres {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
 }
 
@@ -81,11 +81,12 @@ export default {
     height: 0;
     overflow: hidden;
     border-radius: 50%;
-    box-shadow: 5px 5px 5px grey;
-    transition: transform 0.3s ease-in-out;
+    box-shadow: 5px 5px 15px grey;
+    transition: all 0.3s ease-in-out;
 
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
+      box-shadow: 5px 5px 20px 5px grey;
     }
   }
 
