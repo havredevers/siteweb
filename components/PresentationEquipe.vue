@@ -82,6 +82,11 @@ export default {
     overflow: hidden;
     border-radius: 50%;
     box-shadow: 5px 5px 5px grey;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   img {

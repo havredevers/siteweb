@@ -121,6 +121,7 @@ a:focus-visible {
 .section-page:not(.carte) .content img {
   z-index: 1;
   position: relative;
+  transition: opacity 0.3s ease-in-out;
 
   &:hover {
     cursor: pointer;
