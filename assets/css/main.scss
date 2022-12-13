@@ -121,7 +121,7 @@ a:focus-visible {
 .section-page:not(.carte) .content img:not(.dot-img) {
   z-index: 1;
   position: relative;
-  transition: opacity 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
     cursor: zoom-in;

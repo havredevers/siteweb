@@ -47,7 +47,6 @@ export default {
 
   img {
     display: block;
-    transition: all 0.3s ease-in-out;
     width: 100%;
     border-radius: 15px;
     z-index: 0;
