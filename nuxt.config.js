@@ -105,6 +105,7 @@ export default {
     script: [
       {
         src: 'https://cdnjs.cloudflare.com/ajax/libs/tarteaucitronjs/1.9.9/tarteaucitron.js',
+        defer: true,
       },
     ],
   },
