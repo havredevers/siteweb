@@ -95,7 +95,7 @@ export default {
         href: '/favicon-16x16.png',
       },
       {
-        rel: 'apple-touch-  ',
+        rel: 'apple-touch-icon',
         sizes: '120x120',
         href: '/apple-touch-icon.png',
       },

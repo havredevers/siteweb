@@ -214,7 +214,7 @@
 
 a[title='Instagram']:focus-visible::before,
 a[title='Instagram']:hover::before {
-  background: radial-gradient(
+  background-image: radial-gradient(
     circle at 30% 107%,
     #fdf497 0%,
     #fdf497 5%,
