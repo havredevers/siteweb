@@ -149,3 +149,20 @@ export const GET_MENU = gql`
     }
   }
 `
+
+export const SEND_MAIL = gql`
+  mutation SEND_EMAIL {
+    sendEmail(
+      input: {
+        to: "paidge_cs@hotmail.com"
+        subject: "test email from site"
+        body: "test email"
+        clientMutationId: "test"
+      }
+    ) {
+      origin
+      sent
+      message
+    }
+  }
+`

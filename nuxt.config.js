@@ -25,6 +25,7 @@ export default {
       { name: 'robots', content: 'noindex' },
       // Facebook Meta Tags
       {
+        hid: 'og:type',
         property: 'og:type',
         content: 'website',
       },

@@ -24,6 +24,7 @@ module.exports = {
           'prestations',
           'adherer',
           'boutique',
+          'contact',
         ],
       },
     ],

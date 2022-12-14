@@ -80,13 +80,34 @@ export default {
       this.image = this.article.featuredImage.node.mediaItemUrl
     }
   },
-  head: {
-    link: [
-      {
-        rel: 'stylesheet',
-        href: 'https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css',
-      },
-    ],
+  head() {
+    return {
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css',
+        },
+      ],
+      meta: [
+        {
+          hid: 'og:type',
+          property: 'og:type',
+          content: 'article',
+        },
+        {
+          property: 'og:type',
+          content: 'article',
+        },
+        {
+          property: 'article:published_time',
+          content: this.article.modifiedGmt,
+        },
+        {
+          property: 'article:author',
+          content: this.article.author.node.name,
+        },
+      ],
+    }
   },
   watch: {
     article() {
