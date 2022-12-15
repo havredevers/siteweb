@@ -151,12 +151,14 @@ export const GET_MENU = gql`
 `
 
 export const SEND_MAIL = gql`
-  mutation SEND_EMAIL {
+  mutation SEND_EMAIL($replyTo: String, $subject: String, $body: String) {
     sendEmail(
       input: {
         to: "paidge_cs@hotmail.com"
-        subject: "test email from site"
-        body: "test email"
+        replyTo: $replyTo
+        from: "noreply@havredevers.fr"
+        subject: $subject
+        body: $body
         clientMutationId: "test"
       }
     ) {
