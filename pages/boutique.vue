@@ -15,9 +15,7 @@
           <p v-if="!$apollo.queries.page.loading">
             {{ page?.extrait }}
           </p>
-          <a class="protect cta" data-protect="havredeversarobasgmailpointcom">
-            Contactez-nous
-          </a>
+          <NuxtLink class="cta" to="/contact">Contactez-nous</NuxtLink>
         </div>
       </div>
     </div>

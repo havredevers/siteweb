@@ -82,6 +82,8 @@
         <nuxtLink to="/mentions-legales" class="mentions-link">
           Mentions&nbsp;légales
         </nuxtLink>
+        -
+        <NuxtLink to="/contact">Contact</NuxtLink>
       </div>
     </div>
     <HomeWave :colors="['#90a73f', '#d3d9ac']" />

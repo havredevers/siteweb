@@ -16,9 +16,7 @@
           <p v-if="!$apollo.queries.page.loading">
             {{ page?.extrait }}
           </p>
-          <a class="protect cta" data-protect="havredeversarobasgmailpointcom">
-            Contactez-nous
-          </a>
+          <NuxtLink class="cta" to="/contact">Contactez-nous</NuxtLink>
         </div>
       </div>
     </div>
@@ -37,9 +35,7 @@
             {{ presta.title }}
           </h2>
           <p>{{ 'A partir de ' + presta.prix + '€' }}</p>
-          <a class="protect cta" data-protect="havredeversarobasgmailpointcom">
-            Demandez un devis
-          </a>
+          <NuxtLink class="cta" to="/contact">Demandez un devis</NuxtLink>
         </div>
         <div class="content">
           <div class="lead" data-aos="fade-up">{{ presta.description }}</div>
