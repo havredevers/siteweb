@@ -1,7 +1,7 @@
 <template>
   <div>
-    <!-- <LoaderApple v-if="$apollo.queries.page.loading" /> -->
-    <div v-if="error" class="form-msg form-error">
+    <LoaderApple v-if="isLoading" />
+    <div v-else-if="error" class="form-msg form-error">
       Une erreur est apparue lors de l'envoi de votre message : <br />{{
         error
       }}
@@ -62,8 +62,8 @@
         ></textarea>
         <p class="valid-feedback">OK !</p>
         <p class="invalid-feedback">Veuillez saisir votre demande</p>
+        <button class="cta">Envoyer</button>
       </div>
-      <button class="cta" data-aos="fade-up">Envoyer</button>
     </form>
   </div>
 </template>
@@ -75,6 +75,7 @@ export default {
   data() {
     return {
       isSent: false,
+      isLoading: false,
       error: '',
       saisie: {
         nom: '',
@@ -91,6 +92,7 @@ export default {
 
       if (form.checkValidity()) {
         form.classList.add('sent')
+        this.isLoading = true
         this.sendMail()
       } else {
         form.classList.add('submitted')
@@ -105,20 +107,22 @@ export default {
             subject: '[Contact Site] ' + this.saisie.nom + ' vous a écrit',
             body:
               this.saisie.nom +
-              '(' +
+              ' ( ' +
               this.saisie.email +
-              ')' +
-              ' vous a écrit un message sur le site Internet du Havre de Vers :<br>' +
+              ' ) ' +
+              ' vous a écrit un message sur le site Internet du Havre de Vers :<br><br>' +
               this.saisie.msg,
           },
         })
         .then((data) => {
+          this.isLoading = false
           this.isSent = data.data.sendEmail.sent
           if (!this.isSent) {
             this.setError(data.data.sendEmail.message)
           }
         })
         .catch((error) => {
+          this.isLoading = false
           this.setError(error)
         })
     },
@@ -167,6 +171,10 @@ form {
   margin: auto;
   transition: all 0.3s ease-in-out;
 
+  .cta {
+    margin: 1rem 0;
+  }
+
   label {
     font-family: var(--font-changa);
     letter-spacing: 0.1em;
@@ -204,17 +212,17 @@ form {
     opacity: 0;
   }
 
+  :not(button):valid {
+    border: 1px solid var(--clr-primary);
+
+    &:focus-visible {
+      box-shadow: 0 0 0 0.25rem rgba(132, 170, 75, 0.5);
+    }
+  }
+
   &.submitted {
-    :not(button):valid {
-      border: 1px solid var(--clr-primary);
-
-      &:focus-visible {
-        box-shadow: 0 0 0 0.25rem rgba(132, 170, 75, 0.5);
-      }
-
-      & ~ .valid-feedback {
-        display: block;
-      }
+    :not(button):valid ~ .valid-feedback {
+      display: block;
     }
 
     :invalid {
