@@ -43,12 +43,13 @@
           type="email"
           minlength="8"
           aria-required="true"
+          placeholder="Votre e-mail"
         />
         <p class="valid-feedback">OK !</p>
         <p class="invalid-feedback">Veuillez saisir une adresse email valide</p>
       </div>
       <div>
-        <label for="subject">Objet</label>
+        <label for="subject">Sujet</label>
         <input
           id="subject"
           v-model="saisie.objet"
@@ -57,6 +58,7 @@
           type="text"
           minlength="5"
           aria-required="true"
+          placeholder="Sujet"
         />
         <p class="valid-feedback">OK !</p>
         <p class="invalid-feedback">
@@ -73,6 +75,7 @@
           minlength="20"
           rows="10"
           aria-required="true"
+          placeholder="Votre message"
         ></textarea>
         <p class="valid-feedback">OK !</p>
         <p class="invalid-feedback">Veuillez saisir votre demande</p>
@@ -151,6 +154,7 @@ export default {
   border-radius: 15px;
   padding: 0.5rem;
 }
+
 .form-error {
   background-color: var(--clr-secondary);
 }
@@ -158,6 +162,7 @@ export default {
 .form-success {
   background-color: var(--clr-primary);
 }
+
 .valid-feedback,
 .invalid-feedback {
   display: none;
@@ -212,6 +217,10 @@ form {
   &.submitted {
     :not(button):valid {
       border: 1px solid var(--clr-primary);
+
+      &:focus-visible {
+        box-shadow: 0 0 0 0.25rem rgba(132, 170, 75, 0.5);
+      }
 
       & ~ .valid-feedback {
         display: block;
