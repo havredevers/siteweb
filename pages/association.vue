@@ -29,6 +29,7 @@
         <LoaderApple v-if="$apollo.queries.page.loading" />
         <div v-else-if="error != ''">{{ error }}</div>
         <div v-else class="lead wp-api" v-html="page?.content"></div>
+        <NuxtLink class="cta" to="/contact">Contactez-nous</NuxtLink>
       </div>
       <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
     </section>
@@ -90,6 +91,7 @@
     <PresentationEquipe />
   </div>
 </template>
+
 <script>
 import qs from 'qs'
 import meta from '~/plugins/meta'
@@ -217,6 +219,10 @@ export default {
   h3 {
     font-family: var(--font-changa);
     margin: 0.5rem 0;
+  }
+
+  .cta {
+    margin: 2rem auto 0;
   }
 }
 
