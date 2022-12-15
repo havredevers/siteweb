@@ -16,8 +16,8 @@
       novalidate
       @submit="submit($event)"
     >
-      <div>
-        <label for="name">Votre nom</label>
+      <div data-aos="fade-up">
+        <label for="name">Votre nom&nbsp;<sup>*</sup></label>
         <input
           id="name"
           v-model="saisie.nom"
@@ -32,8 +32,8 @@
         <p class="valid-feedback">OK !</p>
         <p class="invalid-feedback">Veuillez saisir un nom</p>
       </div>
-      <div>
-        <label for="email"> Votre e-mail</label>
+      <div data-aos="fade-up">
+        <label for="email">Votre e-mail&nbsp;<sup>*</sup></label>
         <input
           id="email"
           v-model="saisie.email"
@@ -48,25 +48,8 @@
         <p class="valid-feedback">OK !</p>
         <p class="invalid-feedback">Veuillez saisir une adresse email valide</p>
       </div>
-      <div>
-        <label for="subject">Sujet</label>
-        <input
-          id="subject"
-          v-model="saisie.objet"
-          name="your-subject"
-          required=""
-          type="text"
-          minlength="5"
-          aria-required="true"
-          placeholder="Sujet"
-        />
-        <p class="valid-feedback">OK !</p>
-        <p class="invalid-feedback">
-          Veuillez saisir un objet pour votre demande
-        </p>
-      </div>
-      <div>
-        <label for="message">Votre message</label>
+      <div data-aos="fade-up">
+        <label for="message">Votre message&nbsp;<sup>*</sup></label>
         <textarea
           id="message"
           v-model="saisie.msg"
@@ -80,7 +63,7 @@
         <p class="valid-feedback">OK !</p>
         <p class="invalid-feedback">Veuillez saisir votre demande</p>
       </div>
-      <button class="cta">Envoyer</button>
+      <button class="cta" data-aos="fade-up">Envoyer</button>
     </form>
   </div>
 </template>
@@ -96,7 +79,6 @@ export default {
       saisie: {
         nom: '',
         email: '',
-        objet: '',
         msg: '',
       },
     }
@@ -120,9 +102,12 @@ export default {
           mutation: SEND_MAIL,
           variables: {
             replyTo: this.saisie.email,
-            subject: this.saisie.objet,
+            subject: '[Contact Site] ' + this.saisie.nom + ' vous a écrit',
             body:
               this.saisie.nom +
+              '(' +
+              this.saisie.email +
+              ')' +
               ' vous a écrit un message sur le site Internet du Havre de Vers :<br>' +
               this.saisie.msg,
           },
@@ -185,6 +170,10 @@ form {
   label {
     font-family: var(--font-changa);
     letter-spacing: 0.1em;
+
+    sup {
+      color: var(--clr-secondary);
+    }
   }
 
   input,
@@ -196,6 +185,7 @@ form {
     border: 1px solid #ced4da;
     line-height: 1.5;
     font-size: 1rem;
+    font-family: inherit;
   }
 
   *:focus-visible {
