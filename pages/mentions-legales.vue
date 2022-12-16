@@ -99,7 +99,7 @@ body {
     margin-bottom: 1rem;
   }
 
-  li {
+  .content li {
     list-style: disc;
     margin: 0 0 1rem 1rem;
   }
