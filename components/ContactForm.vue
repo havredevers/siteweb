@@ -159,6 +159,10 @@ export default {
   margin-bottom: 65px;
   width: 100%;
 
+  p {
+    margin-bottom: 0.5rem;
+  }
+
   &[data-value] {
     position: relative;
     display: inline-grid;
@@ -230,6 +234,7 @@ form {
 
   label {
     font-family: var(--font-changa);
+    font-size: 1.4rem;
     color: grey;
     letter-spacing: 0.1em;
     position: absolute;
@@ -280,6 +285,7 @@ form {
     top: -1rem;
     left: 0;
     color: var(--clr-font);
+    font-size: 1rem;
   }
 
   & > div {
