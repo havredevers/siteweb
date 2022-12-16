@@ -160,6 +160,7 @@ export default {
   width: 100%;
 
   &[data-value] {
+    position: relative;
     display: inline-grid;
     align-items: stretch;
 
@@ -168,6 +169,8 @@ export default {
       content: attr(data-value) ' ';
       visibility: hidden;
       white-space: pre-wrap;
+      padding-top: 1rem;
+      line-height: 1.5;
     }
   }
 }
