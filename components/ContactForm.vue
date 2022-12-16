@@ -191,6 +191,7 @@ export default {
 .invalid-feedback {
   display: none;
   font-weight: 300;
+  grid-area: 3/1;
 }
 
 .valid-feedback {
