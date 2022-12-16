@@ -8,7 +8,7 @@
       <div class="content">
         <PageWordpress page-name="video-accueil" />
       </div>
-      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+      <HomeWave :colors="['var(--clr-content2)', 'var(--clr-content1)']" />
     </section>
     <section class="section-page">
       <span id="valeurs" class="ancre"></span>
@@ -26,7 +26,7 @@
           </NuxtLink>
         </div>
       </div>
-      <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
+      <HomeWave :colors="['var(--clr-content3)', 'var(--clr-content4)']" />
     </section>
     <section class="accueil-2 section-page">
       <span id="actualites" class="ancre"></span>
@@ -41,7 +41,7 @@
           <NuxtLink to="/blog" class="cta">Voir tous les articles</NuxtLink>
         </div>
       </div>
-      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+      <HomeWave :colors="['var(--clr-content2)', 'var(--clr-content1)']" />
     </section>
   </div>
 </template>

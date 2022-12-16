@@ -88,7 +88,7 @@
         </a>
       </div>
     </div>
-    <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+    <HomeWave :colors="['var(--clr-content2)', 'var(--clr-content1)']" />
   </section>
 </template>
 

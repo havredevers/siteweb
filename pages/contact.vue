@@ -23,7 +23,7 @@
         <h2>Formulaire de contact</h2>
       </div>
       <div class="content"><ContactForm /></div>
-      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+      <HomeWave :colors="['var(--clr-content2)', 'var(--clr-content1)']" />
     </section>
     <section class="section-page">
       <div class="title">
@@ -35,7 +35,7 @@
         <!-- eslint-disable-next-line vue/no-v-html -->
         <div v-else class="wp-api" v-html="page?.content"></div>
       </div>
-      <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
+      <HomeWave :colors="['var(--clr-content3)', 'var(--clr-content4)']" />
     </section>
   </div>
 </template>

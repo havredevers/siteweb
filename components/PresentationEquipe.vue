@@ -24,7 +24,7 @@
         </li>
       </ul>
     </div>
-    <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
+    <HomeWave :colors="['var(--clr-content3)', 'var(--clr-content4)']" />
   </section>
 </template>
 

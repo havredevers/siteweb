@@ -7,6 +7,10 @@ $clr-green1: #d3d9ac;
 $clr-green2: #90a73f;
 $clr-green3: #5c7811;
 $clr-font: #3b3025;
+$clr-content1: #f4dbc9;
+$clr-content2: #e3ad89;
+$clr-content3: #ead0a3;
+$clr-content4: #f7e9d4;
 
 @import './fonts.scss';
 
@@ -20,6 +24,10 @@ $clr-font: #3b3025;
   --clr-green2: #{$clr-green2};
   --clr-green3: #{$clr-green3};
   --clr-font: #{$clr-font};
+  --clr-content1: #{$clr-content1};
+  --clr-content2: #{$clr-content2};
+  --clr-content3: #{$clr-content3};
+  --clr-content4: #{$clr-content4};
   --container-width: 1440px;
   --wave-height: 8vw;
   font-size: 16px;
@@ -442,21 +450,21 @@ button {
 
   &:nth-child(even) {
     .title {
-      --bg-color: #e3ad89;
+      --bg-color: var(--clr-content2);
     }
 
     .content {
-      background-color: #f4dbc9;
+      background-color: var(--clr-content1);
     }
   }
 
   &:nth-child(odd) {
     .title {
-      --bg-color: #ead0a3;
+      --bg-color: var(--clr-content3);
     }
 
     .content {
-      background-color: #f7e9d4;
+      background-color: var(--clr-content4);
     }
   }
 

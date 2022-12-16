@@ -31,7 +31,7 @@
         <div v-else class="lead wp-api" v-html="page?.content"></div>
         <NuxtLink class="cta" to="/contact">Contactez-nous</NuxtLink>
       </div>
-      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+      <HomeWave :colors="['var(--clr-content2)', 'var(--clr-content1)']" />
     </section>
     <section class="section-page chiffres">
       <span id="chiffres" class="ancre"></span>
@@ -85,7 +85,7 @@
           </li>
         </ul>
       </div>
-      <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
+      <HomeWave :colors="['var(--clr-content3)', 'var(--clr-content4)']" />
     </section>
     <AssoMap />
     <PresentationEquipe />

@@ -27,7 +27,7 @@
       <div class="content">
         <div class="js-toc-content" v-html="article.content"></div>
       </div>
-      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+      <HomeWave :colors="['var(--clr-content2)', 'var(--clr-content1)']" />
     </section>
   </article>
 </template>

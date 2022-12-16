@@ -29,7 +29,7 @@
         <!-- eslint-disable-next-line vue/no-v-html -->
         <div v-else class="lead wp-api" v-html="page?.content"></div>
       </div>
-      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+      <HomeWave :colors="['var(--clr-content2)', 'var(--clr-content1)']" />
     </section>
   </div>
 </template>

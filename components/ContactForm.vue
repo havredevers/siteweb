@@ -16,54 +16,62 @@
       novalidate
       @submit="submit($event)"
     >
-      <div data-aos="fade-up">
-        <label for="name">Votre nom&nbsp;<sup>*</sup></label>
+      <div class="form-item">
         <input
           id="name"
           v-model="saisie.nom"
-          autocomplete="name"
+          autocomplete="off"
           name="your-name"
           required=""
           type="text"
           minlength="5"
           aria-required="true"
-          placeholder="Votre nom"
+          :class="{
+            filled: saisie.nom !== '',
+          }"
         />
-        <p class="valid-feedback">OK !</p>
+        <label for="name">Votre nom&nbsp;<sup>*</sup></label>
+        <span class="line"></span>
+        <p class="valid-feedback">Votre saisie est valide.</p>
         <p class="invalid-feedback">Veuillez saisir un nom</p>
       </div>
-      <div data-aos="fade-up">
-        <label for="email">Votre e-mail&nbsp;<sup>*</sup></label>
+      <div class="form-item">
         <input
           id="email"
           v-model="saisie.email"
-          autocomplete="email"
+          autocomplete="off"
           name="your-email"
           required=""
           type="email"
           minlength="8"
           aria-required="true"
-          placeholder="Votre e-mail"
+          :class="{
+            filled: saisie.email !== '',
+          }"
         />
-        <p class="valid-feedback">OK !</p>
+        <label for="email">Votre e-mail&nbsp;<sup>*</sup></label>
+        <span class="line"></span>
+        <p class="valid-feedback">Votre saisie est valide.</p>
         <p class="invalid-feedback">Veuillez saisir une adresse email valide</p>
       </div>
-      <div data-aos="fade-up">
-        <label for="message">Votre message&nbsp;<sup>*</sup></label>
+      <div class="form-item">
         <textarea
           id="message"
           v-model="saisie.msg"
           name="your-message"
           required=""
           minlength="20"
-          rows="10"
           aria-required="true"
-          placeholder="Votre message"
+          :class="{
+            filled: saisie.msg !== '',
+          }"
         ></textarea>
-        <p class="valid-feedback">OK !</p>
+        <label for="message">Votre message&nbsp;<sup>*</sup></label>
+        <span class="line"></span>
+        <p class="valid-feedback">Votre saisie est valide.</p>
         <p class="invalid-feedback">Veuillez saisir votre demande</p>
-        <button class="cta">Envoyer</button>
       </div>
+      <button class="cta">Envoyer</button>
     </form>
   </div>
 </template>
@@ -144,6 +152,12 @@ export default {
   padding: 0.5rem;
 }
 
+.form-item {
+  position: relative;
+  border-bottom: 2px solid var(--clr-font);
+  margin-bottom: 65px;
+}
+
 .form-error {
   background-color: var(--clr-secondary);
 }
@@ -171,13 +185,40 @@ form {
   margin: auto;
   transition: all 0.3s ease-in-out;
 
+  .line {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      background: var(--clr-secondary);
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      transition: all 0.4s;
+    }
+  }
+
   .cta {
     margin: 1rem 0;
   }
 
   label {
     font-family: var(--font-changa);
+    color: grey;
     letter-spacing: 0.1em;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    transition: all 0.4s ease-in-out;
 
     sup {
       color: var(--clr-secondary);
@@ -186,20 +227,38 @@ form {
 
   input,
   textarea {
-    margin: 0.5rem 0;
-    border-radius: 0.375rem;
-    padding: 0.375rem 0.75rem;
     appearance: none;
-    border: 1px solid #ced4da;
+    border: none;
     line-height: 1.5;
     font-size: 1rem;
     font-family: inherit;
+    background: var(--clr-content1);
+    padding: 1rem 0;
+    height: 3.5rem;
+    transition: all 0.4s ease-in-out;
+    resize: none;
+    overflow: hidden;
   }
 
-  *:focus-visible {
-    border-color: var(--clr-secondary);
+  textarea:hover,
+  textarea:focus {
+    height: 10rem;
+  }
+
+  *:focus {
     outline: none;
-    box-shadow: 0 0 0 0.25rem rgba(227, 173, 137, 0.5);
+
+    & ~ .line::before {
+      width: 100%;
+    }
+  }
+
+  .filled ~ label,
+  *:focus ~ label,
+  *:hover ~ label {
+    top: -1rem;
+    left: 0;
+    color: var(--clr-font);
   }
 
   & > div {
@@ -212,12 +271,9 @@ form {
     opacity: 0;
   }
 
-  :not(button):valid {
-    border: 1px solid var(--clr-primary);
-
-    &:focus-visible {
-      box-shadow: 0 0 0 0.25rem rgba(132, 170, 75, 0.5);
-    }
+  *:not(button):valid ~ .line::before {
+    background: var(--clr-primary);
+    width: 100%;
   }
 
   &.submitted {
@@ -226,7 +282,9 @@ form {
     }
 
     :invalid {
-      border: 1px solid var(--clr-secondary);
+      & ~ .line::before {
+        width: 100%;
+      }
 
       & ~ .invalid-feedback {
         display: block;
