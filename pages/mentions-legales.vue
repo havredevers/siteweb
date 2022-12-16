@@ -99,11 +99,9 @@ body {
     margin-bottom: 1rem;
   }
 
-  .contact {
-    li {
-      list-style: disc;
-      margin-left: 1rem;
-    }
+  li {
+    list-style: disc;
+    margin-left: 1rem;
   }
 }
 </style>
