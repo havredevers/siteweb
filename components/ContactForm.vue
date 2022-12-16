@@ -65,6 +65,7 @@
           :class="{
             filled: saisie.msg !== '',
           }"
+          @input="$event.target.parentNode.dataset.value = $event.target.value"
         ></textarea>
         <label for="message">Votre message&nbsp;<sup>*</sup></label>
         <span class="line"></span>
@@ -156,6 +157,19 @@ export default {
   position: relative;
   border-bottom: 2px solid var(--clr-font);
   margin-bottom: 65px;
+  width: 100%;
+
+  &[data-value] {
+    display: inline-grid;
+    align-items: stretch;
+
+    &:after {
+      grid-area: 2/1;
+      content: attr(data-value) ' ';
+      visibility: hidden;
+      white-space: pre-wrap;
+    }
+  }
 }
 
 .form-error {
@@ -225,6 +239,10 @@ form {
     }
   }
 
+  input {
+    height: 3.5rem;
+  }
+
   input,
   textarea {
     appearance: none;
@@ -234,15 +252,15 @@ form {
     font-family: inherit;
     background: var(--clr-content1);
     padding: 1rem 0;
-    height: 3.5rem;
     transition: all 0.4s ease-in-out;
     resize: none;
     overflow: hidden;
   }
 
-  textarea:hover,
-  textarea:focus {
-    height: 10rem;
+  textarea {
+    grid-area: 2/1;
+    margin-top: 1rem;
+    padding: 0;
   }
 
   *:focus {
