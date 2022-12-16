@@ -55,6 +55,10 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  counter-reset: h2counter;
+}
+
 .mentions {
   .wp-block-group + .wp-block-group {
     padding-top: 2rem;
@@ -62,12 +66,36 @@ export default {
     margin-top: 2rem;
   }
 
+  h1 {
+    counter-reset: h2counter;
+  }
+
   h2 {
+    counter-reset: h3counter;
+
+    &::before {
+      content: counter(h2counter) '.\0000a0\0000a0';
+      counter-increment: h2counter;
+    }
+  }
+
+  h3:before {
+    content: counter(h2counter) '.' counter(h3counter) '.\0000a0\0000a0';
+    counter-increment: h3counter;
+  }
+
+  h2,
+  h3 {
     font-family: var(--font-changa);
     margin-bottom: 1rem;
   }
 
-  p {
+  h4 {
+    font-style: italic;
+  }
+
+  p,
+  h4 {
     margin-bottom: 1rem;
   }
 
