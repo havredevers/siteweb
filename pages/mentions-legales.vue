@@ -101,7 +101,7 @@ body {
 
   li {
     list-style: disc;
-    margin-left: 1rem;
+    margin: 0 0 1rem 1rem;
   }
 }
 </style>
