@@ -2,7 +2,7 @@
   <div id="modal" class="modal" @click="closeModal">
     <span class="close" @click="closeModal">&times;</span>
     <div class="img-container">
-      <img />
+      <img src="~/assets/img/loader.gif" />
       <div class="caption"></div>
     </div>
   </div>
