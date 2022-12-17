@@ -24,11 +24,15 @@ export default {
           })
       })
     },
+    $route(to, from) {
+      this.$destroy()
+    },
   },
   mounted() {
-    Tocbot.init({
-      hasInnerContainers: true,
-    })
+    if (!this.isLoading)
+      Tocbot.init({
+        hasInnerContainers: true,
+      })
   },
 }
 </script>
