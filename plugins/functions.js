@@ -18,7 +18,7 @@ Vue.prototype.$secureMail = () => {
 
 Vue.prototype.$linkImages = () => {
   const imgs = document.querySelectorAll(
-    '.section-page:not(.carte) img:not(.dot-img)'
+    '.section-page:not(.carte) img:not(.dot-img):not(.youtube-img)'
   )
 
   imgs.forEach((img) =>

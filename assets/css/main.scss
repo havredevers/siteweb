@@ -126,7 +126,7 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-.section-page:not(.carte) .content img:not(.dot-img) {
+.section-page:not(.carte) .content img:not(.dot-img):not(.youtube-img) {
   z-index: 1;
   position: relative;
   transition: all 0.3s ease-in-out;
@@ -404,12 +404,42 @@ button {
   max-width: 800px;
   margin: auto;
 
-  iframe {
+  &.loaded button {
+    display: none;
+  }
+
+  &:hover button {
+    opacity: 1;
+  }
+
+  button {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('~/assets/img/play.png');
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-color: transparent;
+    opacity: 0.6;
+  }
+
+  iframe,
+  img {
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
     position: absolute;
+  }
+
+  img,
+  button {
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 

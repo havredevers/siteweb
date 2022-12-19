@@ -111,6 +111,10 @@ export default {
   },
   watch: {
     article() {
+      this.$nextTick(() => {
+        this.$parent.$parent.checkYoutube()
+      })
+
       import('~/node_modules/tiny-slider/src/tiny-slider').then(({ tns }) => {
         const regex = /<h2.+id=".+".+<\/h2>/g
         this.hasHeadings = this.article.content.search(regex) !== -1
