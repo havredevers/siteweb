@@ -16,44 +16,49 @@
       novalidate
       @submit="submit($event)"
     >
-      <div class="form-item">
-        <input
-          id="name"
-          v-model="saisie.nom"
-          autocomplete="off"
-          name="your-name"
-          required=""
-          type="text"
-          minlength="5"
-          aria-required="true"
-          :class="{
-            filled: saisie.nom !== '',
-          }"
-        />
-        <label for="name">Votre nom&nbsp;<sup>*</sup></label>
-        <span class="line"></span>
-        <p class="valid-feedback">Votre saisie est valide.</p>
-        <p class="invalid-feedback">Veuillez saisir un nom</p>
+      <div class="form-group">
+        <div class="form-item">
+          <input
+            id="name"
+            v-model="saisie.nom"
+            autocomplete="name"
+            name="your-name"
+            required=""
+            type="text"
+            minlength="5"
+            aria-required="true"
+            :class="{
+              filled: saisie.nom !== '',
+            }"
+          />
+          <label for="name">Votre nom&nbsp;<sup>*</sup></label>
+          <span class="line"></span>
+          <p class="valid-feedback">Votre saisie est valide.</p>
+          <p class="invalid-feedback">Veuillez saisir un nom</p>
+        </div>
+        <div class="form-item">
+          <input
+            id="email"
+            v-model="saisie.email"
+            autocomplete="email"
+            name="your-email"
+            required=""
+            type="email"
+            minlength="8"
+            aria-required="true"
+            :class="{
+              filled: saisie.email !== '',
+            }"
+          />
+          <label for="email">Votre e-mail&nbsp;<sup>*</sup></label>
+          <span class="line"></span>
+          <p class="valid-feedback">Votre saisie est valide.</p>
+          <p class="invalid-feedback">
+            Veuillez saisir une adresse email valide
+          </p>
+        </div>
       </div>
-      <div class="form-item">
-        <input
-          id="email"
-          v-model="saisie.email"
-          autocomplete="off"
-          name="your-email"
-          required=""
-          type="email"
-          minlength="8"
-          aria-required="true"
-          :class="{
-            filled: saisie.email !== '',
-          }"
-        />
-        <label for="email">Votre e-mail&nbsp;<sup>*</sup></label>
-        <span class="line"></span>
-        <p class="valid-feedback">Votre saisie est valide.</p>
-        <p class="invalid-feedback">Veuillez saisir une adresse email valide</p>
-      </div>
+
       <div class="form-item">
         <textarea
           id="message"
@@ -203,8 +208,8 @@ export default {
 }
 
 form {
-  max-width: 500px;
-  margin: auto;
+  // max-width: 500px;
+  margin: 1.1rem auto;
   transition: all 0.3s ease-in-out;
 
   .line {
@@ -317,6 +322,17 @@ form {
       & ~ .invalid-feedback {
         display: block;
       }
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .form-group {
+    display: flex;
+    flex-direction: row;
+
+    & > *:not(:first-child) {
+      margin-left: 3rem;
     }
   }
 }
