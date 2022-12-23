@@ -2,24 +2,20 @@
   <div class="boutique">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img">
-          <nuxt-img
-            format="png"
-            src="/carousel/boutique.png"
-            alt=""
-            width="1200"
-            height="815"
-          />
-        </div>
+        <div
+          class="carousel-img"
+          :style="
+            'background-image: url(' +
+            page?.featuredImage.node.mediaItemUrl +
+            ')'
+          "
+        ></div>
         <div class="carousel-title">
           <h1>La boutique</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
-            architecto laudantium
+          <p v-if="!$apollo.queries.page.loading">
+            {{ page?.extrait }}
           </p>
-          <a class="protect cta" data-protect="havredeversarobasgmailpointcom">
-            Contactez-nous
-          </a>
+          <NuxtLink class="cta" to="/contact">Contactez-nous</NuxtLink>
         </div>
       </div>
     </div>
@@ -28,26 +24,22 @@
         <h2>La boutique</h2>
       </div>
       <div class="content">
-        <p>
-          Nous ne disposons pas encore de boutique en ligne. Mais ça ne devrait
-          pas tarder ! Les vers de terre n'ont pas encore fini les galeries pour
-          y accéder...!
-        </p>
-        <nuxt-img src="/boutique/fruits_seches.jpg" class="vignette" />
-        <div class="loader">
-          <nuxt-img src="/loader/loader.gif" alt="chargement" />
-        </div>
+        <LoaderApple v-if="$apollo.queries.page.loading" />
+        <div v-else-if="error != ''">{{ error }}</div>
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div v-else class="lead wp-api" v-html="page?.content"></div>
       </div>
-      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+      <HomeWave :colors="['var(--clr-content2)', 'var(--clr-content1)']" />
     </section>
   </div>
 </template>
 
 <script>
 import meta from '~/plugins/meta'
+import mixinApollo from '~/plugins/mixinApollo'
 
 export default {
-  mixins: [meta],
+  mixins: [meta, mixinApollo],
   data() {
     return {
       titre: 'La boutique',
@@ -60,12 +52,6 @@ export default {
 
 <style lang="scss">
 .boutique {
-  .loader {
-    height: 150px;
-    overflow: hidden;
-    text-align: center;
-  }
-
   p {
     margin-bottom: 2rem;
   }

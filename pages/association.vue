@@ -1,21 +1,20 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="association">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img">
-          <nuxt-img
-            format="png"
-            src="/association/cuisine.png"
-            alt=""
-            width="1200"
-            height="815"
-          />
-        </div>
+        <div
+          class="carousel-img"
+          :style="
+            'background-image: url(' +
+            page?.featuredImage.node.mediaItemUrl +
+            ')'
+          "
+        ></div>
         <div class="carousel-title">
           <h1>L'association</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
-            architecto laudantium
+          <p v-if="!$apollo.queries.page.loading">
+            {{ page?.extrait }}
           </p>
           <NuxtLink to="/adherer" class="cta">Rejoignez-nous</NuxtLink>
         </div>
@@ -26,49 +25,13 @@
       <div class="title">
         <h2>Qui sommes-nous&nbsp;?</h2>
       </div>
-      <div class="content lead">
-        <p data-aos="fade-up">
-          HAVRE DE VERS est née, le 14 janvier 2016, d'une envie commune de
-          trois amis, Marian, Flavien et Léo, afin d'apporter une solution face
-          å la situation de crise importante dans les domaines de l'agriculture,
-          de l'alimentation et de la santé.
-        </p>
-        <p data-aos="fade-up">
-          Gaspillage et inégalité alimentaire, impératifs écologiques, hégémonie
-          de l'exploitation animate industrielle et de la grande distribution,
-          déperdition des agricultures paysannes, perte de biodiversité, manque
-          de résilience écologique, tres faible support des initiatives å
-          l'agriculture urbaine: autant d'enjeux qui nous ont mobilisé pour
-          construire et expérimenter un nouveau modéle associatif de gestion
-          locale des biodéchets, économique et alimentaire. Basée sur une
-          conception permaculturelle, dans un environnement urbain, cette
-          association vise å une transformation sociale et écologique de notre
-          vision et de nos méthodes de gestion des matiéres organiques (ou la
-          matiére fabriquée par les étres vivants) en générant de nouvelles
-          solidarités. Nous revalorisons les biodéchets par lombricompostage en
-          vue d'assurer :
-        </p>
-        <ul data-aos="fade-up">
-          <li>
-            Une collecte décentralisée locale des biodéchets en milieu urbain ;
-          </li>
-          <li>
-            Une transformation des biodéchets en un amendement organique de
-            haute valeur agronomique par lombricompostage;
-          </li>
-          <li>
-            Une sensibilisation à l'impact écologique et économico-social de la
-            gestion des biodéchets.
-          </li>
-        </ul>
-        <nuxt-img
-          format="png"
-          class="vignette"
-          src="/association/triporteur.png"
-          data-aos="zoom-in"
-        />
+      <div class="content">
+        <LoaderApple v-if="$apollo.queries.page.loading" />
+        <div v-else-if="error != ''">{{ error }}</div>
+        <div v-else class="lead wp-api" v-html="page?.content"></div>
+        <NuxtLink class="cta" to="/contact">Contactez-nous</NuxtLink>
       </div>
-      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+      <HomeWave :colors="['var(--clr-content2)', 'var(--clr-content1)']" />
     </section>
     <section class="section-page chiffres">
       <span id="chiffres" class="ancre"></span>
@@ -76,10 +39,13 @@
         <h2>L'association en quelques chiffres</h2>
       </div>
       <div class="content">
-        <p v-if="$fetchState.error">
+        <LoaderApple
+          v-if="$fetchState.pending || $apollo.queries.page.loading"
+        />
+        <p v-else-if="$fetchState.error">
           Un problème est survenu en contactant l'API HelloAsso
         </p>
-        <ul v-if="!$fetchState.pending">
+        <ul v-else>
           <li data-aos="zoom-in" data-aos-delay="100">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -99,7 +65,9 @@
                 />
               </svg>
             </div>
-            <div class="value"><count-up :end="50000" suffix="kg" /></div>
+            <div class="value">
+              <count-up :end="nbCollecte" suffix="kg" />
+            </div>
             <div class="unit"><h3>Collectés</h3></div>
           </li>
           <li data-aos="zoom-in" data-aos-delay="400">
@@ -111,30 +79,34 @@
               </svg>
             </div>
             <div class="value">
-              <count-up :end="4000" suffix="km" />
+              <count-up :end="nbParcours" suffix="km" />
             </div>
             <div class="unit"><h3>Parcourus</h3></div>
           </li>
         </ul>
       </div>
-      <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
+      <HomeWave :colors="['var(--clr-content3)', 'var(--clr-content4)']" />
     </section>
     <AssoMap />
     <PresentationEquipe />
   </div>
 </template>
+
 <script>
 import qs from 'qs'
 import meta from '~/plugins/meta'
+import mixinApollo from '~/plugins/mixinApollo'
 
 export default {
   name: 'PageAssociation',
-  mixins: [meta],
+  mixins: [meta, mixinApollo],
   data() {
     return {
       api_url: 'https://api.helloasso.com',
       token: '',
       nbAdhesions: 0,
+      nbCollecte: 0,
+      nbParcours: 0,
       titre: 'Présentation',
       desc: 'En savoir plus sur notre association',
       image: '',
@@ -243,9 +215,15 @@ export default {
 </script>
 
 <style lang="scss">
-.association h3 {
-  font-family: var(--font-changa);
-  margin: 0.5rem 0;
+.association {
+  h3 {
+    font-family: var(--font-changa);
+    margin: 0.5rem 0;
+  }
+
+  .cta {
+    margin: 2rem auto 0;
+  }
 }
 
 .asso-1 {
@@ -253,12 +231,8 @@ export default {
     list-style-type: initial;
   }
 
-  .content {
+  .lead {
     text-align: center;
-
-    & > * + * {
-      margin-top: 2rem;
-    }
   }
 }
 

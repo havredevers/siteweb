@@ -1,46 +1,33 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
-  <article class="blog-article">
+  <article v-if="article" class="blog-article">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img">
-          <nuxt-img
-            format="png"
-            :src="article.img"
-            alt=""
-            width="1200"
-            height="815"
-          />
-        </div>
+        <div
+          class="carousel-img"
+          :style="
+            'background-image: url(' +
+            article.featuredImage.node.mediaItemUrl +
+            ')'
+          "
+        ></div>
         <div class="carousel-title">
           <h1>{{ article.title }}</h1>
-          <p>{{ article.description }}</p>
+          <div v-html="article.excerpt"></div>
           <div class="updatedat">
-            Mis à jour le {{ $formatDate(article.updatedAt) }}
+            Mis à jour le {{ $formatDate(article.modifiedGmt) }}
           </div>
         </div>
       </div>
     </div>
     <section class="section-page">
-      <div class="title">
-        <nav>
-          <div id="toc_title">Table des matières</div>
-          <ul aria-labelledby="toc_title">
-            <li
-              v-for="link of article.toc"
-              :key="link.id"
-              :class="{ toc2: link.depth === 2, toc3: link.depth === 3 }"
-            >
-              <NuxtLink :to="`#${link.id}`" :data-toc="link.id">{{
-                link.text
-              }}</NuxtLink>
-            </li>
-          </ul>
-        </nav>
+      <div class="title with-toc">
+        <TableOfContent :is-loading="$fetchState.pending || !hasHeadings" />
       </div>
       <div class="content">
-        <nuxt-content :document="article" />
+        <div class="js-toc-content" v-html="article.content"></div>
       </div>
-      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+      <HomeWave :colors="['var(--clr-content2)', 'var(--clr-content1)']" />
     </section>
   </article>
 </template>
@@ -48,47 +35,156 @@
 <script>
 import meta from '~/plugins/meta'
 
+import { SINGLE_POST } from '@/apollo/queries'
+
 export default {
   mixins: [meta],
-  async asyncData({ $content, params, error }) {
-    try {
-      const article = await $content('blog', params.slug).fetch()
-
-      const titre = article.title
-      const desc = article.description
-      const image = article.img
-
-      return { article, titre, desc, image }
-    } catch (err) {
-      error(err)
+  data() {
+    return {
+      hasHeadings: false,
+      slider: {},
+      article: {
+        title: '',
+        excerpt: '',
+        content: '',
+        modifiedGmt: '',
+        featuredImage: {
+          node: {
+            altText: '',
+            mediaItemUrl: '',
+          },
+        },
+        author: {
+          node: {
+            name: '',
+          },
+        },
+      },
+      titre: '',
+      desc: '',
+      image: '',
     }
   },
-  mounted() {
-    window.addEventListener('scroll', this.handleScroll)
+  async fetch() {
+    const client = this.$apolloProvider.defaultClient
+    const res = await client.query({
+      query: SINGLE_POST,
+      variables: {
+        id: this.$route.params.slug || '',
+      },
+    })
+    if (res.data.post) {
+      this.article = res.data.post
+      this.titre = this.article.title
+      this.desc = this.article.excerpt
+      this.image = this.article.featuredImage.node.mediaItemUrl
+    }
   },
-  destroyed() {
-    window.removeEventListener('scroll', this.handleScroll)
+  head() {
+    return {
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css',
+        },
+      ],
+      meta: [
+        {
+          hid: 'og:type',
+          property: 'og:type',
+          content: 'article',
+        },
+        {
+          property: 'og:type',
+          content: 'article',
+        },
+        {
+          property: 'article:published_time',
+          content: this.article.modifiedGmt,
+        },
+        {
+          property: 'article:author',
+          content: this.article.author.node.name,
+        },
+      ],
+    }
+  },
+  watch: {
+    article() {
+      this.$nextTick(() => {
+        this.$parent.$parent.checkYoutube()
+      })
+
+      import('~/node_modules/tiny-slider/src/tiny-slider').then(({ tns }) => {
+        const regex = /<h2.+id=".+".+<\/h2>/g
+        this.hasHeadings = this.article.content.search(regex) !== -1
+        const hasCarousel = this.createCarousel()
+
+        if (hasCarousel)
+          tns({
+            container: '.wp-block-gallery',
+            preventScrollOnTouch: 'auto',
+            preventActionWhenRunning: true,
+            items: 1,
+            navAsThumbnails: true,
+            navContainer: '.dots',
+            controls: false,
+            responsive: {
+              1200: {
+                items: 2,
+                gutter: 10,
+              },
+              1600: {
+                items: 3,
+                gutter: 10,
+              },
+            },
+          })
+      })
+    },
   },
   methods: {
-    handleScroll() {
-      const els = document.querySelectorAll('h2,h3,h4,h5,h6')
-      els.forEach((el) => {
-        const elTop = el.getBoundingClientRect().top
+    createCarousel() {
+      const divs = document.querySelectorAll('.wp-block-gallery')
+      if (divs.length === 0) return false
 
-        if (elTop < 1) {
-          const current = document.querySelector(
-            '.section-page .title nav a[class~="actif"]'
-          )
+      divs.forEach((div) => {
+        let newGallery = document.createElement('div')
+        newGallery.classList.add('wp-block-gallery')
 
-          if (current) {
-            current.classList.remove('actif')
-          }
+        const dotsContainer = document.createElement('ul')
+        dotsContainer.classList.add('dots')
 
-          document
-            .querySelector('.section-page .title nav a[data-toc=' + el.id + ']')
-            .classList.add('actif')
-        }
+        const sliders = div.querySelectorAll('.wp-block-image')
+        sliders.forEach((slider) => {
+          const newSlider = document.createElement('div')
+          const img = slider.querySelector('img')
+          img.addEventListener('click', () => {
+            document.querySelector('#modal').style.display = 'flex'
+            document.querySelector('#modal img').src = img.src
+            document.querySelector('#modal .caption').innerHTML = img.alt
+          })
+          newSlider.appendChild(img)
+          newGallery.appendChild(newSlider)
+
+          const dot = document.createElement('li')
+          const miniature = img.cloneNode(true)
+          miniature.classList.add('dot-img')
+          dot.classList.add('dot')
+          dot.appendChild(miniature)
+          dotsContainer.appendChild(dot)
+        })
+
+        div.parentNode.replaceChild(newGallery, div)
+
+        newGallery = document.querySelector('.wp-block-gallery')
+        newGallery.parentNode.insertBefore(
+          dotsContainer,
+          newGallery.nextSibling
+        )
       })
+
+      return true
     },
   },
 }
@@ -96,87 +192,16 @@ export default {
 
 <style lang="scss">
 .blog-article {
+  .js-toc-content > * {
+    margin-bottom: 1rem;
+  }
+
   .updatedat {
     font-size: 0.8rem;
     font-style: italic;
 
     &:first-letter {
       text-transform: uppercase;
-    }
-  }
-
-  nav {
-    position: sticky;
-    top: 115px;
-    padding-top: 2rem;
-    font-size: 1.1rem;
-
-    li {
-      padding: 0.2rem 0;
-    }
-
-    li.toc3 {
-      margin-left: 1rem;
-      font-size: 80%;
-    }
-
-    a {
-      font-weight: 400;
-      text-decoration: none;
-      opacity: 0.8;
-
-      &.actif {
-        color: var(--clr-bg2);
-      }
-
-      &:hover {
-        opacity: 1;
-
-        color: var(--clr-bg2);
-      }
-    }
-  }
-
-  #toc_title {
-    font-size: 1.6rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-
-  .nuxt-content {
-    h2,
-    h3 {
-      padding-top: 100px;
-      margin-top: -100px;
-    }
-
-    h2,
-    h3,
-    h4,
-    h5,
-    p,
-    ul,
-    ol {
-      margin-bottom: 1rem;
-    }
-
-    h3 {
-      font-size: clamp(1.2rem, 2.7vw, 2rem);
-    }
-
-    ol > li {
-      list-style-type: decimal;
-    }
-
-    li {
-      list-style-type: initial;
-      margin-left: 1rem;
-    }
-
-    img,
-    iframe {
-      display: block;
-      margin: 1rem auto;
     }
   }
 }

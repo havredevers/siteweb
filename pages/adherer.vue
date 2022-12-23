@@ -2,24 +2,20 @@
   <div class="adherer">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img">
-          <nuxt-img
-            format="png"
-            src="/carousel/adherer.png"
-            alt=""
-            width="1200"
-            height="815"
-          />
-        </div>
+        <div
+          class="carousel-img"
+          :style="
+            'background-image: url(' +
+            page?.featuredImage.node.mediaItemUrl +
+            ')'
+          "
+        ></div>
         <div class="carousel-title">
           <h1>Adhérer à l'association</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
-            architecto laudantium
+          <p v-if="!$apollo.queries.page.loading">
+            {{ page?.extrait }}
           </p>
-          <a class="protect cta" data-protect="havredeversarobasgmailpointcom">
-            Contactez-nous
-          </a>
+          <NuxtLink class="cta" to="/contact">Contactez-nous</NuxtLink>
         </div>
       </div>
     </div>
@@ -28,36 +24,10 @@
         <h2>Nous <br />rejoindre</h2>
       </div>
       <div class="content">
-        <div class="intro lead">
-          <p>
-            Adhérez à l'association et profitez des avantages proposés par cette
-            dernière :
-          </p>
-          <ul>
-            <li>
-              Récupérations d'invendus et de préparations culinaires à prix
-              libre
-            </li>
-            <li>Ateliers de cuisine végétale</li>
-            <li>Partages de savoir-faire</li>
-            <li>
-              Devenez incollable sur le compostage et la gestion des biodéchets
-            </li>
-          </ul>
-          <p>
-            Répondons ensemble à un premier objectif qui est de sensibiliser à
-            la revalorisation des déchets organiques au niveau local,
-            principalement par lombricompostage. Et plus globalement, appliquons
-            nous à développer le concept de "permaculure urbaine".
-          </p>
-          <q>Du jardin à l’assiette, nous envisageons un modèle bio-inspiré.</q>
-        </div>
-        <nuxt-img
-          class="vignette"
-          data-aos="zoom-in"
-          format="jpg"
-          src="/adherer/cuisine.png"
-        ></nuxt-img>
+        <LoaderApple v-if="$apollo.queries.page.loading" />
+        <div v-else-if="error != ''">{{ error }}</div>
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div v-else class="lead wp-api" v-html="page?.content"></div>
         <div class="choix">
           <span id="proximite" class="ancre"></span>
           <span id="soutien" class="ancre"></span>
@@ -91,16 +61,17 @@
           ></div>
         </div>
       </div>
-      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+      <HomeWave :colors="['var(--clr-content2)', 'var(--clr-content1)']" />
     </section>
   </div>
 </template>
 
 <script>
 import meta from '~/plugins/meta'
+import mixinApollo from '~/plugins/mixinApollo'
 
 export default {
-  mixins: [meta],
+  mixins: [meta, mixinApollo],
   data() {
     return {
       choix: '',
@@ -144,14 +115,6 @@ export default {
 }
 
 .adherer {
-  .intro {
-    margin-bottom: 1rem;
-  }
-
-  ul {
-    margin: 1rem 0;
-  }
-
   li {
     margin-left: 2rem;
     list-style-type: initial;

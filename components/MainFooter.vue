@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="logo">
-      <nuxt-img format="png" preload src="/ui/logo-blanc.png" alt="" />
+      <img src="~/assets/img/logo-blanc.png" alt="" />
     </div>
     <div class="content">
       <div class="main">
@@ -55,17 +55,13 @@
               </a>
             </li>
             <li>
-              <a
-                class="protect"
-                data-protect="havredeversarobasgmailpointcom"
-                title="Mail"
-              >
+              <NuxtLink to="/contact" title="Mail">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                   <path
                     d="M0 128C0 92.65 28.65 64 64 64H448C483.3 64 512 92.65 512 128V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V128zM48 128V150.1L220.5 291.7C241.1 308.7 270.9 308.7 291.5 291.7L464 150.1V127.1C464 119.2 456.8 111.1 448 111.1H64C55.16 111.1 48 119.2 48 127.1L48 128zM48 212.2V384C48 392.8 55.16 400 64 400H448C456.8 400 464 392.8 464 384V212.2L322 328.8C283.6 360.3 228.4 360.3 189.1 328.8L48 212.2z"
                   />
                 </svg>
-              </a>
+              </NuxtLink>
             </li>
           </ul>
         </div>
@@ -82,6 +78,8 @@
         <nuxtLink to="/mentions-legales" class="mentions-link">
           Mentions&nbsp;légales
         </nuxtLink>
+        -
+        <NuxtLink to="/contact">Contact</NuxtLink>
       </div>
     </div>
     <HomeWave :colors="['#90a73f', '#d3d9ac']" />
@@ -97,7 +95,7 @@
   }
 
   &-title {
-    font-family: 'Vibur', 'Times New Roman', Times, serif;
+    font-family: var(--font-vibur);
     font-size: clamp(1.5rem, 3vw, 2.5rem);
   }
 
@@ -214,7 +212,7 @@
 
 a[title='Instagram']:focus-visible::before,
 a[title='Instagram']:hover::before {
-  background: radial-gradient(
+  background-image: radial-gradient(
     circle at 30% 107%,
     #fdf497 0%,
     #fdf497 5%,

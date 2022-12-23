@@ -1,0 +1,26 @@
+<template>
+  <ul class="list-actus">
+    <li
+      v-for="article in articles"
+      :key="article.slug"
+      data-aos="fade-up"
+      class="article"
+    >
+      <BlogArticle :article="article.node" />
+    </li>
+  </ul>
+</template>
+
+<script>
+export default {
+  props: {
+    articles: {
+      required: true,
+      type: Array,
+      default() {
+        return []
+      },
+    },
+  },
+}
+</script>

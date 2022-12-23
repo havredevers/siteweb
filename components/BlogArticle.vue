@@ -1,16 +1,21 @@
 <template>
-  <NuxtLink :to="article.path">
+  <NuxtLink :to="'/blog/' + article.slug">
     <div class="article-logo">
-      <nuxt-img format="png" :src="article.img" alt="" loading="lazy" />
+      <img
+        :src="article.featuredImage.node.mediaItemUrl"
+        :alt="article.featuredImage.node.altText"
+        loading="lazy"
+      />
     </div>
     <div class="article-content">
       <div class="article-title">
         <h2>{{ article.title }}</h2>
-        <small>{{ 'Mis en ligne le ' + $formatDate(article.updatedAt) }}</small>
+        <small>{{
+          'Mis en ligne le ' + $formatDate(article.modifiedGmt)
+        }}</small>
       </div>
-      <p>
-        {{ truncateString(article.description, 200) }}
-      </p>
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <div v-html="article.excerpt"></div>
       <span>Lire l'article</span>
     </div>
   </NuxtLink>
@@ -21,25 +26,39 @@ export default {
   props: {
     article: {
       type: Object,
-      default() {
-        return {}
-      },
-    },
-  },
-  methods: {
-    truncateString(str, num) {
-      if (str.length <= num) {
-        return str
-      }
-      return str.slice(0, num) + '...'
+      required: true,
     },
   },
 }
 </script>
 
 <style lang="scss">
+.page .article a .article-logo {
+  width: var(--img-size);
+  flex: 0 0 var(--img-size);
+  overflow: hidden;
+  margin: 0 auto;
+  border-radius: 15px;
+  background: black;
+  aspect-ratio: 16/11;
+  display: flex;
+  align-items: center;
+  margin: auto;
+
+  img {
+    display: block;
+    width: 100%;
+    border-radius: 15px;
+    z-index: 0;
+  }
+
+  @media (min-width: 1200px) {
+    --img-size: 35%;
+  }
+}
+
 .article {
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   text-align: center;
 
   a {
@@ -51,14 +70,12 @@ export default {
     width: 100%;
     color: var(--clr-font);
     position: relative;
-    padding: 1rem;
     border-radius: 15px;
     transition: all 0.3s ease-in-out;
 
     &:hover {
       .article-title {
         opacity: 0;
-        height: 0;
       }
 
       span {
@@ -67,6 +84,10 @@ export default {
         text-align: center;
         padding: 1rem;
         display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
 
       img {
@@ -79,31 +100,7 @@ export default {
     }
   }
 
-  &-logo {
-    width: var(--img-size);
-    flex: 0 0 var(--img-size);
-    overflow: hidden;
-    margin: 0 auto;
-    border-radius: 15px;
-    background: black;
-    aspect-ratio: 16/11;
-    display: flex;
-    align-items: center;
-
-    img {
-      display: block;
-      transition: all 0.3s ease-in-out;
-      width: 100%;
-      border-radius: 15px;
-    }
-
-    @media (min-width: 1200px) {
-      --img-size: 35%;
-    }
-  }
-
   &-title {
-    transition: all 0.3s ease-in-out;
     overflow: hidden;
     width: 75%;
     margin: auto;
@@ -148,10 +145,12 @@ export default {
 
   @media (min-width: 1200px) {
     text-align: left;
+    margin-bottom: 3rem;
 
     a {
       display: flex;
       align-items: flex-start;
+      padding: 1rem;
 
       &:hover {
         .article-title {
@@ -163,6 +162,10 @@ export default {
           text-align: left;
           padding: 0;
           text-decoration: underline;
+          position: relative;
+          top: 0;
+          left: 0;
+          transform: initial;
         }
       }
     }

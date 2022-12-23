@@ -2,13 +2,14 @@
   <div class="app">
     <header class="main-menu">
       <NuxtLink to="/" class="title">
-        <nuxt-img format="png" preload src="/ui/pomme-marron.png" alt="" />
+        <img src="~/assets/img/pomme-marron.png" alt="" />
         <span>HAVRE DE VERS</span>
       </NuxtLink>
       <MainMenu />
     </header>
     <Nuxt class="page" keep-alive />
     <MainFooter />
+    <ImageModal />
     <div class="scroll-to-top" @click="scrollToTop()">&#8593;</div>
     <TransitionShape />
   </div>
@@ -35,12 +36,12 @@ export default {
       }
 
       setTimeout(() => {
-        document.querySelector('.main-menu').classList.add('sticky')
+        this.resetPage(!(from.path === to.path))
       }, 800)
     },
   },
   beforeMount() {
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', () => {
       this.newOffset = window.pageYOffset
 
       // Scroll To Top
@@ -81,6 +82,8 @@ export default {
         wrap.classList.remove('top')
       },
     })
+
+    this.resetPage(true)
   },
   methods: {
     scrollToTop() {
@@ -98,6 +101,96 @@ export default {
 
         this.anim.play()
       }, 50)
+    },
+    launchTarteAuCitron() {
+      /* eslint-disable no-undef */
+      tarteaucitron.init({
+        privacyUrl:
+          '/mentions-legales/#politique-confidentialite' /* Privacy policy url */,
+        bodyPosition:
+          'top' /* or top to bring it as first element for accessibility */,
+
+        hashtag: '#tarteaucitron' /* Open the panel with this hashtag */,
+        cookieName: 'tarteaucitron' /* Cookie name */,
+
+        orientation: 'bottom' /* Banner position (top - bottom) */,
+
+        groupServices: false /* Group services by category */,
+        serviceDefaultState: 'wait' /* Default state (true - wait - false) */,
+
+        showAlertSmall: false /* Show the small banner on bottom right */,
+        cookieslist: true /* Show the cookie list */,
+
+        closePopup: false /* Show a close X on the banner */,
+
+        showIcon: true /* Show cookie icon to manage cookies */,
+        iconSrc: require('~/assets/img/cookie.png') /* Optionnal: URL or base64 encoded image */,
+        iconPosition:
+          'BottomLeft' /* BottomRight, BottomLeft, TopRight and TopLeft */,
+
+        adblocker: false /* Show a Warning if an adblocker is detected */,
+
+        DenyAllCta: true /* Show the deny all button */,
+        AcceptAllCta: true /* Show the accept all button when highPrivacy on */,
+        highPrivacy: true /* HIGHLY RECOMMANDED Disable auto consent */,
+
+        handleBrowserDNTRequest: true /* If Do Not Track == 1, disallow all */,
+
+        removeCredit: true /* Remove credit link */,
+        moreInfoLink: true /* Show more info link */,
+
+        useExternalCss: false /* If false, the tarteaucitron.css file will be loaded */,
+        useExternalJs: false /* If false, the tarteaucitron.js file will be loaded */,
+
+        // "cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for multisite */
+
+        readmoreLink: '' /* Change the default readmore link */,
+
+        mandatory: false /* Show a message about mandatory cookies */,
+        mandatoryCta: false /* Show the disabled accept button when mandatory on */,
+      })
+
+      // Services utilisés
+      ;(tarteaucitron.job = tarteaucitron.job || []).push('helloasso')
+    },
+    checkYoutube() {
+      console.log('check yt')
+      const videos = document.querySelectorAll('*[data-youtube]')
+      if (videos) {
+        videos.forEach((video) => {
+          const videoId = video.dataset.youtube
+
+          const newDiv = document.createElement('div')
+          newDiv.classList.add('video-responsive')
+
+          const iframe = document.createElement('iframe')
+          iframe.src =
+            'https://www.youtube-nocookie.com/embed/' +
+            videoId +
+            '?autoplay=1&mute=1'
+          iframe.setAttribute('frameborder', 0)
+          iframe.setAttribute('allowfullscreen', true)
+
+          const img = document.createElement('img')
+          img.classList.add('youtube-img')
+          img.src = 'https://img.youtube.com/vi/' + videoId + '/sddefault.jpg'
+          newDiv.appendChild(img)
+          const playButton = document.createElement('button')
+          playButton.addEventListener('click', (e) => {
+            e.target.parentNode.classList.add('loaded')
+            e.target.parentNode.replaceChild(iframe, img)
+          })
+          newDiv.appendChild(playButton)
+
+          video.parentNode.replaceChild(newDiv, video)
+        })
+      }
+    },
+    resetPage(init) {
+      if (init) this.launchTarteAuCitron()
+      this.$secureMail()
+      this.$linkImages()
+      this.checkYoutube()
     },
   },
 }

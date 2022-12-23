@@ -7,6 +7,10 @@ $clr-green1: #d3d9ac;
 $clr-green2: #90a73f;
 $clr-green3: #5c7811;
 $clr-font: #3b3025;
+$clr-content1: #f4dbc9;
+$clr-content2: #e3ad89;
+$clr-content3: #ead0a3;
+$clr-content4: #f7e9d4;
 
 @import './fonts.scss';
 
@@ -20,6 +24,10 @@ $clr-font: #3b3025;
   --clr-green2: #{$clr-green2};
   --clr-green3: #{$clr-green3};
   --clr-font: #{$clr-font};
+  --clr-content1: #{$clr-content1};
+  --clr-content2: #{$clr-content2};
+  --clr-content3: #{$clr-content3};
+  --clr-content4: #{$clr-content4};
   --container-width: 1440px;
   --wave-height: 8vw;
   font-size: 16px;
@@ -50,6 +58,7 @@ body {
   --font-sans-serif: 'Work Sans', Verdana, sans-serif;
   --font-serif: Georgia, 'Times New Roman', Times, serif;
   --font-changa: 'Changa One', Arial, sans-serif;
+  --font-vibur: 'Vibur', 'Times New Roman', Times, serif;
   font-family: var(--font-sans-serif);
   cursor: url('~assets/img/cursor.png'), auto;
 
@@ -87,12 +96,12 @@ h1 {
 }
 
 h2 {
-  font-family: var(--font-changa);
+  font-family: var(--font-vibur);
   font-size: clamp(1.5rem, 3.5vw, 4rem);
 }
 
 h3 {
-  font-family: 'Vibur', 'Times New Roman', Times, serif;
+  font-family: var(--font-vibur);
   font-weight: 400;
 }
 
@@ -117,11 +126,23 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-img.vignette,
-.nuxt-content img {
+.section-page:not(.carte) .content img:not(.dot-img):not(.youtube-img) {
+  z-index: 1;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    cursor: zoom-in;
+    opacity: 0.9;
+  }
+}
+
+.vignette > img,
+img.vignette {
   border-radius: 40px;
   width: 100%;
   max-width: 500px;
+  height: auto;
   margin: auto;
   display: block;
 }
@@ -133,7 +154,6 @@ img.vignette,
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
 }
@@ -143,6 +163,10 @@ button {
   text-transform: none;
   font-family: inherit;
   border: 0;
+}
+
+.loader {
+  text-align: center;
 }
 
 .lead {
@@ -165,7 +189,10 @@ button {
   }
 
   &-img {
-    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
 
     img {
       width: 100%;
@@ -369,6 +396,53 @@ button {
   }
 }
 
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+  max-width: 800px;
+  margin: auto;
+
+  &.loaded button {
+    display: none;
+  }
+
+  &:hover button {
+    opacity: 1;
+  }
+
+  button {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('~/assets/img/play.png');
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-color: transparent;
+    opacity: 0.6;
+  }
+
+  iframe,
+  img {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+
+  img,
+  button {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
 .section-page {
   position: relative;
   flex: 1 1 100%;
@@ -378,13 +452,26 @@ button {
     position: relative;
     flex: 0 0 33%;
     text-align: center;
-    padding: 6% 2.7% 6% 6%;
+    padding: 1rem;
+    background-color: var(--bg-color);
+
+    h2 {
+      font-family: var(--font-changa);
+    }
+
+    @media (min-width: 850px) {
+      padding: 6% 2.7% 6% 6%;
+    }
   }
 
   .content {
     position: relative;
     flex: 0 0 67%;
-    padding: 3% 10% 1rem 10%;
+    padding: 3% 5% 1rem 5%;
+
+    .wp-api > * + * {
+      margin-top: 2rem;
+    }
   }
 
   h2 {
@@ -393,21 +480,21 @@ button {
 
   &:nth-child(even) {
     .title {
-      background-color: #e3ad89;
+      --bg-color: var(--clr-content2);
     }
 
     .content {
-      background-color: #f4dbc9;
+      background-color: var(--clr-content1);
     }
   }
 
   &:nth-child(odd) {
     .title {
-      background-color: #ead0a3;
+      --bg-color: var(--clr-content3);
     }
 
     .content {
-      background-color: #f7e9d4;
+      background-color: var(--clr-content4);
     }
   }
 
@@ -440,5 +527,62 @@ button {
 
   button.tarteaucitronAllow {
     display: none;
+  }
+}
+
+.tns-ovh {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 65%;
+
+  & > .tns-inner {
+    position: absolute;
+    inset: 0;
+  }
+
+  @media (min-width: 1200px) {
+    padding-top: 33%;
+  }
+
+  @media (min-width: 1600px) {
+    padding-top: 21%;
+  }
+}
+
+.wp-block-gallery {
+  margin: 2rem auto;
+
+  .tns-item {
+    img {
+      max-width: 100%;
+      height: auto;
+      transition: 0.3s;
+    }
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.dot {
+  width: 50px;
+  height: 35px;
+
+  & + .dot {
+    margin-left: 0.5rem;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 }

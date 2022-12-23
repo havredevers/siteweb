@@ -1,149 +1,49 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="mentions">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img">
-          <nuxt-img
-            format="png"
-            src="/mentions-legales/livre-ouvert.png"
-            alt=""
-            width="1200"
-            height="815"
-          />
-        </div>
+        <div
+          class="carousel-img"
+          :style="
+            'background-image: url(' +
+            page?.featuredImage.node.mediaItemUrl +
+            ')'
+          "
+        ></div>
         <div class="carousel-title">
           <h1>Mentions légales</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
-            architecto laudantium
+          <p v-if="!$apollo.queries.page.loading">
+            {{ page?.extrait }}
           </p>
         </div>
       </div>
     </div>
     <section class="section-page">
       <span id="association" class="ancre"></span>
-      <div class="title">
-        <h2>Coordonnées de l'association</h2>
+      <div class="title with-toc">
+        <TableOfContent :is-loading="$apollo.queries.page.loading" />
       </div>
       <div class="content lead">
-        <address data-aos="fade-up">
-          <div>Havre De Vers</div>
-          <div>13, rue de Tourville 76600 LE HAVRE</div>
-          <br />
-          <div class="contact">
-            Contact :
-            <ul>
-              <li>
-                Par mail :
-                <a
-                  class="protect"
-                  data-protect="havredeversarobasgmailpointcom"
-                >
-                  Envoyer un mail
-                </a>
-              </li>
-              <li>
-                Par téléphone : <a href="tel:+33659861632">06.59.86.16.32</a>
-              </li>
-            </ul>
-          </div>
-        </address>
+        <LoaderApple v-if="$apollo.queries.page.loading" />
+        <div v-else-if="error != ''">{{ error }}</div>
+        <div
+          v-else
+          class="js-toc-content lead wp-api"
+          v-html="page?.content"
+        ></div>
       </div>
-      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
-    </section>
-    <section class="section-page">
-      <span id="publication" class="ancre"></span>
-      <div class="title">
-        <h2>Directeur de la publication</h2>
-      </div>
-      <div class="content lead">
-        <address data-aos="fade-up">
-          <div>Léo MASSÉ</div>
-          <div>Co-fondateur de l'association</div>
-        </address>
-      </div>
-      <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
-    </section>
-    <section class="section-page">
-      <span id="developpement" class="ancre"></span>
-      <div class="title">
-        <h2>Développement du site</h2>
-      </div>
-      <div class="content lead">
-        <address data-aos="fade-up">
-          <div>Pierre-Jean CHANCELLIER</div>
-          <br />
-          <div class="contact">
-            Contact :
-            <ul>
-              <li>
-                Par mail :
-                <a
-                  class="protect"
-                  data-protect="pjchancellierarobasgmailpointcom"
-                >
-                  Envoyer un mail
-                </a>
-              </li>
-            </ul>
-          </div>
-        </address>
-        <br />
-        <div data-aos="fade-up">
-          Le site a été développé grâce à des technologies Open-Source. Le
-          framework utilisé est
-          <a href="https://nuxtjs.org/" target="_blank">Nuxt.js</a>.
-        </div>
-        <br />
-        <div data-aos="fade-up">
-          Crédits photos : Tony Bélénus pour les photos des membres du bureau.
-        </div>
-      </div>
-      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
-    </section>
-    <section class="section-page">
-      <span id="hebergement" class="ancre"></span>
-      <div class="title">
-        <h2>Hébergement du site</h2>
-      </div>
-      <div class="content lead">
-        <address data-aos="fade-up">
-          <a href="https://netlify.app/" target="_blank">Netlify</a><br />
-          44 Montgomery Street, Suite 300<br />San Francisco, CA 94104<br /><br />support@netlify.com
-        </address>
-        <br />
-        <p data-aos="fade-up">
-          Le code source du site est stocké sur
-          <a href="https://github.com/havredevers/siteweb" target="_blank">
-            la plateforme Github</a
-          >.
-        </p>
-      </div>
-      <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
-    </section>
-    <section class="section-page">
-      <span id="politique-confidentialite" class="ancre"></span>
-      <div class="title">
-        <h2>Politique de confidentialité</h2>
-      </div>
-      <div class="content lead">
-        <p data-aos="fade-up">
-          La présente Politique de confidentialité décrit la façon dont vos
-          informations personnelles sont recueillies, utilisées et partagées
-          lorsque vous vous rendez sur notre site www.havredevers.fr ou que vous
-          y effectuez un achat.
-        </p>
-      </div>
-      <HomeWave :colors="['#e3ad89', '#f4dbc9']" />
+      <HomeWave :colors="['var(--clr-content2)', 'var(--clr-content1)']" />
     </section>
   </div>
 </template>
 
 <script>
 import meta from '~/plugins/meta'
+import mixinApollo from '~/plugins/mixinApollo'
 
 export default {
-  mixins: [meta],
+  mixins: [meta, mixinApollo],
   data() {
     return {
       titre: 'Mentions légales',
@@ -155,12 +55,53 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  counter-reset: h2counter;
+}
+
 .mentions {
-  .contact {
-    li {
-      list-style: disc;
-      margin-left: 1rem;
+  .wp-block-group + .wp-block-group {
+    padding-top: 2rem;
+    border-top: 1px solid #c5af9f;
+    margin-top: 2rem;
+  }
+
+  h1 {
+    counter-reset: h2counter;
+  }
+
+  h2 {
+    counter-reset: h3counter;
+
+    &::before {
+      content: counter(h2counter) '.\0000a0\0000a0';
+      counter-increment: h2counter;
     }
+  }
+
+  h3:before {
+    content: counter(h2counter) '.' counter(h3counter) '.\0000a0\0000a0';
+    counter-increment: h3counter;
+  }
+
+  h2,
+  h3 {
+    font-family: var(--font-changa);
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    font-style: italic;
+  }
+
+  p,
+  h4 {
+    margin-bottom: 1rem;
+  }
+
+  .content li {
+    list-style: disc;
+    margin: 0 0 1rem 1rem;
   }
 }
 </style>

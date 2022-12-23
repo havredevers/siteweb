@@ -5,43 +5,56 @@
       <h2>Présentation <br />de l'équipe</h2>
     </div>
     <div class="content">
-      <ul class="membres">
+      <LoaderApple v-if="$apollo.queries.membres.loading" />
+      <div v-else-if="error != ''">{{ error }}</div>
+      <ul v-else class="membres">
         <li
-          v-for="membre in equipe"
-          :key="membre.order"
+          v-for="membre in membres"
+          :key="membre.databaseId"
           class="membre"
           data-aos="zoom-in"
         >
           <div class="photo">
-            <nuxt-img
-              format="png"
-              :src="'/association/staff/' + membre.photo"
-              alt=""
-              loading="lazy"
-            />
+            <img :src="membre.photo.mediaItemUrl" :alt="membre.photo.altText" />
           </div>
-          <h3>{{ membre.nom }}</h3>
+          <h3>{{ membre.title }}</h3>
           <ul>
             <li v-for="role in membre.roles" :key="role">{{ role }}</li>
           </ul>
         </li>
       </ul>
     </div>
-    <HomeWave :colors="['#ead0a3', '#f7e9d4']" />
+    <HomeWave :colors="['var(--clr-content3)', 'var(--clr-content4)']" />
   </section>
 </template>
 
 <script>
+import { MEMBRES } from '@/apollo/queries'
+
 export default {
   data() {
     return {
-      equipe: [],
+      error: '',
     }
   },
-  async fetch() {
-    this.equipe = await this.$content('staff').sortBy('order').fetch()
+  apollo: {
+    membres: {
+      query: MEMBRES,
+      update(data) {
+        return data.membres.nodes.sort((a, b) => a.ordre - b.ordre)
+      },
+      error(err) {
+        this.error = err.message
+      },
+    },
   },
-  fetchOnServer: false,
+  watch: {
+    membres() {
+      this.$nextTick(() => {
+        this.$linkImages()
+      })
+    },
+  },
 }
 </script>
 
@@ -49,7 +62,7 @@ export default {
 .membres {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
 }
 
@@ -68,7 +81,13 @@ export default {
     height: 0;
     overflow: hidden;
     border-radius: 50%;
-    box-shadow: 5px 5px 5px grey;
+    box-shadow: 5px 5px 15px grey;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 5px 5px 20px 5px grey;
+    }
   }
 
   img {

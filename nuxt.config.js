@@ -1,4 +1,7 @@
+import axios from 'axios'
 require('dotenv').config()
+
+const ENDPOINT = 'https://h2v.normandie-libre.fr/graphql'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -19,12 +22,17 @@ export default {
         content:
           "L'association havraise qui accompagne à la valorisation des biodéchets",
       },
+      {
+        name: 'keywords',
+        content: 'association,le havre,valorisation,biodéchets,compost',
+      },
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'msapplication-TileColor', content: '#84aa4b' },
       { name: 'theme-color', content: '#ffffff' },
       { name: 'robots', content: 'noindex' },
       // Facebook Meta Tags
       {
+        hid: 'og:type',
         property: 'og:type',
         content: 'website',
       },
@@ -95,7 +103,7 @@ export default {
         href: '/favicon-16x16.png',
       },
       {
-        rel: 'apple-touch-  ',
+        rel: 'apple-touch-icon',
         sizes: '120x120',
         href: '/apple-touch-icon.png',
       },
@@ -117,7 +125,13 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/functions', '~/plugins/aos'],
+  plugins: [
+    '~/plugins/functions',
+    {
+      src: '~/plugins/aos.js',
+      mode: 'client',
+    },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -128,22 +142,29 @@ export default {
     '@nuxtjs/eslint-module',
     // https://www.npmjs.com/package/nuxt-animejs
     'nuxt-animejs',
-    // https://image.nuxtjs.org
-    '@nuxt/image',
     // https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    'nuxt-content-git',
-    // https://go.nuxtjs.dev/content
-    '@nuxt/content',
     // https://github.com/schlunsen/nuxt-leaflet
     'nuxt-leaflet',
     // https://axios.nuxtjs.org
     '@nuxtjs/axios',
+    // https://github.com/nuxt-modules/apollo/tree/v4
+    '@nuxtjs/apollo',
+    // https://sitemap.nuxtjs.org
+    '@nuxtjs/sitemap',
   ],
+
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: ENDPOINT,
+      },
+    },
+  },
 
   // https://nuxtjs.org/docs/configuration-glossary/configuration-env/
   env: {
@@ -151,13 +172,45 @@ export default {
     CLIENT_SECRET: process.env.CLIENT_SECRET,
   },
 
+  sitemap: {
+    hostname: 'https://havredevers.fr',
+    gzip: true,
+  },
+
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend(config, ctx) {
+      if (ctx && ctx.isClient) {
+        config.optimization.splitChunks.maxSize = 243000
+      }
+    },
+  },
 
   generate: {
     fallback: true,
+    routes() {
+      return axios({
+        url: ENDPOINT,
+        method: 'post',
+        data: {
+          query: `
+            query GET_POSTS {
+              posts {
+                nodes {
+                  slug
+                }
+              }
+            }
+          `,
+        },
+      }).then((result) => {
+        return result.data.data.posts.nodes.map((post) => {
+          return '/blog/' + post.slug
+        })
+      })
+    },
   },
 }

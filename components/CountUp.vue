@@ -63,14 +63,14 @@ export default {
     this.scrollSpy(this.countUp)
 
     if (this.$route.hash === '#chiffres') {
-      this.$nextTick(function () {
+      this.$nextTick(() => {
         this.countUp.start()
       })
     }
   },
   methods: {
     scrollSpy(countup) {
-      window.addEventListener('scroll', function () {
+      window.addEventListener('scroll', () => {
         const bottomOfScroll = window.innerHeight + window.scrollY
         const rect = countup.el.getBoundingClientRect()
         const topOfEl = rect.top + window.pageYOffset
