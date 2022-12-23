@@ -1,8 +1,11 @@
+import axios from 'axios'
 require('dotenv').config()
+
+const ENDPOINT = 'https://h2v.normandie-libre.fr/graphql'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  // target: 'static',
+  target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -18,6 +21,10 @@ export default {
         name: 'description',
         content:
           "L'association havraise qui accompagne à la valorisation des biodéchets",
+      },
+      {
+        name: 'keywords',
+        content: 'association,le havre,valorisation,biodéchets,compost',
       },
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'msapplication-TileColor', content: '#84aa4b' },
@@ -147,12 +154,14 @@ export default {
     '@nuxtjs/axios',
     // https://github.com/nuxt-modules/apollo/tree/v4
     '@nuxtjs/apollo',
+    // https://sitemap.nuxtjs.org
+    '@nuxtjs/sitemap',
   ],
 
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'https://h2v.normandie-libre.fr/graphql',
+        httpEndpoint: ENDPOINT,
       },
     },
   },
@@ -163,13 +172,45 @@ export default {
     CLIENT_SECRET: process.env.CLIENT_SECRET,
   },
 
+  sitemap: {
+    hostname: 'https://havredevers.fr',
+    gzip: true,
+  },
+
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend(config, ctx) {
+      if (ctx && ctx.isClient) {
+        config.optimization.splitChunks.maxSize = 243000
+      }
+    },
+  },
 
   generate: {
     fallback: true,
+    routes() {
+      return axios({
+        url: ENDPOINT,
+        method: 'post',
+        data: {
+          query: `
+            query GET_POSTS {
+              posts {
+                nodes {
+                  slug
+                }
+              }
+            }
+          `,
+        },
+      }).then((result) => {
+        return result.data.data.posts.nodes.map((post) => {
+          return '/blog/' + post.slug
+        })
+      })
+    },
   },
 }
