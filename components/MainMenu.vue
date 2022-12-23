@@ -9,7 +9,7 @@
         <span v-if="menuItem.path !== '/prestations/'">
           <NuxtLink :to="menuItem.path"> {{ menuItem.label }} </NuxtLink>
         </span>
-        <span v-else>
+        <div v-else>
           <a
             :class="$route.name == 'prestations' ? 'active' : ''"
             @click="ToggleDropdown($event)"
@@ -22,7 +22,7 @@
               </NuxtLink>
             </li>
           </ul>
-        </span>
+        </div>
       </li>
     </ul>
   </div>
