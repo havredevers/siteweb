@@ -2,14 +2,7 @@
   <div class="boutique">
     <div class="carousel">
       <div class="page-header">
-        <div
-          class="carousel-img"
-          :style="
-            'background-image: url(' +
-            page?.featuredImage.node.mediaItemUrl +
-            ')'
-          "
-        ></div>
+        <div class="carousel-img" :style="imgHeader"></div>
         <div class="carousel-title">
           <h1>La boutique</h1>
           <p v-if="!$apollo.queries.page.loading">

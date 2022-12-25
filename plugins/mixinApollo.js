@@ -10,6 +10,14 @@ export default {
     name() {
       return this.pageName ? this.pageName : this.$route.name
     },
+    imgHeader() {
+      return (
+        'background-image: ' +
+        (this.page
+          ? 'url(' + this.page.featuredImage.node.mediaItemUrl + ')'
+          : 'none')
+      )
+    },
   },
   apollo: {
     page: {

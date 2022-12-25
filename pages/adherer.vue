@@ -2,7 +2,7 @@
   <div class="adherer">
     <div class="carousel">
       <div class="page-header">
-        <div class="carousel-img" :style="'background:' + imgHeader"></div>
+        <div class="carousel-img" :style="imgHeader"></div>
         <div class="carousel-title">
           <h1>Adhérer à l'association</h1>
           <p v-if="!$apollo.queries.page.loading">
@@ -72,13 +72,6 @@ export default {
       desc: "Rejoignez nos adhérents pour bénéficier des avantages de l'association",
       image: '',
     }
-  },
-  computed: {
-    imgHeader() {
-      return this.page
-        ? 'url(' + this.page.featuredImage.node.mediaItemUrl + ')'
-        : '#403429'
-    },
   },
   watch: {
     $route(to, from) {
