@@ -28,6 +28,13 @@ export default {
       error(err) {
         this.error = err.message
       },
+      watchLoading(isLoading, countModifier) {
+        if (process.client && !isLoading) {
+          setTimeout(() => {
+            this.$checkYoutube()
+          }, 25)
+        }
+      },
     },
   },
 }

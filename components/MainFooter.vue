@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="logo">
-      <img src="~/assets/img/logo-blanc.png" alt="" />
+      <img src="~/assets/img/logo-blanc.png" alt="Logo de l'association" />
     </div>
     <div class="content">
       <div class="main">

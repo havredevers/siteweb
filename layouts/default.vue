@@ -153,44 +153,13 @@ export default {
       // Services utilisés
       ;(tarteaucitron.job = tarteaucitron.job || []).push('helloasso')
     },
-    checkYoutube() {
-      console.log('check yt')
-      const videos = document.querySelectorAll('*[data-youtube]')
-      if (videos) {
-        videos.forEach((video) => {
-          const videoId = video.dataset.youtube
-
-          const newDiv = document.createElement('div')
-          newDiv.classList.add('video-responsive')
-
-          const iframe = document.createElement('iframe')
-          iframe.src =
-            'https://www.youtube-nocookie.com/embed/' +
-            videoId +
-            '?autoplay=1&mute=1'
-          iframe.setAttribute('frameborder', 0)
-          iframe.setAttribute('allowfullscreen', true)
-
-          const img = document.createElement('img')
-          img.classList.add('youtube-img')
-          img.src = 'https://img.youtube.com/vi/' + videoId + '/sddefault.jpg'
-          newDiv.appendChild(img)
-          const playButton = document.createElement('button')
-          playButton.addEventListener('click', (e) => {
-            e.target.parentNode.classList.add('loaded')
-            e.target.parentNode.replaceChild(iframe, img)
-          })
-          newDiv.appendChild(playButton)
-
-          video.parentNode.replaceChild(newDiv, video)
-        })
-      }
-    },
     resetPage(init) {
-      if (init) this.launchTarteAuCitron()
+      if (init) {
+        this.$checkYoutube()
+        this.launchTarteAuCitron()
+      }
       this.$secureMail()
       this.$linkImages()
-      this.checkYoutube()
     },
   },
 }

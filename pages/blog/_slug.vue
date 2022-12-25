@@ -108,7 +108,7 @@ export default {
   watch: {
     article() {
       this.$nextTick(() => {
-        this.$parent.$parent.checkYoutube()
+        this.$checkYoutube()
       })
 
       import('~/node_modules/tiny-slider/src/tiny-slider').then(({ tns }) => {
