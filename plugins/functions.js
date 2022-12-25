@@ -32,7 +32,6 @@ Vue.prototype.$linkImages = () => {
 }
 
 Vue.prototype.$checkYoutube = () => {
-  console.log('check YT')
   const videos = document.querySelectorAll('*[data-youtube]')
   if (videos) {
     videos.forEach((video) => {

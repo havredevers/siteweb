@@ -25,7 +25,11 @@ export default {
       })
     },
     $route(to, from) {
-      this.$destroy()
+      setTimeout(() => {
+        Tocbot.init({
+          hasInnerContainers: true,
+        })
+      }, 550)
     },
   },
   mounted() {
