@@ -408,10 +408,6 @@ button {
     display: none;
   }
 
-  &:hover button {
-    opacity: 1;
-  }
-
   button {
     z-index: 2;
     position: absolute;
@@ -435,10 +431,10 @@ button {
     position: absolute;
   }
 
-  img,
   button {
     &:hover {
       cursor: pointer;
+      opacity: 1;
     }
   }
 }
