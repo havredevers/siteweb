@@ -89,6 +89,10 @@ export default {
     a {
       text-decoration: none;
       font-weight: 400;
+
+      &:not(.is-active-link):hover {
+        text-decoration: underline;
+      }
     }
   }
 

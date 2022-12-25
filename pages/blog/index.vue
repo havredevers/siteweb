@@ -28,6 +28,7 @@
             <div>
               <input id="all" v-model="filter" type="radio" value="all" /><label
                 for="all"
+                @click="pushRoute($event)"
                 >Tous</label
               >
             </div>
@@ -122,6 +123,10 @@ export default {
   watch: {
     filter() {
       this.$apollo.queries.articles.refetch()
+    },
+    $route(to, from) {
+      if (to.name === 'blog')
+        this.filter = to.hash ? to.hash.substring(1) : 'all'
     },
   },
   mounted() {

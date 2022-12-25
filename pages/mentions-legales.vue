@@ -92,6 +92,10 @@ body {
 
   h4 {
     font-style: italic;
+
+    &::before {
+      content: '- ';
+    }
   }
 
   p,
