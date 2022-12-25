@@ -36,6 +36,7 @@ export default {
   head() {
     return {
       title: this.title,
+      link: [{ rel: 'canonical', href: this.url }],
       meta: [
         {
           hid: 'description',

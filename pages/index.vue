@@ -48,13 +48,16 @@
 
 <script>
 import { PAGINATED_POSTS } from '@/apollo/queries'
+import meta from '~/plugins/meta'
 import mixinApollo from '~/plugins/mixinApollo'
 
 export default {
-  mixins: [mixinApollo],
+  mixins: [meta, mixinApollo],
   data() {
     return {
-      pageName: 'accueil',
+      titre: 'Accueil',
+      desc: "L'association havraise qui accompagne à la valorisation des biodéchets",
+      image: '',
     }
   },
   apollo: {
@@ -69,6 +72,11 @@ export default {
       error(err) {
         this.error = err.message
       },
+    },
+  },
+  computed: {
+    pageName() {
+      return this.titre.toLowerCase()
     },
   },
 }

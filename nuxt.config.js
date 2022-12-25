@@ -17,12 +17,6 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
-        hid: 'description',
-        name: 'description',
-        content:
-          "L'association havraise qui accompagne à la valorisation des biodéchets",
-      },
-      {
         name: 'keywords',
         content: 'association,le havre,valorisation,biodéchets,compost',
       },
@@ -40,54 +34,12 @@ export default {
         property: 'og:site_name',
         content: 'Havre de Vers',
       },
-      {
-        hid: 'og:url',
-        property: 'og:url',
-        content: 'https://www.havredevers.fr/',
-      },
-      {
-        hid: 'og:title',
-        property: 'og:title',
-        content: 'Association Havre de vers',
-      },
-      {
-        hid: 'og:description',
-        property: 'og:description',
-        content:
-          "L'association havraise qui accompagne à la valorisation des biodéchets",
-      },
-      {
-        hid: 'og:image',
-        property: 'og:image',
-        content: 'https://www.havredevers.fr/opengraph_img.png',
-      },
       // Twitter Meta Tags
       {
         name: 'twitter-card',
         content: 'summary_large_image',
       },
       { property: 'twitter:domain', content: 'havredevers.fr' },
-      {
-        hid: 'twitter:url',
-        property: 'twitter:url',
-        content: 'https://www.havredevers.fr',
-      },
-      {
-        hid: 'twitter:title',
-        name: 'twitter:title',
-        content: 'Association Havre de vers',
-      },
-      {
-        hid: 'twitter:description',
-        name: 'twitter:description',
-        content:
-          "L'association havraise qui accompagne à la valorisation des biodéchets",
-      },
-      {
-        hid: 'twitter:image',
-        name: 'twitter:image',
-        content: 'https://www.havredevers.fr/opengraph_img.png',
-      },
     ],
     link: [
       {

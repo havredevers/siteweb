@@ -95,10 +95,6 @@ export default {
           content: 'article',
         },
         {
-          property: 'og:type',
-          content: 'article',
-        },
-        {
           property: 'article:published_time',
           content: this.article.modifiedGmt,
         },
