@@ -13,10 +13,7 @@
     </div>
     <section class="section-page">
       <div class="title">
-        <h2>Formulaire de contact</h2>
-        <div class="lead">
-          Contactez-nous via le formulaire et vous aurez une réponse sous 24h
-        </div>
+        <h2>Nos coordonnées</h2>
         <div class="coord">
           <a href="tel:+33659861632"
             ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -45,7 +42,14 @@
           </a>
         </div>
       </div>
-      <div class="content"><ContactForm /></div>
+      <div class="content">
+        <h2>Formulaire de contact</h2>
+        <LoaderApple v-if="$apollo.queries.page.loading" />
+        <div v-else-if="error != ''">{{ error }}</div>
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div v-else class="lead" v-html="page?.content"></div>
+        <ContactForm />
+      </div>
       <HomeWave :colors="['var(--clr-content2)', 'var(--clr-content1)']" />
     </section>
   </div>
@@ -96,6 +100,18 @@ export default {
       max-height: 20px;
       margin-right: 1rem;
       fill: var(--clr-primary);
+    }
+  }
+
+  .content {
+    p {
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: var(--font-changa);
+      margin-bottom: 3rem;
+      text-align: center;
     }
   }
 }
