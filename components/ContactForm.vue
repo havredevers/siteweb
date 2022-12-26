@@ -278,7 +278,7 @@ form {
     padding: 0;
   }
 
-  *:focus {
+  *:not(button):focus {
     outline: none;
 
     & ~ .line::before {
