@@ -121,7 +121,7 @@ a {
   font-weight: bold;
 }
 
-a:focus-visible {
+:focus-visible {
   outline: 3px dotted var(--clr-secondary);
   outline-offset: 3px;
 }

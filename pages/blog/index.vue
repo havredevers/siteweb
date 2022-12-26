@@ -21,6 +21,7 @@
             <div>
               <input id="all" v-model="filter" type="radio" value="all" /><label
                 for="all"
+                tabindex="0"
                 @click="pushRoute($event)"
                 >Tous</label
               >
@@ -35,6 +36,7 @@
               /><label
                 v-if="cat.name != 'Non classé'"
                 :for="cat.slug"
+                tabindex="0"
                 @click="pushRoute($event)"
                 >{{ cat.name }}</label
               >
