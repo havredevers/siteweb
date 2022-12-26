@@ -259,6 +259,7 @@ form {
 
   input,
   textarea {
+    width: 100%;
     appearance: none;
     border: none;
     line-height: 1.5;
