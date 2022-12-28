@@ -1,8 +1,6 @@
 import axios from 'axios'
 require('dotenv').config()
 
-const ENDPOINT = 'https://h2v.normandie-libre.fr/graphql'
-
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -113,7 +111,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: ENDPOINT,
+        httpEndpoint: process.env.ENDPOINT,
       },
     },
   },
@@ -145,7 +143,7 @@ export default {
     fallback: true,
     routes() {
       return axios({
-        url: ENDPOINT,
+        url: process.env.ENDPOINT,
         method: 'post',
         data: {
           query: `

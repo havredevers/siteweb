@@ -52,6 +52,34 @@ body {
   counter-reset: h2counter;
 }
 
+.liberapay-btn {
+  background-color: #f6c915;
+  border-radius: 4px;
+  color: #1a171b;
+  display: inline-block;
+  font-family: Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22px;
+  padding: 5px 7px 3px;
+  position: relative;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #fbce1a;
+  }
+
+  & > svg {
+    position: absolute;
+    left: 7px;
+    top: 7px;
+  }
+
+  & > span {
+    margin-left: 19px;
+  }
+}
+
 .mentions {
   .wp-block-group + .wp-block-group {
     padding-top: 2rem;
