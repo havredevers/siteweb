@@ -1,6 +1,11 @@
 <template>
   <ul class="list-actus">
-    <li v-for="article in articles" :key="article.slug" class="article">
+    <li
+      v-for="article in articles"
+      :key="article.slug"
+      class="article"
+      data-aos="fade-up"
+    >
       <BlogArticle :article="article.node" />
     </li>
   </ul>
