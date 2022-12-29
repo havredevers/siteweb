@@ -15,7 +15,11 @@
           data-aos="zoom-in"
         >
           <div class="photo">
-            <img :src="membre.photo.mediaItemUrl" :alt="membre.photo.altText" />
+            <img
+              class="thumbnail"
+              :src="membre.photo.mediaItemUrl"
+              :alt="membre.photo.altText"
+            />
           </div>
           <h3>{{ membre.title }}</h3>
           <ul>

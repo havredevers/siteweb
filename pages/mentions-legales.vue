@@ -81,7 +81,7 @@ body {
 }
 
 .mentions {
-  .wp-block-group + .wp-block-group {
+  & .wp-api > div + div {
     padding-top: 2rem;
     border-top: 1px solid #c5af9f;
     margin-top: 2rem;

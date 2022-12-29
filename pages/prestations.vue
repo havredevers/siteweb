@@ -34,6 +34,7 @@
           <div class="lead" data-aos="fade-up">{{ presta.description }}</div>
           <div class="details">
             <img
+              class="thumbnail"
               :src="presta.miniature.mediaItemUrl"
               :alt="presta.miniature.altText"
               data-aos="zoom-in"

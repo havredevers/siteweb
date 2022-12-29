@@ -126,7 +126,7 @@ a {
   outline-offset: 3px;
 }
 
-.section-page:not(.carte) .content img:not(.dot-img):not(.youtube-img) {
+.content img.thumbnail {
   z-index: 1;
   position: relative;
   transition: all 0.3s ease-in-out;
@@ -137,7 +137,6 @@ a {
   }
 }
 
-.vignette > img,
 img.vignette {
   border-radius: 40px;
   width: 100%;

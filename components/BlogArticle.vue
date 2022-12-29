@@ -50,6 +50,7 @@ export default {
     width: 100%;
     border-radius: 15px;
     z-index: 0;
+    transition: all 0.3s ease-in-out;
   }
 
   @media (min-width: 1200px) {
@@ -92,6 +93,7 @@ export default {
 
       img {
         transform: scale(1.15);
+        opacity: 0.9;
       }
 
       @media (min-width: 1200px) {
