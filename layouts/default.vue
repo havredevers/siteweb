@@ -3,7 +3,7 @@
     <header class="main-menu">
       <NuxtLink to="/" class="title">
         <img src="~/assets/img/pomme-marron.png" alt="" />
-        <span>HAVRE DE VERS</span>
+        <span>HAVRE DE VERS <small>Permaculture urbaine</small></span>
       </NuxtLink>
       <MainMenu />
     </header>
@@ -241,12 +241,19 @@ export default {
     background-color: var(--bg-menu);
     color: var(--menu-font-color);
     font-family: 'FRUIT PUNCH';
-    font-size: 1.5rem;
+    font-size: 2rem;
     display: flex;
     align-items: center;
     flex: 0 1 100%;
-    padding: 1.5rem;
+    padding: 1rem 3.8rem 1rem 1rem;
     z-index: 60;
+
+    small {
+      display: block;
+      font-size: 37%;
+      font-weight: 400;
+      font-family: var(--font-sans-serif);
+    }
 
     & > * + * {
       margin-left: 1rem;
@@ -258,12 +265,17 @@ export default {
 
     @media (min-width: 850px) {
       flex: 0 0 33%;
-      font-size: 2rem;
+      font-size: 1.9rem;
       justify-content: center;
+      padding: 1rem 0 1rem 1rem;
     }
 
     @media (min-width: 1250px) {
       font-size: 3rem;
+
+      img {
+        align-self: flex-start;
+      }
     }
   }
 
