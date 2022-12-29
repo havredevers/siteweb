@@ -33,6 +33,10 @@ export default {
 </script>
 
 <style lang="scss">
+li.article:nth-child(even) a {
+  flex-direction: row-reverse;
+}
+
 .page .article a .article-logo {
   width: var(--img-size);
   flex: 0 0 var(--img-size);
@@ -59,7 +63,7 @@ export default {
 }
 
 .article {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   text-align: center;
 
   a {

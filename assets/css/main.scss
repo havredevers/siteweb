@@ -454,7 +454,7 @@ button {
     position: relative;
     flex: 0 0 33%;
     text-align: center;
-    padding: 1rem;
+    padding: 2rem;
     background-color: var(--bg-color);
 
     h2 {
@@ -469,7 +469,7 @@ button {
   .content {
     position: relative;
     flex: 0 0 67%;
-    padding: 3% 5% 1rem 5%;
+    padding: 2rem;
 
     .wp-api > * + * {
       margin-top: 2rem;

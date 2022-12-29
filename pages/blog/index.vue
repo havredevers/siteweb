@@ -133,6 +133,9 @@ export default {
     },
     showNextArticles() {
       this.isFectchingMore = true
+      const bottomLastArticle = document
+        .querySelector('li.article:last-child')
+        .getBoundingClientRect().bottom
 
       this.$apollo.queries.articles.fetchMore({
         variables: {
@@ -143,6 +146,12 @@ export default {
           const newPosts = fetchMoreResult.posts.edges
           this.pageInfo = fetchMoreResult.posts.pageInfo
           this.isFectchingMore = false
+
+          this.$nextTick(() => {
+            window.scroll({
+              top: document.documentElement.scrollTop + bottomLastArticle - 50,
+            })
+          })
 
           return {
             posts: {
