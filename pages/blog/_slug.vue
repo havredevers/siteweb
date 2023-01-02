@@ -139,50 +139,50 @@ export default {
       })
     },
   },
-  methods: {
-    createCarousel() {
-      const divs = document.querySelectorAll('.wp-block-gallery')
-      if (divs.length === 0) return false
+  // methods: {
+  //   createCarousel() {
+  //     const divs = document.querySelectorAll('.wp-block-gallery')
+  //     if (divs.length === 0) return false
 
-      divs.forEach((div) => {
-        let newGallery = document.createElement('div')
-        newGallery.classList.add('wp-block-gallery')
+  //     divs.forEach((div) => {
+  //       let newGallery = document.createElement('div')
+  //       newGallery.classList.add('wp-block-gallery')
 
-        const dotsContainer = document.createElement('ul')
-        dotsContainer.classList.add('dots')
+  //       const dotsContainer = document.createElement('ul')
+  //       dotsContainer.classList.add('dots')
 
-        const sliders = div.querySelectorAll('.wp-block-image')
-        sliders.forEach((slider) => {
-          const newSlider = document.createElement('div')
-          const img = slider.querySelector('img')
-          img.addEventListener('click', () => {
-            document.querySelector('#modal').style.display = 'flex'
-            document.querySelector('#modal img').src = img.src
-            document.querySelector('#modal .caption').innerHTML = img.alt
-          })
-          newSlider.appendChild(img)
-          newGallery.appendChild(newSlider)
+  //       const sliders = div.querySelectorAll('.wp-block-image')
+  //       sliders.forEach((slider) => {
+  //         const newSlider = document.createElement('div')
+  //         const img = slider.querySelector('img')
+  //         img.addEventListener('click', () => {
+  //           document.querySelector('#modal').style.display = 'flex'
+  //           document.querySelector('#modal img').src = img.src
+  //           document.querySelector('#modal .caption').innerHTML = img.alt
+  //         })
+  //         newSlider.appendChild(img)
+  //         newGallery.appendChild(newSlider)
 
-          const dot = document.createElement('li')
-          const miniature = img.cloneNode(true)
-          miniature.classList.add('dot-img')
-          dot.classList.add('dot')
-          dot.appendChild(miniature)
-          dotsContainer.appendChild(dot)
-        })
+  //         const dot = document.createElement('li')
+  //         const miniature = img.cloneNode(true)
+  //         miniature.classList.add('dot-img')
+  //         dot.classList.add('dot')
+  //         dot.appendChild(miniature)
+  //         dotsContainer.appendChild(dot)
+  //       })
 
-        div.parentNode.replaceChild(newGallery, div)
+  //       div.parentNode.replaceChild(newGallery, div)
 
-        newGallery = document.querySelector('.wp-block-gallery')
-        newGallery.parentNode.insertBefore(
-          dotsContainer,
-          newGallery.nextSibling
-        )
-      })
+  //       newGallery = document.querySelector('.wp-block-gallery')
+  //       newGallery.parentNode.insertBefore(
+  //         dotsContainer,
+  //         newGallery.nextSibling
+  //       )
+  //     })
 
-      return true
-    },
-  },
+  //     return true
+  //   },
+  // },
 }
 </script>
 
